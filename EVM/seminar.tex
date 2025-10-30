@@ -1,0 +1,108 @@
+\documentclass[12px]{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\title{ЭВМ семинары}
+\author{VG6}
+
+\begin{document}
+
+\begin{center}
+	\textbf{Семинары}
+\end{center}
+
+\section{Неопределённые функции}
+Доопределять надо так, чтобы получился лучший результат. Для ДНФ доопределяем единицами, чтобы результат был короче. Для КНФ - нулями.
+3 этапа:
+\begin{enumerate}
+	\item Доопределение
+	\item Минимизация
+	\item Коррекция		
+\end{enumerate}
+
+Алгоритм минимизации существует в 2 вариантах и содержат оба варианта все 3 этапа.\\
+Вариант 1. 
+\begin{itemize}
+	\item Вводитяс вспомогательная функция \tilde{f} совпадающая с исходной на тех наборах на которых функция определена и принимающая значение 1 на запрещённых наборах.
+	\item Выполняется минимизацию вспомогательной функции любым удобным способом.
+	\item Строится импликантная матрица. Заголовками солбцов которой являются термы исходной функции, а заголовками строк - терми, полученные в результате минимизации вспомогательной функции. Проставляются метки, отмечающие вхождение строки в столбец и выбирается такая миимальная совокупность столбцов и строк, которая покроет всю функцию.
+\end{itemize}
+Вариант 2
+\begin{itemize}
+	\item Вводится вспомогательная функция $\tilde{f}$ которая совпадает с исх функцией на наборах, где она определена и принимает знаение 0 на запрещённых наборах.
+	\item Выполняется минимизацию вспомогательной функции любым удобным способом.
+	\item Строится импликантная матрица. Заголовками солбцов которой являются термы исходной функции, а заголовками строк - термы, полученные в результате минимизации вспомогательной функции. Проставляются метки, отмечающие вхождение строки в столбец и выбирается такая миимальная совокупность покрывающая все столбцы.
+\end{itemize}
+
+Условные обозначения
+$ f(a, b, c) = \begin{cases}
+	\sum_1 (1, 2, 3)\\
+	X(4, 5)$ - запрещённые наборы$
+\end{cases} $
+\subsubsection*{Пример}
+$ f(a, b, c, d) = \begin{cases}
+	\sum_1(0, 5, 8, 12, 15), \\
+	X (1, 2, 3, 10, 13, 14)
+\end{cases}  \Rightarrow$
+$\tilde{f} (a, b, c, d) = \begin{cases}
+	\sum_1(0, 5, 8, 12, 15, 
+	1, 2, 3, 10, 13, 14)
+\end{cases} $\\
+
+\begin{tabular}{c c c c c c}
+	& b & b & \overline{b} & \overline{b} & \\
+	a & 1 & 1 &   & 1 & \overline{c}\\
+	a & 1 & 1 &   & 1 & c\\
+	\overline{a} &   &   & 1 & 1 & c\\
+	\overline{a} &   & 1 & 1 & 1 & \overline{c}\\
+	 & \overline{d} & d & d & \overline{d}
+\end{tabular}\\
+\[ f(a, b, c, d) = ab + \overline{a}\overline{b} + \overline{b}\overline{d} + \overline{a}\overline{c}\overline{d} \]
+\begin{tabular}{c c c c c c}
+	 & 0000 & 0101 & 1000 & 1100 & 1111\\
+	11-- &  & & & x & x \\
+	00-- & x & & &  &  \\
+	-0-0 & x &  & x &  \\
+	0-01 &  & x & &  &  \\	
+\end{tabular}
+\[ bd + \overline{a}\overline{c}d + ab \]
+
+\subsubsection*{Пример (минКНФ)}
+$ f(a, b, c, d) = \begin{cases}
+	$П$(3, 6, 7, 9, 11), \\
+	X (0, 1, 2)
+\end{cases}  \Rightarrow$
+$ \tilde{f}(a, b, c, d) = \begin{cases}
+	$П$(3, 6, 7, 9, 11, 0, 1, 2)
+\end{cases} \\
+\begin{tabular}{c c c c c c}
+	   			  & b & b & \overline{b} & \overline{b} & \\
+				a &   &   & 0 &   & \overline{c}\\
+				a &   &   & 0 &   & c\\
+	\overline{a}		  & 0 & 0 & 0 & 0 & c\\
+	\overline{a} 		  &   &   & 0 & 0 & \overline{c}\\
+	                          & \overline{d} & d & d & \overline{d}\\
+\end{tabular}\\
+
+\[ (a + \overline{c}) \cdot (b + \overline{d}) \cdot ab \]
+\begin{tabular}{c c c c c c}
+	     & 0011 & 0110 & 0111 & 1001 & 1011\\
+	0-1- &  x   &  x   &  x   &      &     \\
+	-0-1 &  x   &      &      &  x   &  x  \\
+	00-- &  x   &      &      &      &     \\
+\end{tabular}
+\[ (a+\overline{c}) \cdot (b + \overline{d}) \]
+
+\end{document}
