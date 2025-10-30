@@ -1179,9 +1179,167 @@ $ \sum^{\infty}_{1} a_n$ сходится $\Leftrightarrow \sum^{\infty}_{1} 2^n
     $\sum^{2^{k+1}}_{n=2} a_n \leq \sum^{2^{k}}_{n=0} 2^n a_{2^n}$
 \end{tcolorbox}
 
-\begin{theorem}
-	Теорема 1.\\
-	
-\end{theorem}
+\section{Галава 3. Функции}
+\subsection{Понятие функции.}
+
+\begin{tcolorbox}
+	\textbf{Определени.} $X$ и $Y$ множества\\
+	\[ \forall x \in X \xrightarrow[f(x)]{} y \in Y \]
+	$(f, X, Y) $ - функция.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определени.} $f(X) := \{ y \in Y: \exists x \in X\;\ f(x) = y \}$ - образ X при отображении $y = f(x)$
+\end{tcolorbox}
+\subsubsection*{Примеры:}
+\begin{enumerate}
+	\item  $y = x^2,\; x \in [0; +\infty)$
+	\item $y = x^2,\; x \in (-\infty; +\infty)$
+	\item $y = \tg x,\; x \not= \frac{\pi}{2} + \pi k,\ k \in \Z$
+\end{enumerate}
+\
+Обратная функция: $x = f^{-1}(y)$\\
+Понятие сложной функции:\\
+\includegraphics[width=0.5\linewidth]{images/Функции/Понятие функции/Сложная функция.jpg}\\
+g(f(x)) $\subset \Z$
+\subsection{Способы задания.}
+\begin{enumerate}
+	\item Аналитическое задание
+	\item Графическое
+	\item Неявное задание\\
+		f(x, y) = 0\\
+		Пример: $x^2 + y^2 = R^2,\; y = \pm\sqrt{R^2 - x^2}$
+	\item Параметрическое задание. \\
+		\includegraphics[width=0.5\linewidth]{images/Функции/Способы задания/img.jpg}
+		\[
+			\begin{cases}
+				x = x(t)\\
+				y = y(t)
+			\end{cases}, t \in T
+		\]$
+		\[ 
+\begin{cases}
+	x = R\cos \phi\\
+	y = R\sin \phi
+\end{cases}, \phi \in [0, 2\pi)
+		\]
+\end{enumerate}
+
+\subsubsection{Ограниченность функций.}
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x)$ ограничена сверху на X, если
+	\[ \exists M: \forall x \in X, f(x) < M \]
+\end{tcolorbox}
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x)$ ограничена снизу на X, если
+	\[ \exists m: \forall x \in X, f(x) > m \]
+\end{tcolorbox}
+\begin{tcolorbox}
+Если $f(x)$ принимает комплексные значения, то ограниченность $f(x)$ на X
+\[ \exists M: \forall x \in X, |f(x)| < M \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x): X \in X \to Y$
+	\begin{enumerate}
+		\item отображение "на", если
+			\[ \forall y \in Y\; \exists x \in X: g = f(x) \]
+		\item отображение "в", если
+			\[ \forall x \in X\; \exists y \in Y: y = f(x) \]
+		\item "взаимно однозначное отображение"
+			\[ \forall x \in X\; \exists! y \in Y: y = f(x) \]
+			\[ \forall y \in Y\; \exists! x \in X: y = f(x) \]
+	\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x): X \to Y$
+	\[ \sup_X f(x)=\sup f(X) \]
+\end{tcolorbox}
+\[ M = \sup_X f(x) \]
+если 
+\begin{enumerate}
+	\item $\forall x \in X\; f(x) \leq M $
+	\item $\forall M` < M\; \exists x \in X: f(x) > M` $
+\end{enumerate}
+
+\begin{tcolorbox}
+	\textbf{Определение.} Если $f(x)$ не ограничена сверху на X, то $\exists \{ x_n \}$ \supset X 
+	\[ f(x_n) \xrightarrow[n\to\infty]{} +\infty \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x)$ принимает max в $x_0 \in X$, если
+	\[ \forall x \in X\;\; f(x) \leq f(x_0) \]
+	\[ f(x_0) = \max_X f(x) \]
+\end{tcolorbox}
+
+\[ f(x) = x in [0, 1) \]
+\[ \min_{[0,1)} f(x) - \inf){[0, 1)} f(x) = 0\]
+\[ \sup_{[0,1)} f(x) =1\;\; \max_{[0,1)} f(x) \not \exists \]
+
+\subsection{Предел функции в точке.}
+
+На протяжении всего параграфа: $f(x)$ на $\mathring U_a = U_a / \{a\}$
+\[ a \in (d, c) = U_a \]
+\includegraphics[width=0.5\linewidth]{images/Функции/Предел функции в точке/График.jpg}
+\begin{tcolorbox}
+	\textbf{Определение. Предел по Коши. } $f(x) \to A$ при $x \to a$, если 
+	\[ \forall \eps > 0\; \exists \delta_\eps > 0: \forall x: 0<|x-a| < \delta_\eps\;\; |f(x) - A| < \eps \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определение. Существование предела функции в точке.} $f(x)$ имеет предел при $x \to a$, если 
+	\[ \exists A\;\; \forall \eps > 0\; \exists \delta_\eps > 0: \forall x: 0<|x-a| < \delta_\eps\;\; |f(x) - A| < \eps  \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определение. Предел по Гейне. } $f(x)$ имеет придел при $x \to a$, если\\
+	$\forall \{x_n\}\; \forall n, x_n \in \mathring U_a, x_n \to a\; \{f(x_n)\}$ сходится
+\end{tcolorbox}
+Не обязательно, чтобы предел функции и последовательности был одним и тем же.
+
+\begin{tcolorbox}
+	\textbf{Теорема. Предел в смысе Коши.}
+	$\exists \Leftrightarrow \exists$ предел по Гейне.
+\end{tcolorbox}
+\begin{tcolorbox}[title=Доказательство]
+	$\Rightarrow \exists A: \forall \eps > 0\; \exists \delta_\eps > 0$\\
+	\[ \forall x \in (a - \delta, a + \delta) / \{a\} \;\; |f(x) - A| < \eps \]
+	Пусть $\{ x_n \}: \forall n\; x_n \in \mathring U_a, x_n \xrightarrow[n \to \infty]{} a$
+\[ \exists N_{delta_\eps} \in \N: \forall n > N_{\delta_\eps}\;\; 0 <|x_n - a| < \delta_\eps \]
+\[ \Rightarrow x_n \in (a - \delta_\eps, a + \delta_\eps) / \{a\} \Rightarrow |f(x) - A| < \eps \]
+
+	$\Leftarrow$ Пусть $f(x)$ имеет в a предел в смысле Гейне.
+	\begin{enumerate}
+	\item $\lim f(x_n)$ не зависит от $\{x_n\}$\\
+		Пусть не так зависит), тогда $\exists \{x_n`\}$\\
+		\[ x_n` \to a, x_n` \not= a \; \forall n: f(x_n`) \to A` \]
+		\[ \exists \{ x_n ``\}, x_n` \t a, x_n`` \not = a\;\; \forall n, f(x_n``) \to A`` \]
+		\includegraphics[width=0.5\linewidth]{images/Функции/Предел функции в точке/Гейне.jpg}
+		\[ x_{2k} = x_k`` \]
+		\[ x_{2k-1} = x_k` \]
+		\[ \forall n\;\; x_n \to a, x_n \not = a \]
+		По определению предела по Гейне:
+		\[ \exists A: f(x_n) \to A: f(x_{2n}) - to A``, f(x_{2n-1}) - to A` \]
+		таким образо: $ \exists A: \forall \{ x_n \} $
+		\[ f(x_n) \to A \]
+	\item $ f(x) \xrightarrow[]{x \to a} A $ по Коши\\
+		От противного:\\
+		Пусть $ f(x) \not \xrightarrow[]{a \to a} A$ по Коши
+		\[ \exists \eps > 0: \forall \delta > 0\; \exists x_n: 0 < |x-a| < \delta\;\; |f(x) - A| \geq \eps \]
+		\[ x_1: 0 < |x_1 - a| < 1/1\;\; |f(x_1) - A| \geq \eps \]
+		\[ x_2: 0 < |x_2 - a| < \frac{1}{2}\;\; |f(x_2) - A| \geq \eps \]
+		\[...\]
+		\[ x_n: 0 < |x_n - a| < \frac{1}{n}\;\; |f(x_n) - A| \geq \eps \]
+		\[...\]
+		$ \{x_n\} $, $x_n \to a, x_n \not = a, \forall n \Rightarrow f(x_n) = A$ противоречие
+
+	\end{enumerate}
+\end{tcolorbox}
+
+
+
+
 
 \end{document}
