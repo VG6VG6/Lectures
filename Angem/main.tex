@@ -1,0 +1,142 @@
+\documentclass[12pt, paper]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{caption}
+\usepackage{enumitem}
+
+\tcbuselibrary{breakable}
+\tcbset{
+  width=0.9\textwidth,
+  halign=justify,
+  center,
+  breakable,
+  colback=white
+}
+
+\title{Конспект по математическому анализу}
+\author{Голубов Владислав}
+\date{Сентябрь 2025}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\[ Ax + by + Cz + D = 0 \]
+\[  \]
+Я всё проебал, надо написать хз что это.\\
+Определение. Отклонение точки от плоскости
+\[ M_0 (x_0, _0, z_0) \]
+\[ \delta (M_0, \pi) = x_0 \cos \alpha + y_0 \cos \beta z_0 \cos \gamma \]
+
+\section{ \S 8. Прямая в пространстве. }
+OXYZ - ДПСК\\
+\textbf{Определение.} Направленный вектор L.
+\[\overline{p} \not= 0,\;\ \overline{q} || L\]
+\[ M_0 = (x_0, y_0, z_0) \]
+\[
+	\overline{q} = {l, m, n}\]
+\[
+	M = (x, y, z)\]
+	\[ M \in L \Leftrightarrow \overline{M_0M} || \overline{q} \]
+	\begin{enumerate}
+		\item \[ \frac{x-x_0}{l} = \frac{y - y_0}{m} = \frac{z-z_0}{n} \]
+	Канонические уравнения L.
+		\item \[ \overline{M_0M} = t \overline{q} \]
+			$
+			\begin{cases}
+				x = x_0 + lt, t \in (-\infty , +\infty)\\
+				y = y_0 + mt\\
+				z = z_0 + nt
+			\end{cases}
+			$
+			$
+		\item \begin{cases}
+			П1: $A_1x + B_1y + C_1z + D_1 = 0$\\
+			П2: $ A_2x + B_2y + C_2z + D_2 = 0 $
+\end{cases}
+$
+\[\overline{q} = [\overline{N_1}, \overline{N_2}] \]
+	\end{enumerate}
+ 
+	Определение. Угол между прямой и плоскость - это угол между прямой и её проекцией на эту плоскость.
+	\[ \overline{q} = {l, m, n} \]
+	\[ \overline{N} = {A, B, C} \]
+	\[ \cos \psi = \sin \phi = \frac{Al + Bm + Cn}{\sqrt{A^2 + B^2 + C^2} \cdot \sqrt{l^2 + m^2 + n ^2}} \]
+\section{Алгебраические линии и кривые 2 порядка}
+\subsection{Элипс. Вывод канонического уравнения. Свойства элипса.}
+\textbf{Элипс} - множество точек плоскости таких, что сумма расстояний от них до фиксированных точек той же плоскость постоянна и равна 2a. $ r_1 + r_2 = 2a $\\
+\textbf{Фиксированные точки F1, F2} - фокусы.\\
+\textbf{Длинны r1, r2} - факальные радиусы.\\
+\textbf{Расстояние между F1, F2} - фокусное расстояние = 2c. с может быть равен 0, тогда будет окружность.\\
+Окружность частный случай элипса с фокусным растоянием 0.\\
+По неравенству треугольника: $ a > c $
+
+\subsection{Вывод уравнения элипса}
+Пусть фокусное расстояние не равно 0.\\
+!!! INSERT IMAGE.\\
+\begin{equation}
+	r_1 + r_2 = 2a
+	\label{eq:Вывод}
+\end{equation}
+\begin{equation}	
+	\sqrt{ (x + c)^2 + y^2 } + \sqrt{(x - c)^2 + y^2}
+	\label{eq:}
+\end{equation}
+\[	x^2 + 2cy + c^2 + y^2 + x^2 - 2cx + c^2 + y^2  + 2\sqrt{(x^2 + 2cx + c^2 + y^2)(x^2 - 2cx + c^2 + y^2)} \]
+\[ 2( x^2 + y^2 + c^2) + \sqrt{(x^2 + y^2 + c^2) ^ 2 - 4c^2x^2} = 4a^2 \]
+\[ x^2 + y^2 + c^2 = t^2 \]
+\[ \sqrt{t^4 - 4c^2x^2} = 2a^2 - t^2 \Rightarrow t^4 - 4c^2x^2 = 4a^4 - 4a^2t^2 + t^4 - c^2x^2 = a^4 - a^2(x^2 + y^2 + c^2) \]
+\[ x^2(a^2 - c^2) + a^2y^2 = a^2(a^2(a^2-c^2) = \]
+\[ (a^2 - c^2) > 0 \]
+\[ = \underline{a^2 - c^2 = b^2}\;\;\;\;\;\;\; \underline{a  \geq b} \]
+\[ b^2x^2 + a^2y^2 = a^2b^2 \]
+\begin{equation}
+	\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+	\label{eq:}
+\end{equation}
+$(3) \Rightarrow (2) - ?$\\
+\[ y^2 = (1 - \frac{x^2}{a^2})b^2 \]
+\[ r_1 = \sqrt{(x+c)^2 + y^2} = \sqrt{x^2 + 2cx + c^2 + b^2 - \frac{b^2}{a^2}x^2} = \sqrt{x^2 + 2cx + c^2 + a^2 - c^2 - \frac{a^2 - c^2}{a^2}x^2} =\]
+\[\sqrt{a^2 + 2cx + (\frac{c}{a}x)^2} = \sqrt{(a + \frac{c}{a}x)^2} = |a + \frac{c}{a}x| \]
+\[ r_1 = |a + \frac{c}{a}x| \;\;\;\;\;\; r_2 = \sqrt{(x - c)^2 + y^2} \]
+\[ r_2 = |a - \frac{c}{a}x| \]
+\begin{enumerate}
+	\item $r_1 = |a + \frac{c}{a}x| = a + \frac{c}{a}x$\\
+		$|x| \leq a,\ c < a$
+	\item $r_2 = |a - \frac{c}{a}x| = a - \frac{c}{a}x$
+\end{enumerate}
+Т.о. мы доказали равносильность преобразования и вывода формулы (3).\\
+a - большая полуось\\
+b - малая полуось\\
+Прямоугольник со сторонами a, b - основной прямоугольник для элипса.
+
+\begin{equation}
+	\begin{cases}
+		r_2 = a + \frac{c}{a}x\\
+		r_2 = a - \frac{c}{a}x
+	\end{cases}
+	\label{eq:}
+\end{equation}
+Гипербола - Множество точек плоскости таких, что модуль разности расстояний до двух фиксированных точек плоскости величина постоянная и равная 2a.\\
+\textbf{Фиксированные точки F1, F2} - фокусы.\\
+\textbf{Длинны r1, r2} - факальные радиусы.\\
+\textbf{Расстояние между F1, F2} - фокусное расстояние = 2c.
+\[c > a \;\;\;\;\; c > 0\]
+Вводим каноническую систему координат.\\
+\[ \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \]
+
+
+\end{document}
