@@ -163,4 +163,36 @@ $\sum a_k$ сходится $\Leftrightarrow \sum 2^k a_{2^k}$
 \[ \frac{x^3}{2} = \frac{x^2}{2}x = \overline{\overline{o}}(x) \]
 \[ \overline{\overline{o}}(x^2) = (\beta(x)x^2)x = \overline{\overline{o}}(x) \]
 
+Пример\\
+\[ \sqrt{x+\sqrt{x+\sqrt{x}}} = \sqrt{x} \cdot \sqrt{1 + \sqrt{\frac{1}{x} + \frac{1}{x^{3/2}}}} = \sqrt{x}(1 + \overline{\overline{o}}(1)) = \sqrt{x} + \overline{\overline{o}}(\sqrt{x}), x\to +\infty \]
+А при $x\to +0$\\
+\[ \sqrt{x+\sqrt{x+\sqrt{x}}} =\sqrt{x + x^{1/4}\sqrt{\sqrt{x} + 1}} = x^{1/8}\sqrt{x^{3/4} + \sqrt{\sqrt{x} + 1}} = x^{1/8}(1 + \overline{\overline{o}}(1)) = x^{1/8} + \overline{\overline{o}}(x^{1/8}), x\to+0 \]
+Классная формулка (при $x \to 0)$:
+\[ (1 + x)^\alpha = 1 + \alpha\cdot x + \overline{\overline{o}}(x) \]
+При $x \to 0$
+\[ \sqrt{1 + 3x} - \sqrt[3]{1 - 2x} =  1 + \frac{1}{2}(-3x) + \overline{\overline{o}}(x) - (1 + \frac{1}{3} \cdot (-2x) + \overline{\overline{o}}(x)) = -\frac{5}{6}x + \overline{\overline{o}}(x) \]
+При $x \to +\infty$
+\[ \sqrt{x^4 + x^3 + 2x^2 + 1} - x^2 = (x^4 + x^3 + 2x^2 + 1)^\frac{1}{2} - x^2 = x^2(1 + \frac{1}{x} + \frac{2}{x^2} + \frac{1}{x^4})^{1/2} - x^2 =  \]
+Всё по той же классной формулке
+\[ =x^2(1 + \frac{1}{2}(\frac{1}{x} + \frac{2}{x^2} + \frac{1}{x^4}) + \overline{\overline{o}}(\frac{1}{x})) - x^2 =  x^2 (\frac{1}{2}(\frac{1}{x} + \frac{2}{x^2} + \frac{1}{x^4}) + \overline{\overline{o}}(\frac{1}{x})) = \frac{x}{2} + 1 + \frac{1}{2x^2} + \overline{\overline{o}}(x) = \frac{x}{2} + \overline{\overline{o}}(x) \]
+Пояснение:\\
+$\frac{1}{x^2} = \frac{1}{x} \frac{1}{x} = \overline{\overline{o}}(\frac{1}{x})$\\
+$ \frac{1}{x^4} = \frac{1}{x^3} \frac{1}{x}$, где произведение числа стремящегося к бесконечности и бесконечно малой $= \overline{\overline{o}}(\frac{1}{x})$
+При $x \to 0$`
+\[ \tg x - \sin x = \frac{\sin x}{\cos x} - \sin x = \sin x (\frac{1}{\cos x} - 1) \] 
+\[ \frac{1}{\cos x} = \frac{1}{1 - \frac{x^2}{2} + \overline{\overline{o}}(x^2)} = (1 - \frac{x^2}{2} + \overline{\overline{o}}(x^2))^{-1} = x + \frac{x^2}{2} + \overline{\overline{o}}(x^2) . \]
+\[ \sin x (\frac{1}{\cos x} - 1) = (x + \overline{\overline{o}}(x))(\frac{x^2}{2} +\overline{\overline{o}}(x^2)) = \frac{x^3}{2} + \overline{\overline{o}}(x^3) \]
+
+При $x\to 1$:
+\[ \sqrt[3]{1 - \sqrt{x}} \]
+Пусть $x = t + 1$, тогда $t\to 0$
+\[ \sqrt[3]{1-\sqrt{t+1}} = \sqrt[3]{1 -(1 + \frac{1}{2}t + \overline{\overline{o}}(t))} = \sqrt[3]{-\frac{1}{2}t + \overline{\overline{o}}(t)} = -\frac{1}{\sqrt[3]{2}}\sqrt[3]{t}(1 + \overline{\overline{o}}(1))^{1/3} = -\frac{1}{2^{1/3}}(x-1)^{1/3} + \overline{\overline{o}}((x-1)^{1/3}) \]
+При $x \to +\infty$
+\[ \sqrt{x+1} - \sqrt{x} = \sqrt{x}(1+\frac{1}{x})^{1/2} - \sqrt{x}  \sqrt{x}((1+\frac{1}{x})^{1/2}-1) \]
+\[ (1 + \frac{1}{x})^{1/2} = 1 + \frac{1}{2x} + \overline{\overline{o}}(\frac{1}{x})... \]
+
+в) $ \sqrt{x+2} - 2\sqrt{x+1} + \sqrt{x} = \sqrt{x}(1+\frac{2}{x})^{1/2} - 2\sqrt{x}(1+\frac{1}{x})^{1/2} + \sqrt{x} =\] 
+\[ = \sqrt{x}(1 + \frac{1}{2} \frac{2}{x} + \overline{\overline{o}}(\frac{1}{x}) - 2 (1 + \frac{1}{2}\frac{1}{x} + \overline{\overline{o}}(\frac{1}{x})) + 1) = \sqrt{x}(1 + \frac{1}{x} + \overline{\overline{o}}(\frac{1}{x})) ... $
+
+
 \end{document}
