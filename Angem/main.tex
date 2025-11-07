@@ -292,8 +292,8 @@ $D: -x-\frac{P}{2} = 0$
 \setcounter{equatoin}{0}
 \subsubsection{Сдвиг.}
 У нас есть ДПСК. $OXY \to O`X`Y`$\\
-\[ A^2x^2 + 2B^2xy + Cy^2 + 2Dx + 2Ey + F = 0 \]
-$A^2 + 2B^2xy + Cy^2$ - квадратная часть. ($A^2 + B^2 + C^2 > 0$)\\
+\[ Ax^2 + 2Bxy + Cy^2 + 2Dx + 2Ey + F = 0 \]
+$Ax^2 + 2Bxy + Cy^2$ - квадратная часть. ($A^2 + B^2 + C^2 > 0$)\\
 $ 2Dx + 2Ey $ - линейная часть\\
 $F$ - свободный член.
 
@@ -308,27 +308,211 @@ $F$ - свободный член.
 		y = y` + y_0\\
 	\end{cases}
 \]
-\[ A`^2x`^2 + 2B^2`x`y` + C`y^2` + 2D`x` + 2E`y` + F` = 0 \]
+\[ A`x`^2 + 2B`x`y` + C`y^2` + 2D`x` + 2E`y` + F` = 0 \]
 \[ A(x^21 + 2x`x_0 + x_0` )  + 2B(x` + x_0) (y` + y_0) + C(y`^2 + 2y\psi_0 + y_0^2) + 2D(x`+ x_0) + 2E(y` + y_0) + F = 0 \]
-$A` = A$, $D` = Ax_0 + By_0 + D$\\
-$B`  B$, $C` = C$\\
-$ F` = Ax_0^2 + 2Bx_0y_0 + Cy_0^2 + 2Dx_0 + 2Ey_0 + F $
+$A` = A$\\ 
+$B` = B$\\
+$C` = C$\\
+$D` = Ax_0 + By_0 + D$\\
+$E` = Bx_0 + Cy_0 + E$\\
+$F` = Ax_0^2 + 2Bx_0y_0 + Cy_0^2 + 2Dx_0 + 2Ey_0 + F $
 
 
+\subsubsection{Поворот.}
+\[
+\begin{cases}
+	x = x` \cos \alpha - y` \sin \alpha \\
+	y = x` \sin \alpha + y` \cos \alpha 
+\end{cases}
+\]
+\[ A(x` \cos \alpha - y` \sin \alpha)^2 + 2B(x` \cos \alpha - y` \sin \alpha)(x` \sin \alpha + y` \cos \alpha) +C(x` \sin \alpha + y` \cos \alpha)^2 + \]
+\[+ 2D(x` \cos \alpha - y` \csin\alpha) + 2E(x` \sin \alpha + y` \cos \alpha) + F = 0\]
+\[ A(x`^2 \cos^2 \alpha - 2x`y` \sin \alpha \cos \alpha + y`^2 \sin ^2 \alpha) + 2B(x`^2 \cos \alpha \sin \alpha  - x`y` \sin^2 \alpha + x` y` \cos ^2 \alpha  - y`^2 \sin \alpha \cos \alpha) +\]
+\[+ C(x`^2 \sin^2 \alpha + 2x`y` \sin \alpha \cos \alpha + y`^2 \cos ^2 \alpha) + 2D(x` \cos \alpha - y` \sin \alpha ) + 2E(x` \sin \alpha + y` \cos \alpha ) + F = 0\]
+
+\[ A` = A \cos^2 \alpha + 2B \sin \alpha \cos \alpha + C \sin ^2 \alpha = \frac{A}{2}(1 + \cos 2\alpha) + B \sin 2\alpha + \frac{C}{2}(1 - \cos 2\alpha) = \frac{A + C}{2} + B \sin 2\alpha + \frac{A - C}{2} \cos 2\alpha \]
+\[ B` = -A \sin \alpha \cos \alpha + B (\cos ^2 \alpha - \sin^2 \alpha) + C \sin \alpha \cos \alpha = -\frac{A}{2}\sin 2\alpha + B \cos 2\alpha + \frac{C}{2}\sin 2\alpha = - \frac{A - C}{2} \sin 2\alpha + B \cos 2\alpha \]
+\[ C` = A \cos^2 \alpha - 2B \sin \alpha \cos \alpha + C \cos ^2 \alpha = \frac{A}{2}(1 - \cos 2\alpha) - B \sin 2\alpha + \frac{C}{2}(1 + \cos 2\alpha) = \frac{A + C}{2} - B \sin 2\alpha - \frac{A - C}{2} \cos 2\alpha \]
+
+\begin{tcolorbox}
+	
+\[ A` = \frac{A + C}{2} + B \sin 2\alpha + \frac{A - C}{2} \cos 2\alpha \]
+\[ B` = - \frac{A - C}{2} \sin 2\alpha + B \cos 2\alpha \]
+\[ C` = \frac{A + C}{2} - B \sin 2\alpha - \frac{A - C}{2} \cos 2\alpha \]
+\[ D` = D\cos \alpha + E\sin \alpha \]
+\[ E` = -D\sin \alpha + E\cos \alpha \]
+\[ F` = F \]
+\end{tcolorbox}
+
+\subsection{Инварианта кривых второго порядка.}
+\[ J_1 = A + C \]
+\[ J_2 = \begin{vmatrix}
+	A & B\\
+	B & C
+\end{vmatrix} \]
+\[ J_3 = \begin{vmatrix}
+	A & B & D\\
+	B & C & E\\
+	D & E & F
+\end{vmatrix} \]
+\textbf{Теорема.} $J_1, J_2, J_3$ - ортогональны инвариантной кривой $2^{20}$ порядка. 
+\begin{tcolorbox}[title=Доказательство]
+	Для $J_1$ и $J_2$\\
+	\begin{enumerate}
+		\item $ A` = A, B` = B, C` = C $// 
+			$ J_1` = J_1,\; J_2` = J_2 $ - см формулы пересчёта для сдвига. 
+		\item $J_1` = A` + C` = \frac{A + C}{2} + B \sin 2\alpha + \frac{A - C}{2} \cos 2\alpha +\frac{A + C}{2} - B \sin 2\alpha - \frac{A - C}{2} \cos 2\alpha = A + C $\\
+			$J_2` = \begin{vmatrix}
+	A & B\\
+	B & C
+\end{vmatrix} = A`C` - B`^2 = ( \frac{A+C}{2} + B\sin 2\alpha + \frac{A - C}{2} \cos 2\alpha ) (\frac{A + C}{2} - B \sin 2\alpha - \frac{A - C}{2} \cos 2\alpha ) - (- \frac{A - C}{2} \sin 2\slpha + B\sin 2\alpha)^2 = \frac{(A+C)^2}{4} - (B \sin 2\alpha + \frac{A - C}{2} \cos 2\alpha)^2 - (-\frac{A-C}{2} \sin 2\alpha + B \cos 2 \alpha) = (\frac{A + C}{4})^2 - B^2 \sin ^2 2\alpha - B(A - C) \sin 2\alpha \cos 2\alpha -(\frac{A - C}{2})^2 \sin ^2 2\alpha + B(A - C)\sin 2\alpha \cos 2\alpha - B^2 \cos 2\alpha = (\frac{A + C}{2})^2 - (\frac{A - C}{2})^2 - B^2 = AC - B^2  $
+	\end{enumerate}
+\end{tcolorbox}
 
 
+Кривая называется \textbf{центральной} если у неё есть единственный центр симметрии.\\
+Кривая \textbf{не центральная} если у неё нет центров симметрии, или их больше 1.\\
+\textbf{Теорема 2. } 
+\begin{tcolorbox}
+	Кривая второго порядка центральная$ \Leftrightarrow J_2 \not= 0$\\
+	Кривая второго порядка нецентральная $\Leftrightarrow J_2 = 0$
+\end{tcolorbox}
+Элипс: $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$\\
+$ J_2 = \begin{vmatrix}
+	\frac{1}{a^2} & 0\\
+	0 & \frac{1}{b^2}
+\end{vmatrix} = \frac{1}{a^2b^2} > 0$
 
+Гипербола: $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$\\
+$ J_2 = \begin{vmatrix}
+	\frac{1}{a^2} & 0\\
+	0 & -\frac{1}{b^2}
+\end{vmatrix} = -\frac{1}{a^2b^2} < 0$
 
+Парабола: $y^2 = 2px$\\
+$ J_2 = \begin{vmatrix}
+	0 & 0\\
+	0 & 1
+\end{vmatrix} = 0$
 
+\subsection{Приведение кривой второго порядка к каноническому виду ортагональными преобразованиями. }
+\subsubsection{Центральная кривая}
+\begin{enumerate}
+	\item Сдвиг. Цель - убрать линейные слагаемые (найти O` ($x_0, y_0$) решить систему) 
+	\begin{equation}
+	\begin{cases}
+		Ax_0 + By_0 + D = 0\\
+		Bx_0 + Cy_0 + E = 0
+	\end{cases}
+	\teg{*}
+	\nonumber
+	\end{equation}
 
+	Её доказывать не будем:\\
+	\textbf{Теорема Крамера.} (*) имеет единственное решение $\Delta = \begin{vmatrix}
+	A&B\\
+	B&C
+	\end{vmatrix} \not= 0$
+	Найдём $O` (x_0, y_0)$ 
+	\[ A\xi`^2 + 2B\xi\psi` + C`y`^2 + F` = 0 \]
+	\[ A` = A, B` = B, C` = C \]
 
+	\item Поворот. Цель - убрать B` угол \alpha нахоим из соотношения:
+		\[ -\frac{A`-C`}{2} \sin 2\alpha + B` \cos 2 \alpha = 0 \]
+		\\begin{enumerate}
+			\item Если $B` = 0$ то ничего делать не надо
+			\item $B` \not =\;\; \ctg 2\alpha = \frac{A` - C`}{2B`}$
+				\[\begin{cases}
+					x` = x`` \cos \alpha - y`` \sin \alpha \\
+					y` = x`` \sin \alpha + y`` \cos \alpha 
+				\end{cases}\]
+				\[ A``x``^2 + C``y``^2 + F`` = 0 \]
+		\end{enumerate}
+\end{enumerate}
 
+$ J_2 = \begin{vmatrix}
+	A`` &0\\
+	0&C``
+\end{vmatrix} = A``C`` \not= 0 \Rightarrow A`` \not=0 and C`` \not= 0 $\\
+$J_3 = \begin{vmatrix}
+	A``&0&0\\
+	0&C``&0\\
+	0&0&F``
+\end{vmatrix} = A``C``F`` = J_2 F`` \Rightarrow F`` = \frac{J_3}{J_2}$
+\begin{tcolorbox}
+	\[ A``x``^2 + C`` y``^2 + \frac{J_3}{J_2} = 0 \]
+	\[ A``x`` + C`` y`` = -\frac{J_3}{J_2} \]
+\end{tcolorbox}
 
+\begin{enumerate}
+	\item Элипс\\
+		$J_2 > 0, J_2 = A``C`` > 0$\\
+		$\sign A`` = \sign C``$\\
+		$A`` > 0, C`` > 0$\\
+		\[J_1 > 0\]
+		\begin{enumerate}
+			\item $J_3 < 0, J_2 > 0$\\
+				$-\frac{J_3}{J_2} > 0$\\
+				$\frac{x``^2}{-\frac{J_3}{J_2A``}} + \frac{y``^2}{-\frac{J_3}{J_2C``}} = 1 \Leftrightarrow \frac{x``^2}{a^2} + \frac{y``^2}{b^2} = 1$
+			\item $J_3 = 0$\\
+				$A``x``^2 + C``y``^2 = 0$\\
+				Выражденый эллипс. \\
+			\item $J_3 > 0$\\
+			$\frac{x``^2}{-\frac{J_3}{J_2A``}} + \frac{y``^2}{-\frac{J_3}{J_2C``}} = -1$\\
+			\[ \frac{x``^2}{\frac{1}{A``}} + \frac{y``^2}{\frac{1}{C``}} = 0 \]
+			\[ \frac{x`^2}{a^2} + \frac{y``^2}{b^2} = 0 \]
+			\[ \frac{x`^2}{a^2} + \frac{y``^2}{b^2} = -1 \]
+			- это мнимый элипс
+		\end{enumerate}
+	\item Гипербола\\
+		$J_2 < 0, J_2 = A``C`` < 0$\\
+		$\sign A`` = -\sign C``$\\
+		$A`` > 0, C`` < 0$\\
+		\[J_1 > 0\]
+		\begin{enumerate}
+			\item $J_3 = 0, J_2 < 0$
+				\[ A``x``^2 - (-C``)y``^2 = -\frac{J_3}{J_2} \]
+				$\frac{x``^2}{-\frac{J_3}{J_2A``}} - \frac{y``^2}{-\frac{J_3}{J_2C``}} = 1 \Leftrightarrow \frac{x``^2}{a^2} - \frac{y``^2}{b^2} = 1$\\
+				либо $ - \frac{x``^2}{a^2} + \frac{y``^2}{b^2} = 1$
+			\item $J_3 = 0$\\
+				\[ A``x``^2 + C``y``^2 = 0 \]
+				\[ A`` > 0, C`` < 0 \]
+				\[ (\sqrt{A``}x``)^2 - (\sqrt{-C``}y``)^2 = 0 \]
+				- Это 2 пересекающиеся прямые.
+		\end{enumerate}
+		Замечание к сдвигу. После сдвига начало координат - центр кривой (и он единственный). 
+\end{enumerate}
 
+\subsection{Приведение уравнения второго порядка к каноническому виду в случае нецентральной прямой. }
+$J_2 = 0$\\
+Поворотб сдвиг. Цель - убрать B. 
+\[ \ctg 2\alpha = \frac{A-C}{2B} \]
+\[ A` x`^2 + C` y`^2 + 2D`x` + 2E`y` + F` = 0 \]
+\[ J_2 = \begin{vmatrix}
+	A`&0\\
+	0&C`
+\end{vmatrix} =A`C` = 0 \Rightarrow A` = 0, C` = 0 \]
+\[ C`y`^2 + 2 D` x` + 2E` y` + F` = 0, C` \not= 0 \]
+\[ J_3 = \begin{vmatrix}
+	0&0&D`\\
+	0&C`&E` \\
+	D`&E`&F`
+\end{vmatrix} = -C`D`^2 \]
 
-
-
-
-
+2.1. $J_3 \not = 0 \Leftrightarrow D \not = 0$
+\[ C` y` ^2 + 2E` y` = -D` x` -F` \]
+\[ (y` + b) = -\frac{2D`}{C`} (x` + a) \]
+Сдвиг
+\[ \begin{cases}
+	x`` = x` + a\\
+	y`` = y` + b
+\end{cases} \Leftrightarrow \begin{cases}
+	x` = x`` - a\\
+	y` = y`` - b 
+\end{cases} \;\;\;\;\;\; O``(a, b) \]
+\begin{tcolorbox}
+	Парабола
+	\[ y``^2 = -\frac{2D}{C`}x`` \]
+\end{tcolorbox}
 
 \end{document}
