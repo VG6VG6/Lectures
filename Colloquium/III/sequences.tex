@@ -1,0 +1,81 @@
+\subsection{Свойства сходящихся последовательностей (сходимость постоянной последовательности, единственность предела, ограниченность сходящейся последовательности).}
+
+\subsubsection{Предел последовательности}
+\begin{tcolorbox}
+\textbf{Определение.} Число $a$ называется \textit{пределом последовательности} $\{a_n\}$, если
+$$\forall \eps > 0\ \exists N_\eps \in \N\ \forall n > N_\eps: |a_n - a| < \eps$$
+Обозначение: $\lim_{n\to\infty} a_n = a$ или $a_n \to a$ при $n \to \infty$.
+\end{tcolorbox}
+
+\subsubsection{Сходимость постоянной последовательности}
+\begin{tcolorbox}
+    \textbf{Теорема 1.} Если $\exists N: \forall n > N \;\; a_n = a \Rightarrow a_n\to a$
+\end{tcolorbox}
+\begin{tcolorbox}[title=Доказательство]
+    \[ \forall \varepsilon>0 \;\;\forall n>N \;\; |a_n - a| = 0 < \varepsilon \Rightarrow a_n\to a\] по определению 
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    \textbf{Теорема 2.} Если $ a_n\to a,\;\; b_n\to b \;\;\;\forall n > N \;\; a_n \leq b_n \Rightarrow a\leq b $
+\end{tcolorbox}
+\begin{tcolorbox}[title=Доказательство]
+    \textbf{От противного:}\\ 
+    Пусть $ a < b$
+\end{tcolorbox}
+\textbf{НАДО ПОСМОТРЕТЬ ПРЕДЫДУЩИЕ ЛЕКЦИИ. ЭТО ОТТУДА.}
+
+\subsubsection{Теорема о единственности предела.}
+\textbf{Теорема:} Последовательность не может иметь более одного предела.
+
+\begin{tcolorbox}[title=Доказательство теоремы, breakable]
+\textbf{Доказательство от противного:}
+Предположим, что последовательность $\{a_n\}$ имеет два различных предела: $a_n \to A$ и $a_n \to B$, где $A \neq B$.
+Пусть $\eps = \frac{|A - B|}{4} > 0$. Тогда по определению предела:
+\begin{itemize}
+    \item $\exists N_1: \forall n > N_1: |a_n - A| < \eps$
+    \item $\exists N_2: \forall n > N_2: |a_n - B| < \eps$
+\end{itemize}
+Возьмём $n > \max(N_1, N_2)$. Тогда выполняются оба неравенства. Оценим разность $|A - B|$:
+$$|A - B| = |(A - a_n) + (a_n - B)| \leq |A - a_n| + |a_n - B| < \eps + \eps = 2\eps = \frac{|A - B|}{2}$$
+Получили противоречие: $|A - B| < \frac{|A - B|}{2}$. Следовательно, наше предположение неверно, и предел единственен.
+\end{tcolorbox}
+
+\subsubsection{Ограниченные и сходящиеся последовательности}
+
+\begin{tcolorbox}
+\textbf{Определение}
+$\{a_n\}$  \textit{ограничена}, если $\exists M>0: \forall n\ |a_n|<M,\ a_n, M, n \in Q$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Определение}
+$\{a_n\}$  \textit{не ограничена}, если $\forall M>0: \exists n\ |a_n|\geq M,\ a_n, M, n \in Q$ 
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Теорема 2} \textit{Любая сходящаяся последовательность ограничена} \\
+Если $\{a_n\}$ сходиться $\Rightarrow \{a_n\}$ ограничена
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство Т2, breakable]
+\[\eps := 1\ \exists N: \forall n > N\ \ |a_n-a| < 1 \Leftrightarrow -1<a_n-a<1 \Leftrightarrow a-1 < a_n < a+1  \]
+\[ M:= max\{ |a_1|, |a_2|, ..., |a_N|, |a-1|, |a+1| \} + 1\]
+$\Rightarrow \{a_n\}$ - ограничена (сверху)
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Определение}
+$\{a_n\}$  \textit{ограничена сверху, если} $\exists M: \forall n$ $a_n < M$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Определение}
+$\{a_n\}$  \textit{ограничена снизу, если} $\exists m: \forall n$ $a_n < m$
+\end{tcolorbox}
+
+Пример:
+\begin{enumerate}
+    \item $\{\cos n\}\ |\cos n| \leq 1$
+    \item $\{n\}$ ограничена снизу но не сверху (0, 1, ...)
+\end{enumerate}
+

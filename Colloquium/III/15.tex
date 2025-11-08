@@ -1,0 +1,105 @@
+\subsection{Признаки абсолютной сходимости рядов Даламбера и Коши.}
+
+\subsubsection{Теорема 4. Признак Коши.}
+\[ \sum_1  a_k\]
+\[q = \overline{lim} \sqrt[k]{|a_k|} \]
+Тогда:
+\begin{enumerate}
+    \item $q < 1 \Rightarrow$ абсолютно сходится.
+    \item q > 1 расходится
+    \item q = 1 ?
+\end{enumerate}
+\begin{tcolorbox}[title=Доказательство]
+    Сравнение с геометрической прогрессией.\\
+    \begin{enumerate}
+        \item $ 0 \leq q < p < 1 $
+        \includegraphics[width=0.5\linewidth]{Ряды/Признак Коши Док-во.png}\\
+        $\exists n_p: \forall n>n_p$\\
+        $\sqrt[k]{a_k} < p \uparrow \Leftrightarrow |a_k| < p_k$\\
+        $\sum^{\infty}_{n+1} p^k$ геометрическая прогрессия с положительным знаком |x|.\\
+        $\Rightarrow \sum^{\infty}_{1} a_k$ сходится абсолютно (по признаку сравнения)
+        \item q = $\overline{lim} \sqrt[k]{a_k} > 1$\\
+        $1 > p > 1$\\
+        $\forall$ окрестности $q$ бесконечно много членов $\sqrt[k]{|a_k|} $
+    \end{enumerate}
+\end{tcolorbox}
+\textbf{Замечание.} Признак Коши бесполезно использовать, если ряд не похож на геометрическую прогрессию.\\
+\textbf{Запомните.} Признак коши достаточное условие абсолютной сходимости.\\
+\textbf{Следствие} Если $ \sqrt[n]{|a_n|} \leq q < 1 \Rightarrow \exists q,N\; \forall n > N: \;  \sum a_n$ сходится абсолютно
+
+\textbf{Пример.} $ \sum^\infty_{n=1} (2+(-1)^n)^n \cdot z^n$\\
+\[
+	\sqrt[n]{((2+(-1)^n)^n z^n} = (2+(-1)^n)|z|\\
+	n = 2k: \sqrt[n]{|a_n|} = 3|z| = \overline{\lim} \sqrt[n]{|a_n|} \\
+	n = 2k+1: \sqrt[n]{|a_n|} = |z|\\ 
+\]
+Если: 
+	$3|z| < 1$ сходится $|z| < \cfrac{1}{3}$\\
+	$3|z| > 1$ расходится $|z| > \cfrac{1}{3}$\\
+	$3|z| = 1 |z| = \cfrac{1}{3} $
+
+\textbf{Теорема 5. Признак д-Аламбера}\\
+!Он всегда слабее признака Коши.
+\begin{tcolorbox}
+	\[
+		\sum_{n=1}^{\infty}: |\cfrac{a_{n+1}}{a_{n}}| \to q
+	\]
+\begin{enumerate}
+	\item $q < 1 \Rightarrow$ абсолютно сходится
+	\item $q < 1 \Rightarrow$ расходится
+	\item $q = 1 \Rightarrow$ Ничего не даёт
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство.]
+	\begin{enumerate}
+		\item  Сравнение с геометрической прогрессией.\\
+		$\exists n_p: \forall n > n_p \;\; |\cfrac{a_{n + 1}}{a_n}| < p$\\
+		Пусть для $\forall n$\\
+		$ a_{n+1} = \cfrac{a_{n+1}}{a_n} \cdot  \cfrac{a_{n}}{a_{n-1}} \cdot ... \cdot \cfrac{a_{2}}{a_1} $
+		$ |a_{n+1}| = |\cfrac{a_{n+1}}{a_n}| \cdot  |\cfrac{a_{n}}{a_{n-1}}| \cdot ... \cdot |\cfrac{a_{2}}{a_1}| \cdot |a_1| < p^n |a_1| $\\
+		$ \displaystyle\sum_{}^{} p^n |a_1|$ сходится (геометрическая прогрессия)
+	\item $\exists N: |\cfrac{a{_n+1}}{a_n}| > 1\;\; \forall n > N$\\
+		Пусть $ \forall N\; |\cfrac{a_{n+1}}{a_n}| > 1 $\\
+		$ |a_{n+1}| > |a_{n}| > |a_{n-1}| > ... |a_{1}| > 0 \Rightarrow a_n \not\to 0$
+	\item $ \displaystyle\sum_{1}^{\infty} \cfrac{1}{n}\;\; |\cfrac{a_{n+1}}{n}| = \cfrac{n}{n+1} \to 1$\\
+		$ \displaystyle\sum_{1}^{\infty} \cfrac{1}{n^2}\;\; |\cfrac{a_{n+1}}{n}| = \cfrac{n^2}{(n+1)^2} \to 1$\\
+ 	\end{enumerate}
+\end{tcolorbox}
+
+\textbf{Следствие.} $\forall n > N:\; |\cfrac{a_{n+1}}{a_n}| \leq q < 1 \Rightarrow \sum a_n$ сходится абсолютно.
+
+\begin{tcolorbox}[title=Доказательство следствия]
+	Пусть $ \forall n\; |\cfrac{a_{n+1}}{a_n}| \leq q < 1 $\\
+$ |a_{n+1}| = |\cfrac{a_{n+1}}{a_n} \cdot |\cfrac{a_{n}}{a_{n-1}} \cdot ... \cdot |\cfrac{a_{2}}{a_1} \cdot |a_1| \leq q^n |a_1|$ Т.к. $|q| < 1$, то $\displaystyle\sum_{}^{} q^n|a_1|$ сходящаяся геометрическая прогрессия.
+\end{tcolorbox}
+\textbf{Вопрос на 5:} Если можно исследовать по Деламберу то можно и по Коши.\\
+
+\textbf{Пример}
+	$\displaystyle\sum_{1}^{\infty} \cfrac{1}{(3+)-1)^n)^n}$\\
+	$\sqrt[n]{|a_n|} = \cfrac{1}{3+(-1)^n} = \cfrac{1}{4}, n = 2k$\\
+	$\sqrt[n]{|a_n|} = \cfrac{1}{3+(-1)^n} = \cfrac{1}{2}, n = 2k+1$\\
+	$\sqrt[n]{|a_n|} \leq \cfrac{1}{2} < 1$
+
+	$|\cfrac{a_{n+1}}{a_{n}} = \cfrac{\cfrac{1}{2^{2k+1}}{\cfrac{1}{4^{2k}}}} = \dots$\\
+\textbf{Пример} 
+    $\sum_{1}^{\infty} \cfrac{1}{(3+)-1)^n)^n}$\\
+	$\sqrt[n]{|a_n|} = \cfrac{1}{3+(-1)^n} = \cfrac{1}{4}, n = 2k$\\
+	$\sqrt[n]{|a_n|} = \cfrac{1}{3+(-1)^n} = \cfrac{1}{2}, n = 2k+1$\\
+	$sqrt[n]{|a_n|} \leq \cfrac{1}{2} < 1$
+
+$
+	|\cfrac{a_{n+1}}{a_{n}} = \cfrac{\cfrac{1}{2^{2k+1}}}{\cfrac{1}{4^{2k}}} = \cfrac{4^{2k}}{2^{2n+1}} = \cfrac{1}{2}2^{2k}
+    n = 2k
+$
+
+\[
+	|\cfrac{a_{n+1}}{a_{n}}| = \cfrac{\cfrac{1}{2^{2k+1}}}{\cfrac{1}{4^{2k}}} = \cfrac{4^{2k}}{2^{2n+1}} = \cfrac{1}{2^{n+1}}\\
+    n = 2k+1
+\]
+
+\textbf{Замечание.} $|\cfrac{a_{n+1}}{a_n}| \leq 1 < 1$, а не $|\cfrac{a_{n+1}}{a_n}| < 1$
+
+\textbf{Пример.} \[ \sum_0^\infty \cfrac{z^n}{n!} \]
+\[ |\cfrac{a_{n+1}}{a_n}| = \cfrac{\cfrac{z^{n+1}}{(n+1)!}}{\cfrac{z^n}{n!}} = \cfrac{|z|}{n+1} \to 0 \]
+

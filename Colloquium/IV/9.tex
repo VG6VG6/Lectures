@@ -1,0 +1,83 @@
+
+\subsection{Монотонные функции. Существование односторонних пределов у монотонных функций.}
+
+\subsubsection{Ограниченность функций.}
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x)$ ограничена сверху на X, если
+	\[ \exists M: \forall x \in X, f(x) < M \]
+\end{tcolorbox}
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x)$ ограничена снизу на X, если
+	\[ \exists m: \forall x \in X, f(x) > m \]
+\end{tcolorbox}
+\begin{tcolorbox}
+Если $f(x)$ принимает комплексные значения, то ограниченность $f(x)$ на X
+\[ \exists M: \forall x \in X, |f(x)| < M \]
+\end{tcolorbox}
+
+
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x): X \to Y$
+	\[ \sup_X f(x)=\sup f(X) \]
+\end{tcolorbox}
+\[ M = \sup_X f(x) \]
+если 
+\begin{enumerate}
+	\item $ \forall x \in X\; f(x) \leq M $
+	\item $ \forall M` < M\; \exists x \in X: f(x) > M` $
+\end{enumerate}
+
+\begin{tcolorbox}
+	\textbf{Определение.} Если $f(x)$ не ограничена сверху на X, то $\exists \{ x_n \} \supset X $
+	\[ f(x_n) \xrightarrow[n\to\infty]{} +\infty \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определение.} $f(x)$ принимает max в $x_0 \in X$, если
+	\[ \forall x \in X\;\; f(x) \leq f(x_0) \]
+	\[ f(x_0) = \max_X f(x) \]
+\end{tcolorbox}
+
+\subsubsection{Односторонние пределы.}
+
+
+\begin{tcolorbox}
+	\textbf{Определение. }Предел справа.\\
+	$f(x)$ на $(a, b) \to \R$\\
+	$ f(x) \to A$, при $x \to a + 0$\\
+	$ f(x) \to A$, при $x \to a, x > a$ \\
+	$f(x) \to A$, при $x \to a$ справа $\Leftrightarrow \forall \eps > 0 \exists \delta > 0 \forall x \in (a, a+ \delta) (\forall x: |x-a| < delta, x > a) |f(x) - A| < \eps$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	Опеделение. Предел слева.
+	\[ B = \lim_{x \to b-0} f(x) \Leftrightarrow \forall \eps > 0\; \forall x\; b - \delta < x < b,\; |f(x) - B| < \eps \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	Определение по Гейне. 
+	\[ \exists \lim_{x \to a + 0} f(x) \Leftrightarrow \forall \{x_n\} \supset (a, b)\; x_n \xrightarrow[]{n\to \infty} a \;\; {f(x_n)} - converges \]
+\end{tcolorbox}
+
+\textbf{Утверждение.} Существование предела по Коши справа или слева равносильно существованию соответствующего одностороннего предела по Гейне.
+
+\textbf{Теорема.} $\exists \lim_{x \to a} f(x) \Leftrightarrow$ 
+\[
+\begin{cases}
+	\exists \lim_{x \to a + 0} f(x)\\
+	\exists \lim_{x \to a - 0} f(x)\\
+	\lim_{x \to a + 0} f(x) = \lim_{x \to a - 0} f(x)\\
+\end{cases} 
+\]
+\begin{tcolorbox}[title=Доказательство]
+	$\Rightarrow:\; A = \lim_{x \to a} f(x)$ По определению $\forall \eps > 0\; \exists \delta_\eps > 0: \forall x\; (0 < |x - a| < \delta_\eps \Leftrightarrow x \in (a - \delta_\eps, a) \cup (a, a + \delta_\eps)$
+	\[ x \in (a - \delta_\eps, a) \Rightarrow A = \lim_{x \ to a -0} f(x) \]
+	\[ x \in (a, a + \delta_\eps) \Rightarrow A = \lim_{x \ to a + 0} f(x) \]
+
+	$\Leftrightarrow:$ 
+	\[ \lim_{x \to a + 0} f(x) = \lim_{x \to a - 0} f(x) := A\]
+	\[ A=  \lim_{x + 0} f(x) \Rightarrow \forall \eps > 0 \exists \delta_\eps > 0\; \forall x \in (a, a + \delta_\eps) \;\; |f(x) - A| < \eps \]
+	\[ A = \lim_{x - 0} f(x) \Rightarrow \forall \eps > 0 \exists \delta_\eps` > 0\; \forall x \in (a - \delta_\eps`, a) \;\; |f(x) - A| < \eps \]
+
+	\[ \delta_\eps = \min{\delta_eps, \delta_\eps`} \;\; \forall x: 0 < |x - a| < \delta_\eps\;\; |f(x) - A| < \eps \]
+\end{tcolorbox}

@@ -1,0 +1,95 @@
+\subsection{Числовые ряды. Абсолютная и условная сходимость числовых рялов. Критерий Коши сходимости ряда. Необходимое условие сходимости ряда. Признак сравнения.}
+
+\subsubsection{Определения и элементарные факты.}
+$ \{a_k\} $ - ЧП
+\[ \{a_k\} \to S_n = \sum^n_{k=1}a_k \]
+\textbf{Определения}
+\begin{tcolorbox}
+    \textbf{Определяем бесконечную сумму}.\\
+    $\sum^\infty_{k=1} a_k$ - \textbf{ряд}\\
+    $a_k$ - \textbf{элемент ряда (общий член)}.\\
+    $S_n$ - \textbf{n-ая частичная сумма ряда}.\\
+    Если $S_n$ - сходится, то ряд ($\sum^\infty_{1} a_k$) называется \textbf{сходящимся}, $S:=\lim_{n\to\infty} s_n$ - \textbf{суммой ряда}: $\sum_1^\infty = S$.\\
+    Если $\{S_n\}$ расходится, то $\sum^\infty_{1} a_k$ - \textbf{расходится}.
+\end{tcolorbox}
+\subsubsection{Теорема 1.}
+\[ \sum_1^\infty a_k \pm \sum_1^\infty b_k = \sum_1^\infty (a_k \pm b_k) \]
+\subsubsection{Теорема 2. Критерий Коши о сходимости ряда.}
+$ \sum_1^\infty a_k$ - сходится $\Leftrightarrow \forall \eps > 0\;\; \exists n_\eps : \forall n > n\eps \forall p \;\;\; |S_{n+p} - S_n| < \eps $
+\[ |\sum_1^{n+p} a_k - \sum_1^n a_k| = |\sum_{n+1}^{n+p} a_k| < \eps \]
+\subsubsection*{Следствие 1. Изменение конечного числа членов ряда не влияет на сходимость.}
+Сумма конечно может измениться, но на сходимость это не влияет.
+\subsubsection*{Следствие 2. Необходимое условие сходимости ряда.}
+Можно считать определением: Если $\sum_1^\infty a_k$ сходится $\Rightarrow a_k \xrightarrow[k\to\infty]{} 0$\\
+\begin{tcolorbox}[title=Доказательство]
+    $\sum_1^\infty a_k$ - сходится $\forall \eps > 0\; \exists n_\eps:\; \forall n > n_\eps\;\; \forall p \ |\sum_{n+1}^{n+p} a_k| < \eps \Leftrightarrow |a_{n+1}| < \eps$\\
+    При p = 1, то есть $\{a_n\}$ - б.м. по определению.
+\end{tcolorbox}
+\subsubsection*{Пример 1.}
+Если |q| < 1
+\[ \sum_1^\infty q^k, S_n = 1+...+q^n = \cfrac{1-q^{n+1}}{1-q} \xrightarrow[n\to\infty]{} \cfrac{q}{1-q} \]
+\subsubsection*{Пример 2.}
+$\sum_1^\infty \cfrac{1}{n}$\\
+a, b, c положительные. c - среднее гармоническое a и b, если $\cfrac{2}{c} = \cfrac{1}{a} + \cfrac{1}{b}$\\
+$a = \cfrac{1}{n-1}, b = \cfrac{1}{n+1}$\\
+$\cfrac{2}{c} = (n - 1) + (n + 1) = 2n$\\
+Каждый элемент является средним гармоническим 2-х соседий. По критерию Коши ряд - расходящийся.
+\[ |\sum_{n+1}^{n+p} \cfrac{1}{k}| = \cfrac{2}{n+1} + ... + \cfrac{1}{n+p} \geq \cfrac{p}{n+p}\]
+Пусть p = n. $\cfrac{p}{n+p} = \cfrac{1}{2}$.
+\subsubsection*{\textbf{Пример 3.}}
+\[ 1 - 1 + \cfrac{1}{2} - \cfrac{1}{2} + \cfrac{1}{3} - \cfrac{1}{3} + ...\]
+$S_{2n} = 0$\\
+$S_{2n+1} = \cfrac{1}{n+1} \to 0$\\
+А теперь давайте мухлевать. Переставим сумму ряда. Шоу ИМПРОВИЗАЦИЯ!!!\\
+$(1+\cfrac{1}{2}) - 1 + (\cfrac{1}{3} + \cfrac{1}{4} +\cfrac{1}{5} + \cfrac{1}{6} + \cfrac{1}{7} + \cfrac{1}{8} + ... + \cfrac{1}{11}) - \cfrac{1}{2}$\\
+Берём много положительных слагаемых и вычитаем меньшее по модулю число. Из-за этого ряд расходится.
+\subsubsection*{\textbf{Пример 4.}}
+\[ \sum^\infty_{0} (-1)^k = (1-1) + (1-1) + ... \]
+\[ \sum^\infty_{0} (-1)^k = 1 - (1-1) - (1-1) - ... \]
+
+\subsubsection{Абсолютно сходящийся ряд.}
+\begin{tcolorbox}
+    \textbf{Определение.} Если $\sum^\infty_{1} |a_k|$ сходится, то $\sum^\infty_{1} a_k$ сходится абсолютно.
+\end{tcolorbox}
+\subsubsection{Теорема 1. Если ряд сходится абсолютно, то ряд сходится.}
+\begin{tcolorbox}[title=Доказательство (Критерий Коши)]
+    По критерию Коши, т.к. $\sum^\infty_{1} |a_k|$ сходится, то $\forall \eps > 0\; \exists n_\eps:\; \forall n > n_\eps\; \forall p\;\; |\sum^{n+p}_{n+1} a_k| \leq |\sum^{n+p}_{n+1} |a_k|| < \eps \Rightarrow$ по критерию Коши $\sum a_k$ сходится.
+\end{tcolorbox}
+\subsubsection*{\textbf{Пример 1.}}
+$1 - 1 + \cfrac{1}{2} - \cfrac{1}{2} + ... $ - сходится, но не абсолютно.
+\subsubsection*{Определение.}
+Если $\sum^{\infty}_{1} a_k$ сходится, а $\sum^{\infty}_{1} |a_k|$ расходится, то $\sum a_k$ сходится условно.
+\subsubsection{Теорема 2.}
+$\sum^{\infty}_{1} a_k, \forall k\; a_k \geq 0$\\
+$\sum^{\infty}_{1} a_k$ сходится $\Leftrightarrow \{S_N\}$ ограничена.
+\begin{tcolorbox}[title=Доказательство]
+    \[\forall n\; S_{n+1} = \sum^{n+1}_{1} a_k \geq \sum^{n}_{1} a_k = S_n \]
+    $S_n \uparrow$ возрастающая $\{S_n\}$ сходится $\Leftrightarrow$ ограничена.
+\end{tcolorbox}
+\subsubsection{Теорема 3. Признак сравнения.}
+Для комплов не годится.\\
+$\sum^{\infty}_{1} a_k,\;\; \sum^{\infty}_{1} b_k,\;\; \forall k\;\; a_k \geq \underline{b_k \geq 0}$\\
+Тогда:
+\begin{enumerate}
+    \item Если $\sum^{\infty}_{1} a_k$ сходится $\Rightarrow \sum^{\infty}_{1} b_k$ сходится.
+    \item Если $\sum^{\infty}_{1} a_k$ расходится $\Rightarrow \sum^{\infty}_{1} b_k$ расходится.
+\end{enumerate}
+\begin{tcolorbox}[title=Доказательство]
+Следствие критерия сходимости ряда с неотрицательными членами.\\
+\begin{enumerate}
+    \item $A_n = \sum^{n}_{1} a_k,\;\; B_n = \sum^{n}_{1} b_k $\\
+    $A_n \uparrow,\; B_n \uparrow$ и $A_n \geq B_n$ ($A_n$ можарирует $B_n$)\\
+    Если $\sum a_k$ сходится $\Rightarrow \{A_n\}$ ограничена сверху $\Rightarrow \{B_n\}$ ограничена сверху $\Rightarrow \sum b_k$ сходится.
+\end{enumerate}
+\end{tcolorbox}
+
+\subsubsection*{Следствие. (Признак сравнения).}
+$\sum a_k,\; \sum b_k \;\; \forall k\; a_k \geq |b_k| > 0$. Не отрицательность $a_k$.\\
+Сходимость $\sum a_k \Rightarrow$ сходимость $\sum b_k$ (абсолютная).
+\subsubsection*{Пример 1.}
+\[\sum^{\infty}_{1} \cfrac{\sin n}{n^2}\]
+\[|\cfrac{\sin n}{n^2}| \leq \cfrac{1}{n^2} < \cfrac{1}{(n-1)n}, n \not= 1\]
+\[ \cfrac{1}{(n-1)n} = \cfrac{1}{n-1} - \cfrac{1}{n} \]
+\[ \sum^{\infty}_{2} \cfrac{1}{n-1)n} = \sum^{\infty}_{2}( \cfrac{1}{-1} - \cfrac{1}{n}) \]
+\[ S_n = \sum^{n}_{2} (\cfrac{1}{k-1} - \cfrac{1}{k}) = (\cfrac{1}{2-1} - \cfrac{1}{2}) + (\cfrac{1}{2} - \cfrac{1}{3}) + ... \]
+

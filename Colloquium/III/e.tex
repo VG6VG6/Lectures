@@ -1,0 +1,42 @@
+\subsection{Число е как предел последовательности.}
+
+Вспомним неравенство среднего геометрического и среднего арифметического.
+\[\forall k: a_k>0\;\;\;\ \sqrt[n]{a_1\cdot a_2\cdot ... \cdot a_n} \leq \cfrac{a_1+a_2+...+a_3}{n} \]
+Пусть $a_1 = a > 0,\;a_2=a_3=...=a_{n+1}=d>0$\\
+$\sqrt[n+1]{a\cdot b^n} \leq \cfrac{a+nb}{n+1}$\\
+$(1+\cfrac{1}{n})^k$ - сходится
+\begin{tcolorbox}[title=Доказательства монотонности]
+    \begin{enumerate}
+        \item $(1+\cfrac{1}{n})^k \uparrow$\\
+        Пусть $a = 1,\;b=1+\cfrac{1}{n}$\\
+        $\sqrt[n+1]{a\cdot(1+\cfrac{1}{n})^n}\; < \cfrac{1+n(1+\cfrac{1}{n})}{n+1} = \cfrac{n+1}{n+1} = 1+\cfrac{1}{n+1} \uparrow n+1 $
+        \begin{tcolorbox}
+            \[ (1+\cfrac{1}{n})^n < (1+\cfrac{1}{n+1})^{n+1} \]
+        \end{tcolorbox}
+        \item $(1-\cfrac{1}{n})^k \uparrow$\\
+        Пусть $a = 1,\;b=1-\cfrac{1}{n}$\\
+        $\sqrt[n+1]{a\cdot(1-\cfrac{1}{n})^n}\; < \cfrac{1+n(1-\cfrac{1}{n})}{n+1} = \cfrac{n+1-1}{n+1} = 1-\cfrac{1}{n+1} \uparrow n+1 $
+        \begin{tcolorbox}
+            \[ (1-\cfrac{1}{n})^n < (1-\cfrac{1}{n+1})^{n+1} \]    
+        \end{tcolorbox}
+        \item $(1+\cfrac{1}{n})^{n+1} = (\cfrac{1}{\frac{n}{n+1}})^{n+1} = \cfrac{1}{(1-\frac{1}{n+1})^{n+1} \downarrow } $
+    \end{enumerate}
+\end{tcolorbox}
+$\forall k,m \;\;\; n=max\{k,m\}$\\
+\[ (1+\cfrac{1}{k})^k \leq (1+\cfrac{1}{n})^n < (1+\cfrac{1}{n})^{n+1} \leq (1+\cfrac{1}{m})^{m+1} \Rightarrow \]
+$(1+\cfrac{1}{n})^n$ - ограничена сверху $\Rightarrow$ сходится.
+
+\begin{tcolorbox}
+    \textbf{Определение} 
+    \[e = \lim_{n\to \infty} (1+\cfrac{1}{n})^n \]
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказать/подумать]
+    \begin{enumerate}
+        \item \[ e = \lim_{n\to\infty} (1+\cfrac{1}{1!} +\cfrac{1}{2!} + ... + +\cfrac{1}{n!}) \]
+        \item $(1+\cfrac{1}{n})^{n+2}$
+        \item Сколько слагаемых нужно взять, чтобы получить e с точностью $10^{-3}$\\
+        \item Какое нужно взять n, чтобы получить e с точностью $10^{-3}$
+    \end{enumerate}
+\end{tcolorbox}
+

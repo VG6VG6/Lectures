@@ -1,0 +1,29 @@
+
+\subsection{Критерий Коши сущестоввания предела функции в точке.}
+
+\textbf{Теорема. Критерий Коши.} $ f(x) $ на $\mathring U_a$
+\[ \exists \lim_{x \to a} f(x) \Leftrightarrow \forall \eps > 0\; \exists \delta_\eps > 0: \forall x`, x`` \in (a - \delta_\eps, a + \delta_\eps)/\{a\}\;\; |f(x`) - f(x``)| < \eps \]
+\begin{tcolorbox}[title=Доказательство]
+	$\Rightarrow: \exists \lim_{x \to a} f(x) := A$
+	\[ \forall \eps > 0\; \exists \delta_\eps\; \forall x: 0< |x - a| < \delta_\eps\;\; |f(x) - A| < \frac{\eps}{2} \]
+	\[ \forall x`, x``: 0 < |x` - a| < \delta_\eps, 0 < |x`` - a| < \delta_\eps \]
+	\[ |f(x`) - f(x``)| = |(f(x`) - A) - (f(x``) - A)| \leq |f(x`) - A| + |f(x``) - A| < \frac{\eps}{2} + \frac{\eps}{2} = \eps\]
+	$\Leftarrow: $ Пусть $\forall \eps > 0\; \exists \delta_\eps > 0: \forall x`, x`` \;\; 0 < |x` - a| < \delta_\eps\;\; 0 < |x`` - a| < \delta_\eps \;\; |f(x`) - f(x``)| < \eps$\\
+	\[ \forall \{ x_n \} \subset \mathring U_a\;\; x_n \to a \Rightarrow \exists n_{\delta_\eps} \]
+	\[ 0 < |x_n - a| < \delta_\eps\;\; \forall n > n_{\delta_\eps} \Rightarrow \forall n, m > n_{\delta_\eps} \;\; |f(x_n) - f(x_m)| < \eps \]
+	Что значит, что последовательсноть $\{ f(x_n) \}$ - фундаментальная, значит по Критерию Коши для последовательностей $\{f(x_n)\}$ - сходится. $\Rightarrow \exists \lim_{a\to a} f(x)$ в смысле Гейне.
+\end{tcolorbox}
+
+\textbf{Отрицание.} $f(x)$ определена на $ \mathring U_a$
+\[ \not \exists \lim_{x \to a} f(x) \Leftrightarrow \exists \eps > 0\; \forall \delta\; \exists x`, x``\; 0 < |x` - a| < \delta \;\; 0 < |x`` - a| < \delta |f(x`) - f(x``)| \geq \eps \]
+\textbf{Пример. } 
+\begin{enumerate}
+	\item $f(x) = \frac{1}{x}$ на (0, 1)
+	Нет предела при $x \to 0 + 0$\\
+	Пусть $\eps = 1\; \forall \delta\; \forall N > \frac{1}{\delta}$
+	\[ x`:= \frac{1}{N}\;\;\; x`` := \frac{1}{N+1} \]
+	\[ |f(x`) - f(x``)| = |\frac{1}{\frac{1}{N}} - \frac{1}{\frac{1}{N+1}}| \geq \eps \] 
+	\item $f(x) = \sin \frac{1}{x}$ на (0, 1)\\
+		$\eps := 1$ Сами. 
+
+\end{enumerate}

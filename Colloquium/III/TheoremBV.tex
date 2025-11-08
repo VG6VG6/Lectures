@@ -1,0 +1,63 @@
+\subsection{Теорема Больцано-Вейерштрасса.}
+
+$n_k$ - строго возрастает последовательность натуральных чисел $\Rightarrow n_k\geq k$ .
+
+\begin{tcolorbox}
+    \textbf{Определение} $\forall \{a_n\} \; \{a_n\}$ - подпоследовательность $\{a_n\}$
+\end{tcolorbox}
+$\{a_n\} = 2^n$, тогда 2, 16, 64, 128 - подпоследовательность\\
+$\begin{cases}
+    2, \textbf{3}, 4, 16, ...\\
+    16, \textbf{2}, 32, ...     
+\end{cases}$ - не подпоследовательности\\
+
+\textbf{Теорема Больцано-Вейерштрасса}
+\begin{tcolorbox}[]
+    $ \forall $ ограниченой $\{a_n\} \exists $сходящаяся подпоследовательность $ \{a_n\} $
+\end{tcolorbox}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Т Б-В.png}
+\end{figure}
+
+\begin{tcolorbox}[title=Доказательство]
+    Прицип вложенных отрезков.\\
+    $\exists [c,d]: \forall n\; a_n\in[c,d]$
+    \begin{enumerate}
+        \item $[c_1,d_2] = [c,d] \;\; \forall a_{n_1} \in [c_2,d_1]$
+        \item $b_1 = \cfrac{c_1+d_1}{2}$
+                $[c_2,d_2]$ тот из $[c_1,b_1]$ и $[b_1,d_1]$ на котором содержится бесконечно много членов последовательности $\{a_n\}$\\
+        $a_{n_2}: a_{n_2} \in [c_2,d_2], n_2>n_1$
+        \item $b_2 = \cfrac{c_2+d_2}{2}$\\
+        $[c_3,d_3]$ тот из $[c_2,b_2]$ и $[b_2,d_2] ...$\\
+        $a_{n_3}: a_{n_3} \in [c_3,d_3], n_3>n_3$
+
+        $\{a_n\} \;\;a_{n_k} \in [c_k,d_k], n_k > n_{k-1}$
+        $[c_1,d_1] \supset [c_2,d_2] \supset ... \supset [c_k,d_k] \supset ...$\\
+        длина $[c_k,d_k] = \cfrac{1}{2^{k-1}}$
+        длина $[c_1,d_1] \to 0$
+        $\Leftrightarrow \exists a` = U[c_k,d_k]$\\
+        $\forall k\;\; |a_n-a`| \leq \cfrac{1}{2^{k-1}}$ - длина $[c_1,d_1] \to 0$
+        $a_{n_k}, a`\in [c_k,d_k] \Rightarrow a_{n_k} \to 0`$
+    \end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    \textbf{Определение} Частичный предел $\{a_n\}$ - предел $\forall$ сходящейся подпоследовательности $\{a_n\}$
+\end{tcolorbox}
+\begin{tcolorbox}[title=Следствие из теоремы]
+    $\forall \{a_n\} \exists$ подпоследовательность $\{a_{n_k}\}$ которая имеет либо конечное либо бесконечное число пределов.
+\end{tcolorbox}
+\begin{tcolorbox}[title=Доказательство]
+    Если в $\{a_n\} \exists \{a_{n_k}\} a_{n_k} \to a` \in \R$\\
+    Если такого нет, то по Теореме Б-В $\{a_{n}\}$ - не ограничена сверху или снизу.\\
+
+    Если $\{a_{n}\} $ - не ограничена сверху:
+    \begin{enumerate}
+        \item 1 - не верхняя грань $\{a_{n}\}: a_{n_1}: a_{n_1} > 1$
+        \item 2 - не верхняя грань $\Rightarrow \exists n_2: a_{n_2}>2, n_2>n_1$
+        \item[...]
+        \item [k.] $\exists n_k: a_{n_k}>max\{k, a_1, a_2, ..., a_{n_{k-1}}\}, n_k>n_{k-1}$
+    \end{enumerate}
+\end{tcolorbox}

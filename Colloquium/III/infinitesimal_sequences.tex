@@ -1,0 +1,92 @@
+\subsection{Бесконечно малые последовательности, их свойства.}
+
+\begin{tcolorbox}
+\textbf{Определение}
+\textit{Бесконечно малые последовательности}
+\begin{center}
+    $\{\alpha_n\}\ (\forall n, \alpha_n \in Q)$ бесконечно малая, если $\alpha_n 
+    \xrightarrow{n\rightarrow \infty} 0$    
+\end{center}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Теорема 3} 
+\begin{center}
+    Если $a_n \rightarrow a \Leftrightarrow a_n = a + \alpha_n$, где $ \{\alpha_n\}$ - б.м.
+\end{center}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство Т3]
+$\Rightarrow$:\\
+\[ \forall \eps>0\ \exists n_\eps : \forall n > n_\eps\ |a_n - a| < \eps \]
+\begin{center}
+    Пусть $ |a_n-a| = \alpha_n \Rightarrow a_n = a + \alpha_n $    
+\end{center}
+\[ \forall \eps > 0\ \exists n_\eps: \forall n > n_\eps\  |a_n -a| = |\alpha_n - 0| < \epsilon \Leftrightarrow \alpha_n \xrightarrow[n\rightarrow \infty]{} 0 \]
+$\Leftarrow$:\\
+\begin{center}
+    $ \{\alpha_n \} $ - б.м., т.е. $ \forall \eps>0\ \exists n_\eps : \forall n > n_\eps\ \eps > |\alpha_n| = |a_n-a| \Leftrightarrow a_n \xrightarrow[n \rightarrow \infty]{} a$    
+\end{center}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Теорема 4}
+\begin{enumerate}
+    \item $\{\alpha_n\}$ и $\{\beta_n\}$ - б.м. $\Rightarrow \{\alpha_n \pm \beta_n\}$ - б.м.
+    \item $\{\alpha_n\}$ - б.м. и $\{\beta_n\}$ - ограничена $\Rightarrow \{\alpha_n \cdot \beta_n\}$ - б.м.
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство Т4: Предел суммы/разности б.м. последовательностей, breakable]
+\small
+
+\textbf{Доказательство:}
+\begin{enumerate}
+
+\item[I] Требуется доказать, что \( \forall \varepsilon > 0\ \exists n_\varepsilon \in \mathbb{N} : \forall n > n_\varepsilon\ |\alpha_n \pm \beta_n| < \varepsilon \).
+
+\begin{enumerate}
+    \item[1.] Зафиксируем произвольное \( \varepsilon > 0 \).
+    \item[2.] Так как \( \{\alpha_n\} \) — б.м., то для числа \( \frac{\varepsilon}{2} > 0 \) найдётся номер \( n_{\varepsilon}' \) такой, что: $\forall n > n_{\varepsilon}'\quad |\alpha_n| < \frac{\varepsilon}{2}$
+    
+    \item[3.] Аналогично $\forall n > n_{\varepsilon}''\quad |\beta_n| < \frac{\varepsilon}{2}$
+    
+    \item[4.] Выберем номер \( n_\varepsilon = \max\{n_{\varepsilon}', n_{\varepsilon}''\} \). Тогда для всех \( n > n_\varepsilon \) будут выполняться \textbf{оба} неравенства из пунктов (2) и (3).
+    \item[5.] Оценим модуль суммы (или разности) для всех \( n > n_\varepsilon \), используя неравенство треугольника:
+    \[
+    |\alpha_n \pm \beta_n| \leq |\alpha_n| + |\beta_n| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+    \]
+\end{enumerate}
+
+Так как \( \forall \varepsilon > 0\ \exists n_\varepsilon: \forall n > n_\eps\ |\alpha_n \pm \beta_n| < \varepsilon \), то по определению последовательность \( \{\alpha_n \pm \beta_n\} \) является бесконечно малой.
+
+\item[II] {$\beta_n$} - ограничена $\Rightarrow \exists M > 0:\ \forall n \ |b_n| < M \ \forall\eps > 0\ \exists n_\eps : \forall n > n_\eps\ |\alpha_n| < \cfrac{\eps}{2}$\\
+$|\alpha_n \cdot \beta_n|= |\alpha_n| \cdot |\beta_n| \leq \cfrac{\eps}{M} \cdot M = \eps$
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Теорема 5}
+\[ a_n \xrightarrow[n\rightarrow \infty]{}a,\ b_n \xrightarrow[n\rightarrow \infty]{}b\]
+\begin{enumerate}
+    \item $a_n + b_n \xrightarrow[n\rightarrow \infty]{} a + b$
+    \item $a_n \cdot b_n \xrightarrow[n\rightarrow \infty]{} a \cdot b$
+    \item Если $b_n \ne 0\ \forall n \ nb \ne 0$, то $\cfrac{a_n}{b_n} \xrightarrow[n\rightarrow \infty]{} \cfrac{a}{b}$
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство Т5: Арифметические свойства предела, breakable]
+\textbf{Из Т4 про арифметические свойства б.м. последовательностей}
+\begin{enumerate}
+    \item $a_n + b_n = (a + \alpha_n) + (b+\beta_n) = (a+b)+(\alpha_n+\beta_n)$\\
+    $(\alpha_n+\beta_n)$ - Сумма б.м., $(a+b)+(\alpha_n+\beta_n) = $ по Т3 $= a_n+b_n \rightarrow a + b$
+    \item $a_nb_n = (a + \alpha_n) + (b + \beta_n) = ab + (\alpha_nb + \beta_na + \alpha_n\beta_n) \xrightarrow[]{T3} ab$
+    \item Докажем, что $\cfrac{a_n}{b_n} - \cfrac{a}{b}$ - б.м.\\
+    $\cfrac{a_n}{b_n} - \cfrac{a}{b} = \cfrac{a_nb-ab_n}{b_nb} = \cfrac{(a+\alpha_n)b-a(b+\beta_n)}{bb_n} = \cfrac{\alpha_nb-a\beta_n}{bb_n}$\\
+    $\alpha_nb-a\beta_n$ - бесконечно малая\\
+    Проверим ограниченность $\cfrac{1}{bb_n}$\\
+    $\eps=\cfrac{|b|}{2}: \exists n_\eps\ \forall n>n_\eps\ |b_n-b|<\cfrac{\eps}{2}$\\
+    $|b_n| = |b-(b-b_n)| \geq{}$(неравенство треугольника)$\geq ||b|-|b-b_n||\geq|b|-|b-b_n|>\cfrac{|b|}{2}\Rightarrow\cfrac{1}{|b_n|}<\cfrac{2}{|b|} \Rightarrow \{\cfrac{1}{b_n}\}$ - ограничена\\
+    Значит, что $\cfrac{a_n}{b_n} - \cfrac{a}{b} = \cfrac{\alpha_nb-a\beta_n}{bb_n}$ - бесконечно малая.
+\end{enumerate}
+\end{tcolorbox}

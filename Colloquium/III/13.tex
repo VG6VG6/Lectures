@@ -1,0 +1,67 @@
+\subsection{Существование верхнего и нижнего пределов у любой последовательности.}
+
+\textbf{Утверждение 1.} $\forall$ последовательность имеет хотя-бы 1 частичный предел (конечный или бесконечный).
+\begin{tcolorbox}[title=Доказательство]
+    \begin{enumerate}
+        \item Пусть $\{a_n\}$ - не ограничена сверху.\\
+        Напоминание: $\{ a_n \}$ - не ограничена сверху, если $\forall M\; \exists a_n > M \Leftrightarrow \exists$ бесконечно много таких членов.\\
+        $a_n > 1, a_{n_2} > 2,\ n_2>n_1$\\
+        $a_{n_k} > k, n_k > n_{k-1}$\\
+        $\{a_{n_k}\} \to +\infty$
+        \item Если $\{a_n\}$ не ограничена снизу, то $\exists a_{n_k}\to -\infty$ (аналогично)
+        \item Если $\{a_n\}$ - огрничена, то Б-В.
+        
+    \end{enumerate}
+\end{tcolorbox}
+
+\textbf{Утверждение 2.} критерий частичного предела.\\
+a - частичный предел $\{a_n\} \Leftrightarrow \forall U_a$ принадлежит б.м. членов последовательности.
+\[ \forall U_a \exists a_{n_k}\in U_a^\circ = U_a /\{a\} \] - ЭТО ХУЙНЯ. НАДО НАЙТИ ОШИБКУ\\
+На экзамене: что-то может быть.\\
+
+\begin{tcolorbox}[]
+    $\forall U_a \; \exists k_{U_a}: \forall k > k_{U_a} \;\; a_{n_k} \in U_a$\\
+    $\Rightarrow$ в $U_a$ бесконечно много членов последовательности.\\
+    $\Leftarrow$ в $\forall U_a$ бесконечно много членов $\{a_n\}$.\\
+    $\eps_1 = \cfrac{1}{2} \;\; U_a = (a-\eps; a+\eps)$ - отсюда любой член $\{a_n\}$\\
+    $\eps_2 = \cfrac{1}{2^2} \;\; \exists a_{n_2} \in (a-\eps_2; a+\eps_2), n_2>n_1$\\
+    ...\\
+    $\eps_k = \cfrac{1}{2^k} \;\; \exists a_{n_k} \in (a-\eps_k; a+\eps_k), n_k>n_{k-1}$\\
+    $\{a_{n_k}\} a_{n_k} \to a,$ при $k\to \infty$\\
+    $\forall k\;\;\; a-\cfrac{1}{2^n} \to a= a - \eps_k < a_{n_k} < a_\eps = a+ \cfrac{1}{2^k} \to a$\\
+    По теореме о зажатой последовательности $a_{n_k} \to \infty$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    \textbf{Определене.} \\
+    Наибольший из часичных пределов. $\{a_n\}$ - верхний прдел $a_n$\\
+    Наименьший из часичных пределов. $\{a_n\}$ - нижний прдел $a_n$
+\end{tcolorbox}
+
+\textbf{Теорема} $\forall \{a_n\} \;\; \exists$ верхний и нижний предел.
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item $\exists$ $\underline{\lim} a_n$ - нижний предел $a_n$\\
+        Пусть $\{a_n\}$ - не ограничена те $\forall M \exists a_n < M$. Таких $a_n$ - бесконечно много.\\
+        $a_{n_1} < -1, a_{n_2} < min\{ -2, a_1, ..., a_{n_1} \} - 1$
+        $n_2 > n_1$\\
+        $a_{n_k} < min\{-k, a_1, ..., a_{n_{k-1}}\} - 1$\\
+        $a_{n_k} - k, n_k > n_{k-1}$\\
+        $\{a_{n_k}\}$ - подпоследовательность.\\
+        \[ a_{n_k} < -k \Rightarrow a_{n_k} \to -\infty \]
+        \item Пусть $\{ a_n \}$ - ограничена снизу.
+            \item[a)] $\{a_n\}$  имеет конечные частичные пределы.\\
+            A - множество конечных частных пределов. $A \not= \varnothing$ и ограничена снизу.\\
+            $\exists inf\; A = a$. Покажем, что $a = \underline{\lim}_{n\to\infty} a_n$
+            \begin{center}
+	    \includegraphics[width=0.2\linewidth]{Пределы.png}
+            \end{center}
+            $ \forall \eps > 0 \exists a` \in A $\\
+            $a \leq a` < a+\eps$
+            \item[б)] $\{a_n\}$ нет конечных частичных пределов.\\
+            $a_n \to +\infty$\\
+            Если $a_n \not\to +\infty \;\; \exists M: \forall N \;\; \exists n > N\;\;\; a _n\leq M$ \\
+            $\exists$ бесконечно много $\{a_n\} < M$ по Б-В $\exists$ конечный частичный предел.
+    !!! Каждое действитеьное число является её частиыным пределом.
+    \end{enumerate}
+\end{tcolorbox}

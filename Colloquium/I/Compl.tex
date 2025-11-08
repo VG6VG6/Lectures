@@ -1,0 +1,80 @@
+\subsection{Комплексные числа. Действия над ними. Геометрическое представлние. Алгебраическая и триганометрическая форма записи комплексных чисел. Формула Эйлера, определение $e^z$ через действительную экспоненту и действительные триганометрические функции.}
+
+\subsubsection{Определение и свойства}
+\begin{tcolorbox}
+\textbf{Определение.} \textit{Комплексными числами} называются числа вида $z = x + iy$, где $x, y \in \R$, а $i$ — \textit{мнимая единица}, обладающая свойством $i^2 = -1$.
+\end{tcolorbox}
+\begin{itemize}
+    \item $x = \operatorname{Re } z$ — \textbf{действительная часть} числа $z$.
+    \item $y = \operatorname{Im } z$ — \textbf{мнимая часть} числа $z$.
+    \item Если $y = 0$, то $z = x$ — действительное число.
+    \item Число $\overline{z} = x - iy$ называется \textbf{комплексно-сопряжённым} к $z$.
+\end{itemize}
+
+\begin{tcolorbox}
+\textbf{Свойство:} $z \cdot \overline{z} = (x + iy)(x - iy) = x^2 - (iy)^2 = x^2 - i^2y^2 = x^2 + y^2$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Важное примечание]
+\textbf{Нельзя} сравнивать комплексные числа операциями $<, >, \leq, \geq$!
+\end{tcolorbox}
+
+\subsubsection{Арифметические операции}
+Пусть $z_1 = x_1 + iy_1$, $z_2 = x_2 + iy_2$.
+\begin{enumerate}
+    \item \textbf{Сложение/Вычитание:}
+    $z_1 \pm z_2 = (x_1 \pm x_2) + i(y_1 \pm y_2)$
+    \item \textbf{Умножение:}
+    \begin{align*}
+    z_1 \cdot z_2 &= (x_1 + iy_1)(x_2 + iy_2) = (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1)
+    \end{align*}
+    \item \textbf{Деление:}
+    \begin{align*}
+    \frac{z_1}{z_2} &= \frac{(x_1 + iy_1)(x_2 - iy_2)}{(x_2 + iy_2)(x_2 - iy_2)} = \frac{(x_1x_2 + y_1y_2) + i(x_2y_1 - x_1y_2)}{x_2^2 + y_2^2}\\
+    \end{align*}
+\end{enumerate}
+
+\subsubsection{Геометрическое представление}
+\begin{centering}
+    \includegraphics[width=0.4\linewidth]{complex_numbers/compl_plane.png}
+\end{centering}
+
+\subsubsection{Тригонометрическая форма}
+\begin{tcolorbox}
+	\[ z = r(cos\phi +i\; sin\phi),\; r=|z| \]
+\end{tcolorbox}
+
+\[ z_1\cdot z_2 = r_1\cdot r_2 \cdot (cos(\phi_1+\phi_2) + i\; sin(\phi_1+\phi_2)) \]
+\[\cfrac{z_1}{z_2} = \cfrac{r_1}{r_2}(cos(\phi_1-\phi_2) + i\; sin(\phi_1-\phi_2)) \]
+
+\subsubsection{Формула Эйлера}
+\begin{tcolorbox}
+	\[ e^{i\phi} = cos\phi +isin\phi \]
+	\[ e^z = e^{x+iy} = e^x\cdot e^{iy} = e^x \cdot (cos\; y +i\cdot sin\; y) \]
+\end{tcolorbox}
+
+Действительная часть: $ Re\ e^z = e^x \cos y$\\
+Мнимая часть: $Im\ e^z = e^x \sin y$
+
+
+\subsection{Возведение в степень и извлечение корня из комплексных чисел. Форула Муавра.}
+
+\subsubsection{Формула Де-Муавра}
+\begin{tcolorbox}
+\[ (cos \phi +i\; sin\phi)^k = cos\; k\phi + i\; sin\; k\phi \]
+\end{tcolorbox}
+
+\subsubsection{Комплексные корни}
+\[ \sqrt[n]{z} = \omega \]
+\[ \omega^n = z, z \not= 0\]
+\[ z = re^{i\phi}, \omega = \rho e^{i\Psi}  \]
+\[ \omega^n = \rho^n e^{in\Psi} = z = re^{i\phi} = re^{i(\phi+2\pi k)}\]
+\begin{tcolorbox}
+\[ \rho^n = r \Rightarrow \rho = \sqrt[n]{r} \]
+\[ n\Psi = \phi + 2\pi k \Rightarrow \Psi = \cfrac{\phi}{n} + \cfrac{2\pi}{n}k \]
+\end{tcolorbox}
+Корни будут образовывать правильный многоугольник.\\
+\begin{centering}
+	\includegraphics[width=0.2\linewidth]{complex_numbers/roots_of_complex_numbers.png}
+\end{centering}
+

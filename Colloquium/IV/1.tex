@@ -1,0 +1,61 @@
+\subsection{Два определения предела функции в точке. Доказательство эквивалентости (из определения по Гейне определение по Коши).}
+
+\subsubsection{Предел функции в точке.}
+
+На протяжении всего параграфа: $f(x)$ на $\mathring U_a = U_a / \{a\}$
+\[ a \in (d, c) = U_a \]
+\includegraphics[width=0.5\linewidth]{images/Функции/Предел функции в точке/График.jpg}
+\begin{tcolorbox}
+	\textbf{Определение. Предел по Коши. } $f(x) \to A$ при $x \to a$, если 
+	\[ \forall \eps > 0\; \exists \delta_\eps > 0: \forall x: 0<|x-a| < \delta_\eps\;\; |f(x) - A| < \eps \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определение. Существование предела функции в точке.} $f(x)$ имеет предел при $x \to a$, если 
+	\[ \exists A\;\; \forall \eps > 0\; \exists \delta_\eps > 0: \forall x: 0<|x-a| < \delta_\eps\;\; |f(x) - A| < \eps  \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Определение. Предел по Гейне. } $f(x)$ имеет придел при $x \to a$, если\\
+	$\forall \{x_n\}\; \forall n, x_n \in \mathring U_a, x_n \to a\; \{f(x_n)\}$ сходится
+\end{tcolorbox}
+Не обязательно, чтобы предел функции и последовательности был одним и тем же.
+
+\subsubsection{Эквивалентность определений по Коши и по Гейне}
+\begin{tcolorbox}
+	\textbf{Теорема. Предел в смысе Коши.}	$\exists \Leftrightarrow \exists$ предел по Гейне.
+\end{tcolorbox}
+\begin{tcolorbox}[title=Доказательство]
+	$\Rightarrow \exists A: \forall \eps > 0\; \exists \delta_\eps > 0$\\
+	\[ \forall x \in (a - \delta, a + \delta) / \{a\} \;\; |f(x) - A| < \eps \]
+	Пусть $\{ x_n \}: \forall n\; x_n \in \mathring U_a, x_n \xrightarrow[n \to \infty]{} a$
+\[ \exists N_{delta_\eps} \in \N: \forall n > N_{\delta_\eps}\;\; 0 <|x_n - a| < \delta_\eps \]
+\[ \Rightarrow x_n \in (a - \delta_\eps, a + \delta_\eps) / \{a\} \Rightarrow |f(x) - A| < \eps \]
+
+	$\Leftarrow$ Пусть $f(x)$ имеет в a предел в смысле Гейне.
+	\begin{enumerate}
+	\item $\lim f(x_n)$ не зависит от $\{x_n\}$\\
+		Пусть не так зависит), тогда $\exists \{x_n`\}$\\
+		\[ x_n` \to a, x_n` \not= a \; \forall n: f(x_n`) \to A` \]
+		\[ \exists \{ x_n ``\}, x_n` \to a, x_n`` \not = a\;\; \forall n, f(x_n``) \to A`` \]
+		\includegraphics[width=0.5\linewidth]{images/Функции/Предел функции в точке/Гейне.jpg}
+		\[ x_{2k} = x_k`` \]
+		\[ x_{2k-1} = x_k` \]
+		\[ \forall n\;\; x_n \to a, x_n \not = a \]
+		По определению предела по Гейне:
+		\[ \exists A: f(x_n) \to A: f(x_{2n}) - to A``, f(x_{2n-1}) - to A` \]
+		таким образо: $ \exists A: \forall \{ x_n \} $
+		\[ f(x_n) \to A \]
+	\item $ f(x) \xrightarrow[]{x \to a} A $ по Коши\\
+		От противного:\\
+		Пусть $ f(x) \not \xrightarrow[]{a \to a} A$ по Коши
+		\[ \exists \eps > 0: \forall \delta > 0\; \exists x_n: 0 < |x-a| < \delta\;\; |f(x) - A| \geq \eps \]
+		\[ x_1: 0 < |x_1 - a| < 1/1\;\; |f(x_1) - A| \geq \eps \]
+		\[ x_2: 0 < |x_2 - a| < \frac{1}{2}\;\; |f(x_2) - A| \geq \eps \]
+		\[...\]
+		\[ x_n: 0 < |x_n - a| < \frac{1}{n}\;\; |f(x_n) - A| \geq \eps \]
+		\[...\]
+		$ \{x_n\} $, $x_n \to a, x_n \not = a, \forall n \Rightarrow f(x_n) = A$ противоречие
+
+	\end{enumerate}
+\end{tcolorbox}
