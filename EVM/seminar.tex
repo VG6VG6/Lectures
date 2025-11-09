@@ -35,7 +35,7 @@
 Алгоритм минимизации существует в 2 вариантах и содержат оба варианта все 3 этапа.\\
 Вариант 1. 
 \begin{itemize}
-	\item Вводитяс вспомогательная функция \tilde{f} совпадающая с исходной на тех наборах на которых функция определена и принимающая значение 1 на запрещённых наборах.
+	\item Вводится вспомогательная функция $\tilde{f}$ совпадающая с исходной на тех наборах на которых функция определена и принимающая значение 1 на запрещённых наборах.
 	\item Выполняется минимизацию вспомогательной функции любым удобным способом.
 	\item Строится импликантная матрица. Заголовками солбцов которой являются термы исходной функции, а заголовками строк - терми, полученные в результате минимизации вспомогательной функции. Проставляются метки, отмечающие вхождение строки в столбец и выбирается такая миимальная совокупность столбцов и строк, которая покроет всю функцию.
 \end{itemize}
@@ -56,47 +56,48 @@ $ f(a, b, c, d) = \begin{cases}
 	\sum_1(0, 5, 8, 12, 15), \\
 	X (1, 2, 3, 10, 13, 14)
 \end{cases}  \Rightarrow$
-$\tilde{f} (a, b, c, d) = \begin{cases}
+\[ 
+	\tilde{f} (a, b, c, d) = \begin{cases}
 	\sum_1(0, 5, 8, 12, 15, 
 	1, 2, 3, 10, 13, 14)
-\end{cases} $\\
-
+	\end{cases} 
+\]
 \begin{tabular}{c c c c c c}
-	& b & b & \overline{b} & \overline{b} & \\
-	a & 1 & 1 &   & 1 & \overline{c}\\
+	& b & b & $\overline{b}$ & $\overline{b}$ & \\
+	a & 1 & 1 &   & 1 & $\overline{c}$\\
 	a & 1 & 1 &   & 1 & c\\
-	\overline{a} &   &   & 1 & 1 & c\\
-	\overline{a} &   & 1 & 1 & 1 & \overline{c}\\
-	 & \overline{d} & d & d & \overline{d}
-\end{tabular}\\
+	$\overline{a}$ &   &   & 1 & 1 & c\\
+	$\overline{a}$ &   & 1 & 1 & 1 & $\overline{c}$\\
+	 & $\overline{d}$ & d & d & $\overline{d}$
+\end{tabular}
 \[ f(a, b, c, d) = ab + \overline{a}\overline{b} + \overline{b}\overline{d} + \overline{a}\overline{c}\overline{d} \]
-\begin{tabular}{c c c c c c}
+$ \begin{tabular}{c c c c c c}
 	 & 0000 & 0101 & 1000 & 1100 & 1111\\
 	11-- &  & & & x & x \\
 	00-- & x & & &  &  \\
 	-0-0 & x &  & x &  \\
 	0-01 &  & x & &  &  \\	
-\end{tabular}
-\[ bd + \overline{a}\overline{c}d + ab \]
+\end{tabular} $ 
+\[ \overline{b} \overline{d} + \overline{a}\overline{c}d + ab \]
 
 \subsubsection*{Пример (минКНФ)}
-$ f(a, b, c, d) = \begin{cases}
+$
+	f(a, b, c, d) = \begin{cases}
 	$П$(3, 6, 7, 9, 11), \\
 	X (0, 1, 2)
-\end{cases}  \Rightarrow$
+\end{cases}  \Rightarrow $ 
 $ \tilde{f}(a, b, c, d) = \begin{cases}
 	$П$(3, 6, 7, 9, 11, 0, 1, 2)
-\end{cases} \\
+\end{cases}$ \\
 \begin{tabular}{c c c c c c}
-	   			  & b & b & \overline{b} & \overline{b} & \\
-				a &   &   & 0 &   & \overline{c}\\
+	   			  & b & b & $\overline{b}$ & $\overline{b}$ & \\
+				a &   &   & 0 &   & $\overline{c}$\\
 				a &   &   & 0 &   & c\\
-	\overline{a}		  & 0 & 0 & 0 & 0 & c\\
-	\overline{a} 		  &   &   & 0 & 0 & \overline{c}\\
-	                          & \overline{d} & d & d & \overline{d}\\
+	$\overline{a}$		  & 0 & 0 & 0 & 0 & c\\
+	$\overline{a}$ 		  &   &   & 0 & 0 & $\overline{c}$\\
+	                          & $\overline{d}$ & d & d & $\overline{d}$ \\
 \end{tabular}\\
-
-\[ (a + \overline{c}) \cdot (b + \overline{d}) \cdot ab \]
+\[ (a + \overline{c}) \cdot (b + \overline{d}) \cdot (a+b) \]
 \begin{tabular}{c c c c c c}
 	     & 0011 & 0110 & 0111 & 1001 & 1011\\
 	0-1- &  x   &  x   &  x   &      &     \\
