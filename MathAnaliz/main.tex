@@ -29,6 +29,8 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\eps}{\varepsilon}
 
+\newcommand{\sign}{\text{sign\ }}
+
 \begin{document}
 \maketitle
 \tableofcontents
@@ -1216,7 +1218,7 @@ g(f(x)) $\subset \Z$
 				x = x(t)\\
 				y = y(t)
 			\end{cases}, t \in T
-		\]$
+		\]
 		\[ 
 \begin{cases}
 	x = R\cos \phi\\
@@ -1264,7 +1266,7 @@ g(f(x)) $\subset \Z$
 \end{enumerate}
 
 \begin{tcolorbox}
-	\textbf{Определение.} Если $f(x)$ не ограничена сверху на X, то $\exists \{ x_n \}$ \supset X 
+	\textbf{Определение.} Если $f(x)$ не ограничена сверху на X, то $\exists \{ x_n \} \supset X $
 	\[ f(x_n) \xrightarrow[n\to\infty]{} +\infty \]
 \end{tcolorbox}
 
@@ -1315,7 +1317,7 @@ g(f(x)) $\subset \Z$
 	\item $\lim f(x_n)$ не зависит от $\{x_n\}$\\
 		Пусть не так зависит), тогда $\exists \{x_n`\}$\\
 		\[ x_n` \to a, x_n` \not= a \; \forall n: f(x_n`) \to A` \]
-		\[ \exists \{ x_n ``\}, x_n` \t a, x_n`` \not = a\;\; \forall n, f(x_n``) \to A`` \]
+		\[ \exists \{ x_n ``\}, x_n` \to a, x_n`` \not = a\;\; \forall n, f(x_n``) \to A`` \]
 		\includegraphics[width=0.5\linewidth]{images/Функции/Предел функции в точке/Гейне.jpg}
 		\[ x_{2k} = x_k`` \]
 		\[ x_{2k-1} = x_k` \]
@@ -1343,7 +1345,7 @@ g(f(x)) $\subset \Z$
 	\includegraphics[width=0.5\linewidth]{images/Функции/Предел функции в точке/Пример.jpg}\\
 \end{center}
 Вопрос на доп баллы: Приевести пример функции непрерывной на интервале, которая не имела бы придела при x стремящемся к концу интревала.\\
-$\forall x_n \tp 0 \; \{f(x_n)\} $ - сходится
+$\forall x_n \to 0 \; \{f(x_n)\} $ - сходится
 \[ \frac{1}{x_n} = \frac{\pi}{2} + \pi n, n \in \N  \]
 \[ x_n = \frac{1}{\frac{\pi}{2} + \pi n}\;\;\; f(x_n) = \sin (\frac{\pi}{2} + \pi n) = (-1)^n \]
 \[ x_n` = \frac{1}{\frac{\pi}{2} + 2\pi n}\;\; f(x_n) = 1 \]
@@ -1408,7 +1410,7 @@ $\forall x_n \tp 0 \; \{f(x_n)\} $ - сходится
 \end{tcolorbox}
 
 \textbf{Отрицание.} $f(x)$ определена на $ \mathring U_a$
-\[ \not \exists \lim_{x \to a} f(x) \Leftrightarrow \exists \epx > 0\; \forall \delta\; \exists x`, x``\; 0 < |x` - a| < \delta \;\; 0 < |x`` - a| < \delta |f(x`) - f(x``)| \geq \eps \]
+\[ \not \exists \lim_{x \to a} f(x) \Leftrightarrow \exists \exp > 0\; \forall \delta\; \exists x`, x``\; 0 < |x` - a| < \delta \;\; 0 < |x`` - a| < \delta |f(x`) - f(x``)| \geq \eps \]
 \textbf{Пример. } 
 \begin{enumerate}
 	\item $f(x) = \frac{1}{x}$ на (0, 1)
@@ -1429,7 +1431,7 @@ $\forall x_n \tp 0 \; \{f(x_n)\} $ - сходится
 \[ \forall a \in \R \rightarrow a + 0, a-0 \]
 \textbf{Определние.} $f(x)$ определена на $\mathring U_a \rightarrow \R$ \\
 \begin{enumerate}
-	\item $ f(x) \ to \infty, x \to a \Leftrightarrow \forall \eps > 0\; \exists \delta_\eps > 0: \forall x\; 0< |x - a| < \delta_\eps \;\; |f(x)| > \eps \Leftrightarrow f(x) \in U_{\infyu, \eps}$
+	\item $ f(x) \to \infty, x \to a \Leftrightarrow \forall \eps > 0\; \exists \delta_\eps > 0: \forall x\; 0< |x - a| < \delta_\eps \;\; |f(x)| > \eps \Leftrightarrow f(x) \in U_{\infty, \eps}$
 	\item $f(x) \to +\infty$ при $x \to a, \forall \eps > 0 \;\; \exists \delta_\eps > 0: \forall x\; 0 < |x - a| < \delta_\eps \;\; f(x) > \eps$
 	\item $f(x) \to -\infty$ при $x \to a \; \forall \eps > 0 \exists \delta_\eps > 0: \; 0 < |x - a| < \delta_\eps \;\; f(x) < -\eps $
 \end{enumerate}
@@ -1438,6 +1440,111 @@ Extra: $f(x)$ на $U_{a + 0}: f(x) \to - \infty, x \to a + 0$
 \[ f(x) \in (-\infty; -\eps ) \]
 \[ f(x) < -\eps \]
 
+\subsection{Свойства функций, имеющих предел}
+\textbf{Теорема 1.} Если предел функции в точке существует, то он единственен. \\
+Ну он опять свой доказательство придумал. 
+\begin{tcolorbox}[title=Доказательство от противного]
+	Пусть $f(x) \to A` , x \to a$\\
+	$f(x) \to A``$, при $x \to a$ и $A` \not= A``$\\
+	$\eps := \frac{|A` - A``|}{4}$\\
+	$\exists \delta` > 0: \forall x 0 < |x - a| < \delta`\; |f(x) - A`| < \eps$\\
+	$\exists \delta`` > 0: \forall x 0 < |x - a| < \delta``\; |f(x) - A``| < \eps$\\
+	$ \delta := \min\{ \delta`, \delta`` \} > 0 $\\
+	$ \forall x: 0 < |x - a| < \delta $\\
+	$ |f(x) - A``| = (f(x) - A`) - (A`` - A`)| \geq |A` - A``| - |f(x) - A`| > \frac{3}{4} |A` - A``|$ \\
+	$|f(x) - A`| < \frac{|A` - A``|}{4}$\\
+\end{tcolorbox}
+Удостоверится, что a и A мжет быть $\infty, \pm \infty$.\\
+\textbf{Теорема 2.} $f(x) \to A$ при $x \to a \Rightarrow |f(x)| \to |A|$, при $x \to a$. 
+\begin{tcolorbox}[title=Доказательство]
+	\[ \forall \eps > 0\; \exists \delta > 0: \forall x\; 0 < |x - a| < \delta\; |f(x) - A| < \eps \]
+	\[ ||f(x)| - |A|| \leq |f(x) - A| < \eps \]
+\end{tcolorbox}
+\textbf{Теорема 3. О сохранением знака, только $\R$.} \\
+Если $f(x) \to A \not = 0, x \to a$, то $\exists \delta > 0\; \forall x\; 0 < |x - a| < \delta \;\; \sign f(x) = \sign A$
+\begin{tcolorbox}[title=Доказательство. Непосредственная проверка.]
+	\[ \eps := \frac{|A|}{2}\; \exists \delta > 0: \forall 0 < |x - a| < \delta\; |f(x) - A| < \eps \]
+	\[ A - \eps < f(x) < A + \eps \]
+	\begin{enumerate}
+		\item $A > 0$:
+			\[ f(x) > A - \eps = A - \frac{A}{2} = \frac{A}{2} > 0 \]
+		\item $ A < 0 $:
+			\[ f(x) < A + \eps = A - \frac{A}{2} = \frac{A}{2} < 0 \]
+	\end{enumerate}
+\end{tcolorbox}
+\textbf{Теорема 4.} Если $f(x) \xrightarrow[x\to a]{} A$ число $\Rightarrow \exists \mathring U_a$ в которой $f(x)$ ограничена $(f(x) \in B(\mathring U_a))$.
+\begin{tcolorbox}[title=Доказательство]
+	\[ \eps := 30 \exists \delta > 0: \forall x\; 0 < |a - a| < \delta\; |f(x) - A| < 30 \]
+	\[ |f(x)| = |(f(x) - A) + A| \leq |f(x) - A| + |A| < |A| + 30 \]
+	Таким образом функция ограничена. 
+\end{tcolorbox}
+\textbf{Теорема 5. Арифмитические свойства.}\\
+Пусть $\exists \lim_{x\to a} f(x), \lim_{x\to a} g(x)$. Тогда \\
+\begin{enumerate}
+	\item $\exists \lim_{x\to a} (f(x) \pm g(x))$ и $\lim_{x\to a} (f(x) \pm g(x)) = \lim_{x\to a} f(x) \pm \lim_{x \to a} g(x)$
+	\item $\exists \lim_{x\to a} (f(x) \cdot g(x))$ и $\lim_{x\to a} (f(x) \cdot g(x)) = \lim_{x\to a} f(x) \cdot \lim_{x\to a} g(x)$
+	\item Если $\lim_{g(x)} \not= 0$ и $g(x)\not=0$, то $\exists \lim_{x\to a} \frac{f(x)}{g(x)}$ и $\lim_{x\to a} \frac{f(x)}{g(x)} =  \frac{\lim_{x\to a} f(x)}{\lim_{x\to a} g(x)}$
+\end{enumerate}
+\begin{tcolorbox}
+	Эквивалентность существования пределов по Гейне и Коши и соответствующие свойства для последовательностей.\\
+	Сами дакажите. @Теляк. 
+\end{tcolorbox}
+\textbf{Теорема 6. Предельный переход в неравенствах.}\\ 
+$f(x) \leq g(x)$ при $x, a\in (c, d), x\not= a$\\
+Если $\exists \lim_{x\to a} f(x), \exists \lim_{x\to a}g(x) \Rightarrow \lim_{x\to a} f(x) \leq \lim_{x\to a} g(x)$
+\begin{tcolorbox}[title=Доказательство. Эквивалентность пределов по Гейне и по Коши и теорема для последовательностей. ]
+	
+	
+\end{tcolorbox}
+\textbf{Теорема 7. О зажатой функции.}\\
+\[ \forall a, x \in (c, d), x \not= a \;\; f(x) \leq \phi(x) \leq g(x)\; \&\; \lim_{x\to a} f(x) = \lim_{x\to a} g(x) \Rightarrow \exists \lim_{x\to a} \phi(x)\; \&\; \lim_{x\to a} \phi(x) = \lim_{x\to a} g(x) \]
+\begin{tcolorbox}[title=Доказательство.]
+	\[ A:= \lim_{x\to a} f(x) \]
+	\[ \forall \eps > 0 \delta_f > 0: \forall 0 < |x - a|<\delta_f\; |f(x) - A| < \eps \Leftrightarrow A - \eps \leq f(x) \leq A + \eps \]
+	\[ \exists \delta_g > 0: \forall x\; 0 < |x - a| < \delta_g \]
+	\[ |g(x) - A| < \eps \Leftrightarrow A - \eps < g(x) < A + \eps \]
+	\[ \delta := \min\{\delta_f, \delta_g \} > 0 \]
+	\[ \forall x: 0 < |x - a| < \delta  \]
+	\[ A - \eps < f(x) \leq \phi(x) \leq g(x) < A + \eps \]
+	\[A - \eps < \phi(x) < A + \eps \]
+	\[ \phi(x) \xrightarrow[x\to a]{} A \]
+\end{tcolorbox}
+\textbf{Теорема 8.} $f(x) \xrightarrow[x\to a]{} A \Leftrightarrow f(x) = A \ alpha(x)\;\; (\alpha(x) \xrightarrow[x\to a]{} 0)$\\
 
+Продумайте какие Т про арифм действия переносятся на предел к бесконечности.
+\begin{tcolorbox}[title=Доказательство]
+$\Rightarrow$ По определению $\forall \eps > 0\; \exists \delta > 0\; |f(x) - A| < \eps, \alpha(x) := f(x), \forall x\; 0 < |x - a| < \delta$\\
+$\alpha(x) \to 0$ по определению $f(x) = A + \alpha(x)$\\
+$\Leftarrow$ Пусть $f(x) = A + \alpha(x)$, где $\alpha(x)$ - б.м., при $x \to a$\\
+По определению $\forall \eps > 0\; \exists \delta > 0: \forall x\; 0< |x - a| < \delta\; |\alpha(x)| < \eps$\\
+$|\alpha(x)| = |f(x) - A| \Rightarrow f(x) \to A, x \to a$
+\end{tcolorbox}
+
+\textbf{Теорема 9.}
+\begin{enumerate}
+	\item Если $f(x) \xrightarrow[x\to a]{}$, то $\frac{1}{f(x)} \to 0$
+	\item $\alpha(x) \xrightarrow[x\to a]{} 0, \alpha(x) \not= 0 \Rightarrow \frac{1}{\alpha(x) \xrightarrow[x \to a]{} \infty}$
+\end{enumerate}
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item $\forall \eps > 0\; \exists \delta_\eps > 0: \forall x\; 0 < |x - a| < \delta_\eps\; |f(x)| > \frac{1}{\eps} \Leftrightarrow |\frac{1}{f(x)}| < \eps$
+		\item $\forall \eps > 0\; \exists \delta_\eps > 0: \forall x\; 0 < |x - a| < \delta_\eps |\alpha(x)| < \frac{1}{\eps} \Leftrightarrow |\frac{1}{\alpha(x)}| > \eps$
+	\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Некоторое важные пределы.}
+Если понять какие моменты обман, то на экзамене будет + в карму. \\
+\textbf{Теорема 1.} $(1 + \frac{1}{x})^x \xrightarrow[x\to \infty]{} e$
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item $x \to +\infty$
+			\[ \forall x > 1 \; 0 < [x] \leq x <  [x] + 1 \]
+		\[  \frac{1}{[x]} \geq \frac{1}{x} > \frac{1}{[x] + 1} \]
+		\[ 1 + \frac{1}{[x]} \geq 1 + \frac{1}{x} > 1 + \frac{1}{[x] + 1} \]
+		\[ (\frac{1}{[x]})^{[x]+1} > (\frac{1}{x})^x > (\frac{1}{[x] + 1})^{[x]} \]
+		Вспомним последовательсноти: $(1 + \frac{1}{n})^{n+1} = (1 + \frac{1}{n})^n (1 + \frac{1}{n}) \xrightarrow[n\to\infty]{} e $
+		\[ (1 + \frac{1}{n+1})^n = (1 + \frac{1}{n+1})^{n+1} / (1 + \frac{1}{n+1}) \to e \]
+	\end{enumerate}
+\end{tcolorbox}
 
 \end{document}
