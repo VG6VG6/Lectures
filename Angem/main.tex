@@ -60,13 +60,12 @@ OXYZ - ДПСК\\
 				y = y_0 + mt\\
 				z = z_0 + nt
 			\end{cases} $
-			$
-		\item $\begin{cases}
-			П1: $A_1x + B_1y + C_1z + D_1 = 0$\\
-			П2: $ A_2x + B_2y + C_2z + D_2 = 0 $
-\end{cases}$
+		\item $ \begin{cases}
+			$П1: $A_1x + B_1y + C_1z + D_1 = 0\\
+			$П2: $ A_2x + B_2y + C_2z + D_2 = 0
+		\end{cases} $
 $
-\[\overline{q} = [\overline{N_1}, \overline{N_2}] \]
+	\[ \overline{q} = [ \overline{N_1}, \overline{N_2} ] \]
 	\end{enumerate}
  
 	Определение. Угол между прямой и плоскость - это угол между прямой и её проекцией на эту плоскость.
@@ -499,7 +498,8 @@ $J_2 = 0$\\
 	D`&E`&F`
 \end{vmatrix} = -C`D`^2 \]
 
-2.1. $J_3 \not = 0 \Leftrightarrow D \not = 0$
+\begin{enumerate}
+	\item $J_3 \not = 0 \Leftrightarrow D \not = 0$
 \[ C` y` ^2 + 2E` y` = -D` x` -F` \]
 \[ (y` + b) = -\frac{2D`}{C`} (x` + a) \]
 Сдвиг
@@ -512,7 +512,196 @@ $J_2 = 0$\\
 \end{cases} \;\;\;\;\;\; O``(a, b) \]
 \begin{tcolorbox}
 	Парабола
-	\[ y``^2 = -\frac{2D}{C`}x`` \]
+	\[ y``^2 = -\frac{2D`}{C`}x`` \]
 \end{tcolorbox}
+	\item $D` = 0 \Leftrightarrow J_3 = 0$\\
+		\[ C`y`^2 + 2E` y` + F` =0 \]
+		\[ y`^2 +2 \frac{E`}{C`}y` + \frac{F`}{C`} = 0 \]
+		\[ (y`^2 +2 \frac{E`}{C`}y` + \frac{E`^2}{C`^2}) + \frac{F`}{C`} - \frac{E`^2}{C`^2} = 0 \]
+		\[ (y + \frac{E`}{C`})^2 = \frac{E`^2}{C`^2} - \frac{F`}{C`} \]
+		Сдвиг:\\
+		\[ 
+			\begin{cases}
+				x`` = x` \\
+				y`` = y` + \frac{E`}{C`}
+				
+			\end{cases} \Leftrightarrow 
+			\begin{cases}
+				x` = x``\\
+				y` = y`` - \frac{E`}{C`}
+			\end{cases}
+		\]
+		\begin{tcolorbox}
+			\[y``^2 = \frac{E`^2}{C`^2} - \frac{F`}{C`} \]
+			\begin{enumerate}
+				\item $ \frac{E`^2}{C`^2} - \frac{F`}{C`} > 0 $ - 2 прямые
+				\item $ \frac{E`^2}{C`^2} - \frac{F`}{C`} = 0 $ - 2 совпадающие прямые
+				\item $ \frac{E`^2}{C`^2} - \frac{F`}{C`} < 0 $ - 2 мнимые параллельные прямые
+			\end{enumerate}
+		\end{tcolorbox}
+\end{enumerate}
+\section{Классификация прямых 2 порядка по инвариантам.}
+
+\begin{tabular}{| c |}
+	\hline\hline 
+	$J_2 > 0$ элиптический тип \\ 
+	\hline
+	\begin{tabular}{c | c | c}
+		$J_3<0,J_1>0$ & $J_3=0,J_1>0$ & $J_3>0,J_1>0$\\
+		действительный элипс& выражденый элипс & мнимый элипс\\
+		$ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ & $ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 0$ & $ \frac{x^2}{a^2} + \frac{y^2}{b^2} = -1$\\
+		центральная кривая & центральная кривая & центральная кривая
+	\end{tabular}\\
+
+	\hline\hline 
+	$J_2 < 0$ гиперболический тип \\
+	\hline
+	\begin{tabular}{c | c}
+		$J_3\not=0$ & $J_3=0$ \\
+		гиперкуб & пара пересекающихся прямых \\
+		$ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ & $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 0$\\
+		центральная кривая & центральная кривая
+	\end{tabular}\\
+
+	\hline\hline 
+	$J2=0$ параболический тип \\
+	\hline
+	\begin{tabular}{c | c}
+		$J_3\not=0$ & $J_3=0$ \\
+		парабола & \\
+		$ y^2 = 2px$ 
+			 & 
+		a. $y^2 = a^2$ - пара паралельных прямых.\\ &
+		b. $y^2 = 0$ - пара совпадающих прямых.\\ &
+			c. $y^2 = -a^2$ - пара паралельных мнимых прямых. \\
+		не центральная кривая & не центральная кривая
+	\end{tabular}
+	\hline\hline
+\end{tabular}
+
+\sectioin{Плоскости}
+\subsection{Цилиндрические поверхности}
+\setcounter{equation}{0}
+
+S - \textbf{называется цилиндрической повехностью} с образающей паралельнной Oz, если для любо /й точки $m_0 \in S$ вся прямая, проходящая через (.)$m_0$ и лежит на S.\\
+\textbf{Теорема.} Уравнение 
+\begin{equation}
+	F(x, y) = 0 
+\end{equation}
+Задаёт цилиндрическую поверхность с образующей Oz.
+\begin{tcolorbox}
+	\[ S: M_0 = (x_0, y_0, z_0) \in S \]
+	\[ F(x_0, y_0) = 0 \]
+	\[ M_0 \in L\; \&\; L || Oz \]
+	\[ \overline{q} = \{ 0, 0, 1 \} \]
+	\[ 
+	\begin{cases}
+		x = x_0 + 0t \\
+		y = y_0 + 0t\\
+		z = z_0 + t
+	\end{cases} \; M \in L
+	\]
+
+	\[ F(x_0 + 0t, y_0 + 0t) = F(x, y) = 0 \Rightarrow M \in S \]
+\end{tcolorbox}
+Пусть F(x, y) - влгебраическй многочлен 2 порядка. 
+\begin{enumerate}
+	\item $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ - элиптический цилиндр. 
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Элиптический цилиндр}
+		\end{center}
+	\item $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ - гиперболический цилиндр. 
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Гиперболический цилиндр}
+		\end{center}
+	\item $y^2 = 2px$ - параболический цилиндр. 
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Параболический цилиндр}
+		\end{center}
+\end{enumerate}
+
+\subsection{Конические поверхности}
+\setcounter{equation}{0}
+S - \textbf{коническая поверхность с вершиной в начале кординат}, если $\forall M_0 \in S$ вся прямая содержит O и $M_0 \in S$\\
+F(x, t, z) - \textbf{однородная функция порядка K}, если $\forall t \in \R \; F(tx, ty, tz) = t^k F(x, y, z)$\\
+\textbf{Теорема.}
+\begin{equation}
+	F(x, y, z) = 0
+\end{equation}
+F - однородная функция порядка K задаёт коническую поверхность с вершиной в O. 
+\begin{tcolorbox}
+	\[ M_0 = (x_0, y_0, z_0) \in S \]
+	\[ F(x_0, y_0, z_0) = 0 \]
+	\[ M_0, O \in L\]
+	\[ \overline{q} = \{x_0, y_0, z_0\} \]
+	\[ L:\;
+	\begin{cases}
+	x = 0 + x_0t\\
+	y = 0 + y_0t\\
+	z = 0 + z_0t
+	\end{cases}, M \in L 
+	\]
+	OXYZ - ДПСК 
+	\[ F(x, y, z) = F(x_0t, y_0t, z_0t) = t^k F(x_0, y_0, z_0) = 0 \]
+	\[ M_0 \in S \]
+\end{tcolorbox}
+
+\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 0 \]
+\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Коническая поверхность}
+		\end{center}
+Сечение плоскостью Z=C - выражденый элипс. 
+
+\subsection{Поверхности вращения}
+\setcounter{equation}{0}
+S - \textbf{поверхность вращения вокруг оси Oz}, если $\forall M_0(x_0, y_0, z_0) \in S$ вся окружность лежащая в плоскости $Z = Z_0$ с центром в $(0, 0, z_0)$ и радиусом $R = \sqrt{x_0^2 + y_0^2 + z_0^2} \in S$\\
+\begin{equation}
+	F(x^2, y^2, z^2) = 0 
+\end{equation}
+\textbf{Теорема.} S задаёся уравнением (1), то S - поверхность вращения вокруг Oz.
+\begin{tcolorbox}
+	\[ M_0 = (x_0, y_0, z_0)\in S \]
+	\[ F(x_0^2 + y_0^2, z_0^2) = 0 \]
+	% \includegraphics{}
+	\[ z = z_0 \]
+	\[R = \sqrt{x^2 + y^2} = \sqrt{x_0^2  y_0^2} \]
+	\[ M \in S \Rightarrow F(x^2 + y^2, z) = F(x_0^2+y_0^2, z_0) = 0 \]
+	\[ x^2 + y^2 - z^2 \]
+\end{tcolorbox}
+
+\begin{enumerate}
+	\item Элипсоид 
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Элипсоид}
+		\end{center}
+		
+		\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1 \]
+		Похож на мяч для регби. Сфера - частный случай элипсоида. \\
+		Сечение любыми плоскостями в пределах элипсоида - элипс. 
+	\item Однополостный гиперболоид
+
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Однополостный гиперболоид}
+		\end{center}
+			\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1 \]
+	\item Двуполостный гиперболоид
+		\begin{center}
+				\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Двуполостный гиперболоид}
+		\end{center}
+		\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = -1 \]
+
+	\item Элиптический параболоид 
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Элиптический параболоид}
+		\end{center}
+		\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 2pz \]
+	\item Гиперболический параболоид
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/Плоскости/Поверхности вращения/Гиперболический параболоид}
+		\end{center}
+		\[ \frac{x^2}{a^2} - \frac{y^2}{b^2} = 2pz \]
+		Седло ;)
+\end{enumerate}
+
 
 \end{document}
