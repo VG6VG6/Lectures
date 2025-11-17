@@ -223,15 +223,157 @@ $ [z]_g$ - со Старших разрядов. \\
 	i=3 & 1 - 1 & 0 &  0.0000000 & $[y_3-y_2] \cdot 2^{-2} [x]_g$\\
 \end{tabular}
 
+\subsection{Деление}
+\begin{itemize}
+	\item Деломое 
+	\item Делитель 
+	\item Частное
+\end{itemize}
 
+Формат - фиксированная запятая
+\[
+\begin{cases}
+	[X]_n = Sign_x \; x_1\; ...\; x_n \\
+	[Y]_n = Sign_y \; y_1\; ...\; y_n
+\end{cases} - < 1 
+\]
 
+\[ [Z]_n = [X]_n / [Y]_n (1 < 2) \]
+\[ [Z]_n = Sign_z \; y_0\; z_1\; ...\; y_n \]
+$Z_0$ - целая часть
+\[ Sign_z = Sign_x \oplus Sign_y \]
 
+\[ [X]_n = 0 \; x_1\; ...\; x_n \]
+\[ [Y]_n = 0 \; y_1\; ...\; y_n \]
+\[ \alpha_i = 
+\begin{cases}
+	2\cdot\alpha_{i+1} - Y,\; \alpha{i+1} \geq 0\\
+	2\cdot\alpha_{i-1} + Y,\; \alpha{i-1} \leq 0\\
+\end{cases}, if 
+\begin{cases}
+	\alpha_i \geq 0\\
+	\alpha_i < 0
+\end{cases} \Rightarrow
+\begin{cases}
+	z_i= 1\\
+	z_i = 0
+\end{cases}
+\]
 
+\[ \alpha_0 = |X| - |Y| \]
+\[
+\begin{cases}
+	\alpha_0 \geq 0\\
+	\alpha_0 < 0 
+\end{cases} \Rightarrow 
+\begin{cases}
+	z_0 = 1\\
+	z_0 = 0
+\end{cases}
+\]
 
+\[ \alpha_0 = |X| - |Y| \]
+Эту опреацию производим в любом удобном коде, позволяющем складывать чиса разных знаков (прямой код не подходит) 
 
+textbf{В дополнительном коде}\\
+\[
+\begin{cases}
+	[X]_n = x_0 \; x_1\; ...\; x_n \\
+	[Y]_n = y_0 \; y_1\; ...\; y_n
+\end{cases} - < 1 
+\]
+\[ [Z]_n = z_0 \; z_1\; ...\; z_n \]
 
+\[ \alpha_i = 
+\begin{cases}
+	2\cdot\alpha_{i-1} + [-Y]_g,\; \alpha{i+1}\\
+	2\cdot\alpha_{i-1} + [Y]_g,\; \alpha{i-1} \\
+\end{cases}, at 
+\begin{cases}
+	Sign_{\alpha_{i-1}} = Sign_y \\
+	Sign_{\alpha_{i-1}} \not= Sign_y \\
+	\alpha_i < 0
+\end{cases}, if 
+\begin{cases}
+	Sign_{\alpha_{i}} = Sign_y\\
+	Sign_{\alpha_{i}} \not= Sign_y \\
+	\alpha_i < 0
+\end{cases} \Rightarrow
+\begin{cases}
+	z_i= 1\\
+	z_i = 0
+\end{cases}
+\]
+Первый шаг вместо $2\alpha_{i-1} \to [X]_g$\\
+Первый шаг вместо $Sign_{alpha_{i-1}} \to X_0 (Sign_x)$
 
+Пример:
+\[ \begin{cases}
+	[X]_n = 1.1001\\
+	[Y]_n = 1.1011
+\end{cases} \] 
+\[ Sign_z = 1  \oplus 0 = 1 \]
+Переведём в МДК:
+\[ \begin{cases}
+	[X]_n^m = 00.1001\\
+	[Y]_n^m = 00.1011
+\end{cases} \] 
 
+\[\alpha_0: |X| - |Y| \]
 
+\begin{tabular}{c c c c c c c}
+	0&0.&1&0&0&1& x\\
+	0&0.&0&1&0&1& - y\\
+	\hline 
+	1&1.&1&1&1&0& $\alpha_0 < 0 \Rightarrow z_0 = 0$\\
+	1&1.&1&1&0&0& $2\alpha_0$\\
+	0&0.&1&0&1&1& + y\\
+	\hline 
+	0&0.&0&1&1&1& $\alpha_1 > 0 \Rightarrow z_1 = 1$\\
+	0&0.&1&1&1&0& $2\alpha_1$\\
+	0&0.&0&1&0&1& - y\\
+	\hline 
+	0&0.&0&0&1&1& $\alpha_2 > 0 \Rightarrow z_2 = 1$\\
+	0&0.&0&1&1&0& $2\alpha_2$\\
+	1&1.&0&1&0&1& - y\\
+	\hline 
+	1&1.&1&0&1&1& $\alpha_3 < 0 \Rightarrow z_3 = 0$\\
+	1&1.&0&1&1&0& $2\alpha_3$\\
+	0&0.&1&0&1&1& + y\\
+	\hline 
+	0&0.&0&0&0&1& $\alpha_4 > 0 \Rightarrow z_3 = 1$\\
+\end{tabular}
+\[ [Z]_n = 1.0.1101\]
+1 - знак, 0 - целая часть. 
+\[ \begin{cases}
+	[X]_g = 1.0111 \\
+	[Y]_g = 1.0011
+\end{cases} \] 
+\[ [-Y]_g^m = 00.1101 \]
+$ Sign_x = Sign_y$, значит будем вычитать. \\
+\begin{tabular}{c c c c c c c}
+	1&1.&0&1&1&1& \\
+	0&0.&1&1&0&1& -Y\\
+	\hline 
+	0&0.&0&1&0&0& $\alpha_0$  $Sign_{\alpha_0}\not= Sign_y \Rightarrow z_0 = 0$\\
+	0&0.&1&0&0&0& $2\alpha_0$\\
+	1&1.&0&0&1&1& +Y\\
+	\hline 
+	1&1.&1&0&1&1& $\alpha_1$  $Sign_{\alpha_1}= Sign_y \Rightarrow z_1 = 1$\\
+	1&1.&0&1&1&0& $2\alpha_1$\\
+	0&0.&1&1&0&1& -Y\\
+	\hline 
+	0&0.&0&0&1&1& $\alpha_2$  $Sign_{\alpha_2}\not= Sign_y \Rightarrow z_2 = 0$\\
+	0&0.&0&1&1&0& $2\alpha_2$\\
+	1&1.&0&0&1&1& +Y\\
+	\hline 
+	1&1.&1&0&0&1& $\alpha_3$  $Sign_{\alpha_3}= Sign_y \Rightarrow z_3 = 1$\\
+	1&1.&0&0&1&0& $2\alpha_3$\\
+	0&0.&1&1&0&1& -Y\\
+	\hline 
+	1&1.&1&0&0&1& $\alpha_4$  $Sign_{\alpha_4} = Sign_y \Rightarrow z_3 = 1$\\
+\end{tabular}
+\[ [Z]_g = 01011 \]
+Не факт
 
 \end{document}
