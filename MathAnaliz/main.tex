@@ -1547,4 +1547,121 @@ $|\alpha(x)| = |f(x) - A| \Rightarrow f(x) \to A, x \to a$
 	\end{enumerate}
 \end{tcolorbox}
 
+\[ x\to\infty\;\; \forall x > 1 \]
+\[ (\frac{1}{[x]})^{[x]+1} > (\frac{1}{x})^x > (\frac{1}{[x] + 1})^{[x]} \]
+\[ (1 + \frac{1}{n+1})^n \xrightarrow[x\to\infty]{} e \;\;\; (1 + \frac{1}{n})^{n+1} \xrightarrow[x\to\infty]{} e \]
+\[ \forall \eps > 0 \;\; \exists n_\eps` : \forall n > n_\eps` \]
+\[ e - \eps < (1 + \frac{1}{n})^n < e + \eps \]
+\[ \exists n_\eps`` : \forall n > n_\eps`` \]
+\[ e - \eps < (1 + \frac{1}{n})^{n+1} < e + \eps \]
+\[ n_\eps := \max\{ n_\eps`, n_\eps`` \} \]
+\[ \forall n > n_\eps \]
+\[ \forall x > n_\eps + 1 \]
+\[ e - \eps < (1 + \frac{1}{n})^n < (1 + \frac{1}{x})^x < (1 + \frac{1}{n})^{n+1} < e + \eps \]
+
+\begin{enumerate}
+	\item[б) ]  $x\to\-\infty$\\
+		\[ t = -x\;\; t \to +\infty \]
+		\[ (1 + \frac{1}{[x]})^{x} = (1 - \frac{1}{x})^{-t} = (\frac{t}{t - 1})^{t}  = (1 + \frac{1}{t-1})^{t-1} (1 + \frac{1}{t  1}) \xrightarrow[n\to \infty]{} e \]
+	\item[в) ] $x\to \infty$\\
+		\[ \forall \eps > 0\;\; \exists \delta_\eps^+ > 0 \;\; \forall x > \delta_\eps^+ \]
+		\[ \exists \delta_\eps^- > 0:\; \forall x < -\delta_\eps^- \]
+		\[ |(1 + \frac{1}{x})^x - e| < \eps \]
+		\[ \delta_\eps := \max\{ \delta_\eps^+; \delta_\eps^- \} (>0) \]
+		\[ \forall x: |x| > \delta_\eps \]
+\end{enumerate}
+
+\textbf{Следствие.} $(1 + \frac{1}{x})^{\frac{1}{x}} \xrightarrow[x\to 0]{} e$
+\begin{tcolorbox}[title=Доказательство]
+	\[ t = \frac{1}{x} \to \infty,\; x\to0 \]
+	\[ x = \frac{1}{t} \;\;\; (1 + x)^{\frac{1}{x}} = (1 + \frac{1}{t})^t \to e \]
+\end{tcolorbox}
+
+\textbf{Теорема 2.} $ \frac{\sin x}{x} \xrightarrow[x\to0]{} 1 $
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{images/Функции/Особые пределы/sin}
+\end{center}
+
+\[ S = \displaystyle\frac{1}{2} r^2\alpha = \frac{1}{2}r(r \cdot \alpha) = \frac{1}{2}rl \]
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{images/Функции/Особые пределы/sin}
+\end{center}
+\[ S_{OCD} = \frac{1}{2}(\cos^2 x) < \]
+\[ S_{OAB} = \frac{1}{2}\cdot 1\cdot \sin x < \]
+\[ S_{sector\;OAB} = \frac{1}{2} \cdot 1^2 \cdot x \]
+\[ x\cos^2 x < \sin x < x \]
+\[ \forall x, |x| < \frac{\pi}{2}, x\not=0\;\;\;\;\;\;\;x \cos^2 x <\frac{\sin x}{x} < 1 \]
+\[ \forall \R \;\; x \in  0\leq |\sin x| \leq |x| \]
+\[ x \to 0\;\; |x| \to 0 \Rightarrow |\sin x| \to 0 \]
+\[ \forall x,\; |x| < \frac{\pi}{2} \]
+\[ 1 - \sin^2 x = \cos^2 x< \frac{\sin x}{x} < 1,\;\; x \to 0 \]
+\[ \Rightarrow \frac{\sin x}{x} \to 1 \]
+
+\subsection{Монотонные функции.}
+$ f(x)$ на $<a,b>$ \\
+\textbf{Определение.} $f(x)\uparrow$ на $<a,b>$, если $\forall x`, x`` \in <a,b> x` < x`` \Rightarrow f(x`) \leq f(x``)$ (монотонно возрастает нестрого)\\
+\textbf{Определение.} $f(x)\uparrow$ на $<a,b>$, если $\forall x`, x`` \in <a,b> x` < x`` \Rightarrow f(x`) < f(x``)$ (монотонно возрастает строго)\\
+Убываение - анал.\\
+
+\textbf{Теорема.} $f(x) \uparrow$ на $(a,b) \Rightarrow $
+\begin{enumerate}
+	\item Если F(x) ограничена снизу на $(a, b)$
+		\[ \exists \lim_{x \to a+0} f(x) = \inf_{(a,b)} f(x) \]
+	\item Если F(x) ограничена сверху на $(a, b)$
+		\[ \exists \lim_{x\to b-0} f(x) = \sup_{(a,b)} f(x) \]
+	\item Если F(x) не ограничена сверху на $(a, b)$
+		\[ f(x) \xrightarrow[x \to b - 0]{} +\infty \]
+	\item Если F(x) не ограничена снизу на $(a, b)$
+		\[ f(x) \xrightarrow[x \to a + 0]{} -\infty \]
+\end{enumerate}
+\begin{tcolorbox}[title=Доказательство]
+	При $x\to a + 0$
+	\begin{enumerate}
+		\item $f(x)$ ограничена снизу на $(a, b)$
+			\[ \Rightarrow \exists \inf_{(a,b)} f(x)=:A\in\R \]
+			- это Т Вейерштрасса
+			\[ \forall \eps > 0  \]
+			\begin{center}
+				\includegraphics[width=0.5\linewidth]{images/Функции/Монотонность/Док-во ограниченности}
+			\end{center}
+			$A + \eps$ - не нижняя грань $f(x)$ на $(a,b)$, т.е. 
+			\[ \exists x_\eps \in (a, b) : A\leq f(x\eps) < A + \eps \Rightarrow x \in (a, x_\eps) \]
+			\[ A \leq f(x) \leq f(x_\eps) < A + \eps \Rightarrow \]
+			\[ |f(x) - A| < \eps \]
+			\[ \delta_\eps := x_\eps - a > 0 \]
+			\[ \forall x: 0 < x - a < \delta_\eps \]
+		\item[2.] $f(x)$ не ограничена снизу на (a,b)
+			\[ \forall \eps > 0 \exists x_\eps \in (a, b): f(x_\eps) < -\eps \]
+			\begin{center}
+				\includegraphics[width=0.5\linewidth]{images/Функции/Монотонность/Док-во ограниченности3}
+			\end{center}
+			\[ \forall x \in (a, x_\eps) \]
+			\[ f(x) \leq f(x_\eps) < -\eps - \eps \]
+			\[ \delta_\eps := x_\eps-a > 0 \]
+			\[ \forall x \in (a, a+\delta_\eps) \]
+			т.е. $f(x) \xrightarrow[x \to a + 0]{} \infty$\\
+			\textbf{Следствие 1.} Для $f(x) \downarrow$ на $(a, b)$\\
+			\textbf{Следствие 2.} $f(x)$ монотонна на $(a, b)$
+			\[ \forall x_0 \in (a, b) \;\; \exists \lim_{x\to x_0 + 0} f(x) \;\; \exists \lim_{x\to x_0 - 0} f(x) \]
+	\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Непрерывность в точке}
+\textbf{Определение.} $f(x)$ на $U_a \;\; f(x)$ непрерывна, если $\lim_{x\to a} f(x) = f(a)$ (по Коши) \\
+Определение непрерывности по Гейне: Он должен ответить на этот вопрос на след лекции!!
+\textbf{Определение.} $f(x)$ на $\mathring U_a$ разрывна в c, если 
+\begin{enumerate}
+	\item $f(x)$ не определена в (.) a
+	\item $f(x)$ не непрерывна в (.) a
+\end{enumerate}
+\textbf{Определение.} a - точка разрыва
+\begin{enumerate}
+	\item Если $\exists \lim _{x\to a+ 0} f(x) \& \exists \lim _{x\to a-0} f(x)$, то a - точка разрыва I рода. 
+		\begin{enumerate}
+			\item Если $\lim _{x\to a+ 0} f(x) = \lim _{x\to a+ 0} f(x)$, то у $f(x)$ в (.) c - устранимый разрыв. 
+			\item Иначе - неустранимый
+		\end{enumerate}
+	\item Если хотя-бы 1 из пределов не существует, то разрыв II рода.
+\end{enumerate}
+
 \end{document}

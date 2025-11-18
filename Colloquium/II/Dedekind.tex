@@ -1,4 +1,4 @@
-\subsection{Дедекиндовы сечения. Определение действительных чисел по Дедекинду. Полнота $\R$ по Дедекинду. (Полноты я не нашёл)}
+\subsection{Дедекиндовы сечения. Определение действительных чисел по Дедекинду. Полнота $\R$ по Дедекинду.}
 
 \subsubsection{Неполнота рациональных чисел.}
 $r = \cfrac{p}{q},p\in \Z,q\in\N $\\
@@ -114,10 +114,111 @@ $[\sqrt{2} - \cfrac{1}{n}, \sqrt{2} + \cfrac{1}{n}]$
 $\{I_n\} = [\cfrac{1}{2n},\cfrac{1}{2n}]\;\; \{I_n`\} = [\cfrac{1}{2n+1},\cfrac{1}{2n+1}] \;\; \{I_n``\} = [0,\cfrac{1}{2n+1}]$ Они определяют 1 и то же число.
 \subsubsection*{Пример 2-х последовательностей стягивающихся к $\sqrt{2}$}
 $[\sqrt{2} - \cfrac{1}{n}, \sqrt{2} + \cfrac{1}{n}]$
-\subsection{Лемма об отделимости.}
 
+\subsubsection{Полнота по Дедекинду}
+\textbf{Полнота по Дедекинду} - это непустота центрального класса. 
+
+\subsection{Лемма об отделимости.}
+\subsubsection{Отделимость множеств}
+\[ A, B \subset \R, A, B \not= \varnothing,\; \forall a \in A, \forall b \in B \]
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{II/images/Отделимость}
+\end{center}
+\[ a \leq b \Rightarrow \exists c \in \R: \]
+\[ \forall a \in A, \forall b \in B \;\; a \leq c \leq b \]
+
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item $ A \cap B \not= \varnothing \;\; \exists c \in Aa \cap B $
+	\[ 
+	\begin{cases}
+		c \in A \Rightarrow \forall b \in B \;\; c \leq b\\
+		c \in B \Rightarrow \forall a \in A \;\; a \leq c
+	\end{cases} \Rightarrow \forall a \in A \; \forall b \in B \;\; a \leq c \leq b
+	\]
+	Как доп вопрос может спросить про единственность $c$. Там очев, так что сами. 
+
+	\item $ A\cap B = \varnothing\; \forall a \in A, \forall b \in B $
+		$a \leq b$, если бы $a=b \in A\cap B \Rightarrow a < b$ 
+
+Пусть множется A и B непустые.
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{II/images/Отделимость2}
+\end{center}
+\[ B` := \{ y \in \R:\; \exists b \in B: b \leq y \} \]
+\[ \forall b \in B \;\; b \leq b \Rightarrow b \in B` \]
+\[ \forall a \in A \; \forall b \in B\;\; a < b \Rightarrow a \not\in B` \Rightarrow A\cap B =\varnothing \]
+\[ A` := \R \setminus B` \supset A \Rightarrow A` \not= \varnothing \]
+\[ A` \cup B` = \R \]
+\[ \forall y \in B` \Rightarrow \exists b \in B: b \leq y \]
+\[ \forall x \in A` \;\; \forall b \in B \;\; x \leq b \]
+Если бы не так, то $\exists b \in B: x \geq b \Rightarrow x \in B` \Rightarrow x \in A`$
+\[ \forall x \in A` \; \forall y \in B` \; \exists b_y: x < b_y \leq y \]
+Свойства:
+\begin{enumerate}
+	\item $A`,B` \not= \varnothing$
+	\item $A` + B` = \R$ 
+	\item $\forall x \in A`, \forall y \in B` \;\; x < y$
+\end{enumerate}
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{II/images/Отделимость3}
+\end{center}
+\[ c_1 = \frac{a_1 + b_1}{2} \]
+\[ c_1 \in \Q \]
+Если $c_1 \ in A`$, то 
+\[ [a_2, b_2] := [c_1, b_1] \]
+Если $c_1 \in B`$, то $[a_2, b_2] := [a_1, c_1]$
+\[ [a_2, b_2] \supset [a_1, b_1] \]
+Длинна $[a_2, b_2] = \frac{1}{2}$ длинны $[a_1, b_1]$
+\[ c_2 = \frac{a_2 + b_2}{2} \]
+$[a_3, b_3]$ тот из отрезков $[a_2, c_2]$ и $[c_2, b_2]$, концы которого $a_3 \in A`$ \; $b_3 \in B`$\\ 
+... \\ 
+$[a_n, b_n]$ длиинна $[a_m, b_n] = \frac{1}{2}$ длинна $[a_{n-1}, b_{n-1}] = \frac{1}{2^{n-1}}$ длина $[a_1, b_1] \xrightarrow[n\to \infty]{} 0$ 
+\[ \forall a_n \in A`, \forall b_n \in B` \Rightarrow \exists c \in \R \; \forall n \; c \in [a_n, b_n]\]
+\[ \forall n\;\; a_n \leq c \leq b_n \]
+\[ \forall x \in A`, \forall y \in B` \;\; x\leq c \leq y \]
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{II/images/Отделимость4}
+\end{center}
+C разделяет A` и B` $\Rightarrow$ разделяет A и B. 
+
+	\end{enumerate}
+\end{tcolorbox}
+
+
+Из отделимости следует существование точной верхней грани. 
+
+
+\textbf{Следствие.} Если E ограничено сверху, то существует точная верхняя грань E. 
+\[ M = \sup E \]
+\textbf{Следствие.} Если E ограничено снизу, то существует точная нижняя грань E. 
+\[ m = \inf E \]
+\begin{tcolorbox}[title=Доказательство]
+	E ограничено сверху, M - множество верхних граней. $\forall x \in E, \forall m \in M$
+	\[ x \leq m \Rightarrow \exists m` \in \R \]
+	\[ \forall x \in E, \forall m \in M \;\; x \leq m` \leq m \]
+\end{tcolorbox}
 \subsection{Точная верхняя и нижняя грани ограниченных множеств из В. Теорема Вейерштрасса о существовании точной верхней грани ограниченного сверху множества как следствие леммы об отделимости (принцип полноты В по Вейерштрассу).}
 
+\subsubsection{Точная верхняя грань}
+\[ E \subset \R, E \not=  \varnothing \]
+\begin{tcolorbox}
+	\textbf{Определение.} E ограничено сверху, если $\exists M \in \R, \forall x \in E: x \leq M$
+
+
+	M - Верхняя грань (граница)
+\end{tcolorbox}
+Ограниченность снизу анологична.
+\begin{tcolorbox}
+	\textbf{Определение.} M - точная верхняя грань E, если 
+	\begin{enumerate}
+		\item M - верхняя граница E 
+		\item M - наименьшая верхняя граница, т.е. $\forall M` < M\; \exists x_M \in E: x_M > M`$
+			
+	\end{enumerate}
+\end{tcolorbox}
+
+\subsubsection{Полнота по Вейерштрассу}
 \begin{tcolorbox}
     \textbf{Принцип полноты множества по Вейерштрассу}
     Принцип полноты множества по Вейерштрассу означает, что любое ограниченное сверху множество имеет точную верхнюю грань     
@@ -154,9 +255,31 @@ $[\sqrt{2} - \cfrac{1}{n}, \sqrt{2} + \cfrac{1}{n}]$
     \end{enumerate}
 \end{tcolorbox}
 
-\subsection{Последовательности стягивающихся отрезков с действительными концами. Теорема Кантора о стягивающихся отрезках с действительными концами (принцип полноты ® по Кантору).}
 
-\subsection{Полнота К по Дедекинду как следствие принципа стягивающихся отрезков.}
+\subsection{Последовательности стягивающихся отрезков с действительными концами. Теорема Кантора о стягивающихся отрезках с действительными концами (принцип полноты ® по Кантору).}
+\subsubsection{Принцип вложенных отрезков (полнота $\R$ по Кантору)}
+\[ \forall n \; A_n \not= \varnothing \]
+\begin{enumerate}
+	\item $A_1 \subset A_2 \subset A_3 \subset ... \subset A_k $\\
+		\[\cap_{n=1} A_n \not= \varnothing\]
+	\item $A_1 \subset A_2 \subset A_3 \subset ... \subset A_n \subset A_{n+1} \subset ... $\\
+		\begin{enumerate}
+			\item $A_k := \{ x \in \R,\; x \geq k \}$\\
+				\[ \cap_{k=1}^{\infty} A_k \not= \varnothing \]
+			\item $A_k = (0, \frac{1}{k}]$
+				\begin{center}
+					\includegraphics[width=0.5\linewidth]{II/images/Кантор}
+				\end{center}
+				\[ \cap_{k=1}^{\infty} A_k = \varnothing \]
+				\[ \forall k \; x \not\in A_k \]
+			\item $A_k := (-\frac{1}{k};\frac{1}{k})$
+				\[ \cap_{k=1}^{\infty} A_k = 0 \]
+		\end{enumerate}
+\end{enumerate}
+\textbf{Теорема.} $ [a_1, b_1] \supset [a_2, b_2] \supset ... \supset [a_n, b_n] \supset [a_{n+1}, b_{n+1}] \supset ... $
+
+\subsection{Полнота $\R$ по Дедекинду как следствие принципа стягивающихся отрезков.}
+
 
 \subsection{Счётность множества, рациональных чисел и несчётность множества действительных чисел.}
 
