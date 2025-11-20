@@ -1664,4 +1664,143 @@ $ f(x)$ на $<a,b>$ \\
 	\item Если хотя-бы 1 из пределов не существует, то разрыв II рода.
 \end{enumerate}
 
+\textbf{Примеры.}
+\begin{enumerate}
+	\item $\sign x = (sgn\ x) = \begin{cases}
+		1, x > 0\\
+		0,x=0\\
+		-1,x<0
+	\end{cases}$\\
+	x = 0 $\Rightarrow$ разрыв I рода. 
+	\item $\sign ^2 x \;\; x = 0$ - устранимый разрыв
+	\item $y = \sin \frac{1}{x}$, $x\not= 0 $\\
+		$x = 0$ - ограниченный разрыв 2 рода. Предела здесь нет. 
+	\item $y = \frac{1}{x} \sin \frac{1}{x}$, $x = 0$ - не ограничена разрыв 2 рода
+	\item $f(x) \ \begin{cases}
+		\frac{1}{x}, x\not=0\\
+		0,x=0 
+	\end{cases},\;\; x=0$ - бесконечный разрыв 2 рода
+	\item Если f(x) монотонна на <a,b> то у f(x) могут быть только разрывы 1 рода. 
+\end{enumerate}
+\textbf{Определение.} f(x) непрерывна в $x_0$ справа, если $\exists \lim_{x \to x_0 + 0} f(x)$ и $\lim_{x \to x_0  + 0} f(x) = f(x_0)$\\
+\textbf{Определение.} f(x) непрерывна в $x_0$ слева, если $\exists \lim_{x \to x_0 - 0} f(x)$ и $\lim_{x \to x_0  - 0} f(x) = f(x_0)$\\
+\textbf{Пример.} $f(x) = [x], x \in \R$
+Непрерывна справа на $\R$ \\
+\textbf{Теорема 1.} $f, g$ неопределены в $x_0 \Rightarrow f \pm g, f \cdot g, \frac{f}{g}$ (если $f(x_0) \not=0$) неопределена в $x_0$. \\
+\textbf{Теорема 2.} f непрерывна в $f(x_0) \not= 0$, то f(x) сохраняет знак в некоторой окрестности $U_{r_0}$\\
+\textbf{Теорема 3.} $y = f(x)$ неопределена в $x_0$, $x = \phi(t)$ непрерывна в $t_0, \phi(t_0) = x_0 \Rightarrow f(\phi(t))$ - непрерывна в $t_0$
+\begin{tcolorbox}[title=Доказательство]
+	\[ \forall \eps > 0\; \exists \eta_\eps > 0: \forall x \;\; |x - x_0| < \eta_\eps  \Rightarrow |f(x) - f(x_0)| < \eps  \]
+	\[ \exists \delta_{\eta_\eps} (=\delta_\eps): \forall t \;\; |t - t_0| < \delta_\eps \;\; |\phi(t) - \phi(t_0)| < \eta_\eps \]
+	\[ \forall t |t - t_0| < \delta_\eps \]
+	\[ |f(\phi(t)) - f(\phi(t_0)) | = |f(x_t) - f(x_0)| < \eps \]
+	По выбору $\delta_\eps \;\; |x_t -  x_0| < \eta_\eps $
+\end{tcolorbox}
+
+\subsection{Бесконечно малые и бесконечно больше функции}
+
+\textbf{Определение.} $\alpha(x)$ на $\mathring U_a$ - б.м. при $x \to a$, если $\alpha_x \xrightarrow[x\to a]{} 0$
+\[ \forall \eps > 0 \;\; \exists \delta_\eps > 0: \forall x\; 0 < |x - a| < \delta_\eps \;\; |\alpha(x) < \eps| \]
+\textbf{Теорема 1.} 
+\begin{enumerate}
+	\item $\alpha(x), \beta(x)$ - б.м., при $x\to a \Rightarrow \alpha(x) \pm \beta(x)$ б.м. при $x\to a$
+	\item $\alpha(x) \xrightarrow[x\to a]{} 0, f(x) \in B(U_a)$ 
+		$\Rightarrow \alpha(x) f(x)$ - б.м., при $x \to a$
+\end{enumerate}
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+	\item \[ \forall \eps > 0\; \exists \delta_\eps` > 0\;\; \forall x \;\; 0 < |x - a| < \delta_\eps` \;\; |\alpha(x)|< \frac{\eps}{2} \] 
+	\[ \exists \delta_\eps`` > 0\;\; \forall x \;\; 0 < |x - a| < \delta_\eps`` \;\; |\alpha(x)|< \frac{\eps}{2} \]
+	\[ \delta_\eps = \min\{ \delta_\eps`,\delta_\eps`` \} > 0 \;\; \forall x \;\; 0 < |x - a| < \delta_\eps \]
+	\[ |\alpha(x) \pm \beta(x)| \leq |\alpha(x)| + |\beta(x)| < \frac{\eps}{2} + \frac{\eps}{2} = \eps \]
+	\item анал
+	\end{enumerate}
+\end{tcolorbox}
+
+\textbf{Теорема 2.} 
+\begin{enumerate}
+	\item  $f(x) \xrightarrow[x\to a]{} A \Leftrightarrow f(x) = A + \alpha(x) $\\
+\textbf{Определение.} $f:\mathring U_a, f(x)$ - б.б. при $x\to a$, 
+\[ \forall \eps > 0 \;\; \exists \delta_\eps > 0: \forall x \;\; 0 < |x - a| < \delta_\eps \;\; |f(x)| > \eps,\; f(x) \xrightarrow[x\to a]{} \infty \]
+	\item $f(x) \to +\infty,\; \forall \eps > 0\; \exists \delta_\eps > 0: \forall x \; 0 < |x - a| < \delta_\eps \;\; f(x) > \eps$
+	\item $f(x) \to -\infty \;\; |f(x)| < -\eps$
+\end{enumerate}
+\textbf{Теорема 3.} 
+\begin{enumerate}
+	\item $f(x) \xrightarrow[x\to a]{} \infty  \Leftrightarrow \frac{1}{f(x)} \xrightarrow[x\to a]{} 0$
+	\item $\exists \mathring U_a: \alpha(x) \not=0, x\in \mathring U_a$\\
+	\[ \alpha(x) \xrightarrow[x\to a]{} 0 \Leftrightarrow \frac{1}{\alpha(x)} \xrightarrow[x\to a]{} \infty \]
+\end{enumerate}
+
+\subsection{Непрерывность на промежутке}
+\textbf{Определение.} f(x) непрерывность на <a,b>, если f(x) на непрерывность в $\forall x \in <a, b>$ (относительно <a,b>), $f(x) \in C<a,b>$\\
+C - непрервсноть на отрезке. \\
+B - ограниченная\\
+Пример \\
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{images/Функции/Непрерывность/Непрерывность на промежутке}
+\end{center}
+
+\textbf{Теорема 1. Первая теорема Вейерштрасса} $f(x) \in C[a,b] \Rightarrow f(x) \in B[a, b] $ 
+\begin{tcolorbox}[title=Доказательство от противного]
+	Предположим, что $f(x) \not\in B([a,b])$, т.е. $\forall M \; \exists x_M \in [a, b] \; |f(x)| > M$
+	\[ \{ x_n \}: \forall n \in \N \; x_n \in [a,b] |f(x_n)| > n \]
+	\[ \{ x_n \} \supset [a,b] \Rightarrow \{ x_n \} \]
+	- ограниченная последовательность. Тогда по т. Б-В \\
+ 	$\Rightarrow \exists \{x_n\}$ - подпоследовательность $x_{n_k} \xrightarrow[k\to\infty]{} x_0 \in [a,b]$\\
+	т.к. f(x) - непрерывна в $x_0$, то 
+	\[ f(x_{n_k}) \xrightarrow[k\to\infty]{} f(x_0) \in \R \]
+	\[ \forall k \; |f(x_{n_k})| > n_k \geq k \xrightarrow[k\to\infty]{} \infty \]
+	Противоречие
+\end{tcolorbox}
+
+\textbf{Теорема 2. Вторая теорема Вейерштрасса} $f(x) \in C[a,b]$, то f(x) достигает на [a,b] max и min значений. 
+\begin{tcolorbox}[title=Доказательство от противного]
+	По принципу полноты $\R$ по Вейерштрассу
+	\[ \exists \sup_{[a,b]} f(x) = M \in \R \]
+	По предположению $x \in [a,b]$ $f(x) < M$\\
+	т.к. $M = \sup_{[a,b]} f(x), \forall \eps > 0$ 
+	\[ \exists x_\eps \in [a,b] \;\;\; f(x_\eps) > M -\eps \]
+	\[ \{x_n\}: \forall n, x_n\in[a,b]\ \&\ f(x_n) > m - \frac{1}{n} \]
+	Последовательность ограниченна $\Rightarrow_{B-W} \forall k\; \exists \{x_{n_k}\}$ сходящаяся
+	\[ x_n \xrightarrow[k\to\infty]{} x_0\in[a,b] \]
+	\[ M - \frac{1}{k} \leq M - \frac{1}{n_k} < f(x_{n_k}) < M \Rightarrow f(x_{n_k}) \to M \]
+	т.к. f(x) неопределена в $x_0$,
+	\[ f(x_{n_k}) \xrightarrow[k\to\infty]{} f(x_0) = M \]
+\end{tcolorbox}
+\textbf{Теорема 3.} $f(x) \in C[a,b], f(a)\cdot f(b) < 0 \Rightarrow c \in (a,b): f(x) = 0$
+\begin{tcolorbox}[title=Доказательство]
+	Деление отрезка пополам. 
+	\[ [a_0,b_0] \ [a,b] \]
+	\begin{enumerate}
+		\item 
+	\[ c_0 := \frac{a_0+b_0}{2} \]
+	Если $f(c_0) \not= 0$, то следующий шаг:\\
+	$[a_1,b_1]$ - тот из отрезков $[a_0, c_0]$ и $[c_0, b_0]$ на концах которого у f(x) разные знаки. 
+	\[ c_1 := \frac{a_1 + b_1}{2} \]
+	... \\
+	Возможности: 
+	\begin{enumerate}
+		\item на некотором шаге $f(c_k) = 0$ 
+		\item на каждом шаге $f(c_k) \not=0$ \\
+		Тогда \\
+		\[ [a_0,b_0] \supset [a_1, b_1] \supset ... \supset [a_n,b_n] \] 
+		Вложенные стягивающиеся отрезки
+		\[ \cap_n [a_n,b_n] = c\in [a,b] \]
+		Проверим, что $f(c) = 0$, если $f(c) \not=0 \Rightarrow \exists U_c$ в которой $f(x)$ сохраняет знак $\exists N$
+		\[ \forall n > N \;\; [a_n,b_n] \subset U_c \]
+	\end{enumerate}
+	\end{enumerate}
+\end{tcolorbox}
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
