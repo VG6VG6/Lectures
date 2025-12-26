@@ -1,0 +1,21 @@
+\subsection{Теорема о зажатой последовательности (о трёх последовательностях).}
+
+\begin{tcolorbox}
+	\textbf{Теорема.} 
+	\[ \{a_n\},\{b_n\},\{c_n\} \forall n\; a_n\leq b_n\leq c_n,\; \lim_{n\to \infty} a_n = \lim_{n\to \infty} c_n = a \Rightarrow \lim_{n\to \infty} b_n = a \]
+\end{tcolorbox}
+\begin{tcolorbox}[title=Доказательство]
+	\[ \lim_{n\to\infty} a_n = a \Leftrightarrow \forall \eps > 0\; \exists n_\eps` \; \forall n > n_\eps` \; |a_n - a| < \eps \] 
+	\[ \lim_{n\to\infty} c_n = a \Leftrightarrow \forall \eps > 0\; \exists n_\eps`` \; \forall n > n_\eps`` \; |c_n - a| < \eps \] 
+	\[ n_\eps = \max\{ n_\eps`, n_\eps``\} \]
+	\[ \forall \eps > 0\;\; \forall n > n_\eps \]
+	\[ 
+	\begin{cases}
+		a - \eps < a_n < a + \eps\\
+		a - \eps < c_n < a + \eps\\
+		a_n \leq b_n \leq c_n 
+	\end{cases} \Rightarrow 
+	a - \eps < a_n \leq b_n \leq c_n < a + \eps 
+	\]
+	\[ \forall \eps > 0\;\; \exists n_\eps \;\; \forall n > n_\eps |b_n - a| <\eps \Leftrightarrow \lim_{n\to \infty} b_n = a \]
+\end{tcolorbox}

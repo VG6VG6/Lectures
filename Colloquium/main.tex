@@ -10,6 +10,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
 \usepackage[english, russian]{babel}
+\usepackage{cmap}
+
 
 \usepackage[margin=2cm]{geometry}
 \usepackage[most]{tcolorbox}
@@ -37,7 +39,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\eps}{\varepsilon}
-
+\newcommand{\sign}{\text{sign\ }}
 \graphicspath{ {./images/} }
 
 \begin{document}
@@ -55,10 +57,11 @@
 \section{Последовательность и ряды.}
 
 \input{III/sequences}
+\input{III/Переход}
+\input{III/3Последовательности}
+\input{III/Знак}
 
-\subsection{\sout{Предельный переход в неравенствах для последовательностей.}}
-\subsection{\sout{Теорема о зажатой последовательности (о трёх последовательностях).}}
-\subsection{\sout{Теоремы о сохранении знака сходящейся последовательностью и о сходимости модулей.}}
+
 
 \input{III/infinitesimal_sequences}
 
@@ -92,17 +95,5 @@
 \input{IV/7}
 \input{IV/8}
 \input{IV/9}
-\input{IV/10}
-\input{IV/11}
-\input{IV/12}
-\input{IV/13}
-\input{IV/14}
-\input{IV/15}
-\input{IV/16}
-\input{IV/17}
-\input{IV/18}
-\input{IV/19}
-\input{IV/20}
-\input{IV/21}
 
 \end{document}

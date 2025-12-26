@@ -36,7 +36,46 @@ $|a+b| \leq |a| + |b|$
 \begin{tcolorbox}[title=Следствие, breakable]
 $$||z_1| - |z_2|| \leq |z_1 \pm z_2| \leq |z_1| + |z_2|$$
 \end{tcolorbox}
-\subsection{-Формулы Моргана}
+\subsection{Формулы Моргана}
+\begin{enumerate}
+	\item $A(B+C) = AB + AC$
+	\item $A + BC = (A + B)(A + C)$
+\end{enumerate}
+
+\begin{tcolorbox}[title=Доказательства]
+	\begin{enumerate}
+	\item \begin{itemize}
+    \item $A(B+C) \subset AB + AC$\\
+    $\forall x \in A(B+C) \Rightarrow x \in A \text{ и } x \in B + C$
+    \begin{enumerate}
+        \item Если $x \in B \Rightarrow$ так как $x \in A$, то $x \in AB \Rightarrow x \in AB + AC$
+        \item Если $x \in C \Rightarrow$ так как $x \in A$, то $x \in AC \Rightarrow x \in AB + AC$
+    \end{enumerate}
+    
+    \item $AB + AC \subset A(B+C)$\\
+    $\forall x \in AB + AC \Rightarrow x \in AB \text{ или } x \in AC$
+    \begin{enumerate}
+        \item Если $x \in AB \Rightarrow x \in A \text{ и } x \in B$. Так как $x \in B \Rightarrow x \in B + C$. Итог: $x \in A$ и $x \in B+C \Rightarrow x \in A(B+C)$
+        \item Если $x \in AC \Rightarrow x \in A \text{ и } x \in C$. Так как $x \in C \Rightarrow x \in B + C$. Итог: $x \in A$ и $x \in B+C \Rightarrow x \in A(B+C)$
+    \end{enumerate}
+\end{itemize}
+	\item \begin{itemize}
+		\item $A + BC \subset (A + B)(A + C)$\\
+			$\forall x \in A + BC$
+			\begin{enumerate}
+				\item Если $x \in A \Rightarrow x \in A + B, x \in A + C \Rightarrow x \in (A + B)(A + C)$
+				\item Если $x \in BC \Rightarrow x \in B$ и $x \in C \Rightarrow \forall A\; x \in A + B$ и $x \in A + C \Rightarrow x \in (A + B)(A + C)$
+			\end{enumerate}
+				\item $(A + B)(A + C) \subset A + BC $\\
+					$\forall x \in (A + B)(A + C) \Rightarrow x \in A + B$ и $x \in A + C $
+	\begin{enumerate}
+		\item $x \in A \Rightarrow x \in A + BC$
+		\item $x \not\in A \Rightarrow x \in B$ и $x \in C \Rightarrow x \in BC \Rightarrow \forall A x \in A + BC$
+	\end{enumerate}
+	\end{itemize}
+	\end{enumerate}
+\end{tcolorbox}
+
 \subsection{Метод математической индукции (ММИ). Прямая индукция. Формула Бинома Ньютона}
 
 \subsubsection{Метод математической индукции (ММИ)}
