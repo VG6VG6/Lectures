@@ -1,16 +1,40 @@
 \subsection{Критерий Коши существования предела последовательности.}
-\begin{tcolorbox}
-    $\{a_n\}$ - сходится $\Leftrightarrow \{a_n\}$ - фундаментальна.
-\end{tcolorbox}
 
-\begin{tcolorbox}[title=Доказательство]
-    Взять с записи
-\end{tcolorbox}
+$\{a_n\}$ - сходится, если
+\[ \exists a\;\; \forall \eps > 0\;\; \exists n_\eps:\; \forall n > n_\eps\;\; |a_n - a| < \eps \]
 
-\subsubsection{Фундоментальные последовательности.}
+\subsubsection*{Фундоментальные последовательности.}
 \begin{tcolorbox}
     \textbf{Последовательность $\{a_n\} $фундаментальна} - если
     \[\forall \eps>0 \;\; \exists n_\eps : \forall n, m > n_\eps \;\; |a_n-a_m| < \eps\]
     \[ \forall \eps>0 \;\; \exists n_\eps : \forall n > n_\eps,\forall  p \;\; |a_{n+p}-a_n| < \eps \]
 \end{tcolorbox}
+
+\subsubsection*{Критерий Коши}
+\begin{tcolorbox}
+    $\{a_n\}$ - сходится $\Leftrightarrow \{a_n\}$ - фундаментальна.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство]
+    $\Rightarrow$ Неравенство треугольника 
+    \[ a_n \to a \Leftrightarrow \forall \eps > 0\;\; \exists n_\eps:\; \forall n > n_\eps\;\; |a_n - a| < \frac{\eps}{2} \]
+    $\forall n, m > n_\eps$
+\[ |a_n - a_m| = |(a_n - a) - (a_m - a)| \leq |a_n - a| + |a_m - a| < \frac{\eps}{2} + \frac{\eps}{2} = \eps \]
+    $\Leftarrow$ теорема Б-В 
+    \begin{enumerate}
+	    \item Если $\{a_n\}$ - фундоментальна, то она огрничена. 
+		    \[ \eps := 1\;\; \exists N_\eps: \forall n > N_\eps\;\; |a_n - a_{N_\eps + 1}| < 1 \Leftrightarrow \]
+		    \[ a_{N_\eps + 1} - 1 < a_n < a_{n_\eps + 1} + 1  \]
+		    Получается, что последовательность ограничена
+	    \item По тоереме Б-В существует сходящаяся подпоследовательность $\{a_{n_k}\}$. Тогда обозначим
+		    \[ a:= \lim_{k\to \infty} a_{n_k} \]
+	    \item Проверим, что $\lim_{n\to \infty} a_{n} = a$\\
+		    \[ \forall \eps > 0\; \exists n_\eps: \forall n,m > n_\eps \;\; |a_n - a_m| < \frac{\eps}{2}  \]
+		    \[ k > n_\eps \Rightarrow n_k > n_\eps \]
+		    При таких $n_k$ $|a_n - a_{n_k}| < \frac{\eps}{2}$  ($a_{n_k} \to a$)
+		    \[ |a_n - a| \leq \frac{\eps}{2} < \eps \]
+		    Доказали
+    \end{enumerate}
+\end{tcolorbox}
+
 

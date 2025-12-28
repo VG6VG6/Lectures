@@ -1,0 +1,28 @@
+\subsection{Бесконечно большие последовательности. Связь бесконечно малых и бесконечно больших последовательностей.}
+
+\textbf{Определение. Бесконечно большая последовательность (бб)} 
+\[\{a_n\} \Leftrightarrow \forall E > 0 \; \exists n_E: \forall n > n_E\; |a_n| > E\]
+$U_{\infty, E} = (-\infty;-E)\cup(E;+\infty)$\\
+$a_n \to \infty$\\
+\textbf{Определение.}
+\begin{enumerate}
+	\item $a_n \to +\infty \Leftrightarrow \forall E > 0\; \exists n_E: \;\forall n > n_E\;\; a_n > E$
+	\item $a_n \to +\infty \Leftrightarrow \forall E > 0\; \exists n_E: \;\forall n > n_E\;\; a_n < -E$
+\end{enumerate}
+Примеры
+\begin{enumerate}
+	\item $(+\infty) + (+\infty) +\infty$
+	\item $(+\infty) - (+\infty)$ - неопределённость
+	\item $\frac{+\infty}{+\infty}$ - неопределённость
+\end{enumerate}
+\textbf{Теорема. Связь бб и бм.}
+\begin{enumerate}
+	\item $a_n \to \infty, \forall n\; a_n \not=0 \Rightarrow \frac{1}{a_n} \to 0$
+	\item $\alpha_n \to 0,\; \forall n\;\alpha_n\not=0\;\; \cfrac{1}{\alpha_n}$ - бб
+\end{enumerate}
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item $a_n \to \infty \Leftrightarrow \forall \eps > 0\; \exists n_\eps: \forall n > n_\eps\;\; |\alpha_n| > \frac{1}{\eps} \Leftrightarrow |\frac{1}{a_n}| < \eps \Rightarrow \{\frac{1}{a_n}\}$ - бм
+		\item $\alpha_n \to 0 \Leftrightarrow \forall E > 0\; \exists n_E: \forall n > n_E\; |\alpha_n| < \frac{1}{E} \Leftrightarrow |\frac{1}{\alpha_n}| > E \Rightarrow \{\frac{1}{\alpha_n}\}$ - бб
+	\end{enumerate}
+\end{tcolorbox}

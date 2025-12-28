@@ -1,0 +1,55 @@
+\subsection{Частичные пределы. Критерий частичного предела.}
+
+\subsubsection*{Определения.}
+a - \textbf{частичный предел} $\{a_n\}$, если $\exists \{a_{n_k}\}:\; a_{n_k} \xrightarrow[]{k \to \infty} a$
+
+$a:= \overline{\lim_{n\to\infty}} a_n$ - \textbf{верхний предел} - максимальный частичный предел
+
+$a:= \underline{\lim_{n\to\infty}} a_n$ - \textbf{нижный предел} - минимальный частичный предел
+
+\subsubsection*{Теорема. Критерий частичного предела.}\\ 
+$a$ - частичный предел $\{a_n\} \Leftrightarrow \forall U_a$ найдётся бесконечно много членов $\{a_n\}$
+\begin{tcolorbox}[title=Доказательство]
+	\begin{itemize}
+		\item Непосредственная проверка определения ($\Rightarrow$)
+			\[ \forall U_a \]
+			т.к. $\exists a_{n_k} \xrightarrow[]{k\to\infty} a$, то по определению предела в окрестностной форме
+			\[ \exists k_{U_a}: \; \forall k > k_{U_a} \;\; a_{n_k} \in U_a\] 
+			Таких $a_{n_k}$ бесконечно много
+		\item В $\forall U_a$ бескоенчно много членов $\{a_n\}$ 
+			\[ (a - 2^{-1}, a + 2^{-1})\;\; \exists a_{n_1} \in (a - 2^{-1}, a + 2^{-1}) \]
+			\[ \exists a_{n_2} \in (a - 2^{-2}, a + 2^{-2}),\; n_2 > n-1 \]
+			\[ ... \] 
+			\[ \exists a_{n_k} \in (a - 2^{-k}, a + 2^{-k}) \]
+			\[ \{a_{n_k}\} \;\; a_{n_k} \to a \]
+	\end{itemize}
+\end{tcolorbox}
+
+\textbf{Теорема.} $\forall \{a_n\} \; \exists \overline{\lim_{n\to\infty}} a_n$ и $\underline{\lim_{n\to\infty}} a_n$
+\begin{tcolorbox}[title=Доказательство]
+	\begin{itemize}
+		\item Докажем для $\overline{\lim} a_n$
+			\begin{enumerate}
+				\item $\{a_n\}$ не ограничена сверху. Это охначает, что $\forall M \; \exists$ бесконечно много членов последовательтности $\{a_n\} \;\; a_{n`} > M$
+					\[ a_{n_1} > 1\]
+					\[ a_{n_2} > 2, n_2 > n_1\]
+					\[ ... \]
+					\[ a_{n_k} > k, n_k > n_{k - 1}\]
+					\[ a_{n_k} \xrightarrow[k\to\infty]{} +\infty \Rightarrow \overline{\lim_{n\to\infty}} a_n = +\infty \]
+				\item $\{a_n\}$ ограничена сверху
+					\begin{enumerate}
+						\item $\{a_n\}$ имеет конечные частичные пределы\\
+							$\mathcal{M}$ - множество конечных частичных пределов, $\mathcal{M} \not= \varnothing$ и ограничено сверху. \\
+							Принцип полноты $\R$ по Вейерштьрассу. 
+							\[ \exists M \in \R,\; M = \sup \mathcal{M} \]
+							M - частичный предел. Внутри окрестности любого элемента из $(M - \eps, M)$ бесконечно много членов $\{a_n\} \Rightarrow M$ - частичный предел. 
+							\[ M = \max \mathcal{M}  \Rightarrow M \overline{\lim_{n\to\infty}} a_n \]
+						\item У $\{ a_n \}$ нет конечных частичных пределов $\Rightarrow a_n \to -\infty$\\
+							Если бы $a_n \not\to -\infty$
+							\[ \exists E > 0: \;\forall N \;\; \exists n_N > N:\; a_{n_N}:\; a_{n_N} \geq -E \]
+							Ограниченная подпоследоваетельнорсть, по B-W существует частичный предел.
+							\[ a_n \xrightarrow[]{n \to \infty} -\infty \Rightarrow -\infty = \overline{\lim_{n\to\infty}} a_n \]
+					\end{enumerate}
+			\end{enumerate}
+	\end{itemize}
+\end{tcolorbox}

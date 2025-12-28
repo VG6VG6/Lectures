@@ -1,0 +1,44 @@
+\subsection{Монотонные последовательности. Критерий сходимости монотонной последовательности.}
+
+\textbf{Определения.}
+\begin{enumerate}
+	\item $\{a_n\} \uparrow$ - \textbf{строго возрастает}, если $\forall n\; a_n < a_{n + 1}$
+	\item $\{a_n\} \uparrow$ - \textbf{возрастает (не убывает)}, если $\forall n\; a_n \leq a_{n + 1}$
+	\item $\{a_n\}\downarrow$ - \textbf{строго убывает}, если $\forall n\; a_n < a_{n + 1}$
+	\item $\{a_n\}\downarrow$ - \textbf{убывает (не возрастает)}, если $\forall n\; a_n \geq a_{n + 1}$
+\end{enumerate}
+\textbf{Определение.} $\{a_n\}$ - монотонна, если что-то из 1-4 выполняется.\\
+\textbf{Теорема.} $\{a_n\} \uparrow$ и ограничена сверху $\Rightarrow a_n$ сходится и $a_n \to \sup a_n$\\
+\textbf{Теорема.} $\{a_n\} \downarrow$ и ограничена снизу $\Rightarrow a_n$ сходится и $a_n \to \inf a_n$
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item $a_n \uparrow$ и ограничена сверху $\Rightarrow$ (по полноте $\R$) $\exists \sup a_n := A$
+    \begin{enumerate}
+        \item $\forall n\;\; a_n \leq A$
+        \item $\forall \eps > 0\; \exists n_\eps:\; a_{n_\eps} > A - \eps$\\
+            $\forall n > n_\eps\;\; A - \eps < a_{n_\eps} \leq a_n \leq A < A + \eps \Rightarrow |a_n - A| < \eps$, т.е. $a_n \to A$
+    \end{enumerate}
+		\item $a_n \downarrow$ и ограничена снизу $\Rightarrow$ (по полносте $\R$ по Вейерштрассу) $\exists \inf a_n := a$
+			\begin{enumerate}
+				\item $\forall n\;\; a_n \geq a$
+				\item $\forall \eps > 0\; \exists n_\eps:\; a_{n_\eps} < a + \eps$\\
+					$\forall n > n_\eps\;\; a \leq a_n \leq a_{n_\eps} < a + \eps \Rightarrow |a_n - a| < \eps$, т.е. по определению $a_n \to a$
+			\end{enumerate}
+	\end{enumerate}
+\end{tcolorbox}
+\textbf{Теорема.} Монотонная последовательность сходится $\Leftrightarrow$ она ограничена. \\
+\textbf{Теорема.} Монотонная последовательность всегда имеет предел (конечный или бесконечный)
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item Если $\{a_n\}$ монотонна и ограничена $\Rightarrow \{a_n\}$ имеет конечный предел.
+		\item $\{a_n\}$ - монотонная и неограничена
+			\begin{enumerate}
+				\item $\{a_n\} \uparrow\;\; \forall E > 0$, тк $\{a_n\}$ не огранимчена $\Rightarrow$ не ограничена сверху
+				\[ \exists a_{n_E}:\; a_{n_E} > E, \forall n > n_\eps \;\;\; a_n \geq a_{N_E} > E\]
+			\item $\{a_n\} \downarrow\;\; \forall E > 0$, тк $\{a_n\}$ не огранимчена $\Rightarrow$ не ограничена снизу
+				\[ \exists a_{n_E}:\; a_{n_E} < E, \forall n > n_\eps \;\;\; a_n \leq a_{n_E} < E\]
+			\end{enumerate}
+	\end{enumerate}
+\end{tcolorbox}
+
+

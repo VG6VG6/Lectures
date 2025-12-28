@@ -1,0 +1,55 @@
+\subsection{Арифметические свойства сходящихся последовательностей.}
+
+Пусть существуют конечные пределы $\lim a_n = A$ и $\lim b_n = B$. Тогда:
+\begin{enumerate}
+    \item $\lim (a_n \pm b_n) = A \pm B$
+    \item $\lim (a_n \cdot b_n) = A \cdot B$
+    \item $\lim \left(\frac{a_n}{b_n}\right) = \frac{A}{B}$ (при условии $B \neq 0$ и $\forall n\; b_n \neq 0$)
+\end{enumerate}
+
+\begin{tcolorbox}[title=1. Предел суммы (разности)]
+    \textbf{Доказательство:}
+    \begin{itemize}
+        \item Запишем определение предела для $\eps/2$:
+        \begin{enumerate}
+            \item $\exists N_1: \forall n > N_1 \Rightarrow |a_n - A| < \frac{\eps}{2}$
+            \item $\exists N_2: \forall n > N_2 \Rightarrow |b_n - B| < \frac{\eps}{2}$
+        \end{enumerate}
+        \item Пусть $N = \max(N_1, N_2)$. Тогда $\forall n > N$:
+        $$ |(a_n + b_n) - (A + B)| = |(a_n - A) + (b_n - B)| \leq |a_n - A| + |b_n - B| < \frac{\eps}{2} + \frac{\eps}{2} = \eps $$
+    \end{itemize}
+    \textbf{Вывод:} $(a_n + b_n) \to A+B$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=2. Предел произведения]
+    Для доказательства используем представление через бесконечно малые.
+    \begin{itemize}
+        \item $a_n = A + \alpha_n$, где $\alpha_n \to 0$
+        \item $b_n = B + \beta_n$, где $\beta_n \to 0$
+        \item Рассмотрим произведение:
+        $$ a_n \cdot b_n = (A + \alpha_n)(B + \beta_n) = AB + A\beta_n + B\alpha_n + \alpha_n\beta_n $$
+        \item Анализ слагаемых:
+        \begin{enumerate}
+            \item $A\beta_n \to 0$ (произведение константы на б.м.п.)
+            \item $B\alpha_n \to 0$ (аналогично)
+            \item $\alpha_n\beta_n \to 0$ (произведение двух б.м.п. есть б.м.п.)
+        \end{enumerate}
+        \item Сумма бесконечно малых — бесконечно малая. Обозначим $\gamma_n = A\beta_n + B\alpha_n + \alpha_n\beta_n$.
+        $$ a_n \cdot b_n = AB + \gamma_n, \quad \text{где } \gamma_n \to 0 $$
+    \end{itemize}
+    \textbf{Вывод:} $\lim (a_n b_n) = AB$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=3. Предел частного]
+    Достаточно доказать, что $\lim \frac{1}{b_n} = \frac{1}{B}$, тогда $\frac{a_n}{b_n} = a_n \cdot \frac{1}{b_n} \to A \cdot \frac{1}{B}$.
+    
+    \textbf{Доказательство для $1/b_n$:}
+    \begin{itemize}
+        \item Рассмотрим разность:
+        $$ \left| \frac{1}{b_n} - \frac{1}{B} \right| = \left| \frac{B - b_n}{b_n B} \right| = \frac{|b_n - B|}{|b_n| |B|} $$
+        \item Так как $b_n \to B \neq 0$, то начиная с некоторого номера $|b_n| > \frac{|B|}{2}$ (последовательность отделена от нуля).
+        $$ \frac{|b_n - B|}{|b_n| |B|} < \frac{|b_n - B|}{\frac{|B|}{2} \cdot |B|} = \frac{2}{|B|^2} \cdot |b_n - B| $$
+        \item Так как $|b_n - B| \to 0$, а $\frac{2}{|B|^2} = \text{const}$, то все выражение стремится к 0.
+    \end{itemize}
+    \textbf{Вывод:} $\frac{1}{b_n} \to \frac{1}{B}$.
+\end{tcolorbox}
