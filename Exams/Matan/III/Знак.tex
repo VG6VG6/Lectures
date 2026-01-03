@@ -1,0 +1,27 @@
+\subsection{Теоремы о сохранении знака сходящейся последовательностью и о сходимости модулей.}
+
+\begin{tcolorbox}
+	\textbf{Теорема.}
+	\[ \lim_{n\to\infty} a_n = a \not=0 \Leftrightarrow \exists N \in \N\;\; \forall n > N\;\; \sign a_n = \sign a \]
+\end{tcolorbox}
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item $a > 0:\ \forall \eps > 0\ \exists N\ \forall n > N\ |a_n - a|<\eps$
+		\[ \eps = \frac{a}{2} > 0 \]
+		\[ a - \frac{a}{2} < a-n < a + \frac{a}{2} \Leftrightarrow \frac{a}{2} < a_n < \frac{3a}{2} \Rightarrow a_n > \frac{a}{2} > 0 \Rightarrow \]
+		\[ \forall n > N \sign a_n = \sign a \]
+	\item $a < 0: \eps = -\frac{a}{2}\;\; \exists N \;\; \forall n > N\;\; |a_n - a| < \eps$
+		\[ a + \frac{a}{2} < a_n < a - \frac{a}{2} \Leftrightarrow \frac{3a}{2} < a_n < \frac{a}{2} \Rightarrow a_n < \frac{a}{2} < 0 \Rightarrow \]
+		\[ \forall n > N \sign a_n = \sign a \]
+	\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\textbf{Теорема.}
+	\[ \lim_{n\to\infty} a_n = a \Rightarrow \lim_{n\to\infty} |a_n| = |a| \]
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство]
+	\[ \forall \eps > 0\; \exists N\;\; \forall n > N\;\; | a_n - a| < \eps \]
+	\[ ||a_n| - |a|| \leq |a_n| - |a| < \eps \Rightarrow \forall \eps > 0\; \exists N \; \forall n > N\; ||a_n| - |a|| < \eps \Leftrightarrow \lim_{n\to\infty} |a_n| = |a| \]
+\end{tcolorbox}

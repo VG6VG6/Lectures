@@ -1,0 +1,173 @@
+\subsection{Число е как предел последовательности.}
+
+Вспомним неравенство Коши (о средних арифметическом и геометрическом):
+\[\forall k: a_k>0\;\;\;\ \sqrt[n]{a_1\cdot a_2\cdot ... \cdot a_n} \leq \cfrac{a_1+a_2+...+a_n}{n} \]
+
+Рассмотрим частный случай: пусть $a_1 = a > 0,\; a_2=a_3=...=a_{n+1}=b>0$.
+Всего $n+1$ элемент. Тогда:
+\[ \sqrt[n+1]{a\cdot b^n} \leq \cfrac{a+nb}{n+1} \]
+
+\begin{tcolorbox}[title=Доказательства монотонности последовательностей]
+    \begin{enumerate}
+        \item \textbf{Последовательность $x_n = (1+\cfrac{1}{n})^n$ возрастает ($\uparrow$)}\\
+        Применим неравенство Коши. Пусть $a = 1,\; b=1+\cfrac{1}{n}$.
+        \[ \sqrt[n+1]{1\cdot(1+\cfrac{1}{n})^n}\; < \cfrac{1+n(1+\cfrac{1}{n})}{n+1} = \cfrac{1+n+1}{n+1} = \cfrac{n+2}{n+1} = 1+\cfrac{1}{n+1} \]
+        Возведём обе части в степень $n+1$:
+        \[ (1+\cfrac{1}{n})^n < (1+\cfrac{1}{n+1})^{n+1} \implies x_n < x_{n+1} \]
+        
+        \item \textbf{Вспомогательная последовательность $(1-\cfrac{1}{n})^n$ возрастает ($\uparrow$)}\\
+        Пусть $a = 1,\; b=1-\cfrac{1}{n}$.
+        \[ \sqrt[n+1]{1\cdot(1-\cfrac{1}{n})^n}\; < \cfrac{1+n(1-\cfrac{1}{n})}{n+1} = \cfrac{1+n-1}{n+1} = \cfrac{n}{n+1} = 1-\cfrac{1}{n+1} \]
+        Возведём в степень $n+1$:
+        \[ (1-\cfrac{1}{n})^n < (1-\cfrac{1}{n+1})^{n+1} \]
+
+        \item \textbf{Последовательность $y_n = (1+\cfrac{1}{n})^{n+1}$ убывает ($\downarrow$)}\\
+        Преобразуем выражение:
+        \[ y_n = (1+\cfrac{1}{n})^{n+1} = \left(\frac{n+1}{n}\right)^{n+1} = \cfrac{1}{\left(\frac{n}{n+1}\right)^{n+1}} = \cfrac{1}{\left(1-\frac{1}{n+1}\right)^{n+1}} \]
+        Знаменатель представляет собой последовательность из п.2 (со сдвигом индекса), которая возрастает и положительна. Значит, дробь убывает.
+    \end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Ограниченность и сходимость]
+    \begin{enumerate}
+        \item \textbf{Связь последовательностей:}
+        Так как множитель $(1 + \frac{1}{n}) > 1$, то:
+        \[ x_n = \left(1+\frac{1}{n}\right)^n < \left(1+\frac{1}{n}\right)^{n+1} = y_n \]
+        
+        \item \textbf{Оценка сверху:}
+        В п.3 мы доказали, что $y_n \downarrow$ (убывает). Значит, все члены последовательности $y_n$ не превышают первого члена:
+        \[ \forall n: \;\; y_n \le y_1 = \left(1+\frac{1}{1}\right)^{1+1} = 2^2 = 4 \]
+        
+        \item \textbf{Итог:}
+        Объединяя пункты 1 и 2, получаем:
+        \[ x_n < y_n \le 4 \implies x_n < 4 \]
+        Последовательность $\{x_n\}$ \textbf{возрастает} и \textbf{ограничена сверху}.
+        
+        \textbf{Вывод (по т. Вейерштрасса):} Предел существует.
+    \end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    \textbf{Определение} 
+    \[e = \lim_{n\to \infty} \left(1+\cfrac{1}{n}\right)^n \textbf{  e - число Эйлера} \]
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Задачи для самостоятельного решения]
+    \begin{enumerate}
+        \item Доказать: $e = \lim_{n\to\infty} \left(1+\cfrac{1}{1!} +\cfrac{1}{2!} + ... + \cfrac{1}{n!}\right)$
+        \item Исследовать $(1+\cfrac{1}{n})^{n+p}$ на монотонность (см. $p=1/2$).
+        \item Сколько слагаемых ряда нужно взять, чтобы получить $e$ с точностью $10^{-3}$?
+        \item Какое $n$ нужно взять в последовательности, чтобы получить $e$ с точностью $10^{-3}$?
+    \end{enumerate}
+\end{tcolorbox}
+\textbf{Утверждение.} $e = \lim_{n\to\infty} \left(1 + \frac{1}{1!} + \frac{1}{2!} + \dots + \frac{1}{n!}\right)$
+
+\begin{tcolorbox}[title=Доказательство]
+	Пусть $x_n = \left(1 + \frac{1}{n}\right)^n$ и $y_n = \sum_{k=0}^n \frac{1}{k!}$. Известно, что $x_n \to e$. Докажем, что $y_n \to e$.
+	\begin{enumerate}
+		\item Разложим $x_n$ по биному Ньютона:
+			$$x_n = 1 + n\cdot\frac{1}{n} + \frac{n(n-1)}{2!}\frac{1}{n^2} + \dots + \frac{n(n-1)\dots(n-k+1)}{k! n^k} + \dots + \frac{1}{n^n}$$
+			Преобразуем $k$-й член:
+			$$\frac{1}{k!} \cdot \frac{n}{n} \cdot \frac{n-1}{n} \cdot \dots \cdot \frac{n-k+1}{n} = \frac{1}{k!} \left(1 - \frac{1}{n}\right)\dots\left(1 - \frac{k-1}{n}\right)$$
+		\item $x_n < y_n$
+			\begin{itemize}
+				\item Заметим, что каждый множитель в скобках вида $\left(1 - \frac{m}{n}\right) < 1$.
+				\item Значит, каждый член разложения $x_n$ строго меньше соответствующего члена $y_n$ ($\frac{1}{k!}$).
+				\item $x_n < y_n \Rightarrow \lim_{n\to\infty} x_n \leq \lim_{n\to\infty} y_n \Rightarrow e \leq \lim y_n$ (так как $y_n \uparrow$, предел существует).
+			\end{itemize}
+		\item $y_n \leq e$
+			\begin{itemize}
+				\item Зафиксируем произвольное $k < n$. Рассмотрим сумму первых $k+1$ слагаемых в разложении $x_n$:
+				$$x_n > 1 + 1 + \frac{1}{2!}(1 - \frac{1}{n}) + \dots + \frac{1}{k!}(1 - \frac{1}{n})\dots(1 - \frac{k-1}{n})$$
+				\item Перейдем к пределу при $n \to \infty$ (держа $k$ фиксированным):
+				$$e \geq 1 + 1 + \frac{1}{2!} + \dots + \frac{1}{k!} = y_k$$
+				\item Так как $y_k \leq e$ для любого $k \Rightarrow \lim_{k\to\infty} y_k \leq e$.
+			\end{itemize}
+		\item \textbf{Вывод:}
+			\begin{itemize}
+				\item Из п.2 имеем $e \leq \lim y_n$.
+				\item Из п.3 имеем $\lim y_n \leq e$.
+				\item Следовательно, $\lim y_n = e$.
+			\end{itemize}
+	\end{enumerate}
+\end{tcolorbox}
+
+\textbf{Задача.} Исследовать на монотонность последовательность $x_n = \left(1+\frac{1}{n}\right)^{n+p}$ в зависимости от параметра $p$.
+
+\begin{tcolorbox}[title=Анализ монотонности]
+	Рассмотрим функцию $f(x) = \left(1+\frac{1}{x}\right)^{x+p}$ для $x > 0$.
+	\begin{enumerate}
+		\item \textbf{Логарифмирование:}
+			$$ \ln f(x) = (x+p) \ln\left(1+\frac{1}{x}\right) $$
+		\item \textbf{Производная:}
+			$$ (\ln f(x))' = \ln\left(1+\frac{1}{x}\right) + (x+p) \cdot \frac{1}{1+\frac{1}{x}} \cdot \left(-\frac{1}{x^2}\right) $$
+			$$ (\ln f(x))' = \ln\left(1+\frac{1}{x}\right) - \frac{x+p}{x(x+1)} $$
+		\item \textbf{Асимптотическое разложение (ряд Тейлора):}
+			При $x \to \infty$ (малом $\frac{1}{x}$) используем $\ln(1+t) = t - \frac{t^2}{2} + o(t^3)$.\\
+			Разложим дробь:
+			$$ \frac{x+p}{x^2+x} = \frac{x+p}{x^2(1+\frac{1}{x})} = \frac{1}{x}\left(1+\frac{p}{x}\right)\left(1-\frac{1}{x} + o\left(\frac{1}{x^2}\right)\right) $$
+			$$ = \frac{1}{x}\left(1 - \frac{1}{x} + \frac{p}{x}\right) = \frac{1}{x} - \frac{1-p}{x^2} + o\left(\frac{1}{x^3}\right) $$
+			Подставим в производную:
+			$$ (\ln f(x))' \approx \left(\frac{1}{x} - \frac{1}{2x^2}\right) - \left(\frac{1}{x} - \frac{1-p}{x^2}\right) $$
+			$$ (\ln f(x))' \approx \frac{1}{x^2} \left(-\frac{1}{2} + 1 - p\right) = \frac{1}{x^2}\left(\frac{1}{2} - p\right) $$
+	\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Выводы о монотонности]
+	Знак производной при больших $n$ определяется знаком скобки $\left(\frac{1}{2} - p\right)$:
+	\begin{itemize}
+		\item Если $\frac{1}{2} - p > 0 \Rightarrow \mathbf{p < \frac{1}{2}}$:\\
+			Последовательность \textbf{возрастает} (начиная с некоторого $n$).\\
+			\textit{Частный случай $p=0$: классическая $(1+1/n)^n \uparrow e$.}
+		\item Если $\frac{1}{2} - p < 0 \Rightarrow \mathbf{p > \frac{1}{2}}$:\\
+			Последовательность \textbf{убывает} (начиная с некоторого $n$).\\
+			\textit{Частный случай $p=1$: классическая $(1+1/n)^{n+1} \downarrow e$.}
+	\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Случай p = 1/2]
+	При $p=\frac{1}{2}$ член с $1/x^2$ обнуляется. Нужно рассмотреть следующий член разложения ($1/x^3$).
+	\begin{itemize}
+		\item $\ln(1+1/x) \approx \frac{1}{x} - \frac{1}{2x^2} + \frac{1}{3x^3}$
+		\item Дробь $\frac{x+0.5}{x(x+1)}$ раскладывается как $\frac{1}{x} - \frac{0.5}{x^2} + \frac{0.5}{x^3}$
+		\item Разность:
+		$$ \left(\frac{1}{3} - \frac{1}{2}\right)\frac{1}{x^3} = -\frac{1}{6x^3} < 0 $$
+	\end{itemize}
+	\textbf{Вывод:} При $p=\frac{1}{2}$ последовательность \textbf{строго убывает} при всех $n$. Она сходится к числу $e$ быстрее, чем классические последовательности при $p=0$ или $p=1$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=3. Сколько слагаемых ряда нужно для точности $10^{-3}$?]
+	Оценим остаток ряда $R_n = e - y_n = \sum_{k=n+1}^{\infty} \frac{1}{k!}$.
+	Вынесем за скобку первое слагаемое остатка:
+	\[ R_n = \frac{1}{(n+1)!} \left( 1 + \frac{1}{n+2} + \frac{1}{(n+2)(n+3)} + \dots \right) \]
+	Заменим скобку на сумму бесконечной геометрической прогрессии со знаменателем $q = \frac{1}{n+1}$ (каждое слагаемое строго больше исходного):
+	\[ R_n < \frac{1}{(n+1)!} \cdot \left( 1 + \frac{1}{n+1} + \frac{1}{(n+1)^2} + \dots \right) = \frac{1}{(n+1)!} \cdot \frac{1}{1 - \frac{1}{n+1}} \]
+	\[ R_n < \frac{1}{(n+1)!} \cdot \frac{n+1}{n} = \frac{1}{n \cdot n!} \]
+	
+	Нам нужно $R_n < 10^{-3} = \frac{1}{1000}$. Проверим значения $n$:
+	\begin{itemize}
+		\item $n=5$: $\frac{1}{5 \cdot 5!} = \frac{1}{5 \cdot 120} = \frac{1}{600} \approx 0.0016 > 0.001$ (недостаточно)
+		\item $n=6$: $\frac{1}{6 \cdot 6!} = \frac{1}{6 \cdot 720} = \frac{1}{4320} \approx 0.0002 < 0.001$ (достаточно)
+	\end{itemize}
+	\textbf{Ответ:} Достаточно взять $n=6$ (сумму до $\frac{1}{6!}$).
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=4. Какое $n$ нужно для последовательности для точности $10^{-3}$?]
+	Оценим разность $e - (1+\frac{1}{n})^n$ при больших $n$.
+	
+	1. Прологарифмируем выражение:
+	\[ \ln \left(1+\frac{1}{n}\right)^n = n \ln \left(1+\frac{1}{n}\right) \]
+	2. Используем разложение Тейлора $\ln(1+x) = x - \frac{x^2}{2} + o(x^2)$:
+	\[ n \left( \frac{1}{n} - \frac{1}{2n^2} + o\left(\frac{1}{n^2}\right) \right) = 1 - \frac{1}{2n} + o\left(\frac{1}{n}\right) \]
+	3. Потенцируем обратно, используя $e^{1-x} \approx e \cdot (1-x)$:
+	\[ \left(1+\frac{1}{n}\right)^n = e^{1 - \frac{1}{2n}} = e \cdot e^{-\frac{1}{2n}} \approx e \left(1 - \frac{1}{2n}\right) = e - \frac{e}{2n} \]
+	
+	Погрешность составляет приблизительно $\frac{e}{2n}$. Решим неравенство:
+	\[ \frac{e}{2n} < 10^{-3} \Rightarrow 2n > 1000e \Rightarrow n > 500e \approx 500 \cdot 2.718 = 1359 \]
+	
+	\textbf{Ответ:} Нужно $n \approx 1360$.
+	\textit{Вывод: Ряд сходится к $e$ стремительно (6 шагов), а последовательность — крайне медленно (1360 шагов).}
+\end{tcolorbox}
+
+
+

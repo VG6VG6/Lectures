@@ -1,0 +1,51 @@
+\subsection{Монотонные последовательности. Критерий сходимости монотонной последовательности.}
+
+\textbf{Определения.}
+\begin{enumerate}
+	\item $\{a_n\} \uparrow$ — \textbf{строго возрастает}, если $\forall n\; a_n < a_{n + 1}$
+	\item $\{a_n\} \uparrow$ — \textbf{возрастает (не убывает)}, если $\forall n\; a_n \leq a_{n + 1}$
+	\item $\{a_n\}\downarrow$ — \textbf{строго убывает}, если $\forall n\; a_n > a_{n + 1}$ % ИСПРАВЛЕНО (< на >)
+	\item $\{a_n\}\downarrow$ — \textbf{убывает (не возрастает)}, если $\forall n\; a_n \geq a_{n + 1}$
+\end{enumerate}
+\textbf{Определение.} $\{a_n\}$ — монотонна, если выполняется одно из условий 1-4.\\
+
+\textbf{Теорема.} $\{a_n\} \uparrow$ и ограничена сверху $\Rightarrow a_n$ сходится и $a_n \to \sup a_n$\\
+\textbf{Теорема.} $\{a_n\} \downarrow$ и ограничена снизу $\Rightarrow a_n$ сходится и $a_n \to \inf a_n$
+
+\begin{tcolorbox}[title=Доказательство (случай конечного предела)]
+	\begin{enumerate}
+		\item $a_n \uparrow$ и ограничена сверху $\Rightarrow$ (по полноте $\R$) $\exists \sup a_n := A$
+    \begin{enumerate}
+        \item $\forall n\;\; a_n \leq A$
+        \item $\forall \eps > 0\; \exists n_\eps:\; a_{n_\eps} > A - \eps$\\
+            $\forall n > n_\eps\;\; A - \eps < a_{n_\eps} \leq a_n \leq A < A + \eps \Rightarrow |a_n - A| < \eps$, т.е. $a_n \to A$
+    \end{enumerate}
+		\item $a_n \downarrow$ и ограничена снизу $\Rightarrow$ (по полноте $\R$) $\exists \inf a_n := a$ % ИСПРАВЛЕНО (полносте -> полноте)
+			\begin{enumerate}
+				\item $\forall n\;\; a_n \geq a$
+				\item $\forall \eps > 0\; \exists n_\eps:\; a_{n_\eps} < a + \eps$\\
+					$\forall n > n_\eps\;\; a-\eps < a \leq a_n \leq a_{n_\eps} < a + \eps \Rightarrow |a_n - a| < \eps$, т.е. $a_n \to a$
+			\end{enumerate}
+	\end{enumerate}
+\end{tcolorbox}
+
+\textbf{Теорема.} Монотонная последовательность сходится $\Leftrightarrow$ она ограничена. \\
+\textbf{Теорема (Обобщенная).} Монотонная последовательность всегда имеет предел (конечный или бесконечный).
+
+\begin{tcolorbox}[title=Доказательство (общий случай)]
+	\begin{enumerate}
+		\item Если $\{a_n\}$ монотонна и ограничена $\Rightarrow$ (см. выше) $\{a_n\}$ имеет конечный предел.
+		\item Пусть $\{a_n\}$ монотонна и неограничена.
+			\begin{enumerate}
+				\item Пусть $\{a_n\} \uparrow$. Так как $\{a_n\}$ не ограничена (и ограничена снизу первым членом), то она не ограничена сверху.\\
+				$\forall E > 0 \; \exists n_E:\; a_{n_E} > E$. \\
+				В силу возрастания: $\forall n > n_E \;\;\; a_n \geq a_{n_E} > E$. \\
+				Это означает, что $a_n \to +\infty$.
+				
+				\item Пусть $\{a_n\} \downarrow$. Так как $\{a_n\}$ не ограничена, то она не ограничена снизу.\\
+				$\forall E > 0 \; \exists n_E:\; a_{n_E} < -E$. \\
+				В силу убывания: $\forall n > n_E \;\;\; a_n \leq a_{n_E} < -E$. \\
+				Это означает, что $a_n \to -\infty$.
+			\end{enumerate}
+	\end{enumerate}
+\end{tcolorbox}

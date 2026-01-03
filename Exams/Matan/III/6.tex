@@ -1,0 +1,39 @@
+\subsection{Бесконечно большие последовательности. Связь бесконечно малых и бесконечно больших последовательностей.}
+
+\textbf{Определение. Бесконечно большая последовательность (б.б.)} 
+\[\{a_n\} - \text{б.б.} \Leftrightarrow \forall E > 0 \; \exists n_E: \forall n > n_E\; |a_n| > E\]
+Окрестность бесконечности: $U_{\infty, E} = (-\infty;-E)\cup(E;+\infty)$\\
+Обозначение: $a_n \to \infty$
+
+\textbf{Определение (знаки бесконечности):}
+\begin{enumerate}
+	\item $a_n \to +\infty \Leftrightarrow \forall E > 0\; \exists n_E: \;\forall n > n_E\;\; a_n > E$
+	\item $a_n \to -\infty \Leftrightarrow \forall E > 0\; \exists n_E: \;\forall n > n_E\;\; a_n < -E$
+\end{enumerate}
+
+\textbf{Примеры:}
+\begin{enumerate}
+	\item $(+\infty) + (+\infty) = +\infty$
+	\item $(+\infty) - (+\infty)$ — неопределённость
+	\item $\frac{+\infty}{+\infty}$ — неопределённость
+\end{enumerate}
+
+\textbf{Теорема. Связь б.б. и б.м.}
+\begin{enumerate}
+	\item $a_n \to \infty, \forall n\; a_n \not=0 \Rightarrow \frac{1}{a_n} \to 0$ (из б.б. в б.м.)
+	\item $\alpha_n \to 0,\; \forall n\;\alpha_n\not=0 \Rightarrow \frac{1}{\alpha_n}$ — б.б. (из б.м. в б.б.)
+\end{enumerate}
+
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item Докажем, что $\frac{1}{a_n}$ — б.м.\\
+		По определению предела (для $\eps > 0$ возьмем $E = \frac{1}{\eps}$):\\
+		$a_n \to \infty \Leftrightarrow \forall \eps > 0\; \exists n_\eps: \forall n > n_\eps\;\; |a_n| > \frac{1}{\eps} \Leftrightarrow \left|\frac{1}{a_n}\right| < \eps$. \\
+		Это и означает, что $\{\frac{1}{a_n}\}$ — б.м.
+		
+		\item Докажем, что $\frac{1}{\alpha_n}$ — б.б.\\
+		По определению б.м. (для $E > 0$ возьмем $\eps = \frac{1}{E}$):\\
+		$\alpha_n \to 0 \Leftrightarrow \forall E > 0\; \exists n_E: \forall n > n_E\; |\alpha_n| < \frac{1}{E} \Leftrightarrow \left|\frac{1}{\alpha_n}\right| > E$. \\
+		Это и означает, что $\{\frac{1}{\alpha_n}\}$ — б.б.
+	\end{enumerate}
+\end{tcolorbox}

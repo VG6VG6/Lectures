@@ -1,4 +1,4 @@
-\documentclass[12pt, paper]{article}
+\documentclass[12pt, a4paper]{article}
 
 \usepackage{graphicx}
 \usepackage{amsmath, amssymb}
@@ -1771,7 +1771,7 @@ B - ограниченная\\
 \textbf{Теорема 3.} $f(x) \in C[a,b], f(a)\cdot f(b) < 0 \Rightarrow c \in (a,b): f(x) = 0$
 \begin{tcolorbox}[title=Доказательство]
 	Деление отрезка пополам. 
-	\[ [a_0,b_0] \ [a,b] \]
+	\[ [a, b] = [a_0,b_0] \supset [a_1,b_1] \supset ... \supset [a_n, b_n] \]
 	\begin{enumerate}
 		\item 
 	\[ c_0 := \frac{a_0+b_0}{2} \]
@@ -1789,11 +1789,95 @@ B - ограниченная\\
 		\[ \cap_n [a_n,b_n] = c\in [a,b] \]
 		Проверим, что $f(c) = 0$, если $f(c) \not=0 \Rightarrow \exists U_c$ в которой $f(x)$ сохраняет знак $\exists N$
 		\[ \forall n > N \;\; [a_n,b_n] \subset U_c \]
+	\begin{center}
+	\includegraphics[width=0.5\linewidth]{images/Функции/Непрерывность/Т3}
+	\end{center}
 	\end{enumerate}
 	\end{enumerate}
 \end{tcolorbox}
 
+\textbf{Следствие.} (Теорема о промежуточном значении) $f(x) \in [a, b] \Rightarrow f(x)$ на $[a, b]$ принимает все значения между $[f(a)$, $f(b)]$. 
+\begin{tcolorbox}[title=Доказательство]
+	\begin{enumerate}
+		\item $f(a) = f(b)$ значение принято. 
+		\item $f(a) \not= f(b)$
+			\begin{enumerate}
+				\item Зачения $f(a)$ и $f(b)$ приняты
+				\item Строго между f(a) и f(b) \\
+					$f(x) - C \in C[a, b] \Rightarrow \exists c \in [a,b]: f(x) - C = 0$
+			\end{enumerate}
+	\end{enumerate}
+\end{tcolorbox}
 
+\textbf{Теорема 4.} $f(x) \in C[a,b],\; f(x) \uparrow\uparrow$ на $[a,b]$.\\
+$A:= f(a);\; B:= f(b) \Rightarrow f([a, b]) = [A,B]$\\ 
+обратная к f(x) функция $x  f^{-1}(y)$ однозначна на отрезке $[A,B]$, $f^{-1}(y) \in C[A,B], f^{-1}(y) \uparrow\uparrow$ на $[a, b]$
+\begin{tcolorbox}[title=доказательство]
+	\begin{enumerate}
+		\item $f(x) \uparrow \uparrow$ на $[a, b] \rightarrow$
+			\[ \forall x\;\; a\leq x\leq b \rightarrow f(a)=a \leq f(x) \leq f(b) = b \rightarrow \]
+			\[ f([a, b]) \supset [a,b] \]
+		\item по теореме о промежжуточном значении 
+			\[ \forall c\in [a, b]\;\; \exists c \in [a, b]:\; f(c) = c \rightarrow f([a, b]) = [a,b] \]
+		\item $\forall y \in [a, b] \;\; \exists! x \in [a, b]: f(x) = y$\\
+			если бы существовали x` и x``, $x` \not= x``$ $\in [a,b]: f(x`) = f(x``)$, то не выполняется монотонность. (x` < x``, то f(x`) < f(x``), что не выполняется).
+			\[ \exists f^{-1}(y) in [a, b] \]
+		\item $f^{-1} \uparrow \uparrow$ на $[A, B]$. Если это не так (монотонность), то \\
+			$\exists y_1,\ y_2\;\; y_1 < y_2$, но $f^{-1}(y_1) \geq f^{-1}(y_2) $\\ 
+			Равенство невозможно, значит $f^{-1}(y_1) := x_1 > f^{-1}(y_2) := x_2$
+			\[ x_1 > x_2 \;\; y_1 = f(x_1) < y_2 = f(x_2) \]
+		\item $ f^{-1}(y) \in c[a;b] $  
+			\begin{enumerate}
+				\item $ \forall y_0 \in (a;b) $\\
+	\begin{center}
+	\includegraphics[width=0.5\linewidth]{images/Функции/Непрерывность/Т4.1}
+	\end{center}
+				$ \forall \eps > 0 $ с условием $ [x_0 - \eps; x_0 + \eps ] \subset [a, b] $
+			\[ \delta_\eps = \min\{ y_0 - f(x - \eps); y_0 + f(x + \eps) \} \]
+		\item $y_0 = A$. Берём $\forall \eps > 0$, но так, чтобы $a + \eps \leq b$
+	\begin{center}
+	\includegraphics[width=0.5\linewidth]{images/Функции/Непрерывность/Т4.2}
+	\end{center}
+			\end{enumerate}
+	\end{enumerate}
+\end{tcolorbox}
+\textbf{}
+\textbf{Теорема 5. Критерий непрерывности монотонной функции.} \\
+$f(x) \uparrow$ на $<a,b>$\\
+$f(x) \in C<a,b> \Leftrightarrow f(<a, b>)$ промежуток. 
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{images/Функции/Непрерывность/Т5}
+\end{center}
+\begin{tcolorbox}[title=Доказательство]
+	$\Rightarrow$ теорема о промежуточном знаении (монотонность не испульзуется)\\
+	$\Leftrightarrow$ Если $f(x) \not \in C<a,b>$, то $\exists x_0 \in <a,b>$ точка разрыва
+	\begin{enumerate}
+		\item $x_0 \in (a,b)$ 
+			\[ \exists \lim_{x\to x_0 + 0} f(x)\; \exists \lim_{x\to x_0 - 0} f(x) \]
+		т.к. $f(x) \uparrow$ на $<a;b>$
+		\[ \lim_{x\to x_0 - 0} f(x) \leq f(x_0) \leq \lim_{x\to x_0 + 0} f(x) \]
+		Если бы $ \lim_{x\to x_0 - 0} f(x) = \lim_{x\to x_0 + 0} f(x)=f(x_0) \Rightarrow$ в $x_0$ нет разрывова. 
+		\[ \Rightarrow \lim_{x\to x_0 - 0} f(x) < \lim_{x\to x_0 + 0} f(x) \]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Функции/Непрерывность/Т5.1}
+	\end{center}
+		\[ \exists A \in ( \lim_{x\to x_0 - 0} f(x); \lim_{x\to x_0 + 0} f(x) ) \]
+		\[ A \not= f(x_0) \]
+		A не принимается на <a,b>
+	\item Если $x_0 = a$, или $x_0 = b$
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Функции/Непрерывность/Т5.2}
+	\end{center}
+	\end{enumerate}
+\end{tcolorbox}
+
+\textbf{Теорема 6. Критерий однозначной обратимости непрерывных функций.}\\
+$f(x) \in C[a,b]$, $f(x)$ однозначно обратима $\Leftrightarrow f(x)$ строго монотонна
+\begin{tcolorbox}[title=Доказательство]
+	$\Leftarrow$ по Т4. \\
+	$\Rightarrow f(x) \in C[a,b]$ однозначно обратима $\Rightarrow f(x)$ строго монотонна. \\
+	\[ Y := f([a,b]) \;\; \forall y_0 \exists! x_0 \in [a,b] \;\; f(x_0) = y_0 \]
+\end{tcolorbox}
 
 
 

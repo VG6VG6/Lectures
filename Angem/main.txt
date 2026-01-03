@@ -29,8 +29,6 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\eps}{\varepsilon}
 
-\newcommand{\sign}{\text{sign\ }}
-
 \begin{document}
 \maketitle
 \tableofcontents
@@ -40,8 +38,8 @@
 \[  \]
 Я всё проебал, надо написать хз что это.\\
 Определение. Отклонение точки от плоскости
-\[ M_0 (x_0, y_0, z_0) \]
-\[ \delta (M_0, \pi) = x_0 \cos \alpha + y_0 \cos \beta + z_0 \cos \gamma \]
+\[ M_0 (x_0, _0, z_0) \]
+\[ \delta (M_0, \pi) = x_0 \cos \alpha + y_0 \cos \beta z_0 \cos \gamma \]
 
 \section{ \S 8. Прямая в пространстве. }
 OXYZ - ДПСК\\
@@ -63,9 +61,10 @@ OXYZ - ДПСК\\
 				z = z_0 + nt
 			\end{cases} $
 		\item $ \begin{cases}
-			\text{П1: }A_1x + B_1y + C_1z + D_1 = 0\\
-			\text{П2: }A_2x + B_2y + C_2z + D_2 = 0
+			$П1: $A_1x + B_1y + C_1z + D_1 = 0\\
+			$П2: $ A_2x + B_2y + C_2z + D_2 = 0
 		\end{cases} $
+$
 	\[ \overline{q} = [ \overline{N_1}, \overline{N_2} ] \]
 	\end{enumerate}
  
@@ -87,9 +86,11 @@ OXYZ - ДПСК\\
 !!! INSERT IMAGE.\\
 \begin{equation}
 	r_1 + r_2 = 2a
+	\label{eq:Вывод}
 \end{equation}
 \begin{equation}	
 	\sqrt{ (x + c)^2 + y^2 } + \sqrt{(x - c)^2 + y^2}
+	\label{eq:}
 \end{equation}
 \[	x^2 + 2cy + c^2 + y^2 + x^2 - 2cx + c^2 + y^2  + 2\sqrt{(x^2 + 2cx + c^2 + y^2)(x^2 - 2cx + c^2 + y^2)} \]
 \[ 2( x^2 + y^2 + c^2) + \sqrt{(x^2 + y^2 + c^2) ^ 2 - 4c^2x^2} = 4a^2 \]
@@ -101,6 +102,7 @@ OXYZ - ДПСК\\
 \[ b^2x^2 + a^2y^2 = a^2b^2 \]
 \begin{equation}
 	\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+	\label{eq:}
 \end{equation}
 $(3) \Rightarrow (2) - ?$\\
 \[ y^2 = (1 - \frac{x^2}{a^2})b^2 \]
@@ -123,6 +125,7 @@ b - малая полуось\\
 		r_2 = a + \frac{c}{a}x\\
 		r_2 = a - \frac{c}{a}x
 	\end{cases}
+	\label{eq:}
 \end{equation}
 \subsection{Гипербола}
 \setcounter{equation}{0}
@@ -192,7 +195,7 @@ b - малая полуось\\
 
 \[ y(x) - \hat{y_1}(x) = \sqrt{(\frac{x^2}{a^2}b^2)} - \frac{b}{a}x = \frac{\frac{x^2b^2}{a^2} - b^2 - \frac{b^2}{a^2}x^2}{\sqrt{\frac{x^2b^2}{a^2} - b^2} + \frac{b}{a}x} = \frac{-b^2}{\sqrt{\frac{b^2}{a^2} - b^2} \frac{b}{a}x } \xrightarrow[+\infty]{} 0 \]
 
-a - действительная полуось\\
+\\a - действительная полуось\\
 b - мнимая полуось\\
 \begin{center}
 	\includegraphics[width=0.5\linewidth]{images/Прямые 2 порядка/Гипербола/Прямоугольничек.jpg}\\
@@ -226,7 +229,7 @@ b - мнимая полуось\\
 \end{tcolorbox}
 \textbf{Теорема. } $M(x, y)$\\
 $r_i$ - ... радиусы = $\rho(M, F_1)$\\
-$d_1 = \rho M, D_i$
+$d_1 = \rhoM, D_i$
 \[ \frac{r_i}{d_i} = e,\;\; i =1, 2 \]
 \begin{tcolorbox}[title=Доказательство]
 	\begin{enumerate}
@@ -285,7 +288,7 @@ $D: -x-\frac{P}{2} = 0$
 \end{itemize}
 
 \subsection{Упрощение алгебраического уравнения второго порядка на плоскости. Преобразование коэфициентов уравнений второго порядка при ортогональных преобразованиях.}
-\setcounter{equation}{0}
+\setcounter{equatoin}{0}
 \subsubsection{Сдвиг.}
 У нас есть ДПСК. $OXY \to O`X`Y`$\\
 \[ Ax^2 + 2Bxy + Cy^2 + 2Dx + 2Ey + F = 0 \]
@@ -322,7 +325,7 @@ $F` = Ax_0^2 + 2Bx_0y_0 + Cy_0^2 + 2Dx_0 + 2Ey_0 + F $
 \end{cases}
 \]
 \[ A(x` \cos \alpha - y` \sin \alpha)^2 + 2B(x` \cos \alpha - y` \sin \alpha)(x` \sin \alpha + y` \cos \alpha) +C(x` \sin \alpha + y` \cos \alpha)^2 + \]
-\[+ 2D(x` \cos \alpha - y` \sin\alpha) + 2E(x` \sin \alpha + y` \cos \alpha) + F = 0\]
+\[+ 2D(x` \cos \alpha - y` \csin\alpha) + 2E(x` \sin \alpha + y` \cos \alpha) + F = 0\]
 \[ A(x`^2 \cos^2 \alpha - 2x`y` \sin \alpha \cos \alpha + y`^2 \sin ^2 \alpha) + 2B(x`^2 \cos \alpha \sin \alpha  - x`y` \sin^2 \alpha + x` y` \cos ^2 \alpha  - y`^2 \sin \alpha \cos \alpha) +\]
 \[+ C(x`^2 \sin^2 \alpha + 2x`y` \sin \alpha \cos \alpha + y`^2 \cos ^2 \alpha) + 2D(x` \cos \alpha - y` \sin \alpha ) + 2E(x` \sin \alpha + y` \cos \alpha ) + F = 0\]
 
@@ -361,7 +364,7 @@ $F` = Ax_0^2 + 2Bx_0y_0 + Cy_0^2 + 2Dx_0 + 2Ey_0 + F $
 			$J_2` = \begin{vmatrix}
 	A & B\\
 	B & C
-\end{vmatrix} = A`C` - B`^2 = ( \frac{A+C}{2} + B\sin 2\alpha + \frac{A - C}{2} \cos 2\alpha ) (\frac{A + C}{2} - B \sin 2\alpha - \frac{A - C}{2} \cos 2\alpha ) - (- \frac{A - C}{2} \sin 2\alpha + B\sin 2\alpha)^2 = \frac{(A+C)^2}{4} - (B \sin 2\alpha + \frac{A - C}{2} \cos 2\alpha)^2 - (-\frac{A-C}{2} \sin 2\alpha + B \cos 2 \alpha) = (\frac{A + C}{4})^2 - B^2 \sin ^2 2\alpha - B(A - C) \sin 2\alpha \cos 2\alpha -(\frac{A - C}{2})^2 \sin ^2 2\alpha + B(A - C)\sin 2\alpha \cos 2\alpha - B^2 \cos 2\alpha = (\frac{A + C}{2})^2 - (\frac{A - C}{2})^2 - B^2 = AC - B^2  $
+\end{vmatrix} = A`C` - B`^2 = ( \frac{A+C}{2} + B\sin 2\alpha + \frac{A - C}{2} \cos 2\alpha ) (\frac{A + C}{2} - B \sin 2\alpha - \frac{A - C}{2} \cos 2\alpha ) - (- \frac{A - C}{2} \sin 2\slpha + B\sin 2\alpha)^2 = \frac{(A+C)^2}{4} - (B \sin 2\alpha + \frac{A - C}{2} \cos 2\alpha)^2 - (-\frac{A-C}{2} \sin 2\alpha + B \cos 2 \alpha) = (\frac{A + C}{4})^2 - B^2 \sin ^2 2\alpha - B(A - C) \sin 2\alpha \cos 2\alpha -(\frac{A - C}{2})^2 \sin ^2 2\alpha + B(A - C)\sin 2\alpha \cos 2\alpha - B^2 \cos 2\alpha = (\frac{A + C}{2})^2 - (\frac{A - C}{2})^2 - B^2 = AC - B^2  $
 	\end{enumerate}
 \end{tcolorbox}
 
@@ -395,13 +398,14 @@ $ J_2 = \begin{vmatrix}
 \subsubsection{Центральная кривая}
 \begin{enumerate}
 	\item Сдвиг. Цель - убрать линейные слагаемые (найти O` ($x_0, y_0$) решить систему) 
-	\begin{center}
-	$ 
+	\begin{equation}
 	\begin{cases}
 		Ax_0 + By_0 + D = 0\\
 		Bx_0 + Cy_0 + E = 0
-	\end{cases}$                      * 
-	\end{center}
+	\end{cases}
+	\teg{*}
+	\nonumber
+	\end{equation}
 
 	Её доказывать не будем:\\
 	\textbf{Теорема Крамера.} (*) имеет единственное решение $\Delta = \begin{vmatrix}
@@ -412,14 +416,14 @@ $ J_2 = \begin{vmatrix}
 	\[ A\xi`^2 + 2B\xi\psi` + C`y`^2 + F` = 0 \]
 	\[ A` = A, B` = B, C` = C \]
 
-	\item Поворот. Цель - убрать B` угол $\alpha$ нахоим из соотношения:
+	\item Поворот. Цель - убрать B` угол \alpha нахоим из соотношения:
 		\[ -\frac{A`-C`}{2} \sin 2\alpha + B` \cos 2 \alpha = 0 \]
-		\begin{enumerate}
+		\\begin{enumerate}
 			\item Если $B` = 0$ то ничего делать не надо
 			\item $B` \not =\;\; \ctg 2\alpha = \frac{A` - C`}{2B`}$
-				\[ \begin{cases}
-				x` = x`` \cos \alpha - y`` \sin \alpha \\
-				y` = x`` \sin \alpha + y`` \cos \alpha 
+				\[\begin{cases}
+					x` = x`` \cos \alpha - y`` \sin \alpha \\
+					y` = x`` \sin \alpha + y`` \cos \alpha 
 				\end{cases}\]
 				\[ A``x``^2 + C``y``^2 + F`` = 0 \]
 		\end{enumerate}
@@ -572,9 +576,10 @@ $J_2 = 0$\\
 			c. $y^2 = -a^2$ - пара паралельных мнимых прямых. \\
 		не центральная кривая & не центральная кривая
 	\end{tabular}
+	\hline\hline
 \end{tabular}
 
-\section{Плоскости}
+\sectioin{Плоскости}
 \subsection{Цилиндрические поверхности}
 \setcounter{equation}{0}
 
@@ -702,14 +707,13 @@ S - \textbf{поверхность вращения вокруг оси Oz}, е�
 
 \newpage
 \begin{center}
-	\textbf{}
+	\textbf{Линейная алгебра.}
 \end{center}
 
-\section{Линейная алгебра}
-\subsection{Матрицы и определители}
-\subsubsection{Операции над матрицами}
+\section{\S 1. Матрицы и определители (продолжение)}
+\subsection{Операции над матрицами}
 \begin{tcolorbox}
-\textbf{Определение.} Пусть $A = (a_{ij})_{m\times n}$, $B = (b_{ij})_{m\times n}$ — матрицы одинакового размера.  \\
+\textbf{Определение.} Пусть $A = (a_{ij})_{m\times n}$, $B = (b_{ij})_{m\times n}$ — матрицы одинакового размера.  
 \textit{Суммой} матриц $A + B$ называется матрица $C = (c_{ij})_{m\times n}$, где
 \[
 c_{ij} = a_{ij} + b_{ij},\quad \forall i = 1,\dots,m,\; j = 1,\dots,n.
@@ -718,35 +722,6 @@ c_{ij} = a_{ij} + b_{ij},\quad \forall i = 1,\dots,m,\; j = 1,\dots,n.
 
 \begin{tcolorbox}
 \textbf{Определение.} Произведением матрицы $A = (a_{ij})_{m\times n}$ на число $\lambda \in \R$ называется матрица $\lambda A = (\lambda a_{ij})_{m\times n}$.
-\end{tcolorbox}
-
-\begin{tcolorbox}[title=Пример умножения матриц]
-Рассмотрим матрицы
-\[
-A = \begin{pmatrix}
-1 & 2 \\
--1 & 3
-\end{pmatrix}, \qquad
-B = \begin{pmatrix}
-2 & 0 & -1 \\
-1 & 4 & 2
-\end{pmatrix}.
-\]
-Матрица \(A\) имеет размер \(2 \times 2\), матрица \(B\) — размер \(2 \times 3\).  
-Произведение \(AB\) определено, так как число столбцов \(A\) равно числу строк \(B\). Результат будет матрицей размера \(2 \times 3\):
-
-\[
-AB =
-\begin{pmatrix}
-1\cdot2 + 2\cdot1 & 1\cdot0 + 2\cdot4 & 1\cdot(-1) + 2\cdot2 \\
-(-1)\cdot2 + 3\cdot1 & (-1)\cdot0 + 3\cdot4 & (-1)\cdot(-1) + 3\cdot2
-\end{pmatrix}
-=
-\begin{pmatrix}
-4 & 8 & 3 \\
-1 & 12 & 7
-\end{pmatrix}.
-\]
 \end{tcolorbox}
 
 \begin{tcolorbox}
@@ -765,7 +740,7 @@ c_{ik} = \sum_{j=1}^{p} a_{ij} b_{jk}.
 \end{enumerate}
 \end{tcolorbox}
 
-\subsubsection{Транспонирование матрицы}
+\subsection{Транспонирование матрицы}
 \begin{tcolorbox}
 \textbf{Определение.} Матрица $A^T$, полученная из $A = (a_{ij})_{m\times n}$ заменой строк на столбцы, называется \textit{транспонированной}:
 \[
@@ -781,7 +756,7 @@ A^T = (a_{ji})_{n\times m}.
 \end{enumerate}
 \end{tcolorbox}
 
-\subsubsection{Определитель квадратной матрицы}
+\subsection{Определитель квадратной матрицы}
 \begin{tcolorbox}
 \textbf{Определение.} Пусть $A = (a_{ij})_{n\times n}$. \textit{Определителем} (детерминантом) матрицы $A$ называется число
 \[
@@ -800,7 +775,6 @@ A^T = (a_{ji})_{n\times m}.
 \end{enumerate}
 \end{tcolorbox}
 
-\textbf{Мне кажется их не было, но нейронка накидала. Пусть будет}
 \begin{tcolorbox}[title=Минор и алгебраическое дополнение]
 Пусть $A = (a_{ij})_{n\times n}$.  
 \textit{Минором} $M_{ij}$ называется определитель матрицы $(n-1)\times(n-1)$, полученной из $A$ вычёркиванием $i$-й строки и $j$-го столбца.  
@@ -819,7 +793,7 @@ A_{ij} = (-1)^{i+j} M_{ij}.
 \]
 \end{tcolorbox}
 
-\subsubsection{Обратная матрица}
+\subsection{Обратная матрица}
 \begin{tcolorbox}
 \textbf{Определение.} Матрица $A^{-1}$ называется \textit{обратной} к $A$, если
 \[
