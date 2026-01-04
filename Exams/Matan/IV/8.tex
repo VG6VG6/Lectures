@@ -1,2 +1,41 @@
-
 \subsection{Предел $\lim_{x\to\infty} (1 + \frac{1}{x})^x$.}
+\[ \lim_{x\to\infty} \left(1 + \frac{1}{x}\right)^x = e \]
+
+\begin{tcolorbox}[title=Доказательство]
+	\textbf{1. Вспомогательные последовательности.}\\
+	Мы знаем, что $\lim_{n\to\infty} (1+\frac{1}{n})^n = e$. Рассмотрим две модификации:
+	\[ \left(1 + \frac{1}{n}\right)^{n+1} = \left(1 + \frac{1}{n}\right)^{n}\left(1 + \frac{1}{n}\right) \to e \cdot 1 = e \]
+	\[ \left(1 + \frac{1}{n + 1}\right)^{n} = \frac{\left(1 + \frac{1}{n+1}\right)^{n+1}}{\left(1 + \frac{1}{n+1}\right)} \to \frac{e}{1} = e \]
+	
+	Значит, для любого $\varepsilon > 0$ существуют номера $N_1$ и $N_2$, такие что при $n > N = \max(N_1, N_2)$:
+	\[ e - \varepsilon < \left(1 + \frac{1}{n+1}\right)^{n} < e + \varepsilon \quad \text{и} \quad e - \varepsilon < \left(1 + \frac{1}{n}\right)^{n+1} < e + \varepsilon \]
+	Объединяя это:
+	\begin{equation}\label{eq:e_bounds}
+		e - \varepsilon < \left(1 + \frac{1}{n+1}\right)^{n} < \dots < \left(1 + \frac{1}{n}\right)^{n+1} < e + \varepsilon
+	\end{equation}
+
+	\textbf{2. Случай $x \to +\infty$ ($x > 1$).}
+	Используем целую часть числа: $n = [x]$. Тогда $n \le x < n+1$.
+	Отсюда следуют неравенства для оснований:
+	\[ \frac{1}{n+1} < \frac{1}{x} \le \frac{1}{n} \implies 1 + \frac{1}{n+1} < 1 + \frac{1}{x} \le 1 + \frac{1}{n} \]
+	Возведем в степень $x$ (учитывая, что $n \le x < n+1$):
+	\[ \left(1 + \frac{1}{n + 1}\right)^{n} < \left(1 + \frac{1}{x}\right)^{x} < \left(1 + \frac{1}{n}\right)^{n+1} \]
+	При $x \to +\infty$ имеем $n = [x] \to \infty$. Согласно неравенству (\ref{eq:e_bounds}), крайние члены стремятся к $e$.
+	По теореме о зажатой функции:
+	\[ \left(1 + \frac{1}{x}\right)^{x} \xrightarrow[]{x\to+\infty} e \]
+
+	\textbf{3. Случай $x \to -\infty$.}
+	Сделаем замену $t = -x$. Если $x \to -\infty$, то $t \to +\infty$.
+	\[ \left(1 + \frac{1}{x}\right)^{x} = \left(1 - \frac{1}{t}\right)^{-t} = \left(\frac{t-1}{t}\right)^{-t} = \left(\frac{t}{t - 1}\right)^t = \left(1 + \frac{1}{t-1}\right)^{t} \]
+	Представим степень $t$ как $(t-1) + 1$:
+	\[ \left(1 + \frac{1}{t-1}\right)^{t-1} \cdot \left(1 + \frac{1}{t-1}\right) \]
+	Первый множитель стремится к $e$ (по доказанному в п.2, так как $t-1 \to +\infty$), второй — к 1.
+	\[ \lim_{t\to +\infty} \dots = e \cdot 1 = e \]
+
+	\textbf{4. Общий вывод.}
+	\[ \forall \varepsilon > 0\; \exists \delta^+: \;\forall x > \delta^+\; \left|\left(1 + \frac{1}{x}\right)^{x} - e\right| < \varepsilon \]
+	\[ \forall \varepsilon > 0\; \exists \delta^-: \;\forall x < -\delta^-\; \left|\left(1 + \frac{1}{x}\right)^{x} - e\right| < \varepsilon \]
+	Возьмем $\delta = \max\{ \delta^+, \delta^- \}$. Тогда $\forall x: |x| > \delta$:
+	\[ \left|\left(1 + \frac{1}{x}\right)^{x} - e\right| < \varepsilon \]
+	Что и означает $\lim_{x\to\infty} \left(1 + \frac{1}{x}\right)^x = e$.
+\end{tcolorbox}

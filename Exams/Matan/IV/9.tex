@@ -1,83 +1,190 @@
-
 \subsection{Монотонные функции. Существование односторонних пределов у монотонных функций.}
 
-\subsubsection{Ограниченность функций.}
+\subsubsection*{Монотонные функции}
+Пусть $f(x)$ определена на $<a, b> \subset \mathbb{R}$.
+
+\begin{tcolorbox}[title=Определения монотонности]
+    \begin{itemize}
+        \item $f(x)$ \textbf{возрастает (нестрого)} на $<a, b>$, если:
+        \[ \forall x_1, x_2 \in <a, b>:\; x_1 < x_2 \Rightarrow f(x_1) \leq f(x_2) \quad (f \uparrow) \]
+        
+        \item $f(x)$ \textbf{возрастает (строго)} на $<a, b>$, если:
+        \[ \forall x_1, x_2 \in <a, b>:\; x_1 < x_2 \Rightarrow f(x_1) < f(x_2) \]
+        
+        \item $f(x)$ \textbf{убывает (нестрого)} на $<a, b>$, если:
+        \[ \forall x_1, x_2 \in <a, b>:\; x_1 < x_2 \Rightarrow f(x_1) \geq f(x_2) \quad (f \downarrow) \]
+        
+        \item $f(x)$ \textbf{убывает (строго)} на $<a, b>$, если:
+        \[ \forall x_1, x_2 \in <a, b>:\; x_1 < x_2 \Rightarrow f(x_1) > f(x_2) \]
+    \end{itemize}
+\end{tcolorbox}
+
+\textbf{Теорема.} Если $f(x) \uparrow$ на $<a, b>$, то:
+\begin{enumerate}
+	\item $\exists \lim_{x\to a+0} f(x)$ (конечный или бесконечный), причем $\lim_{x\to a+0} f(x) = \inf_{<a,b>} f(x)$.
+	\item $\exists \lim_{x\to b-0} f(x)$ (конечный или бесконечный), причем $\lim_{x\to b-0} f(x) = \sup_{<a,b>} f(x)$.
+\end{enumerate}
+
+\begin{tcolorbox}[title=Доказательство (для предела справа в точке $a$)]
+	Рассмотрим два случая поведения функции:
+	\begin{enumerate}
+		\item \textbf{Случай 1:} Функция $f(x)$ ограничена снизу на интервале $<a, b>$.
+		Тогда по аксиоме полноты существует конечная точная нижняя грань:
+		\[ A = \inf_{<a,b>} f(x) \in \mathbb{R} \]
+		По определению инфимума:
+		\begin{itemize}
+		    \item $\forall x \in <a,b>: f(x) \ge A$.
+		    \item $\forall \varepsilon > 0$, число $A + \varepsilon$ не является нижней гранью, значит $\exists x' \in <a,b>: f(x') < A + \varepsilon$.
+		\end{itemize}
+		В силу возрастания функции, для всех $x$, лежащих левее $x'$ (т.е. $a < x < x'$):
+		\[ A \leq f(x) \leq f(x') < A + \varepsilon \]
+		То есть $|f(x) - A| < \varepsilon$.
+		Это и означает (если взять $\delta = x' - a$), что $\lim_{x\to a +0} f(x) = A$.
+
+		\item \textbf{Случай 2:} Функция $f(x)$ не ограничена снизу на $<a,b>$.
+		\[ \forall E > 0\; \exists x' \in <a,b>: f(x') < -E \]
+		В силу возрастания, для всех $x \in <a, x']$:
+		\[ f(x) \leq f(x') < -E \]
+		Это означает, что $\lim_{x\to a+0} f(x) = -\infty$.
+	\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство (для предела слева в точке $b$)]
+	\begin{enumerate}
+		\item \textbf{Случай 1:} Функция $f(x)$ ограничена сверху на интервале $<a, b>$.
+		\[ B = \sup_{<a,b>} f(x) \in \mathbb{R} \]
+		По определению супремума:
+		\begin{itemize}
+		    \item $\forall x \in <a,b>: f(x) \le B$.
+		    \item $\forall \varepsilon > 0$, число $B - \varepsilon$ не является верхней гранью $\Rightarrow \exists x' \in <a,b>: f(x') > B - \varepsilon$.
+		\end{itemize}
+		В силу возрастания функции, для всех $x \in <x', b>$ (т.е. $x' < x < b$):
+		\[ B - \varepsilon < f(x') \leq f(x) \leq B < B + \varepsilon \]
+		$\Rightarrow |f(x) - B| < \varepsilon$. Это означает, что $\lim_{x\to b-0} f(x) = B$.
+
+		\item \textbf{Случай 2:} Функция $f(x)$ не ограничена сверху на $<a,b>$.
+		\[ \forall E > 0\; \exists x' \in <a,b>: f(x') > E \]
+		В силу возрастания, для всех $x \in <x', b>$:
+		\[ f(x) \geq f(x') > E \]
+		Это означает, что $\lim_{x\to b-0} f(x) = +\infty$.
+	\end{enumerate}
+\end{tcolorbox}
+
+
+\textbf{Обозначения:}
+\begin{itemize}
+    \item $B<a,b>$ — класс функций, ограниченных на $<a, b>$.
+    \item $C<a,b>$ — класс функций, непрерывных на $<a, b>$.
+\end{itemize}
+
+\textbf{Следствия:}
+\begin{enumerate}
+	\item Аналогичные утверждения верны для $f(x) \downarrow$ на $<a,b>$ (пределы равны $\sup$ слева и $\inf$ справа).
+	\item Если $f(x)$ монотонна на $<a, b>$, то:
+		\begin{enumerate}
+			\item В любой внутренней точке $x_0 \in <a,b>$ существуют конечные односторонние пределы:
+			\[ \lim_{x\to x_0-0} f(x) \le f(x_0) \le \lim_{x\to x_0+0} f(x) \]
+			\item Точки разрыва могут быть только 1-го рода (скачки).
+			\item Множество точек разрыва не более чем счётно.
+		\end{enumerate}
+\end{enumerate}
+
+\begin{tcolorbox}[title=Доказательство конечности пределов во внутренней точке]
+	Пусть $x_0 \in <a,b>$ и $f(x) \uparrow$.
+	Возьмем любые точки $x' \in (a, x_0)$ и $x'' \in (x_0, b)$.
+	В силу монотонности для любого $x$ из окрестности $(x', x'')$ выполнено:
+	\[ f(x') \leq f(x) \leq f(x'') \]
+	Значит, функция ограничена в окрестности точки $x_0$.
+	По доказанной теореме пределы слева и справа существуют и они конечны (так как ограничены значениями в соседних точках).
+\end{tcolorbox}
+
+\subsubsection*{Ограниченность функций. (хз почяему я написал это сюда, но пусть будет)}
 \begin{tcolorbox}
-	\textbf{Определение.} $f(x)$ ограничена сверху на X, если
+	\textbf{Определение.} $f(x)$ ограничена сверху на $X$, если
 	\[ \exists M: \forall x \in X, f(x) < M \]
 \end{tcolorbox}
 \begin{tcolorbox}
-	\textbf{Определение.} $f(x)$ ограничена снизу на X, если
+	\textbf{Определение.} $f(x)$ ограничена снизу на $X$, если
 	\[ \exists m: \forall x \in X, f(x) > m \]
 \end{tcolorbox}
 \begin{tcolorbox}
-Если $f(x)$ принимает комплексные значения, то ограниченность $f(x)$ на X
-\[ \exists M: \forall x \in X, |f(x)| < M \]
+    Если $f(x)$ принимает комплексные значения, то ограниченность $f(x)$ на $X$:
+    \[ \exists M: \forall x \in X, |f(x)| < M \]
 \end{tcolorbox}
-
 
 \begin{tcolorbox}
-	\textbf{Определение.} $f(x): X \to Y$
-	\[ \sup_X f(x)=\sup f(X) \]
+	\textbf{Определение.} Для $f(x): X \to Y$:
+	\[ \sup_X f(x) = \sup f(X) \]
 \end{tcolorbox}
-\[ M = \sup_X f(x) \]
-если 
+Число $M = \sup_X f(x)$, если:
 \begin{enumerate}
-	\item $ \forall x \in X\; f(x) \leq M $
-	\item $ \forall M` < M\; \exists x \in X: f(x) > M` $
+	\item $ \forall x \in X\;\; f(x) \leq M $
+	\item $ \forall M' < M\;\; \exists x \in X: f(x) > M' $
 \end{enumerate}
 
 \begin{tcolorbox}
-	\textbf{Определение.} Если $f(x)$ не ограничена сверху на X, то $\exists \{ x_n \} \supset X $
+	\textbf{Определение.} Если $f(x)$ не ограничена сверху на $X$, то $\exists \{ x_n \} \subset X $ такая, что
 	\[ f(x_n) \xrightarrow[n\to\infty]{} +\infty \]
 \end{tcolorbox}
 
 \begin{tcolorbox}
-	\textbf{Определение.} $f(x)$ принимает max в $x_0 \in X$, если
+	\textbf{Определение.} $f(x)$ принимает max в точке $x_0 \in X$, если
 	\[ \forall x \in X\;\; f(x) \leq f(x_0) \]
 	\[ f(x_0) = \max_X f(x) \]
 \end{tcolorbox}
 
-\subsubsection{Односторонние пределы.}
-
+\subsubsection*{Односторонние пределы}
 
 \begin{tcolorbox}
-	\textbf{Определение. }Предел справа.\\
-	$f(x)$ на $(a, b) \to \R$\\
-	$ f(x) \to A$, при $x \to a + 0$\\
-	$ f(x) \to A$, при $x \to a, x > a$ \\
-	$f(x) \to A$, при $x \to a$ справа $\Leftrightarrow \forall \eps > 0 \exists \delta > 0 \forall x \in (a, a+ \delta) (\forall x: |x-a| < delta, x > a) |f(x) - A| < \eps$
+	\textbf{Определение. Предел справа (по Коши).} \\
+	Пусть $f(x)$ определена на $(a, b)$.
+	Число $A$ называется пределом $f(x)$ при $x \to a + 0$ (или $x \to a, x > a$), если:
+	\[ \forall \varepsilon > 0\; \exists \delta > 0:\; \forall x \in (a, a+ \delta) \implies |f(x) - A| < \varepsilon \]
 \end{tcolorbox}
 
 \begin{tcolorbox}
-	Опеделение. Предел слева.
-	\[ B = \lim_{x \to b-0} f(x) \Leftrightarrow \forall \eps > 0\; \forall x\; b - \delta < x < b,\; |f(x) - B| < \eps \]
+	\textbf{Определение. Предел слева (по Коши).}
+	\[ B = \lim_{x \to b-0} f(x) \Leftrightarrow \forall \varepsilon > 0\; \exists \delta > 0:\; \forall x \in (b - \delta, b) \implies |f(x) - B| < \varepsilon \]
 \end{tcolorbox}
 
 \begin{tcolorbox}
-	Определение по Гейне. 
-	\[ \exists \lim_{x \to a + 0} f(x) \Leftrightarrow \forall \{x_n\} \supset (a, b)\; x_n \xrightarrow[]{n\to \infty} a \;\; {f(x_n)} - converges \]
+	\textbf{Определение по Гейне (для предела справа).} 
+	\[ \exists \lim_{x \to a + 0} f(x) = A \Leftrightarrow \forall \{x_n\} \subset (a, b): x_n \to a \implies \lim_{n \to \infty} f(x_n) = A \]
 \end{tcolorbox}
 
-\textbf{Утверждение.} Существование предела по Коши справа или слева равносильно существованию соответствующего одностороннего предела по Гейне.
+\begin{tcolorbox}
+	\textbf{Определение по Гейне (для предела слева).} 
+	\[ \exists \lim_{x \to b - 0} f(x) = B \Leftrightarrow \forall \{x_n\} \subset (a, b): (x_n \to b \land x_n < b) \implies \lim_{n \to \infty} f(x_n) = B \]
+\end{tcolorbox}
 
-\textbf{Теорема.} $\exists \lim_{x \to a} f(x) \Leftrightarrow$ 
-\[
+\textbf{Утверждение.} Существование предела по Коши справа (или слева) равносильно существованию соответствующего одностороннего предела по Гейне.
+
+\textbf{Теорема (Связь односторонних и двусторонних пределов).}
+\[ \exists \lim_{x \to a} f(x) = A \Leftrightarrow
 \begin{cases}
 	\exists \lim_{x \to a + 0} f(x)\\
 	\exists \lim_{x \to a - 0} f(x)\\
-	\lim_{x \to a + 0} f(x) = \lim_{x \to a - 0} f(x)\\
+	\lim_{x \to a + 0} f(x) = \lim_{x \to a - 0} f(x) = A\\
 \end{cases} 
 \]
+
 \begin{tcolorbox}[title=Доказательство]
-	$\Rightarrow:\; A = \lim_{x \to a} f(x)$ По определению $\forall \eps > 0\; \exists \delta_\eps > 0: \forall x\; (0 < |x - a| < \delta_\eps \Leftrightarrow x \in (a - \delta_\eps, a) \cup (a, a + \delta_\eps)$
-	\[ x \in (a - \delta_\eps, a) \Rightarrow A = \lim_{x \ to a -0} f(x) \]
-	\[ x \in (a, a + \delta_\eps) \Rightarrow A = \lim_{x \ to a + 0} f(x) \]
+	$\Rightarrow$: Пусть $A = \lim_{x \to a} f(x)$. 
+	По определению: $\forall \varepsilon > 0\; \exists \delta_\varepsilon > 0: \forall x$
+	\[ 0 < |x - a| < \delta_\varepsilon \Leftrightarrow x \in <a - \delta_\varepsilon, a> \cup <a, a + \delta_\varepsilon> \implies |f(x) - A| < \varepsilon \]
+	Рассмотрим сужения на интервалы:
+	\begin{itemize}
+	    \item Если $x \in <a - \delta_\varepsilon, a>$, то неравенство выполнено $\Rightarrow A = \lim_{x \to a - 0} f(x)$.
+	    \item Если $x \in <a, a + \delta_\varepsilon>$, то неравенство выполнено $\Rightarrow A = \lim_{x \to a + 0} f(x)$.
+	\end{itemize}
 
-	$\Leftrightarrow:$ 
-	\[ \lim_{x \to a + 0} f(x) = \lim_{x \to a - 0} f(x) := A\]
-	\[ A=  \lim_{x + 0} f(x) \Rightarrow \forall \eps > 0 \exists \delta_\eps > 0\; \forall x \in (a, a + \delta_\eps) \;\; |f(x) - A| < \eps \]
-	\[ A = \lim_{x - 0} f(x) \Rightarrow \forall \eps > 0 \exists \delta_\eps` > 0\; \forall x \in (a - \delta_\eps`, a) \;\; |f(x) - A| < \eps \]
-
-	\[ \delta_\eps = \min{\delta_eps, \delta_\eps`} \;\; \forall x: 0 < |x - a| < \delta_\eps\;\; |f(x) - A| < \eps \]
+	$\Leftarrow$: Пусть $\lim_{x \to a + 0} f(x) = \lim_{x \to a - 0} f(x) = A$.
+	\begin{itemize}
+	    \item $A = \lim_{x \to a + 0} f(x) \Rightarrow \forall \varepsilon > 0\; \exists \delta_1 > 0\; \forall x \in <a, a + \delta_1>: |f(x) - A| < \varepsilon$
+	    \item $A = \lim_{x \to a - 0} f(x) \Rightarrow \forall \varepsilon > 0\; \exists \delta_2 > 0\; \forall x \in <a - \delta_2, a>: |f(x) - A| < \varepsilon$
+	\end{itemize}
+	Возьмем $\delta = \min(\delta_1, \delta_2)$. Тогда для любого $x$ из проколотой окрестности:
+	\[ 0 < |x - a| < \delta \implies x \in <a-\delta_2, a> \cup <a, a+\delta_1> \]
+	В обоих случаях $|f(x) - A| < \varepsilon$.
+	Следовательно, $\lim_{x \to a} f(x) = A$.
 \end{tcolorbox}

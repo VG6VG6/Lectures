@@ -1,2 +1,49 @@
 \subsection{Непреревность сложной функции, теорема о сохранении знака.}
-Далльше пока не было. 
+
+\subsubsection*{Теорема (О сохранении знака).}
+Если $f(x)$ непрерывна в $a$ и $f(a) \neq 0$, то существует окрестность $U_\delta(a)$, в которой $\operatorname{sgn} f(x) = \operatorname{sgn} f(a)$.
+
+\begin{tcolorbox}[title=Доказательство]
+	Пусть $f(a) > 0$. Возьмем $\varepsilon = \frac{f(a)}{2} > 0$.
+	По определению непрерывности $\exists \delta > 0$, такое что $\forall x \in U_\delta(a)$:
+	\[ |f(x) - f(a)| < \frac{f(a)}{2} \Leftrightarrow -\frac{f(a)}{2} < f(x) - f(a) < \frac{f(a)}{2} \]
+	\[ \frac{f(a)}{2} < f(x) < \frac{3f(a)}{2} \]
+	Так как $\frac{f(a)}{2} > 0$, то $f(x) > 0$ во всей окрестности. (Для $f(a) < 0$ аналогично).
+\end{tcolorbox}
+
+\subsubsection*{Непрерывность сложной функции (суперпозиции)}
+
+\textbf{Теорема.}
+Пусть:
+\begin{enumerate}
+	\item $x = \phi(t)$ непрерывна в точке $\tau$ и $\phi(\tau) = a$.
+	\item $y = f(x)$ непрерывна в точке $a$.
+\end{enumerate}
+Тогда сложная функция $F(t) = f(\phi(t))$ непрерывна в точке $\tau$.
+
+\begin{tcolorbox}[title=Доказательство]
+	Запишем определения непрерывности для обеих функций:
+	\begin{enumerate}
+		\item Для $f(x)$ в точке $a$:
+		\[ \forall \varepsilon > 0 \; \exists \sigma > 0: \forall x \in U_a \; (|x - a| < \sigma \Rightarrow |f(x) - f(a)| < \varepsilon) \]
+		
+		\item Для $\phi(t)$ в точке $\tau$ (в качестве "эпсилон" берем найденное $\sigma$):
+		\[ \text{Для } \sigma > 0 \; \exists \delta > 0: \forall t \in U_\tau \; (|t - \tau| < \delta \Rightarrow |\phi(t) - \phi(\tau)| < \sigma) \]
+	\end{enumerate}
+	
+	\textbf{Объединяем:}
+	Возьмем произвольное $\varepsilon > 0$. Найдем $\sigma(\varepsilon)$ из п.1. Затем найдем $\delta(\sigma)$ из п.2.
+	Тогда:
+	\[ |t - \tau| < \delta \implies \underbrace{|\phi(t) - \phi(\tau)|}_{=|x - a|} < \sigma \implies |f(\phi(t)) - f(\phi(\tau))| < \varepsilon \]
+	Что и означает непрерывность композиции.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Пояснение про области определения]
+	Чтобы сложная функция $f(\phi(t))$ существовала, значения внутренней функции $x = \phi(t)$ должны попадать в область определения внешней функции $f(x)$.
+	
+	В теореме предполагается, что $f(x)$ определена в некоторой окрестности $U_a$.
+	Так как $\phi(t)$ непрерывна и $\phi(\tau) = a$, то значения $\phi(t)$ при $t$, близких к $\tau$, будут как угодно близки к $a$.
+	
+	Значит, найдется такая маленькая окрестность точки $\tau$, что все значения $\phi(t)$ из неё попадут внутрь области определения $f(x)$ (в окрестность $U_a$).
+	Без этого условия запись $f(\phi(t))$ просто не имела бы смысла.
+\end{tcolorbox}

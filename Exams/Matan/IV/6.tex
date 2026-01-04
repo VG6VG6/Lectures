@@ -1,2 +1,63 @@
+\subsection{Бесконечно большие и бесконечно малые функции}
+Все функции определены на проколотой окрестности $\mathring{U}_a$.
 
-\subsection{Бесконечно большие и бесконечно малые функции.}
+\begin{tcolorbox}[title=Определение]
+	Функция $\alpha(x)$ называется \textbf{бесконечно малой (б.м.)} при $x\to a$, если $\lim_{x\to a} \alpha(x) = 0$.
+\end{tcolorbox}
+
+\textbf{Теорема 1 (Связь предела и б.м.)}
+\[ f(x) \xrightarrow[x\to a]{} A \Longleftrightarrow f(x) = A + \alpha(x), \text{ где } \alpha(x) \text{ — б.м.} \]
+
+\begin{tcolorbox}[title=Доказательство]
+	$\Rightarrow$ Пусть $\lim_{x \to a} f(x) = A$. Рассмотрим $\alpha(x) = f(x) - A$.
+	\[ \lim_{x \to a} \alpha(x) = \lim_{x \to a} (f(x) - A) = A - A = 0 \]
+	Значит, $\alpha(x)$ — б.м. и $f(x) = A + \alpha(x)$.
+	
+	$\Leftarrow$ Пусть $f(x) = A + \alpha(x)$, где $\alpha(x) \to 0$.
+	\[ \lim_{x \to a} f(x) = \lim_{x \to a} (A + \alpha(x)) = A + 0 = A \]
+\end{tcolorbox}
+
+\textbf{Теорема 2 (Арифметика б.м.)}
+\begin{enumerate}
+	\item $\alpha(x), \beta(x)$ — б.м. $\Rightarrow \alpha(x) + \beta(x)$ — б.м.
+	\item $f(x)$ ограничена в $\mathring{U}_a$ и $\alpha(x)$ — б.м. при $x\to a \Rightarrow f(x) \cdot \alpha(x)$ — б.м. при $x \to a$.
+\end{enumerate}
+
+\begin{tcolorbox}[title=Доказательство]
+	\textbf{Пункт 1.}
+	По определению предела (для $\varepsilon/2$):
+	\[ \forall \varepsilon > 0\; \exists \delta_\varepsilon > 0:\; \forall x \in \mathring{U}_{\delta_\varepsilon}(a) \;\; (0 < |x - a| < \delta_\varepsilon) \]
+	\[ |\alpha(x)| < \frac{\varepsilon}{2}, \quad |\beta(x)| < \frac{\varepsilon}{2} \]
+	Тогда по неравенству треугольника:
+	\[ |\alpha(x) + \beta(x)| \leq |\alpha(x)| + |\beta(x)| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \]
+	Значит, сумма стремится к 0.
+
+	\textbf{Пункт 2.}
+	Так как $f(x)$ ограничена в $\mathring{U}_a$:
+	\[ \exists M > 0:\ \forall x \in \mathring{U}_a\;\; |f(x)| < M \]
+	Так как $\alpha(x)$ — б.м., для любого $\varepsilon > 0$ возьмем $\varepsilon' = \frac{\varepsilon}{M}$.
+	\[ \exists \delta_\varepsilon > 0: \forall x \in \mathring{U}_{\delta_\varepsilon}(a) \;\; |\alpha(x)| < \frac{\varepsilon}{M} \]
+	Тогда для произведения:
+	\[ |f(x) \cdot \alpha(x)| = |f(x)| \cdot |\alpha(x)| < M \cdot \frac{\varepsilon}{M} = \varepsilon \]
+	Значит, произведение стремится к 0.
+\end{tcolorbox}
+
+\textbf{Теорема 3 (Связь б.б. и б.м.)}
+\begin{enumerate}
+	\item $f(x) \xrightarrow[x\to a]{} \infty \Rightarrow \frac{1}{f(x)} \xrightarrow[x \to a]{} 0$ (из б.б. в б.м.)
+	\item $\alpha(x)$ — б.м. при $x \to a$, причём $\alpha(x) \neq 0$ в $\mathring{U}_a \Rightarrow \frac{1}{\alpha(x)} \xrightarrow[x\to a]{} \infty$ (из б.м. в б.б.)
+\end{enumerate}
+
+\begin{tcolorbox}[title=Доказательство]
+	\textbf{Пункт 1.}
+	По определению б.б. функции (для $E = 1/\varepsilon$):
+	\[ \forall \varepsilon > 0 \; \exists \delta_\varepsilon > 0: \; \forall x \in \mathring{U}_{\delta_\varepsilon}(a) \;\; |f(x)| > \frac{1}{\varepsilon} \Leftrightarrow \left|\frac{1}{f(x)}\right| < \varepsilon \]
+	Это означает, что $1/f(x) \to 0$.
+
+	\textbf{Пункт 2.}
+	По определению б.м. функции (для $\varepsilon = 1/E$):
+	\[ \forall E > 0\; \exists \delta_E > 0: \forall x \in \mathring{U}_{\delta_E}(a) \;\; |\alpha(x)| < \frac{1}{E} \]
+	Так как $\alpha(x) \neq 0$, можно перевернуть дробь:
+	\[ \left|\frac{1}{\alpha(x)}\right| > E \]
+	Это означает, что $1/\alpha(x) \to \infty$.
+\end{tcolorbox}

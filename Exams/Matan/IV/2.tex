@@ -1,2 +1,36 @@
 \subsection{Два определения предела функции в точке. Доказательство эквивалентости (из определения по Коши определение по Гейне).}
-Аналогично предыдущего.
+
+\subsubsection*{Предел функции в точке}
+
+Пусть функция $f(x)$ определена в проколотой окрестности точки $a$: $\mathring U_a = U_a \setminus \{a\}$.
+\[ a \in (d, c) \setminus \{a\} \]
+
+\begin{tcolorbox}[title=Определение 1 (по Коши / на языке $\varepsilon - \delta$)]
+	Число $A$ называется пределом функции $f(x)$ при $x \to a$, если:
+	\[ \forall \varepsilon > 0\;\; \exists \delta(\varepsilon) > 0: \forall x \in \mathring U_a \quad (0 < |x-a| < \delta) \Rightarrow |f(x) - A| < \varepsilon \]
+	\textit{Обозначение:} $\lim_{x \to a} f(x) = A$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Определение 2 (по Гейне / на языке последовательностей)]
+	Число $A$ называется пределом функции $f(x)$ при $x \to a$, если:
+	Для любой последовательности $\{x_n\}$, сходящейся к $a$ ($x_n \neq a$), соответствующая последовательность значений функции $\{f(x_n)\}$ сходится к числу $A$.
+	\[ \forall \{x_n\} \subset \mathring U_a: \lim_{n\to\infty} x_n = a \implies \lim_{n\to\infty} f(x_n) = A \]
+\end{tcolorbox}
+
+
+\subsubsection*{Эквивалентность определений}
+\begin{tcolorbox}
+	\textbf{Теорема.} Определение по Коши $\Leftrightarrow$ Определение по Гейне.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство]
+	\textbf{1. Коши $\Rightarrow$ Гейне} \\
+	Дано: $\lim_{x\to a} f(x) = A$ (по Коши).
+	\[ \forall \varepsilon > 0\; \exists \delta > 0: 0 < |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon \]
+	Возьмем произвольную последовательность $\{x_n\}$, такую что $x_n \to a$ и $x_n \neq a$.
+	По определению предела последовательности, для найденного $\delta$:
+	\[ \exists N: \forall n > N \;\; 0 < |x_n - a| < \delta \]
+	Но тогда для этих $x_n$ выполняется условие Коши:
+	\[ |f(x_n) - A| < \varepsilon \]
+	Это и означает, что $f(x_n) \to A$.
+\end{tcolorbox}
