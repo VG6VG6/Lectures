@@ -1,0 +1,29 @@
+\subsection{Пределы $\lim_{x\to +\infty} \frac{\log x}{x^\eps}$ и $\lim_{x\to +0} x^\eps\cdot \log x,\; \eps > 0$}
+
+\textbf{Логарифмическая функция растет медленнее степенной.}
+\[ \forall \alpha > 0 \implies \lim_{x \to +\infty} \frac{\log x}{x^\alpha} = 0 \]
+
+\begin{tcolorbox}[title=Доказательство]
+	Сделаем замену переменной $x = e^t$.
+	Если $x \to +\infty$, то $t \to +\infty$.
+	
+	Подставим в предел:
+	\[ \frac{\log x}{x^\alpha} = \frac{\log(e^t)}{(e^t)^\alpha} = \frac{t}{e^{\alpha t}} = \frac{t}{(e^\alpha)^t} \]
+	
+	Обозначим $a = e^\alpha$. Так как $\alpha > 0$, то $a > 1$.
+	Получаем предел вида $\frac{t}{a^t}$.
+	Согласно прошлому пределу (показательная функция растет быстрее степенной), при $a > 1$:
+	\[ \frac{t}{a^t} \xrightarrow[t \to +\infty]{} 0 \]
+\end{tcolorbox}
+
+\textbf{Следствие.} Степенная функция «гасит» логарифм в нуле.
+\[ \forall \alpha > 0 \implies \lim_{x \to +0} x^\alpha \log x = 0 \]
+
+\begin{tcolorbox}[title=Доказательство]
+	Сделаем замену $x = \frac{1}{t}$.
+	Если $x \to +0$, то $t \to +\infty$.
+	
+	\[ x^\alpha \log x = \left(\frac{1}{t}\right)^\alpha \log\left(\frac{1}{t}\right) = \frac{1}{t^\alpha} \cdot (-\log t) = - \frac{\log t}{t^\alpha} \]
+	
+	По доказанному выше (пункт 2), при $t \to +\infty$ дробь $\frac{\log t}{t^\alpha}$ стремится к 0.
+\end{tcolorbox}

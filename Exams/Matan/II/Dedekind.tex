@@ -118,6 +118,136 @@ $[\sqrt{2} - \cfrac{1}{n}, \sqrt{2} + \cfrac{1}{n}]$
 \subsubsection{Полнота по Дедекинду}
 \textbf{Полнота по Дедекинду} - это непустота центрального класса. 
 
+
+\subsection{Лемма об отделимости}
+
+\subsubsection{Отделимость множеств}
+Пусть $A, B \subset \mathbb{R}$, $A \neq \varnothing, B \neq \varnothing$, и выполнено условие:
+\[ \forall a \in A, \forall b \in B \implies a \leq b \]
+
+\begin{center}
+    % Здесь должна быть ваша картинка
+    \includegraphics[width=0.5\linewidth]{II/images/Отделимость}
+\end{center}
+
+\textbf{Утверждение:}
+\[ \exists c \in \mathbb{R}: \quad \forall a \in A, \forall b \in B \implies a \leq c \leq b \]
+Такое число $c$ называется \textit{разделяющим} числом.
+
+\begin{tcolorbox}[title=Доказательство]
+    Рассмотрим два случая взаимного расположения множеств:
+
+    \begin{enumerate}
+        \item \textbf{Случай 1:} $A \cap B \neq \varnothing$.
+        
+        Это значит, что существует элемент $c \in A \cap B$.
+        \[
+        \begin{cases}
+            c \in A \Rightarrow \forall b \in B \;\; c \leq b \quad \text{(по условию леммы)} \\
+            c \in B \Rightarrow \forall a \in A \;\; a \leq c \quad \text{(по условию леммы)}
+        \end{cases}
+        \]
+        Объединяя неравенства, получаем:
+        \[ \forall a \in A, \forall b \in B \implies a \leq c \leq b \]
+        \textit{Замечание:} В этом случае разделяющее число единственно (если бы существовало $c' \neq c$, это привело бы к противоречию с условием $a \le b$ для элементов пересечения).
+
+        \item \textbf{Случай 2:} $A \cap B = \varnothing$.
+        
+        Тогда $\forall a \in A, \forall b \in B \implies a < b$ (равенство невозможно, так как пересечение пусто).
+        
+        Расширим множества до полного покрытия прямой $\mathbb{R}$ (построение сечения Дедекинда).
+        
+        \begin{center}
+            \includegraphics[width=0.5\linewidth]{II/images/Отделимость2}
+        \end{center}
+        
+        Определим множество $B'$ (все точки правее $B$ + само $B$):
+        \[ B' := \{ y \in \mathbb{R} \mid \exists b \in B: b \leq y \} \]
+        Свойства $B'$:
+        \begin{itemize}
+            \item $B \subset B'$ (так как $b \le b$).
+            \item $A \cap B' = \varnothing$. (Действительно, если $a \in A$, то $\forall b \in B: a < b$, значит, $a$ не может быть больше или равно никакому $b$).
+        \end{itemize}
+        
+        Определим множество $A'$ как дополнение:
+        \[ A' := \mathbb{R} \setminus B' \]
+        Так как $A \cap B' = \varnothing$, то $A \subset A'$. Значит, $A' \neq \varnothing$ и $B' \neq \varnothing$.
+        
+        Имеем разбиение прямой: $A' \cup B' = \mathbb{R}$, $A' \cap B' = \varnothing$.
+        
+        Докажем, что любой элемент из $A'$ меньше любого элемента из $B'$:
+        \[ \forall x \in A', \forall y \in B' \implies x < y \]
+        (Доказательство от противного: если $x \ge y$ и $y \in B'$, то по определению $B'$ существует $b \in B$, такое что $b \le y \le x$. Но если $x \ge b$, то $x$ должен лежать в $B'$, а он в $A'$).
+        
+        \textbf{Построение разделяющей точки (Метод вложенных отрезков):}
+        
+        Возьмем произвольные $a_1 \in A'$ и $b_1 \in B'$.
+        
+        \begin{center}
+            \includegraphics[width=0.5\linewidth]{II/images/Отделимость3}
+        \end{center}
+        
+        1. Найдем середину: $c_1 = \frac{a_1 + b_1}{2}$.
+        \begin{itemize}
+            \item Если $c_1 \in A'$, то новый отрезок $[a_2, b_2] := [c_1, b_1]$.
+            \item Если $c_1 \in B'$, то новый отрезок $[a_2, b_2] := [a_1, c_1]$.
+        \end{itemize}
+        Получили $[a_2, b_2] \subset [a_1, b_1]$, причем $a_2 \in A', b_2 \in B'$.
+        Длина отрезка: $|b_2 - a_2| = \frac{1}{2} |b_1 - a_1|$.
+        
+        2. Повторяем процесс $n$ раз. Получаем систему вложенных отрезков:
+        \[ [a_1, b_1] \supset [a_2, b_2] \supset \dots \supset [a_n, b_n] \supset \dots \]
+        Где $\forall n: a_n \in A', b_n \in B'$.
+        Длина отрезка стремится к нулю:
+        \[ |b_n - a_n| = \frac{1}{2^{n-1}} |b_1 - a_1| \xrightarrow[n\to \infty]{} 0 \]
+        
+        3. По принципу вложенных отрезков (Коши-Кантора) существует единственная общая точка $c$:
+        \[ \exists! c \in \mathbb{R}: \quad c = \bigcap_{n=1}^{\infty} [a_n, b_n] \]
+        
+        Для этой точки выполняется:
+        \[ \forall n \;\; a_n \leq c \leq b_n \]
+        Следовательно, $c$ разделяет множества $A'$ и $B'$:
+        \[ \forall x \in A', \forall y \in B' \implies x \leq c \leq y \]
+        
+        \begin{center}
+            \includegraphics[width=0.5\linewidth]{II/images/Отделимость4}
+        \end{center}
+        
+        Так как $A \subset A'$ и $B \subset B'$, то $c$ разделяет и исходные множества:
+        \[ \forall a \in A, \forall b \in B \implies a \leq c \leq b \]
+    \end{enumerate}
+\end{tcolorbox}
+
+\subsubsection{Существование точной грани}
+Из леммы об отделимости следует существование точной верхней и нижней грани множества.
+
+\textbf{Следствие 1.} Если множество $E \subset \mathbb{R}$ ограничено сверху ($E \neq \varnothing$), то существует точная верхняя грань (супремум):
+\[ \exists M \in \mathbb{R}: M = \sup E \]
+
+\textbf{Следствие 2.} Если множество $E \subset \mathbb{R}$ ограничено снизу ($E \neq \varnothing$), то существует точная нижняя грань (инфимум):
+\[ \exists m \in \mathbb{R}: m = \inf E \]
+
+\begin{tcolorbox}[title=Доказательство (для супремума)]
+    Пусть $E$ ограничено сверху.
+    Обозначим $M_{set}$ — множество всех верхних граней множества $E$.
+    Так как $E$ ограничено сверху, $M_{set} \neq \varnothing$.
+    Так как $E \neq \varnothing$, то $E$ не пусто.
+    
+    По определению верхней грани:
+    \[ \forall x \in E, \forall m \in M_{set} \implies x \leq m \]
+    
+    Применим лемму об отделимости к множествам $A = E$ и $B = M_{set}$.
+    Существует число $c \in \mathbb{R}$, такое что:
+    \[ \forall x \in E, \forall m \in M_{set} \implies x \leq c \leq m \]
+    
+    1. Так как $\forall x \in E, x \leq c$, то $c$ является верхней гранью $E$. Значит $c \in M_{set}$.
+    2. Так как $\forall m \in M_{set}, c \leq m$, то $c$ является наименьшей из верхних граней.
+    
+    Следовательно, $c = \sup E$.
+\end{tcolorbox}
+
+
+
 \subsection{Лемма об отделимости.}
 \subsubsection{Отделимость множеств}
 \[ A, B \subset \R, A, B \not= \varnothing,\; \forall a \in A, \forall b \in B \]
@@ -136,7 +266,7 @@ $[\sqrt{2} - \cfrac{1}{n}, \sqrt{2} + \cfrac{1}{n}]$
 		c \in B \Rightarrow \forall a \in A \;\; a \leq c
 	\end{cases} \Rightarrow \forall a \in A \; \forall b \in B \;\; a \leq c \leq b
 	\]
-	Как доп вопрос может спросить про единственность $c$. Там очев, так что сами. 
+	Как доп вопрос может спросить про единственность $c$.
 
 	\item $ A\cap B = \varnothing\; \forall a \in A, \forall b \in B $
 		$a \leq b$, если бы $a=b \in A\cap B \Rightarrow a < b$ 

@@ -1,0 +1,136 @@
+\newpage
+\subsection{О-символика, эквивалентные функции, главная часть. Основные соотношения эквивалентности.}
+
+\subsubsection*{1. О-символика (сравнение функций)}
+
+Пусть функции $f(x)$ и $g(x)$ определены в некоторой проколотой окрестности точки $a$ (или при $x \to \infty$).
+
+\begin{tcolorbox}[title=О-малое]
+	\textbf{Определение.} Говорят, что $f(x)$ есть «о-малое» от $g(x)$ при $x \to a$, и пишут:
+	\[ f(x) = o(g(x)) \quad \text{при } x \to a, \]
+	если существует функция $\alpha(x)$ такая, что:
+	\[ f(x) = \alpha(x) \cdot g(x), \quad \text{где } \lim_{x\to a} \alpha(x) = 0. \]
+	
+	\textit{Частный случай:} Если $g(x) \neq 0$, то $f(x) = o(g(x)) \Leftrightarrow \lim_{x\to a} \frac{f(x)}{g(x)} = 0$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=О-большое]
+	\textbf{Определение.} Говорят, что $f(x)$ есть «О-большое» от $g(x)$ при $x \to a$, и пишут:
+	\[ f(x) = O(g(x)) \quad \text{при } x \to a, \]
+	если существуют окрестность $U_a$ и константа $C > 0$, такие что:
+	\[ \forall x \in U_a \setminus \{a\} \quad |f(x)| \le C \cdot |g(x)|. \]
+	(Это означает, что отношение $\frac{f(x)}{g(x)}$ ограничено).
+\end{tcolorbox}
+
+\subsubsection*{Утверждение о функциях одного порядка}
+\textbf{Утверждение.} Функции $f(x)$ и $g(x)$ являются функциями одного порядка при $x \to a$ тогда и только тогда, когда:
+\[ \exists C_1, C_2 > 0 \text{ и } \exists U_a: \quad \forall x \in U_a \setminus \{a\} \quad C_1 |g(x)| \le |f(x)| \le C_2 |g(x)| \]
+
+\begin{tcolorbox}[title=Доказательство]
+    \textbf{1. Необходимость ($\Rightarrow$)}
+    Дано: $f(x)$ и $g(x)$ одного порядка. Это значит:
+    \[ \begin{cases} f(x) = O(g(x)) \\ g(x) = O(f(x)) \end{cases} \]
+    Расшифруем определения:
+    \begin{enumerate}
+        \item $\exists C' > 0, \exists U'_a: \forall x \in U'_a \implies |f(x)| \le C' |g(x)|$.
+        \item $\exists C'' > 0, \exists U''_a: \forall x \in U''_a \implies |g(x)| \le C'' |f(x)|$.
+    \end{enumerate}
+    Возьмем общую окрестность $U_a = U'_a \cap U''_a$.
+    Из второго неравенства следует: $|f(x)| \ge \frac{1}{C''} |g(x)|$.
+    Обозначим $C_1 = \frac{1}{C''}$ и $C_2 = C'$. Тогда в $U_a$:
+    \[ C_1 |g(x)| \le |f(x)| \le C_2 |g(x)| \]
+
+    \textbf{2. Достаточность ($\Leftarrow$)}
+    Если выполнено двойное неравенство, то сразу следуют оба определения $O$-большого, значит, функции одного порядка.
+\end{tcolorbox}
+
+\subsubsection*{Следствие (Связь предела и порядка роста)}
+\textbf{Следствие.} Если существует конечный предел отношения функций, отличный от нуля:
+\[ \lim_{x \to a} \frac{f(x)}{g(x)} = C, \quad \text{где } C \neq 0, \]
+то $f(x)$ и $g(x)$ — функции одного порядка.
+
+\begin{tcolorbox}[title=Доказательство]
+    Так как предел равен $C \neq 0$, возьмем $\varepsilon = \frac{|C|}{2} > 0$.
+    По определению предела $\exists \delta > 0$, такое что $\forall x$ при $0 < |x-a| < \delta$:
+    \[ \left| \frac{f(x)}{g(x)} - C \right| < \frac{|C|}{2} \]
+    Раскроем модуль (используя неравенство треугольника $|A| - |B| \le |A-B|$):
+    \[ |C| - \left| \frac{f(x)}{g(x)} \right| < \frac{|C|}{2} \implies \left| \frac{f(x)}{g(x)} \right| > \frac{|C|}{2} \]
+    С другой стороны:
+    \[ \left| \frac{f(x)}{g(x)} \right| - |C| < \frac{|C|}{2} \implies \left| \frac{f(x)}{g(x)} \right| < \frac{3|C|}{2} \]
+    
+    Объединяя, получаем:
+    \[ \frac{|C|}{2} < \frac{|f(x)|}{|g(x)|} < \frac{3|C|}{2} \]
+    Умножим на $|g(x)|$:
+    \[ \underbrace{\frac{|C|}{2}}_{C_1} |g(x)| < |f(x)| < \underbrace{\frac{3|C|}{2}}_{C_2} |g(x)| \]
+    
+    Согласно доказанному выше утверждению, $f(x)$ и $g(x)$ — одного порядка.
+\end{tcolorbox}
+
+\textbf{Утверждение (Связь).} Если $f(x) = O(g(x))$ при $x \to a$, то $f(x)$ ограничена в некоторой окрестности $a$ (при условии ограниченности $g(x)$).
+
+\subsubsection*{2. Эквивалентные функции}
+
+\begin{tcolorbox}[title=Определение]
+	Функции $f(x)$ и $g(x)$ называются \textbf{эквивалентными} при $x \to a$, если:
+	\[ f(x) \sim g(x) \quad \text{при } x \to a \iff f(x) = g(x)(1 + o(1)). \]
+	\[ \alpha(x) = (1 + o(1)), \; \alpha(x) \xrightarrow[x\to a]{} 1 \]
+	Если $g(x) \neq 0$, это равносильно условию:
+	\[ \lim_{x\to a} \frac{f(x)}{g(x)} = 1. \]
+\end{tcolorbox}
+
+\subsubsection*{3. Главная часть функции}
+
+\textbf{Теорема (О главной части).}
+Пусть $f(x)$ определена при $x \to a$. Если $f(x)$ можно представить в виде:
+\[ f(x) = A(x-a)^\alpha + o((x-a)^\alpha), \quad \text{где } A \neq 0, \]
+то слагаемое $A(x-a)^\alpha$ называется \textbf{главной частью} функции $f(x)$ (степенного вида).
+При этом $f(x) \sim A(x-a)^\alpha$.
+
+\begin{tcolorbox}[title=Доказательство единственности главной части]
+	Пусть $f(x)$ имеет две главные части: $A_1 (x-a)^{\alpha_1}$ и $A_2 (x-a)^{\alpha_2}$ ($A_1, A_2 \neq 0$).
+	Тогда $f(x) \sim A_1 (x-a)^{\alpha_1}$ и $f(x) \sim A_2 (x-a)^{\alpha_2}$.
+	В силу транзитивности:
+	\[ A_1 (x-a)^{\alpha_1} \sim A_2 (x-a)^{\alpha_2} \implies \lim_{x\to a} \frac{A_1 (x-a)^{\alpha_1}}{A_2 (x-a)^{\alpha_2}} = 1. \]
+	\[ \frac{A_1}{A_2} \lim_{x\to a} (x-a)^{\alpha_1 - \alpha_2} = 1. \]
+	Этот предел равен конечному числу (единице) только если степень равна 0, то есть $\alpha_1 - \alpha_2 = 0 \Rightarrow \alpha_1 = \alpha_2$.
+	Тогда $\frac{A_1}{A_2} \cdot 1 = 1 \Rightarrow A_1 = A_2$.
+	\textbf{Вывод:} Показатель $\alpha$ и коэффициент $A$ определяются единственным образом.
+\end{tcolorbox}
+
+\subsubsection*{Таблица асимптотических равенств (при $x \to 0$)}
+
+Здесь $o(x^k)$ означает величину более высокого порядка малости, чем $x^k$.
+
+\begin{tcolorbox}[title=Основные разложения (формулы Маклорена с остатком Пеано)]
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|c|c|l|}
+	\hline
+	\textbf{№} & \textbf{Функция} & \textbf{Разложение} \\
+	\hline
+	1 & $\sin x$ & $x + o(x)$ \\
+	\hline
+	2 & $\tg x$ & $x + o(x)$ \\
+	\hline
+	3 & $\arcsin x$ & $x + o(x)$ \\
+	\hline
+	4 & $\arctg x$ & $x + o(x)$ \\
+	\hline
+	5 & $\cos x$ & $1 - \dfrac{x^2}{2} + o(x^2)$ \\
+	  & \small{(или $1 - \cos x$)} & \small{$= \dfrac{x^2}{2} + o(x^2)$} \\
+	\hline
+	6 & $e^x$ & $1 + x + o(x)$ \\
+	\hline
+	7 & $a^x$ & $1 + x \ln a + o(x)$ \\
+	\hline
+	8 & $\ln(1 + x)$ & $x + o(x)$ \\
+	\hline
+	9 & $(1 + x)^\mu$ & $1 + \mu x + o(x)$ \\
+	\hline
+	\multicolumn{3}{|c|}{\textit{Частные случаи степенной функции (№9):}} \\
+	\hline
+	9a & $\sqrt{1+x}$ & $1 + \dfrac{x}{2} + o(x)$ \\
+	\hline
+	9b & $\dfrac{1}{1+x}$ & $1 - x + o(x)$ \\
+	\hline
+\end{tabular}
+\end{tcolorbox}

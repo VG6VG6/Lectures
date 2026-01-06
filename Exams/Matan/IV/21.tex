@@ -1,0 +1,43 @@
+\subsection{Предел $\lim_{x \to +\infty} \frac{x^\alpha}{a^x},\; a>1$}
+
+\textbf{Показательная функция растет быстрее степенной.}
+\[ \forall a > 1, \;\; \forall \alpha \in \mathbb{R} \implies \lim_{x \to +\infty} \frac{x^\alpha}{a^x} = 0 \]
+
+\begin{tcolorbox}[title=Доказательство]
+	Рассмотрим случай $\alpha > 0$ (при $\alpha \le 0$ утверждение очевидно, т.к. числитель ограничен или $\to 0$, а знаменатель $\to \infty$).
+	
+	Преобразуем выражение:
+	\[ \frac{x^\alpha}{a^x} = \left( \frac{x}{a^{x/\alpha}} \right)^\alpha \]
+	Обозначим $b = a^{1/\alpha}$. Так как $a > 1$ и $\alpha > 0$, то $b > 1$.
+	Достаточно доказать, что $\frac{x}{b^x} \to 0$.
+	
+	Оценим выражение, используя целую часть $[x]$ (где $[x] \le x < [x] + 1$):
+	\[ 0 < \frac{x}{b^x} < \frac{[x] + 1}{b^{[x]}} = \frac{[x] + 1}{b^{[x]+1}} \cdot b \]
+	
+	Обозначим $n = [x] + 1$. При $x \to +\infty \Rightarrow n \to \infty$.
+	Рассмотрим поведение последовательности $\frac{n}{b^n}$.
+	Так как $b > 1$, запишем $b = 1 + \Delta$, где $\Delta > 0$.
+	Используем бином Ньютона для знаменателя (при $n \ge 2$):
+	\[ b^n = (1 + \Delta)^n = 1 + n\Delta + \frac{n(n-1)}{2}\Delta^2 + \dots + \Delta^n \]
+	Оставим в знаменателе только одно слагаемое (с квадратом), уменьшив его (неравенство усилится):
+	\[ b^n > \frac{n(n-1)}{2}\Delta^2 \]
+	
+	Тогда:
+	\[ \frac{n}{b^n} < \frac{n}{\frac{n(n-1)}{2}\Delta^2} = \frac{2}{(n-1)\Delta^2} \]
+	
+	Перейдем к пределу:
+	\[ \lim_{n \to \infty} \frac{2}{(n-1)\Delta^2} = 0 \]
+	
+	Следовательно, $\frac{[x]+1}{b^{[x]+1}} \to 0$.
+	По теореме о зажатой функции (о двух милиционерах):
+	\[ \frac{x}{b^x} \to 0 \implies \left(\frac{x}{b^x}\right)^\alpha \to 0 \]
+\end{tcolorbox}
+
+\textbf{Следствие.} Убывание показательной функции (с основанием $<1$) «сильнее» любой степени.
+\[ \forall \alpha \in \mathbb{R}, \;\; a \in (0, 1) \implies \lim_{x \to +\infty} x^\alpha a^x = 0 \]
+
+\begin{tcolorbox}[title=Пояснение (из следствия 1)]
+	Пусть $a = \frac{1}{b}$, тогда $b > 1$.
+	\[ x^\alpha a^x = x^\alpha \frac{1}{b^x} = \frac{x^\alpha}{b^x} \to 0 \]
+	(согласно доказанной выше теореме).
+\end{tcolorbox}

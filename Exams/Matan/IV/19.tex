@@ -1,0 +1,79 @@
+\subsection{Равномерная непрерывность. Теорема Кантора.}
+
+\textbf{1. Обычная непрерывность} $f(x) \in C(X)$:
+\[ \forall \xi \in X \;\; \forall \varepsilon > 0 \;\; \exists \delta_{\varepsilon, \xi} > 0: \]
+\[ \forall x \in X \quad (|x - \xi| < \delta_{\varepsilon, \xi} \Rightarrow |f(x) - f(\xi)| < \varepsilon) \]
+(Здесь $\delta$ зависит не только от $\varepsilon$, но и от точки $\xi$).
+
+\textbf{Примеры:}
+\begin{enumerate}
+    \item $f(x) = x$ на $\mathbb{R}$.
+    Для любого $\varepsilon > 0$ можно взять $\delta = \varepsilon$. (Здесь $\delta$ не зависит от точки, всё хорошо).
+    
+    \item $f(x) = \frac{1}{x}$ на $x \in (0, 1)$.
+    Пусть $\forall \delta > 0$. Возьмем точки:
+    \[ x' = \delta, \quad x'' = \frac{\delta}{2} \]
+    Расстояние $|x' - x''| = \frac{\delta}{2} < \delta$.
+    Разность значений:
+    \[ |f(x') - f(x'')| = \left| \frac{1}{\delta} - \frac{2}{\delta} \right| = \frac{1}{\delta} \xrightarrow[\delta \to +0]{} +\infty \]
+    Разность значений неограниченно растет, хотя точки близки. Это пример отсутствия равномерной непрерывности.
+\end{enumerate}
+
+\begin{tcolorbox}[title=Определение (Равномерная непрерывность)]
+    Функция $f(x)$ называется \textbf{равномерно непрерывной (РН)} на множестве $X$, если:
+    \[ \forall \varepsilon > 0 \;\; \exists \delta_\varepsilon > 0: \;\; \forall x', x'' \in X \quad (|x' - x''| < \delta_\varepsilon \Rightarrow |f(x') - f(x'')| < \varepsilon) \]
+    (Здесь $\delta$ зависит \textbf{только} от $\varepsilon$ и едина для всего множества).
+\end{tcolorbox}
+
+\subsubsection*{Теорема Кантора о равномерной непрерывности}
+\textbf{Теорема.} Если $f(x) \in C[a, b]$ (непрерывна на отрезке), то $f(x)$ равномерно непрерывна на $[a, b]$.
+\[ f(x) \in C[a, b] \Rightarrow f(x) \text{ — РН на } [a, b] \]
+
+\begin{tcolorbox}[title=Доказательство (через Лемму Гейне-Бореля)]
+    Зафиксируем $\forall \varepsilon > 0$.
+    Так как $f(x)$ непрерывна в каждой точке $\xi \in [a, b]$, то:
+    \[ \forall \xi \in [a, b] \;\; \exists \delta_{\varepsilon, \xi} > 0: \]
+    \[ \forall x \in [a, b] \quad (|x - \xi| < \delta_{\varepsilon, \xi} \Rightarrow |f(x) - f(\xi)| < \frac{\varepsilon}{2}) \]
+    
+    Это условие означает, что в окрестности $U_{\delta}(\xi) = (\xi - \delta, \xi + \delta)$ колебание функции меньше $\varepsilon$.
+    
+    1. Построим покрытие отрезка $[a, b]$.
+    Возьмем для каждой точки $\xi$ интервал в два раза меньшего радиуса:
+    \[ \Delta_\xi = \left( \xi - \frac{\delta_{\varepsilon, \xi}}{2}; \; \xi + \frac{\delta_{\varepsilon, \xi}}{2} \right) \]
+    Система таких интервалов $\{\Delta_\xi\}_{\xi \in [a, b]}$ образует открытое покрытие отрезка $[a, b]$:
+    \[ [a, b] \subset \bigcup_{\xi \in [a, b]} \Delta_\xi \]
+    
+    2. По \textbf{Лемме Гейне-Бореля} (Г-Б) из бесконечного покрытия можно выделить конечное подпокрытие.
+    \[ \exists \text{ набор точек } \xi_1, \xi_2, \dots, \xi_m: \quad [a, b] \subset \bigcup_{j=1}^m \left( \xi_j - \frac{\delta_j}{2}; \; \xi_j + \frac{\delta_j}{2} \right), \quad \text{где } \delta_j = \delta_{\varepsilon, \xi_j} \]
+    
+    3. Выберем единое $\delta$:
+    \[ \delta := \min_{j=1..m} \left\{ \frac{\delta_j}{2} \right\} \]
+    Так как $m$ конечно, то $\delta > 0$.
+    
+    4. Проверим условие равномерной непрерывности.
+    Пусть $\forall x', x'' \in [a, b]$ такие, что $|x' - x''| < \delta$.
+    
+    Так как $x'$ принадлежит отрезку, он попадает в какой-то интервал из конечного покрытия:
+    \[ \exists j: \quad x' \in \left( \xi_j - \frac{\delta_j}{2}; \; \xi_j + \frac{\delta_j}{2} \right) \]
+    То есть $|x' - \xi_j| < \frac{\delta_j}{2}$.
+    
+    Оценим расстояние от $x''$ до этого центра $\xi_j$:
+    \[ |x'' - \xi_j| \le |x'' - x'| + |x' - \xi_j| < \delta + \frac{\delta_j}{2} \le \frac{\delta_j}{2} + \frac{\delta_j}{2} = \delta_j \]
+    (Так как мы выбрали $\delta \le \frac{\delta_j}{2}$).
+    
+    5. Итоговая оценка:
+    Так как $x'$ и $x''$ находятся близко к $\xi_j$ (на расстоянии меньше $\delta_j$), то:
+    \begin{itemize}
+        \item $|f(x') - f(\xi_j)| < \frac{\varepsilon}{2}$
+        \item $|f(x'') - f(\xi_j)| < \frac{\varepsilon}{2}$
+    \end{itemize}
+    
+    По неравенству треугольника:
+    \[ |f(x') - f(x'')| \le |f(x') - f(\xi_j)| + |f(\xi_j) - f(x'')| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \]
+    
+    Теорема доказана.
+\end{tcolorbox}
+
+
+
+
