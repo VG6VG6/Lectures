@@ -1,0 +1,55 @@
+\subsection{Производные $e^x,\ \sin x,\ \cos x$ и $\log x$}
+
+\begin{enumerate}
+	\item $\mathbf{y = C = \text{const}}$
+	\[ \frac{C - C}{x - x_0} = \frac{0}{x - x_0} = 0 \xrightarrow{x\to x_0} 0 \implies \mathbf{C' = 0} \]
+
+	\item $\mathbf{y = \sin x}$
+	\[ \frac{\sin x - \sin x_0}{x - x_0} = \frac{2\sin \frac{x - x_0}{2} \cdot \cos \frac{x + x_0}{2}}{x - x_0} = \cos \frac{x + x_0}{2} \cdot \frac{\sin \frac{x - x_0}{2}}{\frac{x - x_0}{2}} \]
+	Так как $\lim_{t\to 0} \frac{\sin t}{t} = 1$ (первый замечательный предел), то:
+	\[ \lim_{x\to x_0} \left( \cos \frac{x + x_0}{2} \cdot 1 \right) = \cos \frac{2x_0}{2} = \cos x_0 \implies \mathbf{(\sin x)' = \cos x} \]
+
+	\item $\mathbf{y = \cos x}$
+	\[ \frac{\cos x - \cos x_0}{x - x_0} = \frac{-2\sin \frac{x - x_0}{2} \cdot \sin \frac{x + x_0}{2}}{x - x_0} = -\sin \frac{x + x_0}{2} \cdot \frac{\sin \frac{x - x_0}{2}}{\frac{x - x_0}{2}} \]
+	Переходя к пределу:
+	\[ -\sin \frac{2x_0}{2} \cdot 1 = -\sin x_0 \implies \mathbf{(\cos x)' = -\sin x} \]
+
+	\item $\mathbf{y = e^x}$
+	\[ \frac{e^x - e^{x_0}}{x - x_0} = \frac{e^{x_0}(e^{x - x_0} - 1)}{x - x_0} \]
+	Сделаем замену $t = x - x_0$. При $x \to x_0 \Rightarrow t \to 0$.
+	Используем эквивалентность $e^t - 1 \sim t$ (или важный предел $\lim_{t\to 0}\frac{e^t-1}{t}=1$):
+	\[ e^{x_0} \cdot \lim_{t\to 0} \frac{e^t - 1}{t} = e^{x_0} \cdot 1 = e^{x_0} \implies \mathbf{(e^x)' = e^x} \]
+
+	\item $\mathbf{y = x^\alpha}$
+	
+	Рассмотрим 3 случая:
+	\begin{enumerate}
+		\item \textbf{Общий случай:} $x > 0, \alpha \in \mathbb{R}$.
+		\[ \frac{x^\alpha - x_0^\alpha}{x - x_0} = x_0^\alpha \frac{(\frac{x}{x_0})^\alpha - 1}{x - x_0} \]
+		Пусть $\frac{x}{x_0} = 1 + t$, где $t \to 0$. Тогда $x - x_0 = x_0 t$.
+		Используем эквивалентность $(1+t)^\alpha - 1 \sim \alpha t$:
+		\[ x_0^\alpha \frac{(1+t)^\alpha - 1}{x_0 t} = x_0^{\alpha - 1} \frac{(1+t)^\alpha - 1}{t} \to x_0^{\alpha - 1} \cdot \alpha \]
+		\[ \implies \mathbf{(x^\alpha)' = \alpha x^{\alpha-1}} \]
+
+		\item \textbf{Целая степень:} $x, x_0 \in \mathbb{R}, \alpha = n \in \mathbb{N}$.
+		Используем формулу разности $n$-х степеней $a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + \dots + b^{n-1})$:
+		\[ \frac{x^n - x_0^n}{x - x_0} = x^{n-1} + x^{n-2}x_0 + \dots + x \cdot x_0^{n-2} + x_0^{n-1} \]
+		В сумме ровно $n$ слагаемых. При $x \to x_0$ каждое слагаемое стремится к $x_0^{n-1}$.
+		\[ \lim_{x\to x_0} (\dots) = n \cdot x_0^{n-1} \]
+
+		\item \textbf{В нуле:} $x_0 = 0, \alpha > 1$.
+		По определению:
+		\[ f'(0) = \lim_{x\to 0} \frac{x^\alpha - 0^\alpha}{x - 0} = \lim_{x\to 0} x^{\alpha - 1} = 0 \]
+		(Предел равен 0, так как степень $\alpha - 1 > 0$).
+	\end{enumerate}
+
+	\item $\mathbf{y = \log_a x}$ (где $a > 0, a \neq 1$)
+	
+	Рассмотрим разностное отношение:
+	\[ \frac{\log_a x - \log_a x_0}{x - x_0} = \frac{1}{x - x_0} \log_a \frac{x}{x_0} \]
+	Сделаем замену $x = x_0(1+t)$, где $t \to 0$. Тогда $x - x_0 = x_0 t$.
+	\[ = \frac{1}{x_0 t} \log_a(1+t) = \frac{1}{x_0} \log_a \left( (1+t)^{\frac{1}{t}} \right) \]
+	Используем второй замечательный предел $\lim_{t\to 0} (1+t)^{1/t} = e$.
+	\[ \lim_{t\to 0} \frac{1}{x_0} \log_a \left( (1+t)^{\frac{1}{t}} \right) = \frac{1}{x_0} \log_a e = \frac{1}{x_0 \ln a} \]
+	\[ \implies \mathbf{(\log_a x)' = \frac{1}{x \ln a}} \quad \text{и} \quad \mathbf{(\ln x)' = \frac{1}{x}} \]
+\end{enumerate}

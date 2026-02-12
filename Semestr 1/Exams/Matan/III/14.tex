@@ -1,0 +1,137 @@
+\subsection{Числовые ряды. Абсолютная и условная сходимость. Критерий Коши. Признак сравнения.}
+
+\subsubsection*{Определения и элементарные факты}
+Пусть $\{a_k\}$ — числовая последовательность.
+\[ S_n = \sum^n_{k=1}a_k \]
+\begin{tcolorbox}[title=Определения]
+    \textbf{Ряд} — это символ $\sum^\infty_{k=1} a_k$. \\
+    $a_k$ — \textbf{общий член ряда}.\\
+    $S_n$ — \textbf{n-я частичная сумма ряда}.\\
+    
+    \begin{itemize}
+        \item Если существует конечный предел $S = \lim_{n\to\infty} S_n$, то ряд называется \textbf{сходящимся}, а $S$ — его \textbf{суммой} ($\sum_{k=1}^\infty a_k = S$).
+        \item Если предел $S_n$ не существует или бесконечен, то ряд называется \textbf{расходящимся}.
+    \end{itemize}
+\end{tcolorbox}
+
+\subsubsection*{Теорема 1 (Линейность)}
+Если ряды сходятся, то:
+\[ \sum_{k=1}^\infty (a_k \pm b_k) = \sum_{k=1}^\infty a_k \pm \sum_{k=1}^\infty b_k \]
+\[ \sum_{k=1}^\infty (c \cdot a_k) = c \cdot \sum_{k=1}^\infty a_k \]
+
+\subsubsection*{Теорема 2. Критерий Коши сходимости ряда}
+Ряд $\sum a_k$ сходится $\Leftrightarrow \forall \varepsilon > 0\;\; \exists n_\varepsilon : \forall n > n_\varepsilon, \forall p \in \mathbb{N}$:
+\[ |S_{n+p} - S_n| = \left| \sum_{k=n+1}^{n+p} a_k \right| < \varepsilon \]
+
+\begin{tcolorbox}[title=Доказательство, breakable]
+    Для ряда $\sum a_n$ поставим в соответствие последовательность частичных сумм:
+    \[ \{X_n\}, \quad X_n = a_1 + a_2 + \dots + a_n \]
+    Заметим, что разность частичных сумм равна отрезку ряда:
+    \[ X_{n+p} - X_n = \sum_{k=n+1}^{n+p} a_k \]
+
+    \textbf{1. Достаточность ($\Leftarrow$)}
+    Имеем условие:
+    \[ \forall \varepsilon > 0 \;\; \exists n_\varepsilon : \;\; \forall n \ge n_\varepsilon, \forall p \in \mathbb{N} \;\; \left| \sum_{k=n+1}^{n+p} a_k \right| < \varepsilon \]
+    Подставим выражение через частичные суммы:
+    \[ |X_{n+p} - X_n| < \varepsilon \]
+    Это неравенство означает, что последовательность $\{X_n\}$ является \textbf{фундаментальной}.
+    По критерию Коши для последовательностей:
+    \[ \{X_n\} \text{ — фундаментальна} \Rightarrow \{X_n\} \text{ сходится}. \]
+    По определению, если последовательность частичных сумм сходится, то ряд $\sum a_n$ сходится.
+
+    \textbf{2. Необходимость ($\Rightarrow$)}
+    Пусть ряд $\sum a_n$ сходится.
+    Это означает, что последовательность его частичных сумм $\{X_n\}$ сходится (имеет конечный предел).
+    По критерию Коши для последовательностей:
+    \[ \{X_n\} \text{ сходится} \Rightarrow \{X_n\} \text{ — фундаментальна}. \]
+    То есть:
+    \[ \forall \varepsilon > 0 \;\; \exists n_\varepsilon : \;\; \forall n \ge n_\varepsilon, \forall p \in \mathbb{N} \;\; |X_{n+p} - X_n| < \varepsilon \]
+    Возвращаясь к обозначению суммы:
+    \[ \left| \sum_{k=n+1}^{n+p} a_k \right| < \varepsilon \]
+    Теорема доказана.
+\end{tcolorbox}
+
+\textbf{Следствие 1.} Изменение конечного числа членов ряда не влияет на его сходимость (но влияет на сумму).
+
+\textbf{Следствие 2 (Необходимое условие сходимости).}
+Если $\sum a_k$ сходится $\Rightarrow \lim_{k\to\infty} a_k = 0$.
+\begin{tcolorbox}[title=Доказательство]
+    Пусть ряд сходится. По критерию Коши для любого $\varepsilon$ (при $p=1$):
+    \[ |S_{n+1} - S_n| = |a_{n+1}| < \varepsilon \]
+    Это и означает, что $a_n \to 0$.
+\end{tcolorbox}
+
+\subsubsection*{Примеры рядов}
+\textbf{Пример 1 (Геометрическая прогрессия).}
+\[ \sum_{k=0}^\infty q^k, \quad (|q| < 1) \]
+\[ S_n = 1 + q + \dots + q^n = \frac{1-q^{n+1}}{1-q} \xrightarrow[n\to\infty]{} \frac{1}{1-q} \]
+
+\textbf{Пример 2 (Гармонический ряд).}
+\[ \sum_{n=1}^\infty \frac{1}{n} \quad \text{— расходится.} \]
+Доказательство через критерий Коши. Оценим отрезок ряда (от $n+1$ до $2n$, то есть $p=n$):
+\[ \left| \sum_{k=n+1}^{2n} \frac{1}{k} \right| = \frac{1}{n+1} + \dots + \frac{1}{2n} > \underbrace{\frac{1}{2n} + \dots + \frac{1}{2n}}_{n \text{ слагаемых}} = n \cdot \frac{1}{2n} = \frac{1}{2} \]
+Так как разность частичных сумм не стремится к нулю (всегда $> 1/2$), ряд расходится.
+
+\textbf{Пример 3 (Знакопеременный ряд и перестановки).}
+\[ 1 - 1 + \frac{1}{2} - \frac{1}{2} + \frac{1}{3} - \frac{1}{3} + \dots \]
+\begin{itemize}
+    \item Исходный ряд сходится (сумма 0), т.к. $S_{2n} = 0, S_{2n+1} \to 0$.
+    \item \textbf{Перестановка (Теорема Римана):} Если мы переставим члены условно сходящегося ряда, можно получить любую сумму или расходимость.
+    Например, наберем столько положительных членов, чтобы сумма превысила 100, потом вычтем один отрицательный, потом снова наберем положительных... Так можно уйти в $+\infty$.
+\end{itemize}
+
+\subsubsection*{Абсолютная и условная сходимость}
+\begin{tcolorbox}[title=Определения]
+    \begin{itemize}
+        \item Ряд $\sum a_k$ сходится \textbf{абсолютно}, если сходится ряд из модулей $\sum |a_k|$.
+        \item Ряд $\sum a_k$ сходится \textbf{условно}, если сам он сходится, а ряд модулей $\sum |a_k|$ расходится.
+    \end{itemize}
+\end{tcolorbox}
+
+\textbf{Теорема.} Если ряд сходится абсолютно, то он сходится (обычно).
+\begin{tcolorbox}[title=Доказательство]
+    По критерию Коши для сходящегося $\sum |a_k|$:
+    \[ \forall \varepsilon > 0 \dots \sum_{k=n+1}^{n+p} |a_k| < \varepsilon \]
+    Используем неравенство треугольника для суммы:
+    \[ \left| \sum_{k=n+1}^{n+p} a_k \right| \leq \sum_{k=n+1}^{n+p} |a_k| < \varepsilon \]
+    Значит, критерий Коши выполнен и для исходного ряда $\sum a_k$.
+\end{tcolorbox}
+
+\subsubsection*{Ряды с неотрицательными членами}
+\textbf{Теорема.} Пусть $a_k \ge 0$. Ряд $\sum a_k$ сходится $\Leftrightarrow$ последовательность частичных сумм $\{S_n\}$ ограничена сверху.
+\begin{tcolorbox}[title=Доказательство]
+    Так как $a_k \ge 0$, то $S_{n+1} = S_n + a_{n+1} \ge S_n$.
+    Последовательность $S_n$ монотонно возрастает.
+    По теореме Вейерштрасса: монотонная последовательность сходится $\Leftrightarrow$ она ограничена.
+\end{tcolorbox}
+
+\subsubsection*{Признак сравнения}
+Пусть даны два ряда $\sum a_k$ и $\sum b_k$ с неотрицательными членами, причем:
+\[ 0 \le a_k \le b_k \quad (\forall k) \]
+($a_k$ — «меньший» ряд, $b_k$ — «больший» ряд).
+
+\textbf{Теорема.}
+\begin{enumerate}
+    \item Если сходится **больший** ряд ($\sum b_k$), то сходится и **меньший** ($\sum a_k$).
+    \item Если расходится **меньший** ряд ($\sum a_k$), то расходится и **больший** ($\sum b_k$).
+\end{enumerate}
+
+\begin{tcolorbox}[title=Доказательство]
+    Обозначим частичные суммы $A_n = \sum a_k$ и $B_n = \sum b_k$.
+    Так как $a_k \le b_k$, то $A_n \le B_n$.
+    \begin{enumerate}
+        \item Если $\sum b_k$ сходится, то $B_n$ ограничена. Тогда и $A_n$ ограничена (сверху числом $\lim B_n$). Так как $A_n \uparrow$, то $\sum a_k$ сходится.
+        \item Если $\sum a_k$ расходится, то $A_n \to +\infty$. Так как $B_n \ge A_n$, то $B_n \to +\infty$.
+    \end{enumerate}
+\end{tcolorbox}
+ 
+\textbf{Следствие (для знакопеременных рядов):}
+Если $|a_k| \le b_k$ и ряд $\sum b_k$ сходится, то ряд $\sum a_k$ сходится абсолютно.
+
+\textbf{Пример.} $\sum_{n=1}^\infty \frac{\sin n}{n^2}$.
+\[ \left| \frac{\sin n}{n^2} \right| \le \frac{1}{n^2} \]
+Сравним с рядом $\sum \frac{1}{n^2}$. Он сходится (так как $n^2 > n(n-1)$):
+\[ \frac{1}{n^2} < \frac{1}{n(n-1)} = \frac{1}{n-1} - \frac{1}{n} \]
+Сумма мажорирующего ряда (Телескопическая сумма):
+\[ \sum_{n=2}^\infty \left(\frac{1}{n-1} - \frac{1}{n}\right) = \left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \dots = 1 \]
+Ряд $\sum \frac{1}{n(n-1)}$ сходится $\Rightarrow \sum \frac{1}{n^2}$ сходится $\Rightarrow \sum \frac{\sin n}{n^2}$ сходится абсолютно.

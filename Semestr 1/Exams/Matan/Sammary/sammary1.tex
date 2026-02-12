@@ -1,0 +1,397 @@
+\documentclass[8pt, a4paper, landscape]{extarticle}
+
+% --- Настройки страницы ---
+\usepackage[margin=0.5cm]{geometry} % ЕЩЕ МЕНЬШЕ ПОЛЯ
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{multicol} 
+\usepackage{enumitem} 
+\usepackage[most]{tcolorbox}
+
+% --- Настройка списков (максимальная экономия) ---
+\setlist{nolistsep} 
+\setlist[itemize]{leftmargin=*, label={--}, itemsep=0pt, topsep=0pt, partopsep=0pt}
+\setlist[enumerate]{leftmargin=*, itemsep=0pt, topsep=0pt, partopsep=0pt}
+
+% --- Стиль блока (билета) ---
+\newtcolorbox{ticket}[1]{
+    colback=white,
+    colframe=black!80,
+    fonttitle=\bfseries\small, % Заголовок чуть больше основного текста
+    coltitle=white,
+    title={#1},
+    arc=0mm,
+    boxrule=0.5pt,
+    left=0.5mm, right=0.5mm, top=0.5mm, bottom=0.5mm, % Минимальные отступы внутри
+    after skip=1mm, % Отступ между билетами
+    middle=0.3mm,   % Отступ вокруг линии
+    toptitle=0.5mm, bottomtitle=0.5mm 
+}
+
+% --- Команды ---
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\DeclareMathOperator{\sign}{sign}
+
+% Уменьшим межстрочный интервал
+\renewcommand{\baselinestretch}{0.85} 
+
+\begin{document}
+\pagestyle{empty} % Без номеров страниц
+
+\begin{multicols*}{4} % ЧЕТЫРЕ КОЛОНКИ ДЛЯ МАКСИМАЛЬНОЙ ПЛОТНОСТИ (или верни 3)
+
+% ================= РАЗДЕЛ 1 =================
+
+\begin{ticket}{1.1 Комплексные числа. Эйлер}
+$z = x+iy$, $i^2=-1$. Сравнивать ($>, <$) нельзя.
+\textbf{Формы:} Алгебр ($x+iy$), Тригон ($r(\cos\phi + i\sin\phi)$).
+\textbf{Эйлер:} $e^{ix} = \cos x + i\sin x$.
+\textbf{Опр $e^z$:} $e^{x+iy} = e^x(\cos y + i\sin y)$.
+\tcblower
+\textit{Док-во Эйлера:} Разложить $e^{ix}$ в ряд Тейлора $\to$ сгруппировать слагаемые с $i$ и без $\to$ получить ряды $\cos x$ и $\sin x$.
+\end{ticket}
+
+\begin{ticket}{1.2 Муавр. Корни}
+\textbf{Муавр:} $(\cos \phi + i\sin \phi)^n = (\cos n\phi + i\sin n\phi)$.
+\textbf{Корни:} $\sqrt[n]{z}$ имеет $n$ значений. Точки — вершины правильного $n$-угольника.
+\textbf{Формула:} $\omega_k = \sqrt[n]{r} \cdot e^{i \frac{\phi + 2\pi k}{n}}$.
+\end{ticket}
+
+\begin{ticket}{1.3 Неравенство треугольника}
+\textbf{Т:} $|z_1 + z_2| \le |z_1| + |z_2|$.
+\textbf{Сл:} $||z_1| - |z_2|| \le |z_1 - z_2|$.
+\tcblower
+\textit{Док-во:} $|z_1+z_2|^2 = (z_1+z_2)(\overline{z_1}+\overline{z_2}) = |z_1|^2 + |z_2|^2 + 2\text{Re}(z_1\overline{z_2})$.
+Оценка: $\text{Re}(w) \le |w| \Ra \le (|z_1|+|z_2|)^2$.
+\textit{Док-во сл:} Записать $z_1 = (z_1-z_2) + z_2$, применить Т.
+\end{ticket}
+
+\begin{ticket}{1.4 Свойства операций (Множества)}
+\textbf{Дистр:} $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+$A + (BC) = (A + B)(A + C)$.
+\tcblower
+\textit{Док-во:} Через включение множеств $\subset$ и $\supset$. Перебор случаев принадлежности элемента $x$.
+\end{ticket}
+
+\begin{ticket}{1.5 ММИ. Бином Ньютона}
+\textbf{ММИ:} 1. База ($n=1$). 2. Шаг ($n=k \to n=k+1$).
+\textbf{Бином:} $(a+b)^n = \sum C_n^k a^{n-k}b^k$.
+\tcblower
+\textit{Док-во:} Индукция. Шаг: $(a+b)^{k+1} = (a+b)(a+b)^k$.
+Ключ: $C_k^i + C_k^{i-1} = C_{k+1}^i$ (Паскаль).
+\end{ticket}
+
+\begin{ticket}{1.6 Средние. Обратная индукция}
+\textbf{Т (Коши):} $\frac{\sum a_i}{n} \ge \sqrt[n]{\prod a_i}$.
+\tcblower
+\textit{Док-во (Обратная индукция):}
+1. \textbf{Вверх:} Для $n=2$ ($(a-b)^2 \ge 0$), потом $4, 8 \dots 2^k$.
+2. \textbf{Вниз:} Если верно для $n$, верно для $n-1$.
+Ключ: Взять $a_n = \text{ср арифм первых } n-1$.
+\end{ticket}
+
+% ================= РАЗДЕЛ 2 =================
+
+\begin{ticket}{2.1 Дедекинд. Числа}
+$\sqrt{2} \notin \Q$. Дырки.
+\textbf{Сечение:} $I_n = [a_n, b_n]$ вложенные, длина $\to 0$.
+\textbf{Классы:} Левый ($<a_n$), Правый ($>b_n$), Центр ($\le 1$ число).
+\textbf{Опр. $\R$:} Класс эквив. последовательностей.
+\tcblower
+\textbf{Критерий:} $\{I_n\} \sim \{I'_n\} \iff \lim(a_n - a'_n) = 0$.
+\textit{($\Ra$):} От противного. Если $\lim \ne 0$, отрезки разойдутся на $\eps$.
+Там найдется $r$. Оно в ПРАВОМ для одних и в ЛЕВОМ для других.
+\textit{($\Leftarrow$):} Если $\lim=0$, но классы разные $\Ra$ расстояние $>0$. Противоречие.
+\end{ticket}
+
+\begin{ticket}{2.2 Лемма об отделимости}
+\textbf{Усл:} $A, B \subset \R$, $A \le B$.
+\textbf{Утв:} $\exists c \in \R: A \le c \le B$.
+\tcblower
+\textit{Док-во:}
+1. $A \cap B \ne \varnothing \Ra c \in A \cap B$.
+2. $A \cap B = \varnothing$. Расширим до $A', B'$ (всё $\R$).
+Делим пополам $[a_1, b_1]$. Получаем вложенные отрезки.
+Общая точка $c$ разделяет.
+\end{ticket}
+
+\begin{ticket}{2.3 Вейерштрасс (Sup/Inf)}
+\textbf{Опр:} $M = \sup E$ (наим. верх. грань).
+\textbf{Т:} Ограничено сверху $\Ra \exists \sup E$.
+\tcblower
+\textit{Док-во:} Через отделимость.
+$A = E$, $B = \{ \text{верхние грани} \}$.
+Разделяющее число $c$ и есть супремум.
+\end{ticket}
+
+\begin{ticket}{2.4 Принцип Кантора}
+\textbf{Т:} Вложенные отрезки $[a_n, b_n]$ имеют общую точку.
+\tcblower
+\textit{Док-во:} Мн-во левых концов $A$ ограничено любым $b_k$.
+По Вейерштрассу $\exists c = \sup A$. Это $c$ внутри всех.
+\end{ticket}
+
+\begin{ticket}{2.5 Полнота (Дедекинд)}
+\textbf{Т:} Сечение $(L, R)$ в $\R$ определяется числом $c$ (границей).
+\tcblower
+\textit{Док-во:} Строим отрезки делением пополам (один конец в L, другой в R).
+По Кантору есть общая точка $c$. Она граница.
+\end{ticket}
+
+\begin{ticket}{2.6 Несчетность $\R$}
+\textbf{Т:} $[0, 1]$ несчетен.
+\tcblower
+\textit{Док-во:} От противного. Пусть счетно $\{x_k\}$.
+Делим отрезок на 3 части, берем ту, где нет $x_1$.
+Потом где нет $x_2$ и т.д.
+Вложенные отрезки $\Ra$ есть точка $c$.
+Она не равна ни одному $x_k$. Противоречие.
+\end{ticket}
+
+% ================= РАЗДЕЛ 3 =================
+
+\begin{ticket}{3.1 Свойства сходящихся}
+$\lim a_n = a \iff \forall \eps \exists N: |a_n-a|<\eps$.
+1. $a_n=C \Ra \lim=C$. 2. Предел единственен. 3. Сход $\Ra$ Огр.
+\tcblower
+\textit{Единств:} От противного. $A \ne B, \eps=|A-B|/2$. Окрестности не перес.
+\textit{Огр:} $\eps=1$. Все в $(a-1, a+1)$ кроме конечного числа.
+\end{ticket}
+
+\begin{ticket}{3.2 Предельный переход}
+\textbf{Т:} $a_n \to a, b_n \to b, a_n \le b_n \Ra a \le b$.
+\tcblower
+\textit{Док-во:} От противного $a > b, \eps=(a-b)/2$.
+Окрестности не перес, $U(b)$ левее. $b_n$ там, $a_n$ справа $\Ra b_n < a_n$.
+\end{ticket}
+
+\begin{ticket}{3.3 Зажатая посл-ть}
+$a_n \le b_n \le c_n, \lim a_n = \lim c_n = A \Ra \lim b_n = A$.
+\tcblower
+\textit{Док-во:} $A-\eps < a_n \le b_n \le c_n < A+\eps$.
+\end{ticket}
+
+\begin{ticket}{3.4 Знак и Модуль}
+1. $a_n \to a \ne 0 \Ra \sign a_n = \sign a$.
+2. $a_n \to a \Ra |a_n| \to |a|$.
+\tcblower
+\textit{Знак:} $a > 0, \eps=a/2 \Ra a_n > a/2 > 0$.
+\textit{Модуль:} $||a_n|-|a|| \le |a_n-a| < \eps$.
+\end{ticket}
+
+\begin{ticket}{3.5 Б.м. последовательности}
+\textbf{Опр:} $\alpha_n \to 0$. $a_n \to a \iff a_n = a + \alpha_n$.
+\textbf{Св-ва:} 1. Сумма б.м. — б.м. 2. Б.м. $\times$ Огр — б.м.
+\tcblower
+\textit{Произведение:} $|\beta_n| \le M$. $|\alpha_n| < \eps/M \Ra |\alpha\beta| < \eps$.
+\end{ticket}
+
+\begin{ticket}{3.6 Б.б. последовательности}
+\textbf{Опр:} $\forall E \exists N: |a_n| > E$.
+\textbf{Связь:} $a_n \to \infty \Ra 1/a_n \to 0$.
+\tcblower
+\textit{Док-во:} $\eps = 1/E$. $|a_n| > E \iff |1/a_n| < \eps$.
+\end{ticket}
+
+\begin{ticket}{3.7 Арифметика}
+$a_n \to a, b_n \to b \Ra a_n \pm b_n \to a \pm b, \cdot, /$.
+\tcblower
+\textit{Док-во:} Через б.м. $a_n = a+\alpha, b_n = b+\beta$.
+Деление: док-ть, что $1/b_n$ ограничена.
+$|b_n| > |b|/2 \Ra |1/b_n| < 2/|b|$.
+\end{ticket}
+
+\begin{ticket}{3.8 Монотонные}
+\textbf{Т:} $\uparrow$ и огр. сверху $\Ra$ сходится к $\sup$.
+\textbf{Критерий:} Мон. сход $\iff$ огр.
+\tcblower
+\textit{Док-во:} $A = \sup a_n$. $\forall \eps \exists N: a_N > A-\eps$.
+Т.к. $\uparrow$, $\forall n>N: A-\eps < a_N \le a_n \le A < A+\eps$.
+\end{ticket}
+
+\begin{ticket}{3.9 Число e}
+$e = \lim (1+1/n)^n$.
+\tcblower
+\textit{Сущ:} $x_n=(1+1/n)^n \uparrow$ (Неравенство Коши).
+Ограничена $y_n=(1+1/n)^{n+1} \downarrow$. $x_n < y_n \le 4$.
+\end{ticket}
+
+\begin{ticket}{3.10 Больцано-Вейерштрасс}
+\textbf{Т:} Из ограниченной можно выделить сходящуюся подпосл.
+\tcblower
+\textit{Док-во:} Деление пополам. Выбираем половину с $\infty$ числом точек.
+Вложенные отрезки $\to$ общая точка $c$. $a_{n_k} \to c$.
+\end{ticket}
+
+\begin{ticket}{3.11 Частичные пределы}
+\textbf{Критерий:} $a$ — ч.п. $\iff \forall \eps$ в $U_\eps(a)$ $\infty$ много членов.
+\tcblower
+\textit{Док-во:} Строим подпосл. индуктивно, выбирая $n_k > n_{k-1}$ из окрестностей.
+\end{ticket}
+
+\begin{ticket}{3.12 Критерий Коши (Посл)}
+Сход $\iff$ Фунд ($\forall \eps \exists N \forall n,m>N |a_n-a_m|<\eps$).
+\tcblower
+\textit{($\Ra$):} Нер-во $\triangle$.
+\textit{($\Leftarrow$):} Фунд $\Ra$ Огр $\Ra$ есть ч.п. $A$ (Б-В).
+Док-ть, что вся посл $\to A$ (через $\triangle$ и фунд).
+\end{ticket}
+
+\begin{ticket}{3.13 Верхний/Нижний}
+\textbf{Т:} $\exists \varlimsup a_n$ и $\varliminf$.
+\tcblower
+\textit{Док-во:} 1. Неогр $\Ra +\infty$.
+2. Огр: $P$ — мн-во ч.п. По Б-В $P \ne \varnothing$. $\sup P \in P$.
+\end{ticket}
+
+\begin{ticket}{3.14 Ряды. Коши}
+$\sum a_k$ сход $\iff S_n$ сход.
+\textbf{Коши:} $|\sum_{n+1}^{n+p} a_k| < \eps$.
+\textbf{Необх:} $a_n \to 0$.
+\textbf{Сравн:} $0 \le a_n \le b_n$. Сход $b \Ra$ сход $a$.
+\end{ticket}
+
+\begin{ticket}{3.15 Коши и Даламбер}
+$q = \varlimsup \sqrt[n]{a_n}$ или $\lim |a_{n+1}/a_n|$.
+$q<1$ сход, $q>1$ расход.
+\tcblower
+\textit{Док-во:} Сравнение с геом. прогр. $q^n$.
+Если $q>1$, то $a_n \not\to 0$.
+\end{ticket}
+
+\begin{ticket}{3.16 Конденсация}
+$a_n \downarrow 0 \Ra \sum a_n \sim \sum 2^k a_{2^k}$.
+\textbf{Пример:} $\sum 1/n^p$. Сход $\iff p>1$.
+\tcblower
+\textit{Док-во:} Группировка слагаемых блоками $2^k$.
+\end{ticket}
+
+% ================= РАЗДЕЛ 4 =================
+
+\begin{ticket}{4.1-4.2 Предел функции}
+\textbf{Коши:} $\forall \eps \exists \delta: 0<|x-a|<\delta \Ra |f-A|<\eps$.
+\textbf{Гейне:} $\forall x_n \to a \Ra f(x_n) \to A$.
+\tcblower
+\textit{Экв:} $K \Ra G$ (сразу). $G \Ra K$ (от противного, $\delta=1/n$).
+\end{ticket}
+
+\begin{ticket}{4.3 Кр. Коши (Функции)}
+$\exists \lim \iff \forall x', x'' \in \mathring{U}_\delta: |f(x')-f(x'')|<\eps$.
+\tcblower
+\textit{Док-во:} Через Гейне и Кр. Коши для посл.
+\end{ticket}
+
+\begin{ticket}{4.4-4.5 Свойства}
+Единственность, Знак, Модуль, Зажатая, Арифметика.
+\textit{Единств:} $|A-B| \le |A-f|+|f-B| < 2\eps$.
+\end{ticket}
+
+\begin{ticket}{4.7-4.8 Замечательные}
+1. $\sin x/x \to 1$ ($0 < \sin < x < \tg$).
+2. $(1+1/x)^x \to e$ (сведение к целой части $n=[x]$).
+\end{ticket}
+
+\begin{ticket}{4.9 Монотонные}
+$f \uparrow \Ra \exists f(a+0)=\inf, f(b-0)=\sup$.
+Разрывы только 1 рода (скачки).
+\end{ticket}
+
+\begin{ticket}{4.10-4.11 Непрерывность}
+$\lim f(x) = f(a)$. Арифметика, Сложная ф-ция.
+\end{ticket}
+
+\begin{ticket}{4.12 Гейне-Бореля}
+Из открытого покрытия отрезка $\exists$ конечное.
+\tcblower
+\textit{Док-во:} От противного. Делим пополам. Вложенные отрезки $\to c$.
+$c$ покрыта $(c-\eps, c+\eps)$. Отрезок $\Delta_n$ попадет внутрь.
+\end{ticket}
+
+\begin{ticket}{4.13 Разрывы}
+1 род: пределы есть (устранимый / скачок).
+2 род: нет или $\infty$.
+\end{ticket}
+
+\begin{ticket}{4.14 Вейерштрасс (Отрезок)}
+$f \in C[a,b] \Ra$ 1. Ограничена. 2. Достигает Max/Min.
+\tcblower
+\textit{1:} От прот. $f(x_n)>n$. Б-В $\Ra x_{n_k} \to x_0$. $f(x_{n_k}) \to \infty \ne f(x_0)$.
+\end{ticket}
+
+\begin{ticket}{4.15 Промеж. знач.}
+$f(a)f(b)<0 \Ra \exists c: f(c)=0$.
+\tcblower
+\textit{Док-во:} Деление пополам. Вложенные отрезки с разными знаками.
+\end{ticket}
+
+\begin{ticket}{4.16-4.18 Обратная}
+$f \in C, \uparrow \Ra f^{-1} \in C, \uparrow$.
+Обратима $\iff$ Строго монотонна.
+\end{ticket}
+
+\begin{ticket}{4.19 Равн. непр.}
+\textbf{Кантор:} $f \in C[a,b] \Ra$ Равн. непр ($\delta$ не зависит от $x$).
+\tcblower
+\textit{Док-во:} Гейне-Борель. Покрытие интервалами $\delta_x/2$.
+\end{ticket}
+
+\begin{ticket}{4.20 O-символика}
+$o(g)$ (б.м. выше), $O(g)$ (огр), $\sim$ (предел 1).
+$\sin x \sim x$, $e^x-1 \sim x$, $\ln(1+x) \sim x$, $1-\cos x \sim x^2/2$.
+\end{ticket}
+
+\begin{ticket}{4.21 Рост}
+$\ln x \ll x^\alpha \ll a^x \ll n!$
+\end{ticket}
+
+% ================= РАЗДЕЛ 5 =================
+
+\begin{ticket}{5.1 Производная}
+$f' = \lim \Delta y / \Delta x$. Дифф $\iff \Delta y = A \Delta x + o(\Delta x)$.
+\end{ticket}
+
+\begin{ticket}{5.2 Геометрия}
+$f' = \tg \alpha$. $df$ — приращение касательной.
+\end{ticket}
+
+\begin{ticket}{5.3-5.4 Арифметика}
+$(uv)' = u'v+uv'$. $(u/v)'$. Таблица производных.
+\end{ticket}
+
+\begin{ticket}{5.5 Сложная}
+$(f(\phi))' = f' \phi'$. $(f^{-1})' = 1/f'$.
+\end{ticket}
+
+\begin{ticket}{5.6 Лейбниц}
+$(uv)^{(n)} = \sum C_n^k u^{(k)} v^{(n-k)}$.
+\end{ticket}
+
+\begin{ticket}{5.7 Ферма, Ролль}
+\textbf{Ферма:} Экстр $\Ra f'=0$. (Знак приращения).
+\textbf{Ролль:} $f(a)=f(b) \Ra f'=0$. (Вейерштрасс $\to$ Ферма).
+\end{ticket}
+
+\begin{ticket}{5.8 Лагранж, Коши}
+$f(b)-f(a) = f'(\xi)(b-a)$.
+Всп. ф-ция $F(x) = f(x) - \frac{\Delta f}{\Delta x} (x-a)$. Ролль.
+\end{ticket}
+
+\begin{ticket}{5.9 Монотонность}
+$f' \ge 0 \iff \uparrow$. (Через Лагранжа).
+\end{ticket}
+
+\begin{ticket}{5.10-5.12 Тейлор}
+$f = P_n + R_n$.
+\textbf{Лагранж:} $R_n = \frac{f^{(n+1)}}{(n+1)!} (x-a)^{n+1}$.
+\textbf{Пеано:} $o((x-a)^n)$.
+\end{ticket}
+
+\end{multicols*}
+\end{document}

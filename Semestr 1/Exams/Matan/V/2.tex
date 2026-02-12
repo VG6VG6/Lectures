@@ -1,0 +1,150 @@
+\subsection{Дифференциал. Геометрический смысл производной и дифференциала.}
+
+\subsubsection*{Дифференцируемость и дифференциал}
+
+\begin{tcolorbox}[title=Определение]
+    Пусть функция $f(x)$ определена в окрестности $U_{x_0}$ и $\exists A \in \mathbb{R}$.
+    Функция $f(x)$ называется \textbf{дифференцируемой} в точке $x_0$, если её приращение можно представить в виде:
+    \[ f(x) = f(x_0) + A(x-x_0) + \bar{o}(x-x_0) \quad \text{при } x \to x_0 \]
+    
+    Слагаемое $A(x-x_0)$ (или $A\Delta x$) называется \textbf{дифференциалом} функции $f(x)$ в точке $x_0$ и обозначается $df$:
+    \[ df = A(x-x_0) = A\Delta x \]
+\end{tcolorbox}
+
+\textbf{Замечание.} Если $f(x) = x$, то $df = dx = 1 \cdot (x-x_0) = \Delta x$.
+Поэтому дифференциал часто записывают как $df = A dx$ (где $x$ — независимая переменная).
+
+\begin{tcolorbox}[title=Теорема (Связь производной и дифференциала)]
+    Функция $f(x)$ имеет производную в точке $x_0$ $\iff$ $f(x)$ дифференцируема в точке $x_0$.
+    При этом $A = f'(x_0)$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Доказательство]
+    \textbf{1. ($\Rightarrow$)}
+    Пусть существует $f'(x_0) = \lim_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}$.
+    По определению предела функции:
+    \[ \frac{f(x)-f(x_0)}{x-x_0} = f'(x_0) + \alpha(x), \quad \text{где } \alpha(x) \to 0 \text{ при } x \to x_0 \]
+    Умножим на $(x-x_0)$:
+    \[ f(x) - f(x_0) = f'(x_0)(x-x_0) + \alpha(x)(x-x_0) \]
+    Заметим, что $\alpha(x)(x-x_0) = o(x-x_0)$.
+    \[ f(x) = f(x_0) + f'(x_0)(x-x_0) + o(x-x_0) \]
+    Это и означает дифференцируемость с $A = f'(x_0)$.
+
+    \textbf{2. ($\Leftarrow$)}
+    Пусть $f(x)$ дифференцируема: $f(x) - f(x_0) = A(x-x_0) + o(x-x_0)$.
+    Разделим на $(x-x_0) \neq 0$:
+    \[ \frac{f(x)-f(x_0)}{x-x_0} = A + \frac{o(x-x_0)}{x-x_0} \]
+    Перейдем к пределу при $x \to x_0$. Так как $\frac{o(x-x_0)}{x-x_0} \to 0$, получаем:
+    \[ \lim_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0} = A \]
+    Предел существует, значит производная существует и $f'(x_0) = A$.
+\end{tcolorbox}
+
+\textbf{Формулы:}
+\begin{itemize}
+    \item $df = f'(x_0)dx$
+    \item $f(x_0) \approx \frac{df}{dx}$ (для малых приращений)
+\end{itemize}
+
+\textbf{Теорема 2.} Если $f(x)$ дифференцируема в точке $x_0 \Rightarrow f(x)$ непрерывна в точке $x_0$.
+(Доказательство следует из формулы приращения: при $x \to x_0$ правая часть стремится к $f(x_0)$).
+
+\begin{tcolorbox}[title=Доказательство]
+    \begin{enumerate}
+        \item По условию $f(x)$ дифференцируема в точке $x_0$. По определению это значит, что приращение функции $\Delta f = f(x_0 + \Delta x) - f(x_0)$ представимо в виде:
+        \[ \Delta f = A \cdot \Delta x + o(\Delta x), \quad \text{при } \Delta x \to 0 \]
+        (где $A = f'(x_0)$ — конечное число).
+
+        \item Найдем предел приращения функции при $\Delta x \to 0$:
+        \[ \lim_{\Delta x \to 0} \Delta f = \lim_{\Delta x \to 0} \left( A \cdot \Delta x + o(\Delta x) \right) \]
+
+        \item Используя свойства пределов:
+        \[ \lim_{\Delta x \to 0} (A \cdot \Delta x) = A \cdot 0 = 0 \]
+        \[ \lim_{\Delta x \to 0} o(\Delta x) = 0 \]
+        
+        \item Следовательно:
+        \[ \lim_{\Delta x \to 0} \Delta f = 0 \]
+        
+        \item Равенство $\lim_{\Delta x \to 0} \Delta f = 0$ (или $\lim_{x \to x_0} f(x) = f(x_0)$) и является определением непрерывности функции в точке.
+    \end{enumerate}
+    \textbf{Вывод:} Функция непрерывна.
+\end{tcolorbox}
+
+\subsubsection*{Геометрический смысл производной и дифференциала}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    % Оси
+    \draw[->] (-0.5,0) -- (5,0) node[right] {$x$};
+    \draw[->] (0,-0.5) -- (0,4) node[above] {$y$};
+    
+    % График функции
+    \draw[thick] (0.5, 0.5) .. controls (1.5, 1) and (2.5, 0.5) .. (4.5, 3.5) node[right] {$y=f(x)$};
+    
+    % Точки
+    \coordinate (M0) at (1.5, 0.85); % Точка касания x0
+    \coordinate (M) at (3.5, 2.3);   % Точка секущей
+    
+    % Касательная
+    \draw[red, thick] (0, -0.45) -- (4.5, 2.65) node[right] {Касательная $y_{kac}$};
+    
+    % Секущая
+    \draw[blue, dashed] (0.5, 0.1) -- (4.5, 2.9) node[right] {Секущая};
+    
+    % Проекции
+    \draw[dashed] (M0) -- (1.5, 0) node[below] {$x_0$};
+    \draw[dashed] (M) -- (3.5, 0) node[below] {$x_0+\Delta x$};
+    
+    % Приращения
+    \draw (1.5, 0.85) -- (3.5, 0.85);
+    \draw (3.5, 0.85) -- (3.5, 2.3);
+    
+    % Треугольник дифференциала
+    \draw[<->] (1.5, 0.5) -- (3.5, 0.5) node[midway, below] {$\Delta x$};
+    
+\end{tikzpicture}
+\end{center}
+
+\begin{tcolorbox}[title=Определение касательной]
+    Пусть $k(\Delta x) \to k_0$ при $\Delta x \to 0$.
+    Прямая $y = f(x_0) + k_0(x-x_0)$ называется \textbf{касательной} к графику функции $y=f(x)$ в точке $(x_0, f(x_0))$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Определение]
+    \textbf{Касательная} — это предельное положение секущей, проходящей через точку касания $M_0$ и соседнюю точку $M$, когда $M \to M_0$.
+\end{tcolorbox}
+
+\textbf{Уравнение секущей:}
+\[ \frac{y - f(x_0)}{x - x_0} = \frac{f(x_0+\Delta x) - f(x_0)}{\Delta x} \]
+
+\begin{tcolorbox}[title=Геометрический смысл производной]
+    Если функция $f(x)$ дифференцируема в точке $x_0$, то:
+    \begin{enumerate}
+        \item В точке $(x_0, f(x_0))$ существует невертикальная касательная к графику.
+        \item Производная $f'(x_0)$ равна угловому коэффициенту этой касательной:
+        \[ f'(x_0) = \tg \alpha = k \]
+        где $\alpha$ — угол наклона касательной к положительному направлению оси $Ox$.
+    \end{enumerate}
+    \textbf{Следствие:}
+    \begin{itemize}
+        \item Если $f(x)$ непрерывна в $x_0$, то существует вертикальная касательная $\iff f'(x_0) = \infty$.
+    \end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Геометрический смысл дифференциала]
+    \textbf{Дифференциал} $df$ (или $dy$) есть приращение ординаты \textbf{касательной} к графику функции в данной точке.
+    
+    \[ \Delta f = f(x_0+\Delta x) - f(x_0) \quad \text{(приращение функции)} \]
+    \[ df = f'(x_0)\Delta x = \tg \alpha \cdot \Delta x \quad \text{(приращение касательной)} \]
+    
+    При малых $\Delta x$: $\Delta y \approx dy$.
+\end{tcolorbox}
+
+\textbf{Доказательство касания:}
+Нужно доказать, что расстояние $\rho$ от точки графика до касательной есть $o(\Delta x)$.
+\[ \rho = |M_0 M| \cdot \sin(\dots) \]
+Более строго: разность ординат графика и касательной:
+\[ \Delta y - dy = (f(x_0) + A\Delta x + o(\Delta x)) - (f(x_0) + A\Delta x) = o(\Delta x) \]
+\[ \lim_{\Delta x \to 0} \frac{\Delta y - dy}{\Delta x} = 0 \]
+Это означает, что график функции и касательная сближаются быстрее, чем $\Delta x$.
+
+

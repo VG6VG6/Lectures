@@ -1,0 +1,91 @@
+\subsection{Производная сложной и обратной функций. \\Производные $\arcsin x,\ \arccos x$ и $\arctg x$}
+
+\subsubsection*{Производная сложной функции}
+
+\begin{tcolorbox}[title=Теорема (О производной сложной функции)]
+    Пусть:
+    \begin{enumerate}
+        \item Функция $y = \varphi(x)$ дифференцируема в точке $x_0$.
+        \item Функция $z = f(y)$ дифференцируема в точке $y_0 = \varphi(x_0)$.
+    \end{enumerate}
+    Тогда сложная функция $z = F(x) = f(\varphi(x))$ дифференцируема в точке $x_0$, и её производная вычисляется по формуле:
+    \[ z'_x(x_0) = f'_y(y_0) \cdot \varphi'_x(x_0) \]
+\end{tcolorbox}
+
+\textbf{Доказательство:}
+По условию функция $z = f(y)$ дифференцируема в точке $y_0$. Запишем приращение функции:
+\[ \Delta z = f'(y_0)\Delta y + \alpha(\Delta y)\Delta y, \quad \text{где } \alpha(\Delta y) \to 0 \text{ при } \Delta y \to 0. \]
+По условию функция $y = \varphi(x)$ дифференцируема в точке $x_0$. Запишем приращение аргумента $y$:
+\[ \Delta y = \varphi'(x_0)\Delta x + \beta(\Delta x)\Delta x, \quad \text{где } \beta(\Delta x) \to 0 \text{ при } \Delta x \to 0. \]
+
+Подставим выражение для $\Delta y$ в выражение для $\Delta z$:
+\[ \Delta z = f'(y_0) \underbrace{\left[ \varphi'(x_0)\Delta x + \beta(\Delta x)\Delta x \right]}_{\Delta y} + \alpha(\Delta y) \underbrace{\left[ \varphi'(x_0)\Delta x + \beta(\Delta x)\Delta x \right]}_{\Delta y} \]
+Разделим обе части равенства на $\Delta x \neq 0$:
+\[ \frac{\Delta z}{\Delta x} = f'(y_0)[\varphi'(x_0) + \beta(\Delta x)] + \alpha(\Delta y)[\varphi'(x_0) + \beta(\Delta x)] \]
+Перейдем к пределу при $\Delta x \to 0$.
+Так как функция $\varphi(x)$ дифференцируема, она непрерывна, поэтому при $\Delta x \to 0$ следует $\Delta y \to 0$, а значит и $\alpha(\Delta y) \to 0$. Также $\beta(\Delta x) \to 0$.
+\[ \lim_{\Delta x \to 0} \frac{\Delta z}{\Delta x} = f'(y_0)[\varphi'(x_0) + 0] + 0 \cdot [\varphi'(x_0) + 0] = f'(y_0) \cdot \varphi'(x_0). \]
+Теорема доказана.
+
+\subsubsection*{Производная обратной функции}
+
+\begin{tcolorbox}[title=Теорема (О производной обратной функции)]
+    Пусть функция $y = f(x)$:
+    \begin{enumerate}
+        \item Строго монотонна и непрерывна в некоторой окрестности $U(x_0)$.
+        \item Дифференцируема в точке $x_0$, причем $f'(x_0) \neq 0$.
+    \end{enumerate}
+    Тогда обратная функция $x = f^{-1}(y)$ (или $x = g(y)$) дифференцируема в точке $y_0 = f(x_0)$ и её производная равна:
+    \[ (f^{-1})'(y_0) = \frac{1}{f'(x_0)} \]
+\end{tcolorbox}
+
+\textbf{Доказательство:}
+Рассмотрим приращение обратной функции $\Delta x = f^{-1}(y_0 + \Delta y) - f^{-1}(y_0)$.
+Так как прямая функция строго монотонна и непрерывна, то обратная функция также существует, монотонна и непрерывна. Следовательно, $\Delta y \neq 0 \Rightarrow \Delta x \neq 0$, и при $\Delta y \to 0$ следует $\Delta x \to 0$.
+
+Запишем отношение приращений для обратной функции:
+\[ \frac{\Delta x}{\Delta y} = \frac{1}{\frac{\Delta y}{\Delta x}} = \frac{1}{\frac{f(x_0+\Delta x) - f(x_0)}{\Delta x}} \]
+Перейдем к пределу при $\Delta y \to 0$ (что влечет $\Delta x \to 0$):
+\[ (f^{-1})'(y_0) = \lim_{\Delta y \to 0} \frac{\Delta x}{\Delta y} = \frac{1}{\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}} = \frac{1}{f'(x_0)}. \]
+Теорема доказана.
+
+\subsubsection*{Производные обратных тригонометрических функций}
+
+Используем теорему об обратной функции для вывода формул.
+
+\textbf{1. Производная арксинуса:} $y = \arcsin x$.
+Функция является обратной к $x = \sin y$, где $y \in [-\frac{\pi}{2}, \frac{\pi}{2}]$.
+В интервале $(-\frac{\pi}{2}, \frac{\pi}{2})$ производная $(\sin y)' = \cos y \neq 0$.
+По теореме:
+\[ (\arcsin x)'_x = \frac{1}{(\sin y)'_y} = \frac{1}{\cos y}. \]
+Выразим $\cos y$ через $x$. Из основного тождества: $\cos^2 y + \sin^2 y = 1 \Rightarrow \cos y = \pm \sqrt{1 - \sin^2 y} = \pm \sqrt{1 - x^2}$.
+Так как $y \in (-\frac{\pi}{2}, \frac{\pi}{2})$, то $\cos y > 0$. Выбираем знак «$+$».
+\[ (\arcsin x)' = \frac{1}{\sqrt{1 - x^2}}, \quad |x| < 1. \]
+
+\textbf{2. Производная арккосинуса:} $y = \arccos x$.
+Обратная к $x = \cos y$, где $y \in (0, \pi)$.
+\[ (\arccos x)'_x = \frac{1}{(\cos y)'_y} = \frac{1}{-\sin y}. \]
+Выразим $\sin y$ через $x$. Так как $y \in (0, \pi)$, то $\sin y > 0$, поэтому $\sin y = +\sqrt{1 - \cos^2 y} = \sqrt{1-x^2}$.
+\[ (\arccos x)' = -\frac{1}{\sqrt{1 - x^2}}, \quad |x| < 1. \]
+
+\textbf{3. Производная арктангенса:} $y = \arctg x$.
+Обратная к $x = \tg y$, где $y \in (-\frac{\pi}{2}, \frac{\pi}{2})$.
+\[ (\arctg x)'_x = \frac{1}{(\tg y)'_y} = \frac{1}{\frac{1}{\cos^2 y}} = \cos^2 y. \]
+Используем формулу $1 + \tg^2 y = \frac{1}{\cos^2 y}$, откуда $\cos^2 y = \frac{1}{1 + \tg^2 y} = \frac{1}{1 + x^2}$.
+\[ (\arctg x)' = \frac{1}{1 + x^2}. \]
+
+\textbf{4. Производная арккотангенса:} $y = \arcctg x$.
+Аналогично, $(\arcctg x)' = \frac{1}{-1/\sin^2 y} = -\sin^2 y = -\frac{1}{1+x^2}$.
+\[ (\arcctg x)' = -\frac{1}{1 + x^2}. \]
+
+\subsubsection*{Дифференцирование функции, заданной параметрически}
+
+Пусть зависимость $y$ от $x$ задана через параметр $t$:
+\[ \begin{cases} x = x(t) \\ y = y(t) \end{cases}, \quad t \in [\alpha, \beta] \]
+Если функции $x(t)$ и $y(t)$ дифференцируемы, и $x'(t) \neq 0$ (что обеспечивает существование обратной функции $t = x^{-1}(x)$), то $y$ можно рассматривать как сложную функцию от $x$: $y = y(t(x))$.
+
+По правилу дифференцирования сложной функции:
+\[ y'_x = y'_t \cdot t'_x. \]
+По теореме об обратной функции $t'_x = \frac{1}{x'_t}$.
+Окончательно получаем:
+\[ y'_x = \frac{y'_t}{x'_t} \]

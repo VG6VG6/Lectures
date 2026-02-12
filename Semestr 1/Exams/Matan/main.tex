@@ -1,0 +1,177 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- 1. Шрифты и кодировки ---
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+% --- 2. Математика ---
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{etoolbox} % <--- ДОБАВИЛ ЭТОТ ПАКЕТ (нужен для проверки условий)
+
+% --- 3. Графика ---
+\usepackage{graphicx}
+\graphicspath{
+    {./images/}
+    {./images/complex_numbers/}
+    {./images/Вложенные отрезки/}
+    {./images/Дедекиндовы сечения/}
+    {./images/Действительные числа/}
+    {./images/Пределы/}
+    {./images/Ряды/}
+    {./images/Функции/Понятие функции/}
+    {./images/Функции/Предел функции в точке/}
+    {./images/Функции/Способы задания/}
+}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+
+% --- 4. Оформление ---
+\usepackage[margin=2cm]{geometry}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{ulem}
+\usepackage[most]{tcolorbox}
+
+% --- 5. Настройки рамок ---
+\tcbuselibrary{breakable}
+
+% Базовый стиль
+\tcbset{
+    myboxstyle/.style={
+        colback=white,
+        colframe=black!75!white,
+        fonttitle=\bfseries,
+        coltitle=white,
+        breakable,        % <--- Это свойство теперь будет работать
+        enhanced,         % Улучшенный движок отрисовки
+        sharp corners,
+        width=\textwidth,
+        before skip=10pt, % Отступ сверху
+        after skip=10pt   % Отступ снизу
+    }
+}
+
+% --- 6. Создание окружений (ИСПРАВЛЕНО) ---
+% Мы создаем их сразу как tcolorbox, без лишних оберток
+
+% Теорема
+\newtcolorbox{theorem}[1][]{
+    myboxstyle,
+    title={Теорема\ifstrempty{#1}{}{ (#1)}} 
+}
+
+% Определение (с серым фоном)
+\newtcolorbox{definition}[1][]{
+    myboxstyle,
+    colback=gray!5,
+    title={Определение\ifstrempty{#1}{}{ (#1)}}
+}
+
+% Лемма
+\newtcolorbox{lemma}[1][]{
+    myboxstyle,
+    title={Лемма\ifstrempty{#1}{}{ (#1)}}
+}
+
+% Следствие
+\newtcolorbox{consequence}[1][]{
+    myboxstyle,
+    title={Следствие\ifstrempty{#1}{}{ (#1)}}
+}
+
+% Утверждение
+\newtcolorbox{statement}[1][]{
+    myboxstyle,
+    title={Утверждение\ifstrempty{#1}{}{ (#1)}}
+}
+
+% --- 7. Математические операторы ---
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\const}{const}
+
+% --- 8. Гиперссылки ---
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, unicode]{hyperref}
+
+% --- Информация ---
+\title{Билеты к экзамену по математическому анализу\\(I семестр) \\Лектор - Теляковский Д.С.}
+\author{VG6}
+\date{2025/2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% ... (Далее всё как было: \input секций) ...
+
+\section{Введение}
+\input{I/Compl}
+\input{I/triangle_MMI}
+
+\section{Действительные числа. Числовые множества.}
+\input{II/Dedekind}
+
+\section{Последовательности и ряды}
+\input{III/sequences}
+\input{III/Переход}
+\input{III/3Последовательности}
+\input{III/Знак}
+\input{III/infinitesimal_sequences}
+\input{III/6}
+\input{III/7}
+\input{III/8}
+\input{III/e}
+\input{III/TheoremBV}
+\input{III/11}
+\input{III/12}
+\input{III/13}
+\input{III/14}
+\input{III/15}
+\input{III/16}
+
+\section{Пределы и непрерывность функций}
+\input{IV/1}
+\input{IV/2}
+\input{IV/3}
+\input{IV/4}
+\input{IV/5}
+\input{IV/6}
+\input{IV/7}
+\input{IV/8}
+\input{IV/9}
+\input{IV/10}
+\input{IV/11}
+\input{IV/12}
+\input{IV/13}
+\input{IV/14}
+\input{IV/15}
+\input{IV/16}
+\input{IV/17}
+\input{IV/18}
+\input{IV/19}
+\input{IV/20}
+\input{IV/21}
+\input{IV/22}
+
+\section{Дифференциальное исчисление}
+\input{V/1}
+\input{V/2}
+\input{V/3}
+\input{V/4}
+\input{V/5}
+\input{V/6}
+\input{V/7}
+\input{V/8}
+\input{V/9}
+\input{V/10}
+\input{V/11}
+\input{V/12}
+
+\end{document}

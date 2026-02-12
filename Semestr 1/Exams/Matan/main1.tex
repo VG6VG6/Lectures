@@ -1,0 +1,155 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{graphicx}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+
+% \usepackage{cmap}  
+\usepackage{textcomp}          % Дополнительные символы
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{cmap}
+
+
+\usepackage[margin=2cm]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{caption}
+\usepackage{enumitem}
+
+
+\usepackage{ulem} % Для \sout - зачркнутый текст
+
+\tcbuselibrary{breakable}
+\tcbset{
+  width=0.9\textwidth,
+  halign=justify,
+  center,
+  breakable,
+  colback=white
+}
+
+\title{Билеты к экзамену по математическому анализу I семестр.}
+\author{VG6}
+\date{2025/2026}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\sign}{\text{sign\ }}
+\graphicspath{ {./images/} }
+
+% Окружения для теорем и определений
+\theoremstyle{definition}
+\newtheorem*{definition}{Определение}
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{lemma}{Лемма}
+\newtheorem*{statement}{Утверждение}
+\newtheorem*{consequence}{Следствие}
+
+% Используем команду \newtcolorbox для создания новых окружений
+\newtcolorbox{mytheorem}[1]{
+    colback=white,          % Белый фон
+    colframe=black,         % Черная рамка
+    fonttitle=\bfseries,    % Жирный шрифт заголовка
+    coltitle=black,         % Черный цвет заголовка
+    title=#1,               % Заголовок передается как параметр
+    breakable,              % Позволяет блоку переноситься на новую страницу
+    sharp corners           % Острые углы
+}
+
+\newtcolorbox{mydefinition}[1]{
+    colback=white,
+    colframe=black,
+    fonttitle=\bfseries,
+    coltitle=black,
+    title=#1,
+    breakable,
+    sharp corners
+}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Введение}
+\input{I/Compl}
+\input{I/triangle_MMI}
+
+\section{Действительные чсла. Числовые множества.}
+\input{II/Dedekind}
+
+\section{Последовательность и ряды.}
+
+\input{III/sequences}
+\input{III/Переход}
+\input{III/3Последовательности}
+\input{III/Знак}
+
+
+
+\input{III/infinitesimal_sequences}
+\input{III/6}
+\input{III/7}
+
+\input{III/8}
+
+\input{III/e}
+
+\input{III/TheoremBV}
+\input{III/11}
+
+\input{III/12}
+
+\input{III/13}
+\input{III/14}
+
+\input{III/15}
+
+\input{III/16}
+
+\section{Пределы и непрерывность функций одной переменной}
+
+\input{IV/1}
+\input{IV/2}
+\input{IV/3}
+\input{IV/4}
+\input{IV/5}
+\input{IV/6}
+\input{IV/7}
+\input{IV/8}
+\input{IV/9}
+\input{IV/10}
+\input{IV/11}
+\input{IV/12}
+\input{IV/13}
+\input{IV/14}
+\input{IV/15}
+\input{IV/16}
+\input{IV/17}
+\input{IV/18}
+\input{IV/19}
+\input{IV/20}
+\input{IV/21}
+\input{IV/22}
+
+\section{Дифференциальное исчисление функций одной переменной.}
+
+\input{V/1}
+\input{V/2}
+\input{V/3}
+\input{V/4}
+\input{V/5}
+\input{V/6}
+\input{V/7}
+\input{V/8}
+\input{V/9}
+\input{V/10}
+\input{V/11}
+\input{V/12}
+
+\end{document}

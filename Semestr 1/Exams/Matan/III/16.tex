@@ -1,0 +1,59 @@
+\subsection{Критерий Коши сходимости ряда с монотонными членами. Исследование сходимости ряда $ \sum_{n = 1}^{\infty} \frac{1}{n^p},\ p > 0 $.}
+
+\textbf{Теорема 6. Теорема Коши о сходимости монотонных рядов. (Конденсационный признак Коши)} \\
+Пусть $a_n \downarrow 0$ (монотонно убывает и неотрицательна). Тогда ряды сходятся или расходятся одновременно:
+\[ \sum^{\infty}_{n=1} a_n \sim \sum^{\infty}_{k=1} 2^k \cdot a_{2^k} \]
+
+\begin{tcolorbox}[title=Доказательство, breakable]
+    Так как члены неотрицательны, сходимость равносильна ограниченности частичных сумм.
+    Обозначим $S_n = \sum_{i=1}^n a_i$ (сумма исходного) и $T_k = \sum_{j=0}^k 2^j a_{2^j}$ (сумма сжатого).
+
+    \textbf{1. Оценка сверху (Сходимость $T_k \Rightarrow$ Сходимость $S_n$)}
+    Группируем члены исходного ряда блоками длины $2^k$:
+    \[
+    \begin{aligned}
+        a_1 &= a_1 \\
+        a_2 + a_3 &\leq a_2 + a_2 = 2a_2 \\
+        a_4 + a_5 + a_6 + a_7 &\leq 4a_4 \\
+        \dots &\leq \dots \\
+        a_{2^k} + \dots + a_{2^{k+1}-1} &\leq 2^k a_{2^k}
+    \end{aligned}
+    \]
+    Суммируя эти неравенства:
+    \[ S_{2^{k+1}-1} \leq a_1 + T_k \]
+    Если сжатый ряд сходится ($T_k$ ограничена), то и $S_n$ ограничена $\Rightarrow$ исходный ряд сходится.
+
+    \textbf{2. Оценка снизу (Расходимость $T_k \Rightarrow$ Расходимость $S_n$)}
+    Группируем иначе (сдвиг на один элемент):
+    \[
+    \begin{aligned}
+        a_3 + a_4 &\geq a_4 + a_4 = 2a_4 = \frac{1}{2} (2^2 a_{2^2}) \\
+        a_5 + \dots + a_8 &\geq 4a_8 = \frac{1}{2} (2^3 a_{2^3}) \\
+        \dots &\geq \dots
+    \end{aligned}
+    \]
+    Суммируя (начиная с $a_3$):
+    \[ S_{2^{k+1}} \geq a_1 + a_2 + \frac{1}{2} (T_{k+1} - a_1 - 2a_2) \]
+    Если сжатый ряд расходится ($T_k \to \infty$), то и $S_n \to \infty$ $\Rightarrow$ исходный ряд расходится.
+    
+    \textit{Итог:} Ряды ведут себя одинаково.
+\end{tcolorbox}
+
+\subsubsection*{Пример: Обобщенный гармонический ряд (Ряд Дирихле)}
+\[ \sum_{n=1}^{\infty} \frac{1}{n^p}, \quad p > 0 \]
+Члены ряда убывают ($ \frac{1}{n^p} \downarrow $). Применим теорему 6.
+\[ a_n = \frac{1}{n^p} \implies a_{2^k} = \frac{1}{(2^k)^p} = \frac{1}{2^{kp}} \]
+Составим сжатый ряд:
+\[ \sum_{k=0}^{\infty} 2^k \cdot a_{2^k} = \sum_{k=0}^{\infty} 2^k \cdot \frac{1}{2^{kp}} = \sum_{k=0}^{\infty} \frac{2^k}{2^{kp}} = \sum_{k=0}^{\infty} \left( 2^{1-p} \right)^k \]
+Это геометрическая прогрессия со знаменателем $q = 2^{1-p}$.
+
+\begin{tcolorbox}[title=Вывод по p-ряду]
+    \begin{enumerate}
+        \item Если $q < 1 \Leftrightarrow 2^{1-p} < 1 \Leftrightarrow 1-p < 0 \Leftrightarrow \mathbf{p > 1}$:
+        Ряд \textbf{сходится}.
+        
+        \item Если $q \geq 1 \Leftrightarrow 2^{1-p} \geq 1 \Leftrightarrow 1-p \geq 0 \Leftrightarrow \mathbf{p \leq 1}$:
+        Ряд \textbf{расходится}.
+    \end{enumerate}
+    \textit{Частный случай $p=1$: гармонический ряд $\sum \frac{1}{n}$ расходится.}
+\end{tcolorbox}

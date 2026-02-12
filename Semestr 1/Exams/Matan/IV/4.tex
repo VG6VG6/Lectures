@@ -1,0 +1,79 @@
+\subsection{Свойства функций, имеющих пределы: единственность, предел модуля, предельные переходы в неравенствах, теорема о зажатой функции}
+
+\textbf{Свойства функций, имеющих предел}\\
+Всюду далее считаем, что пределы рассматриваются при $x \to x_0$ (или $x \to \infty$).
+
+\textbf{Теорема.} Если функция $f(x)$ имеет предел, то он единственен.
+\begin{tcolorbox}[title=1. Единственность предела]
+    \textbf{Теорема.} Функция не может иметь двух различных пределов в одной точке.
+    
+    \textbf{Доказательство (от противного):}
+    Предположим, что $\lim_{x\to a} f(x) = A$ и $\lim_{x\to a} f(x) = B$, причем $A \neq B$.
+    
+    1. Выберем $\varepsilon = \frac{|A - B|}{2} > 0$.
+    2. По определению предела:
+    \begin{itemize}
+        \item Для $A$: $\exists \delta_1 > 0: \forall x \in \mathring{U}_{\delta_1}(a) \implies |f(x) - A| < \varepsilon$.
+        \item Для $B$: $\exists \delta_2 > 0: \forall x \in \mathring{U}_{\delta_2}(a) \implies |f(x) - B| < \varepsilon$.
+    \end{itemize}
+    3. Возьмем $\delta = \min(\delta_1, \delta_2)$. Для любого $x \in \mathring{U}_\delta(a)$ выполняются оба неравенства.
+    4. Оценим расстояние между $A$ и $B$ через неравенство треугольника:
+    \[ |A - B| = |(A - f(x)) + (f(x) - B)| \leq |A - f(x)| + |f(x) - B| \]
+    Подставим оценки:
+    \[ |A - B| < \varepsilon + \varepsilon = 2\varepsilon = 2 \cdot \frac{|A - B|}{2} = |A - B| \]
+    5. Получили $|A - B| < |A - B|$, что невозможно.
+    Противоречие доказывает, что $A = B$.
+\end{tcolorbox}
+
+\textbf{Теорема.} Если $\lim f(x) = A$, то $\lim |f(x)| = |A|$.
+\begin{tcolorbox}[title=2. Предел модуля]
+	
+	\textbf{Доказательство:}
+	Используем неравенство треугольника вида $||a| - |b|| \leq |a - b|$.
+	\begin{itemize}
+		\item Зададим $\forall \varepsilon > 0$.
+		\item Так как $f(x) \to A$, то $\exists \delta: \forall x \in \mathring{U}_\delta(x_0) \Rightarrow |f(x) - A| < \varepsilon$.
+		\item Тогда:
+		$$ ||f(x)| - |A|| \leq |f(x) - A| < \varepsilon $$
+		\item Это и означает, что $|f(x)| \to |A|$.
+	\end{itemize}
+	\textit{Важно: Обратное утверждение верно только в случае $A=0$.}
+\end{tcolorbox}
+
+\textbf{Теорема.} Пусть $\lim f(x) = A$ и $\lim g(x) = B$.
+Если в некоторой проколотой окрестности точки $x_0$ выполняется $f(x) \leq g(x)$, то $A \leq B$.
+	
+\begin{tcolorbox}[title=3. Предельный переход в неравенствах]
+	\textbf{Доказательство (от противного):}
+	\begin{enumerate}
+		\item Допустим, что $A > B$.
+		\item Возьмем $\varepsilon = \frac{A - B}{2} > 0$.
+		\item Для этого $\varepsilon$ найдутся $\delta_1$ и $\delta_2$. Возьмем $\delta = \min(\delta_1, \delta_2)$. В общей окрестности $\mathring{U}_\delta(x_0)$:
+		$$ |f(x) - A| < \varepsilon \Rightarrow f(x) > A - \varepsilon = A - \frac{A-B}{2} = \frac{A+B}{2} $$
+		$$ |g(x) - B| < \varepsilon \Rightarrow g(x) < B + \varepsilon = B + \frac{A-B}{2} = \frac{A+B}{2} $$
+		\item Получаем цепочку: $g(x) < \frac{A+B}{2} < f(x)$, то есть $g(x) < f(x)$.
+		\item Это противоречит условию $f(x) \leq g(x)$. Значит, предположение неверно, и $A \leq B$.
+	\end{enumerate}
+	\textit{Замечание: Строгое неравенство $f(x) < g(x)$ при переходе к пределу может стать нестрогим (например, $1/x^2 > 0$, но предел равен 0).}
+\end{tcolorbox}
+
+\textbf{Теорема.} Пусть в некоторой окрестности точки $x_0$ выполняется:
+$$ g(x) \leq f(x) \leq h(x) $$
+И пусть $\lim_{x\to x_0} g(x) = \lim_{x\to x_0} h(x) = A$.
+Тогда $\lim_{x\to x_0} f(x) = A$.
+\begin{tcolorbox}[title=4. Теорема о зажатой функции (о двух милиционерах)]	
+	\textbf{Доказательство:}
+	\begin{enumerate}
+		\item Запишем определение предела для крайних функций. $\forall \varepsilon > 0 \exists \delta$:
+		\begin{itemize}
+			\item $A - \varepsilon < g(x) < A + \varepsilon$
+			\item $A - \varepsilon < h(x) < A + \varepsilon$
+		\end{itemize}
+		\item Используем двойное неравенство из условия (для $x$ из общей окрестности):
+		$$ A - \varepsilon < g(x) \leq f(x) \leq h(x) < A + \varepsilon $$
+		\item Уберем промежуточные члены:
+		$$ A - \varepsilon < f(x) < A + \varepsilon $$
+		$$ |f(x) - A| < \varepsilon $$
+		\item Это и означает по определению, что $\lim f(x) = A$.
+	\end{enumerate}
+\end{tcolorbox}
