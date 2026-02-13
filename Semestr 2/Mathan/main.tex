@@ -10,6 +10,14 @@
 \usepackage{caption}
 \usepackage{enumitem}
 
+% Пакеты для рисования графиков
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta}
+
+\usepgfplotslibrary{fillbetween}
+
 \tcbuselibrary{breakable}
 \tcbset{
   width=0.9\textwidth,
@@ -37,124 +45,171 @@
 \newpage
 
 \section{Исследование функций}
-\subsection{Условия постоянства и монотонности.}
+\subsection{Условия постоянства и монотонности}
 
 \textbf{Теорема.}
 \begin{tcolorbox}
 	\begin{enumerate}
-		\item $f`(x) > 0 \Rightarrow f(x) \text{строго возрастает} \Rightarrow f`(x) \geq 0$ 
-		\item $f`(x) \geq 0 \Rightarrow f(x) \text{возрастает} \Rightarrow f`(x) \geq 0$ 
-		\item $f`(x) \equiv 0 \Rightarrow f(x) \equiv Const \Rightarrow f`(x) \equiv 0$ 
-		\item $f`(x) \leq 0 \Rightarrow f(x) \text{убывает} \Rightarrow f`(x) \leq 0$ 
-		\item $f`(x) < 0 \Rightarrow f(x) \text{строго убывает} \Rightarrow f`(x) \leq 0$ 
+		\item $f'(x) > 0 \Rightarrow f(x) \text{ строго возрастает} \Rightarrow f'(x) \geq 0$ 
+		\item $f'(x) \geq 0 \Rightarrow f(x) \text{ возрастает} \Rightarrow f'(x) \geq 0$ 
+		\item $f'(x) \equiv 0 \Rightarrow f(x) \equiv \text{const} \Rightarrow f'(x) \equiv 0$ 
+		\item $f'(x) \leq 0 \Rightarrow f(x) \text{ убывает} \Rightarrow f'(x) \leq 0$ 
+		\item $f'(x) < 0 \Rightarrow f(x) \text{ строго убывает} \Rightarrow f'(x) \leq 0$ 
 	\end{enumerate}
 \end{tcolorbox}
 \begin{tcolorbox}[title=Доказательство]
 	\begin{enumerate}
-		\item Левый столбйц. Формула Лагранжа конечных приращений. 
+		\item Левый столбец. Формула Лагранжа конечных приращений. 
 			\[ \forall x_1, x_2 \in (a, b), x_1 < x_2\; \exists \xi \in (x_1, x_2) \]
-		\[ f(x_2) - f(x_1) = f`(\xi) (x_2 - x_1), \;\;\;\;\; (x_2 - x_1) > 0 \]
+		\[ f(x_2) - f(x_1) = f'(\xi) (x_2 - x_1), \;\;\;\;\; (x_2 - x_1) > 0 \]
 	\item Правый столбец. 
-		\[ x \in (a, b),\; \forall h: \in (a, b)\;\frac{f(x+h) - f(x)}{h} \xrightarrow[]{h\to 0} f`(x)\]
+		\[ x \in (a, b),\; \forall h: (x+h) \in (a, b)\;\frac{f(x+h) - f(x)}{h} \xrightarrow[]{h\to 0} f'(x)\]
 	\end{enumerate}
 \end{tcolorbox}
 
 \textbf{Замечание.} $y = x^3$ строго возрастает. 
-$y` = 3x^2$, при $x = 0$
+$y' = 3x^2$, при $x = 0$ производная равна 0, но функция возрастает.
 
-\subsection{Условие внутреннего экстремума.}
-\textbf{Теорема 1. Теорема Ферма.} $f(x)$ на $(a, b)$, $f(x)$ экстремум в точке $\xi \in (a, b) \Rightarrow f`(\xi) = 0$ или не существует. 
-% нарисовать график y = x^3. Показать производную в 0. 
-\textbf{Теорема 2.} $f(x) \in C(a, b), x_0 \in (a, b), f(x) \text{ дифференцируема на }(a, b)\setminus \{x_0\}$
+\subsection{Условие внутреннего экстремума}
+\textbf{Теорема 1 (Теорема Ферма).} Пусть $f(x)$ определена на $(a, b)$. Если $f(x)$ имеет экстремум в точке $\xi \in (a, b)$, то $f'(\xi) = 0$ или не существует. 
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = $x$,
+        ylabel = {$y=x^3$},
+        xmin=-2, xmax=2,
+        ymin=-5, ymax=5,
+        width=6cm, height=5cm,
+        ticks=none
+    ]
+    \addplot [domain=-1.7:1.7, samples=100, thick, blue] {x^3};
+    \draw[red, thick, dashed] (axis cs: -1, 0) -- (axis cs: 1, 0) node[right] {Касательная $y'=0$};
+    \node at (axis cs: 0,0) [circle, fill, inner sep=1.5pt] {};
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{График $y=x^3$. Производная в нуле равна 0, но экстремума нет.}
+\end{center}
+
+\textbf{Теорема 2.} $f(x) \in C(a, b), x_0 \in (a, b), f(x)$ дифференцируема на $(a, b)\setminus \{x_0\}$.
 \begin{enumerate}
-	\item $f`(x) < 0$ на $(a, x_0), (x_0, b) \Rightarrow$ в $x_0$ нет экстремума. 
-	\item $f`(x) < 0$ на $(a, x_0), f`(x) > 0$ на $(x_0, b) \Rightarrow$ в $x_0$ у $f(x)$ - минимум.
-	\item $f`(x) > 0$ на $(a, x_0), (x_0, b) \Rightarrow$ в $x_0$ нет экстремума. 
-	\item $f`(x) > 0$ на $(a, x_0), f`(x) < 0$ на $(x_0, b) \Rightarrow$ в $x_0$ у $f(x)$ - максимум.
+	\item $f'(x) < 0$ на $(a, x_0), (x_0, b) \Rightarrow$ в $x_0$ нет экстремума. 
+	\item $f'(x) < 0$ на $(a, x_0), f'(x) > 0$ на $(x_0, b) \Rightarrow$ в $x_0$ у $f(x)$ — минимум.
+	\item $f'(x) > 0$ на $(a, x_0), (x_0, b) \Rightarrow$ в $x_0$ нет экстремума. 
+	\item $f'(x) > 0$ на $(a, x_0), f'(x) < 0$ на $(x_0, b) \Rightarrow$ в $x_0$ у $f(x)$ — максимум.
 \end{enumerate}
 \begin{tcolorbox}[title=Доказательство]
 	\begin{enumerate}
-		\item $f`(x) < 0$ на $(a, x_0), (x_0, b)$ по утверждению $\forall x` \in (a, x_0)$ и $x`` \in (x_0, b)$
-			\[ f(x`) > f(x) > f(x``) \Rightarrow \text{ в } x_0\text{ нет экстремума} \]
-		\item $f`(x) < 0$ на $(a, x_0)$ и $f(x) > 0$ на $(x_0, b)$ по утверждению $\forall x` \in (a, x_0)$ и $x`` \in (x_0, b)$
-			\[ f(x`) > f(x_0)\text{ и } f(x_0) < f(x``) \]
+		\item $f'(x) < 0$ на $(a, x_0)$ и на $(x_0, b)$. По утверждению о монотонности $\forall x' \in (a, x_0)$ и $x'' \in (x_0, b)$:
+			\[ f(x') > f(x_0) > f(x'') \Rightarrow \text{ в } x_0 \text{ нет экстремума} \]
+		\item $f'(x) < 0$ на $(a, x_0)$ и $f'(x) > 0$ на $(x_0, b)$. По утверждению $\forall x' \in (a, x_0)$ и $x'' \in (x_0, b)$:
+			\[ f(x') > f(x_0)\text{ и } f(x_0) < f(x'') \Rightarrow x_0 \text{ — локальный минимум}.\]
 	\end{enumerate}
 \end{tcolorbox}
 
 
-\textbf{Утверждение.} $f(x) \in C([a, b])$, дифференцируема на $(a, b)$
+\textbf{Утверждение.} $f(x) \in C([a, b])$, дифференцируема на $(a, b)$.
 \begin{enumerate}
-	\item $f`(x) > 0$ на $(a, b) \Rightarrow \min_{[a, b]} f(x) = f(a), \max_{[a, b]} f(x) = f(b)$
-	\item $f`(x) < 0$ на $(a, b) \Rightarrow \max_{[a, b]} f(x) = f(a), \min_{[a, b]} f(x) = f(b)$
+	\item $f'(x) > 0$ на $(a, b) \Rightarrow \min_{[a, b]} f(x) = f(a), \max_{[a, b]} f(x) = f(b)$
+	\item $f'(x) < 0$ на $(a, b) \Rightarrow \max_{[a, b]} f(x) = f(a), \min_{[a, b]} f(x) = f(b)$
 \end{enumerate}
-\begin{tcolorbox}[title=Доказательство.]
+\begin{tcolorbox}[title=Доказательство]
 	\begin{enumerate}
-		\item $\forall x_0 \in (a, b)$ Для $f(x)$ на $[a, x_0]$ и $[x_0, b]$ то по Т. Лагранжа о конечных приращениях $\exists \xi` \in (x, x_0), \xi`` \in (x_0, b)$
-			\[ f(x_0) - f(a) =f`(\xi`)(x_0 - a) > 0 \]
-			\[ f(b) - f(x_0) =f`(\xi``)(b - x_0) > 0\]
-		\begin{enumerate}
-			\item $f`(x) > 0$ на $(a, b) \Rightarrow f(x) < f(x_0) < f(b)$
-		\end{enumerate}
+		\item $\forall x_0 \in (a, b)$. Применим Т. Лагранжа к $f(x)$ на $[a, x_0]$ и $[x_0, b]$. $\exists \xi' \in (a, x_0), \xi'' \in (x_0, b)$:
+			\[ f(x_0) - f(a) =f'(\xi')(x_0 - a) > 0 \]
+			\[ f(b) - f(x_0) =f'(\xi'')(b - x_0) > 0\]
+		Следовательно, при $f'(x) > 0$ на $(a, b) \Rightarrow f(a) < f(x_0) < f(b)$.
 	\end{enumerate}
 \end{tcolorbox}
 
-\textbf{Теорема 3. Достаточное условие в теореме высших производных.} 
-$f(x)$ в $U(x_0)$ и имеет в $x_0$ производную порядка $n \geq 2$, и выполняется:
-\[ f`(x_0) = f``(x_0) = ...  = f^{(n - 1)}(x_0), f^{(n)}(x_0) \not= 0\]
-Тогда, если 
+\textbf{Теорема 3 (Достаточное условие в терминах высших производных).} 
+Пусть $f(x)$ определена в $U(x_0)$ и имеет в $x_0$ производную порядка $n \geq 2$, причём:
+\[ f'(x_0) = f''(x_0) = \dots  = f^{(n - 1)}(x_0) = 0, \quad f^{(n)}(x_0) \not= 0\]
+Тогда:
 \begin{enumerate}
-	\item n - нечётное, то в $x_0$ экстремума нет. 
-	\item n - чётное, то экстремум есть. 
+	\item Если $n$ — нечётное, то в $x_0$ экстремума нет. 
+	\item Если $n$ — чётное, то экстремум есть:
 		\begin{enumerate}
-			\item $f^{(n)}(x_0) > 0 \Rightarrow$ в $x_0$ локальный минимум
-			\item $f^{(n)}(x_0) < 0 \Rightarrow$ в $x_0$ локальный максимум
+			\item $f^{(n)}(x_0) > 0 \Rightarrow$ в $x_0$ локальный минимум.
+			\item $f^{(n)}(x_0) < 0 \Rightarrow$ в $x_0$ локальный максимум.
 		\end{enumerate}
 \end{enumerate}
-\begin{tcolorbox}[title=Доказательство Формулы Тейлора и остатком по Пиано.]
-	Используем формулу Тейлора с остаточным членом в форме Пеано:
-	\[ f(x) = f(x_0) + \frac{f'(x_0)}{1!}(x-x_0) + \dots\] 
-	\[... + \frac{f^{(n-1)}(x_0)}{(n-1)!}(x-x_0)^{n-1} + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \bar{o}((x-x_0)^n) \]
-	
+\begin{tcolorbox}[title=Доказательство (через формулу Тейлора с остатком Пеано)]
+	Используем формулу Тейлора:
+	\[ f(x) = f(x_0) + \frac{f'(x_0)}{1!}(x-x_0) + \dots + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + o((x-x_0)^n) \]
 	Так как $f'(x_0) = \dots = f^{(n-1)}(x_0) = 0$, выражение упрощается:
-	\[ f(x) = f(x_0) + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \bar{o}((x-x_0)^n) \]
+	\[ f(x) - f(x_0) = \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + o((x-x_0)^n) \]
+	Вынесем главный член:
+	\[ f(x) - f(x_0) = (x-x_0)^n \left[ \frac{f^{(n)}(x_0)}{n!} + \frac{o((x-x_0)^n)}{(x-x_0)^n} \right] \]
+	Пусть $\alpha(x) = \frac{o((x-x_0)^n)}{(x-x_0)^n}$, тогда $\alpha(x) \to 0$ при $x \to x_0$.
+	В некоторой окрестности знак скобки совпадает со знаком $\frac{f^{(n)}(x_0)}{n!}$.
 	
-	Распишем $\bar{o}$ как бесконечно малую функцию $\alpha(x)$:
-	\[ f(x) = f(x_0) + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \alpha(x)(x-x_0)^n, \quad \text{где } \alpha(x) \xrightarrow{x \to x_0} 0 \]
+	1) Если $n$ нечётное, то $(x-x_0)^n$ меняет знак при переходе через $x_0$. Знак разности $f(x)-f(x_0)$ меняется $\Rightarrow$ экстремума нет.
 	
-	Вынесем $(x-x_0)^n$ за скобку:
-	\[ f(x) = f(x_0) + \left( \frac{f^{(n)}(x_0)}{n!} + \alpha(x) \right) (x-x_0)^n \]
-	
-	Так как $\alpha(x) \to 0$, то для члена в скобках справедливо:
-	\[ \exists V(x_0): \forall x \in V(x_0) \quad \sign \left( \frac{f^{(n)}(x_0)}{n!} + \alpha(x) \right) = \sign f^{(n)}(x_0) \]
-	
-	Таким образом, для $\forall x \in V(x_0)$:
-	\[ f(x) = f(x_0) + \underbrace{\left( \frac{f^{(n)}(x_0)}{n!} + \alpha(x) \right)}_{\text{сохр. знак}} (x-x_0)^n \]
-	
+	2) Если $n$ чётное, то $(x-x_0)^n > 0$. Знак разности сохраняется и зависит от $f^{(n)}(x_0)$.
 \end{tcolorbox}
 
-\subsection{Выпуклые функции.}
-\textbf{Определение 1.} $f(x)$ на $<a, b>$ \textbf{выпукла вниз}, если $\forall x_1, x_2 \in <a, b>$ график функции $y = f(x)$ на $(x_1, x_2)$ раположена нижу отрезка с концами в $(x_1, f(x_1)), (x_2, f(x_2))$. (строгая выпуклость)
+\subsection{Выпуклые функции}
+\textbf{Определение 1.} $f(x)$ на $(a, b)$ называется \textbf{выпуклой вниз}, если $\forall x_1, x_2 \in (a, b)$ график функции $y = f(x)$ на интервале $(x_1, x_2)$ расположен \textbf{ниже} отрезка (хорды), соединяющего точки $(x_1, f(x_1))$ и $(x_2, f(x_2))$. (Это определение строгой выпуклости).
 
-% Нарисованить график выпуклой вниз функции с отрезком 
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = $x$, ylabel = $y$,
+        xmin=0, xmax=5, ymin=0, ymax=6,
+        width=8cm, height=6cm,
+        ticks=none
+    ]
+    % Function (convex)
+    \addplot [name path=A, domain=0.5:4.5, samples=100, thick, blue] {0.5*(x-2.5)^2 + 1};
+    % Secant line
+    \addplot [name path=B, domain=1:4, thick, red] {((0.5*(4-2.5)^2 + 1) - (0.5*(1-2.5)^2 + 1))/(4-1)*(x-1) + (0.5*(1-2.5)^2 + 1)};
+    
+    % Points
+    \node at (axis cs: 1, 2.125) [circle, fill, inner sep=1.5pt, label=above:$A(x_1)$] {};
+    \node at (axis cs: 4, 2.125) [circle, fill, inner sep=1.5pt, label=above:$B(x_2)$] {};
+    \node at (axis cs: 2.5, 1) [label=below:$f(x)$] {};
+    
+    \node at (axis cs: 2.5, 3) [red] {Хорда выше графика};
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Геометрический смысл выпуклости вниз.}
+\end{center}
 
-Вопрос: Пусть функция выпукла вниз а интервале. Доказатель, что она непрерывна на всём интервале. 
+\textbf{Вопрос:} Пусть функция выпукла вниз на интервале. Доказать, что она непрерывна на всём интервале. 
 
-\textbf{Нестрогая выпуклость} - не выше. 
+\textbf{Нестрогая выпуклость} — график расположен \textbf{не выше} хорды.
 
-% тожу нужен рисунок
+Аналитическая запись условия выпуклости:
+\[ \forall x \in (x_1, x_2):\; f(x) \leq y_{\text{сек}}(x) \]
+Уравнение секущей:
+\[ y_{\text{сек}}(x) = \frac{x_2 - x}{x_2 - x_1}f(x_1) + \frac{x - x_1}{x_2 - x_1}f(x_2) \]
 
-\[ \forall x \in (x_1, x_2):\; y_{\text{сек}} = \boxed{\frac{x_2 - x}{x_2 - x_1}f(x_1) + \frac{x - x_1}{x_2 - x_1}f(x_2) \geq f(x) }\]
+Подставим в неравенство:
 \[
-\left( \frac{x_2 - x}{x_2 - x_1} + \frac{x - x_1}{x_2 - x_1} \right) f(x) \leq \frac{x_2 - x}{x_2 - x_1} f(x_1) + \frac{x - x_1}{x_2 - x_1} f(x_2)
+f(x) \cdot 1 = f(x) \left( \frac{x_2 - x}{x_2 - x_1} + \frac{x - x_1}{x_2 - x_1} \right) \leq \frac{x_2 - x}{x_2 - x_1} f(x_1) + \frac{x - x_1}{x_2 - x_1} f(x_2)
 \]
 
+Перегруппируем слагаемые:
 \[
 \frac{x_2 - x}{x_2 - x_1} \left( f(x) - f(x_1) \right) \leq \frac{x - x_1}{x_2 - x_1} \left( f(x_2) - f(x) \right)
 \]
 
+Разделим на положительные величины и получим \textbf{неравенство наклонов хорд}:
+\begin{tcolorbox}
 \[
 \boxed{ \frac{f(x) - f(x_1)}{x - x_1} \leq \frac{f(x_2) - f(x)}{x_2 - x} }
 \]
-1. Что будет если функция дифференцируема
-3. Доказать что в каждой точке существует односторонний придел, даже если она не дифференцируема. 
+\end{tcolorbox}
+\textit{Геометрически это означает, что наклон левой части хорды не превышает наклон правой части.}
+
+\vspace{1cm}
+\textbf{Задачи для размышления:}
+\begin{enumerate}
+    \item Что будет, если функция дифференцируема? (Связь с возрастанием производной).
+    \item Доказать, что в каждой точке интервала выпуклости существуют односторонние пределы и односторонние производные, даже если функция не дифференцируема.
+\end{enumerate}
+
 \end{document}
