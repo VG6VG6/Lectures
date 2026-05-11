@@ -1,0 +1,68 @@
+\subsection{Формула интегрирования по частям для неопределённого интеграла}
+
+\subsubsection*{1. Формулировка}
+
+\begin{theorem}[Интегрирование по частям]
+Пусть функции $u(x)$ и $v(x)$ дифференцируемы на интервале $(a, b)$ и существует интеграл $\int v\,du$. Тогда существует и интеграл $\int u\,dv$, причём:
+\[ \int u\,dv = uv - \int v\,du. \]
+В развёрнутой записи:
+\[ \int u(x)\,v'(x)\,dx = u(x)\,v(x) - \int v(x)\,u'(x)\,dx. \]
+\end{theorem}
+
+\subsubsection*{2. Идея вывода}
+
+Формула следует из правила Лейбница для дифференциала произведения:
+\[ d(uv) = u\,dv + v\,du \implies u\,dv = d(uv) - v\,du. \]
+Интегрируя обе части:
+\[ \int u\,dv = uv - \int v\,du. \]
+
+\subsubsection*{3. Выбор $u$ и $dv$ — мнемоника ЛТЭТРИ}
+
+Функцию $u$ следует выбирать в порядке убывания приоритета:
+\begin{center}
+\textbf{Л}огарифмы $\to$ \textbf{О}братные тригонометрические функции $\to$
+\textbf{А}лгебраические (степенные) $\to$ \textbf{Т}ригонометрические $\to$
+\textbf{Э}кспоненты.
+\end{center}
+Всё остальное уходит в $dv$.
+
+\subsubsection*{4. Типовые применения}
+
+\textbf{Тип 1: $P_n(x) \cdot e^{\alpha x}$, $P_n(x)\sin(\beta x)$, $P_n(x)\cos(\beta x)$}
+
+Берём $u = P_n(x)$, $dv$ — экспонента или тригонометрия. Повторяем $n$ раз.
+
+\textbf{Пример:}
+\[
+\int x e^x\,dx = x e^x - \int e^x\,dx = x e^x - e^x + C = e^x(x-1)+C.
+\]
+
+\textbf{Тип 2: $P_n(x)\ln x$, $P_n(x)\arctan x$, $P_n(x)\arcsin x$}
+
+Берём $u = \ln x$ (или обратную тригонометрическую функцию), $dv = P_n(x)\,dx$.
+
+\textbf{Пример:}
+\[
+\int \ln x\,dx = x\ln x - \int x \cdot \frac{1}{x}\,dx = x\ln x - x + C.
+\]
+
+\textbf{Тип 3: $e^{\alpha x}\sin(\beta x)$, $e^{\alpha x}\cos(\beta x)$}
+
+Применяем по частям дважды, возникающий интеграл переносим в левую часть.
+
+\textbf{Пример:}
+\[
+I = \int e^x \cos x\,dx = e^x\cos x + \int e^x \sin x\,dx
+  = e^x\cos x + e^x\sin x - I,
+\]
+\[
+2I = e^x(\cos x + \sin x) + C \implies
+I = \frac{e^x(\cos x + \sin x)}{2} + C.
+\]
+
+\subsubsection*{5. Рекуррентные формулы}
+
+Метод интегрирования по частям позволяет выводить рекуррентные формулы. Например:
+\[
+I_n = \int \sin^n x\,dx = -\frac{\sin^{n-1}x\cos x}{n} + \frac{n-1}{n}\,I_{n-2}.
+\]

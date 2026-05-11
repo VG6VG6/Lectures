@@ -1,0 +1,99 @@
+\subsection{Подстановки Эйлера для интегрирования выражений вида $R\!\left(x,\,\sqrt{ax^2+bx+c}\right)$}
+
+\subsubsection*{1. Постановка задачи}
+
+Рассматривается интеграл
+\[
+\int R\!\left(x,\,\sqrt{ax^2+bx+c}\right)dx,
+\]
+где $R(u,v)$ — рациональная функция, $a \neq 0$, дискриминант $D = b^2 - 4ac$.
+
+Цель — устранить иррациональность подходящей заменой $\sqrt{ax^2+bx+c} = (\ldots)$, превратив интеграл в рациональный по новой переменной $t$.
+
+\subsubsection*{2. Подстановка Эйлера I ($a > 0$)}
+
+\textbf{Условие:} $a > 0$.
+
+\textbf{Замена:}
+\[ \sqrt{ax^2+bx+c} = t - \sqrt{a}\,x. \]
+
+Возводя в квадрат:
+\[
+ax^2+bx+c = t^2 - 2\sqrt{a}\,tx + ax^2,
+\]
+откуда линейно выражается $x$:
+\[
+x = \frac{t^2 - c}{b + 2\sqrt{a}\,t}.
+\]
+
+После подстановки все выражения рационально зависят от $t$.
+
+\textbf{Частный случай} $a = 1$:
+\[
+\sqrt{x^2+bx+c} = t - x \implies x = \frac{t^2-c}{b+2t}, \quad
+\sqrt{x^2+bx+c} = t - x = \frac{t^2-c}{b+2t} - t = \frac{\ldots}{b+2t}.
+\]
+
+\subsubsection*{3. Подстановка Эйлера II ($c > 0$)}
+
+\textbf{Условие:} $c > 0$.
+
+\textbf{Замена:}
+\[ \sqrt{ax^2+bx+c} = tx + \sqrt{c}. \]
+
+Возводя в квадрат и решая относительно $x$:
+\[
+ax^2+bx+c = t^2x^2 + 2\sqrt{c}\,tx + c,
+\]
+\[
+x(a-t^2) = 2\sqrt{c}\,t - b \implies
+x = \frac{2\sqrt{c}\,t - b}{a - t^2}.
+\]
+
+\subsubsection*{4. Подстановка Эйлера III (трёхчлен имеет вещественные корни)}
+
+\textbf{Условие:} $D = b^2-4ac > 0$, то есть $ax^2+bx+c = a(x-x_1)(x-x_2)$, $x_1, x_2 \in \R$.
+
+\textbf{Замена:}
+\[ \sqrt{a(x-x_1)(x-x_2)} = t(x - x_1). \]
+
+Тогда:
+\[
+a(x-x_1)(x-x_2) = t^2(x-x_1)^2 \implies a(x-x_2) = t^2(x-x_1),
+\]
+откуда:
+\[
+x = \frac{ax_2 - t^2 x_1}{a - t^2}.
+\]
+
+\subsubsection*{5. Сводная таблица подстановок Эйлера}
+
+\begin{center}
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Номер} & \textbf{Условие} & \textbf{Замена} \\
+\hline
+I   & $a > 0$ & $\sqrt{ax^2+bx+c} = t - \sqrt{a}\,x$ \\
+II  & $c > 0$ & $\sqrt{ax^2+bx+c} = tx + \sqrt{c}$ \\
+III & $D > 0$, корни $x_1, x_2$ & $\sqrt{a(x-x_1)(x-x_2)} = t(x-x_1)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{6. Пример}
+
+Вычислим $\displaystyle\int \frac{dx}{\sqrt{x^2+1}}$ подстановкой Эйлера~I ($a=1>0$):
+\[
+\sqrt{x^2+1} = t - x \implies x^2+1 = t^2-2tx+x^2 \implies x = \frac{t^2-1}{2t},
+\]
+\[
+dx = \frac{t^2+1}{2t^2}\,dt, \quad \sqrt{x^2+1} = t - x = \frac{t^2+1}{2t}.
+\]
+\[
+\int\frac{(t^2+1)\,dt/(2t^2)}{(t^2+1)/(2t)} = \int\frac{dt}{t} = \ln|t|+C.
+\]
+Поскольку $t = x + \sqrt{x^2+1}$:
+\[
+\int \frac{dx}{\sqrt{x^2+1}} = \ln\!\left(x+\sqrt{x^2+1}\right)+C.
+\]

@@ -1,0 +1,703 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- 1. Шрифты и кодировки ---
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+% --- Для рисования графиков  ---
+\usepackage{tikz} 
+\usetikzlibrary{decorations.pathreplacing}
+
+% --- 2. Математика ---
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{etoolbox} 
+
+% --- 3. Графика ---
+\usepackage{graphicx}
+% Пути к папкам с картинками (добавляй новые по мере необходимости)
+\graphicspath{
+    {./images/}
+}
+
+% Быстрые макросы для множеств
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+
+% --- 4. Оформление страницы ---
+\usepackage[margin=2cm]{geometry}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{ulem}
+\usepackage[most]{tcolorbox}
+
+% --- 5. Настройки рамок (tcolorbox) ---
+\tcbuselibrary{breakable}
+
+\tcbset{
+    myboxstyle/.style={
+        colback=white,
+        colframe=black!75!white,
+        fonttitle=\bfseries,
+        coltitle=white,
+        breakable,        
+        enhanced,         
+        sharp corners,
+        width=\textwidth,
+        before skip=10pt, 
+        after skip=10pt   
+    }
+}
+
+% Окружения для билетов
+% Теорема
+\newtcolorbox{theorem}[1][]{
+    myboxstyle,
+    title={Теорема\ifstrempty{#1}{}{ (#1)}} 
+}
+
+% Определение (с легким серым фоном)
+\newtcolorbox{definition}[1][]{
+    myboxstyle,
+    colback=gray!5,
+    title={Определение\ifstrempty{#1}{}{ (#1)}}
+}
+
+% Лемма
+\newtcolorbox{lemma}[1][]{
+    myboxstyle,
+    title={Лемма\ifstrempty{#1}{}{ (#1)}}
+}
+
+% Следствие
+\newtcolorbox{consequence}[1][]{
+    myboxstyle,
+    title={Следствие\ifstrempty{#1}{}{ (#1)}}
+}
+
+% Утверждение
+\newtcolorbox{statement}[1][]{
+    myboxstyle,
+    title={Утверждение\ifstrempty{#1}{}{ (#1)}}
+}
+
+% --- 6. Математические операторы ---
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\const}{const}
+
+% --- 7. Гиперссылки ---
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, unicode]{hyperref}
+
+% --- Метаданные ---
+\title{Билеты к коллоквиуму по математическому анализу\\(II семестр) \\Лектор --- Теляковский Д.С.}
+\author{VG6}
+\date{2025/2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% --- РАЗДЕЛЫ ---
+% Здесь ты просто подключаешь файлы с билетами. 
+% Рекомендую создать папки под разделы, например папки "Section1", "Section2" и т.д.
+
+\section{Теория}
+% Пример включения билета (файл должен лежать по пути Section1/ticket1.tex)
+\input{Theory/1}
+\input{Theory/2}
+\input{Theory/3}
+\input{Theory/4}
+\input{Theory/5}
+\input{Theory/6}
+\input{Theory/7}
+\input{Theory/8}
+\input{Theory/9}
+\input{Theory/10}
+\input{Theory/11}
+
+\section{Практика}
+
+\input{Practice/1}
+\input{Practice/2}
+\input{Practice/3}
+\input{Practice/4}
+\input{Practice/6}
+\input{Practice/7}
+\input{Practice/8}
+\input{Practice/9}
+\input{Practice/10}
+
+\end{document}
+\subsection{Первообразная функции на интервале. Теорема о структуре множества первообразных. Неопределённый интеграл и его свойства}
+
+\subsubsection*{1. Первообразная функция}
+
+\begin{definition}
+Функция $F(x)$ называется \textbf{первообразной} функции $f(x)$ на интервале $(a, b)$, если для всех $x \in (a, b)$ выполняется:
+\[ F'(x) = f(x). \]
+\end{definition}
+
+\textbf{Пример.} $F(x) = \sin x$ является первообразной функции $f(x) = \cos x$ на $\R$.
+
+\subsubsection*{2. Теорема о структуре множества первообразных}
+
+\begin{theorem}
+Если $F(x)$ — некоторая первообразная функции $f(x)$ на интервале $(a, b)$, то любая другая первообразная этой функции имеет вид $F(x) + C$, где $C \in \R$ — произвольная константа.
+
+Иными словами, множество всех первообразных функции $f(x)$ на $(a, b)$ есть однопараметрическое семейство функций $\{F(x) + C \mid C \in \R\}$.
+\end{theorem}
+
+\begin{consequence}
+Две первообразные одной и той же функции на интервале отличаются на константу.
+\end{consequence}
+
+\subsubsection*{3. Неопределённый интеграл}
+
+\begin{definition}
+\textbf{Неопределённым интегралом} функции $f(x)$ называется семейство всех её первообразных:
+\[ \int f(x)\,dx = F(x) + C, \quad C \in \R, \]
+где $F(x)$ — произвольная фиксированная первообразная функции $f(x)$.
+\end{definition}
+
+Символ $\int$ называется \textbf{знаком интеграла}, $f(x)$ — \textbf{подынтегральной функцией}, $f(x)\,dx$ — \textbf{подынтегральным выражением}.
+
+\subsubsection*{4. Основные свойства неопределённого интеграла}
+
+\begin{enumerate}
+    \item \textbf{Дифференцирование интеграла:}
+    \[ \left(\int f(x)\,dx\right)' = f(x), \qquad d\!\int f(x)\,dx = f(x)\,dx. \]
+
+    \item \textbf{Интегрирование дифференциала:}
+    \[ \int F'(x)\,dx = F(x) + C, \qquad \int dF(x) = F(x) + C. \]
+
+    \item \textbf{Однородность (вынесение константы):} для любого $\alpha \neq 0$
+    \[ \int \alpha\, f(x)\,dx = \alpha \int f(x)\,dx. \]
+
+    \item \textbf{Аддитивность:}
+    \[ \int \bigl(f(x) \pm g(x)\bigr)\,dx = \int f(x)\,dx \pm \int g(x)\,dx. \]
+
+    \item \textbf{Инвариантность формулы интегрирования} относительно замены переменной: если
+    $\int f(x)\,dx = F(x) + C$, то для любой дифференцируемой функции $x = \varphi(t)$
+    \[ \int f(\varphi(t))\,\varphi'(t)\,dt = F(\varphi(t)) + C. \]
+\end{enumerate}
+
+\subsubsection*{5. Связь с производной и дифференциалом}
+
+Неопределённый интеграл и операция дифференцирования взаимно обратны друг другу (с точностью до константы):
+\[ \frac{d}{dx}\int f(x)\,dx = f(x), \qquad \int df(x) = f(x) + C. \]
+\subsection{Формула интегрирования по частям для неопределённого интеграла}
+
+\subsubsection*{1. Формулировка}
+
+\begin{theorem}[Интегрирование по частям]
+Пусть функции $u(x)$ и $v(x)$ дифференцируемы на интервале $(a, b)$ и существует интеграл $\int v\,du$. Тогда существует и интеграл $\int u\,dv$, причём:
+\[ \int u\,dv = uv - \int v\,du. \]
+В развёрнутой записи:
+\[ \int u(x)\,v'(x)\,dx = u(x)\,v(x) - \int v(x)\,u'(x)\,dx. \]
+\end{theorem}
+
+\subsubsection*{2. Идея вывода}
+
+Формула следует из правила Лейбница для дифференциала произведения:
+\[ d(uv) = u\,dv + v\,du \implies u\,dv = d(uv) - v\,du. \]
+Интегрируя обе части:
+\[ \int u\,dv = uv - \int v\,du. \]
+
+\subsubsection*{3. Выбор $u$ и $dv$ — мнемоника ЛТЭТРИ}
+
+Функцию $u$ следует выбирать в порядке убывания приоритета:
+\begin{center}
+\textbf{Л}огарифмы $\to$ \textbf{О}братные тригонометрические функции $\to$
+\textbf{А}лгебраические (степенные) $\to$ \textbf{Т}ригонометрические $\to$
+\textbf{Э}кспоненты.
+\end{center}
+Всё остальное уходит в $dv$.
+
+\subsubsection*{4. Типовые применения}
+
+\textbf{Тип 1: $P_n(x) \cdot e^{\alpha x}$, $P_n(x)\sin(\beta x)$, $P_n(x)\cos(\beta x)$}
+
+Берём $u = P_n(x)$, $dv$ — экспонента или тригонометрия. Повторяем $n$ раз.
+
+\textbf{Пример:}
+\[
+\int x e^x\,dx = x e^x - \int e^x\,dx = x e^x - e^x + C = e^x(x-1)+C.
+\]
+
+\textbf{Тип 2: $P_n(x)\ln x$, $P_n(x)\arctan x$, $P_n(x)\arcsin x$}
+
+Берём $u = \ln x$ (или обратную тригонометрическую функцию), $dv = P_n(x)\,dx$.
+
+\textbf{Пример:}
+\[
+\int \ln x\,dx = x\ln x - \int x \cdot \frac{1}{x}\,dx = x\ln x - x + C.
+\]
+
+\textbf{Тип 3: $e^{\alpha x}\sin(\beta x)$, $e^{\alpha x}\cos(\beta x)$}
+
+Применяем по частям дважды, возникающий интеграл переносим в левую часть.
+
+\textbf{Пример:}
+\[
+I = \int e^x \cos x\,dx = e^x\cos x + \int e^x \sin x\,dx
+  = e^x\cos x + e^x\sin x - I,
+\]
+\[
+2I = e^x(\cos x + \sin x) + C \implies
+I = \frac{e^x(\cos x + \sin x)}{2} + C.
+\]
+
+\subsubsection*{5. Рекуррентные формулы}
+
+Метод интегрирования по частям позволяет выводить рекуррентные формулы. Например:
+\[
+I_n = \int \sin^n x\,dx = -\frac{\sin^{n-1}x\cos x}{n} + \frac{n-1}{n}\,I_{n-2}.
+\]\subsection{Формула замены переменной в неопределённом интеграле. Линейная замена}
+
+\subsubsection*{1. Теорема о замене переменной}
+
+\begin{theorem}[Замена переменной в неопределённом интеграле]
+Пусть функция $f(x)$ непрерывна на интервале $I$, и пусть $x = \varphi(t)$ — дифференцируемая функция, отображающая интервал $J$ на $I$. Тогда:
+\[ \int f(x)\,dx = \int f\bigl(\varphi(t)\bigr)\,\varphi'(t)\,dt, \]
+где после вычисления правого интеграла необходимо сделать обратную замену $t = \varphi^{-1}(x)$.
+\end{theorem}
+
+Формула позволяет упростить подынтегральное выражение подходящей заменой переменной.
+
+\subsubsection*{2. Метод подстановки «изнутри»}
+
+Если подынтегральное выражение содержит сложную функцию $g(x)$, полезно положить $t = g(x)$, тогда $dt = g'(x)\,dx$:
+\[
+\int f\bigl(g(x)\bigr)\cdot g'(x)\,dx \;\xrightarrow{\;t=g(x)\;}\; \int f(t)\,dt.
+\]
+
+\textbf{Пример:}
+\[
+\int \frac{\cos(\ln x)}{x}\,dx \;\xrightarrow{\;t=\ln x,\; dt = dx/x\;}\;
+\int \cos t\,dt = \sin t + C = \sin(\ln x) + C.
+\]
+
+\subsubsection*{3. Линейная замена}
+
+Частный случай замены переменной: $x = \alpha t + \beta$, $\alpha \neq 0$, то есть $t = \dfrac{x - \beta}{\alpha}$.
+
+\begin{theorem}[Линейная замена]
+Если известно, что $\int f(x)\,dx = F(x) + C$, то:
+\[ \int f(\alpha x + \beta)\,dx = \frac{1}{\alpha}\,F(\alpha x + \beta) + C. \]
+\end{theorem}
+
+Правило: функцию внутри «тащим» без изменений, снаружи делим на коэффициент при $x$.
+
+\textbf{Примеры:}
+\[
+\int e^{3x+2}\,dx = \frac{1}{3}\,e^{3x+2} + C.
+\]
+\[
+\int \sin(5x - 1)\,dx = -\frac{1}{5}\cos(5x-1) + C.
+\]
+\[
+\int \frac{dx}{(2x+3)^4} = -\frac{1}{6(2x+3)^3} + C.
+\]
+
+\subsubsection*{4. Типовые замены}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Выражение} & \textbf{Замена} \\
+\hline
+$\sqrt{a^2 - x^2}$ & $x = a\sin t$ \\
+$\sqrt{a^2 + x^2}$ & $x = a\tan t$ \\
+$\sqrt{x^2 - a^2}$ & $x = \dfrac{a}{\cos t}$ \\
+$\sqrt[n]{ax+b}$ & $t = \sqrt[n]{ax+b}$ \\
+$e^x$ & $t = e^x$ \\
+\hline
+\end{tabular}
+\end{center}\subsection{Расширенная таблица первообразных}
+
+Ниже приведена расширенная таблица основных первообразных. Все формулы верны на соответствующих областях, где выражения имеют смысл; $C \in \R$ — произвольная константа, $\alpha \neq 0$.
+
+\subsubsection*{1. Степенные и алгебраические функции}
+
+\[
+\int x^n\,dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1.
+\]
+\[
+\int \frac{dx}{x} = \ln|x| + C.
+\]
+\[
+\int \frac{dx}{x^2+a^2} = \frac{1}{a}\arctan\frac{x}{a} + C.
+\]
+\[
+\int \frac{dx}{x^2-a^2} = \frac{1}{2a}\ln\left|\frac{x-a}{x+a}\right| + C.
+\]
+\[
+\int \frac{dx}{\sqrt{a^2-x^2}} = \arcsin\frac{x}{a} + C.
+\]
+\[
+\int \frac{dx}{\sqrt{x^2 \pm a^2}} = \ln\left|x + \sqrt{x^2 \pm a^2}\right| + C.
+\]
+
+\subsubsection*{2. Показательные и логарифмические функции}
+
+\[
+\int e^x\,dx = e^x + C.
+\]
+\[
+\int a^x\,dx = \frac{a^x}{\ln a} + C, \quad a > 0,\; a \neq 1.
+\]
+\[
+\int \ln x\,dx = x\ln x - x + C.
+\]
+\[
+\int \log_a x\,dx = \frac{x\ln x - x}{\ln a} + C.
+\]
+
+\subsubsection*{3. Тригонометрические функции}
+
+\[
+\int \sin x\,dx = -\cos x + C. \qquad
+\int \cos x\,dx = \sin x + C.
+\]
+\[
+\int \frac{dx}{\cos^2 x} = \tan x + C. \qquad
+\int \frac{dx}{\sin^2 x} = -\cot x + C.
+\]
+\[
+\int \tan x\,dx = -\ln|\cos x| + C. \qquad
+\int \cot x\,dx = \ln|\sin x| + C.
+\]
+\[
+\int \frac{dx}{\sin x} = \ln\left|\tan\frac{x}{2}\right| + C.
+\qquad
+\int \frac{dx}{\cos x} = \ln\left|\tan\!\left(\frac{x}{2}+\frac{\pi}{4}\right)\right| + C.
+\]
+
+\subsubsection*{4. Обратные тригонометрические функции}
+
+\[
+\int \arcsin x\,dx = x\arcsin x + \sqrt{1-x^2} + C.
+\]
+\[
+\int \arccos x\,dx = x\arccos x - \sqrt{1-x^2} + C.
+\]
+\[
+\int \arctan x\,dx = x\arctan x - \frac{1}{2}\ln(1+x^2) + C.
+\]
+
+\subsubsection*{5. Гиперболические функции}
+
+\[
+\int \sinh x\,dx = \cosh x + C. \qquad
+\int \cosh x\,dx = \sinh x + C.
+\]
+\[
+\int \frac{dx}{\cosh^2 x} = \tanh x + C. \qquad
+\int \frac{dx}{\sinh^2 x} = -\coth x + C.
+\]
+
+\subsubsection*{6. Линейная замена (обобщение таблицы)}
+
+Каждая формула обобщается на линейный аргумент $(\alpha x + \beta)$:
+\[
+\int f(\alpha x + \beta)\,dx = \frac{1}{\alpha} F(\alpha x + \beta) + C,
+\]
+где $F$ — первообразная $f$. Например:
+\[
+\int \sin(3x+1)\,dx = -\frac{\cos(3x+1)}{3} + C,\qquad
+\int e^{-2x}\,dx = -\frac{e^{-2x}}{2} + C.
+\]\subsection{Интегрирование простейших дробей 1--4 типов. Метод неопределённых коэффициентов}
+
+\subsubsection*{1. Разложение правильной рациональной дроби}
+
+Правильная рациональная дробь $\dfrac{P(x)}{Q(x)}$ (где $\deg P < \deg Q$) разлагается в сумму \textbf{простейших (парциальных) дробей} четырёх типов:
+
+\begin{center}
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Тип} & \textbf{Вид дроби} & \textbf{Соответствует множителю $Q(x)$} \\
+\hline
+1 & $\dfrac{A}{x - a}$ & простой корень $a$ \\
+2 & $\dfrac{A}{(x-a)^k}$, $k \ge 2$ & корень $a$ кратности $k$ \\
+3 & $\dfrac{Ax + B}{x^2+px+q}$, $p^2-4q<0$ & неприводимый квадратный трёхчлен \\
+4 & $\dfrac{Ax+B}{(x^2+px+q)^k}$, $k\ge 2$ & неприводимый трёхчлен кратности $k$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{2. Интегрирование простейших дробей}
+
+\textbf{Тип 1:}
+\[
+\int \frac{A}{x-a}\,dx = A\ln|x-a| + C.
+\]
+
+\textbf{Тип 2:}
+\[
+\int \frac{A}{(x-a)^k}\,dx = \frac{A}{(1-k)(x-a)^{k-1}} + C, \quad k \ge 2.
+\]
+
+\textbf{Тип 3.} Знаменатель приводим к стандартной форме. Числитель разбивается на два слагаемых:
+\[
+\int \frac{Ax+B}{x^2+px+q}\,dx
+= \frac{A}{2}\ln(x^2+px+q)
++ \frac{B - \tfrac{Ap}{2}}{\sqrt{q - \tfrac{p^2}{4}}}\,
+\arctan\frac{x + \tfrac{p}{2}}{\sqrt{q - \tfrac{p^2}{4}}} + C.
+\]
+
+\textbf{Тип 4.} Вычисляется рекуррентно с помощью формулы понижения степени.
+
+\subsubsection*{3. Метод неопределённых коэффициентов}
+
+Неизвестные коэффициенты $A, B, \ldots$ в разложении находятся одним из двух способов:
+
+\textbf{Способ 1 (приравнивание коэффициентов):} привести обе части к общему знаменателю и приравнять коэффициенты при одинаковых степенях $x$.
+
+\textbf{Способ 2 (подстановка корней):} подставить в тождество значения $x$, являющиеся корнями знаменателя.
+
+\subsubsection*{4. Пример: $\displaystyle\int \frac{dx}{x^3-1}$}
+
+Разложим $x^3-1 = (x-1)(x^2+x+1)$.
+
+\textbf{Шаг 1.} Запишем разложение на простейшие дроби:
+\[
+\frac{1}{x^3-1} = \frac{A}{x-1} + \frac{Bx+C}{x^2+x+1}.
+\]
+
+\textbf{Шаг 2.} Умножаем на $x^3-1$:
+\[
+1 = A(x^2+x+1) + (Bx+C)(x-1).
+\]
+
+\textbf{Шаг 3.} Находим коэффициенты:
+\begin{itemize}
+    \item $x=1$: $1 = 3A \implies A = \dfrac{1}{3}$.
+    \item Приравниваем коэффициенты при $x^2$: $0 = A+B \implies B = -\dfrac{1}{3}$.
+    \item Приравниваем свободные члены: $1 = A - C \implies C = A-1 = -\dfrac{2}{3}$.
+\end{itemize}
+
+\textbf{Шаг 4.} Интегрируем:
+\[
+\int \frac{dx}{x^3-1}
+= \frac{1}{3}\int\frac{dx}{x-1}
++ \int\frac{-\tfrac{1}{3}x - \tfrac{2}{3}}{x^2+x+1}\,dx.
+\]
+
+Второй интеграл разбиваем:
+\[
+\int\frac{-\tfrac{1}{3}x-\tfrac{2}{3}}{x^2+x+1}\,dx
+= -\frac{1}{6}\int\frac{2x+1}{x^2+x+1}\,dx
+- \frac{1}{2}\int\frac{dx}{x^2+x+1}.
+\]
+
+Первое слагаемое: $-\dfrac{1}{6}\ln(x^2+x+1)$.
+
+Второе: приводим $x^2+x+1 = \left(x+\tfrac{1}{2}\right)^2 + \dfrac{3}{4}$,
+\[
+-\frac{1}{2}\int\frac{dx}{\left(x+\frac{1}{2}\right)^2+\frac{3}{4}}
+= -\frac{1}{2}\cdot\frac{2}{\sqrt{3}}\arctan\frac{x+\frac{1}{2}}{\frac{\sqrt{3}}{2}}
+= -\frac{1}{\sqrt{3}}\arctan\frac{2x+1}{\sqrt{3}}.
+\]
+
+\textbf{Ответ:}
+\[
+\boxed{
+\int\frac{dx}{x^3-1}
+= \frac{1}{3}\ln|x-1|
+- \frac{1}{6}\ln(x^2+x+1)
+- \frac{1}{\sqrt{3}}\arctan\frac{2x+1}{\sqrt{3}} + C.
+}
+\]\subsection{Интегрирование иррациональных выражений вида $R\!\left(x,\,\sqrt{\dfrac{ax+b}{cx+d}}\right)$}
+
+\subsubsection*{1. Общая схема}
+
+Рассматривается интеграл вида
+\[
+\int R\!\left(x,\,\sqrt{\frac{ax+b}{cx+d}}\right)dx,
+\]
+где $R(u,v)$ — рациональная функция двух переменных, $ad - bc \neq 0$.
+
+\textbf{Рационализирующая замена:}
+\[
+t = \sqrt{\frac{ax+b}{cx+d}},
+\]
+то есть $t^2 = \dfrac{ax+b}{cx+d}$.
+
+Из этого соотношения выражается $x$:
+\[
+t^2(cx+d) = ax+b \implies x(ct^2 - a) = b - dt^2 \implies
+x = \frac{b - dt^2}{ct^2 - a}.
+\]
+
+Дифференцируя, находим $dx$ и подставляем. После замены интеграл становится \textbf{рациональным} по $t$ и вычисляется по стандартной схеме разложения на простейшие дроби.
+
+\subsubsection*{2. Частный случай: $\sqrt[n]{ax+b}$}
+
+Если иррациональность имеет вид $\sqrt[n]{\,ax+b\,}$, то замена $t = \sqrt[n]{ax+b}$ (т.\,е. $x = \dfrac{t^n - b}{a}$) рационализирует интеграл.
+
+Если одновременно присутствуют $\sqrt[m]{\,ax+b\,}$ и $\sqrt[k]{\,ax+b\,}$, выбирают $n = \mathrm{lcm}(m,k)$ и полагают $t = \sqrt[n]{ax+b}$.
+
+\subsubsection*{3. Пример: $\displaystyle\int \frac{dx}{\sqrt[3]{(x-1)(x+1)^2}}$}
+
+Запишем подкоренное выражение:
+\[
+(x-1)(x+1)^2 = (x+1)^3 \cdot \frac{x-1}{x+1}.
+\]
+Поэтому:
+\[
+\sqrt[3]{(x-1)(x+1)^2}
+= (x+1)\cdot\sqrt[3]{\frac{x-1}{x+1}}.
+\]
+Интеграл принимает вид:
+\[
+\int \frac{dx}{(x+1)\,\sqrt[3]{\dfrac{x-1}{x+1}}}.
+\]
+
+\textbf{Замена:}
+\[
+t = \sqrt[3]{\frac{x-1}{x+1}} = \left(\frac{x-1}{x+1}\right)^{1/3},
+\quad t^3 = \frac{x-1}{x+1}.
+\]
+
+Выражаем $x$: $t^3(x+1) = x-1 \implies x(t^3-1) = -1-t^3 \implies$
+\[
+x = \frac{-(1+t^3)}{t^3-1} = \frac{1+t^3}{1-t^3}.
+\]
+
+Находим $x+1$:
+\[
+x+1 = \frac{1+t^3}{1-t^3}+1 = \frac{2}{1-t^3}.
+\]
+
+Дифференцируем $x$:
+\[
+dx = \frac{3t^2(1-t^3)-\,(1+t^3)\cdot(-3t^2)}{(1-t^3)^2}\,dt
+= \frac{3t^2(1-t^3)+3t^2(1+t^3)}{(1-t^3)^2}\,dt
+= \frac{6t^2}{(1-t^3)^2}\,dt.
+\]
+
+Подставляем в интеграл:
+\[
+\int \frac{1}{\dfrac{2}{1-t^3}\cdot t}\cdot\frac{6t^2}{(1-t^3)^2}\,dt
+= \int \frac{(1-t^3)}{2t}\cdot\frac{6t^2}{(1-t^3)^2}\,dt
+= \int \frac{3t}{1-t^3}\,dt.
+\]
+
+Разложим $1-t^3 = (1-t)(1+t+t^2)$:
+\[
+\frac{3t}{1-t^3} = \frac{3t}{(1-t)(1+t+t^2)} = \frac{A}{1-t} + \frac{Bt+C}{1+t+t^2}.
+\]
+
+Подбор коэффициентов: $t=1 \implies 3 = 3A \implies A=1$;
+приравниваем коэффициенты при $t^2$: $0 = -A + (-B) \implies B = -1$;
+свободные члены: $0 = A+C \implies C = -1$.
+
+Таким образом:
+\[
+\frac{3t}{1-t^3} = \frac{1}{1-t} - \frac{t+1}{1+t+t^2}.
+\]
+
+Интегрируем:
+\[
+\int\frac{dt}{1-t} = -\ln|1-t|,
+\]
+\[
+\int\frac{t+1}{1+t+t^2}\,dt
+= \frac{1}{2}\int\frac{2t+1}{1+t+t^2}\,dt + \frac{1}{2}\int\frac{dt}{(t+\frac{1}{2})^2+\frac{3}{4}}
+= \frac{1}{2}\ln(1+t+t^2) + \frac{1}{\sqrt{3}}\arctan\frac{2t+1}{\sqrt{3}}.
+\]
+
+\textbf{Ответ} (в терминах $t = \sqrt[3]{\dfrac{x-1}{x+1}}$):
+\[
+\boxed{
+\int\frac{dx}{\sqrt[3]{(x-1)(x+1)^2}}
+= -\ln|1-t| - \frac{1}{2}\ln(1+t+t^2) - \frac{1}{\sqrt{3}}\arctan\frac{2t+1}{\sqrt{3}} + C.
+}
+\]\subsection{Три случая интегрирования дифференциальных биномов $x^n(a+bx^m)^p$}
+
+\subsubsection*{1. Определение}
+
+\textbf{Дифференциальным биномом} называется интеграл вида
+\[
+\int x^n\,(a + bx^m)^p\,dx,
+\]
+где $n, m, p \in \Q$, $a, b \in \R$, $b \neq 0$.
+
+\begin{theorem}[Теорема Чебышёва]
+Интеграл от дифференциального бинома выражается в элементарных функциях тогда и только тогда, когда хотя бы одна из трёх величин
+\[ p, \quad \frac{n+1}{m}, \quad \frac{n+1}{m}+p \]
+является целым числом.
+\end{theorem}
+
+\subsubsection*{2. Случай 1: $p \in \Z$}
+
+Если $p$ — целое число, то замена $x = t^s$, где $s$ — общий знаменатель дробей $n$ и $m$, рационализирует интеграл.
+
+\textbf{Пример.} $\displaystyle\int x^{1/2}(1+x^{1/3})^{-1}\,dx$: берём $s = 6$, $x = t^6$, $dx = 6t^5\,dt$:
+\[
+\int t^3\cdot\frac{1}{1+t^2}\cdot 6t^5\,dt = 6\int\frac{t^8}{1+t^2}\,dt.
+\]
+
+\subsubsection*{3. Случай 2: $\dfrac{n+1}{m} \in \Z$}
+
+Обозначим $k = \dfrac{n+1}{m}$.
+
+Делаем замену $t = a + bx^m$, то есть $x^m = \dfrac{t-a}{b}$:
+\[
+x = \left(\frac{t-a}{b}\right)^{1/m}, \qquad
+dx = \frac{1}{m}\left(\frac{t-a}{b}\right)^{1/m - 1}\cdot\frac{dt}{b}.
+\]
+
+После замены $x^n\,dx$ содержит степень $(t-a)^{k-1}$ — целую степень, и интеграл становится рациональным по $t$.
+
+\textbf{Пример.} $\displaystyle\int x^2(1+x^3)^{1/2}\,dx$: $n=2$, $m=3$, $\dfrac{n+1}{m} = 1 \in \Z$.
+
+Замена $t = 1+x^3$, $dt = 3x^2\,dx$:
+\[
+\int t^{1/2}\cdot\frac{dt}{3} = \frac{1}{3}\cdot\frac{2}{3}t^{3/2}+C = \frac{2}{9}(1+x^3)^{3/2}+C.
+\]
+
+\subsubsection*{4. Случай 3: $\dfrac{n+1}{m} + p \in \Z$}
+
+Обозначим $k = \dfrac{n+1}{m}+p$.
+
+Делаем замену $t = \left(\dfrac{a}{x^m}+b\right)^{1/m}$, то есть $t^m = \dfrac{a}{x^m}+b$, что эквивалентно замене $x = \left(\dfrac{a}{t^m-b}\right)^{1/m}$.
+
+После преобразований интеграл также становится рациональным по $t$.
+
+\textbf{Пример.} $\displaystyle\int \frac{dx}{x^2\sqrt{1+x^2}}$: $n=-2$, $m=2$, $p=-\tfrac{1}{2}$.
+
+Проверим: $\dfrac{n+1}{m}+p = \dfrac{-1}{2} - \dfrac{1}{2} = -1 \in \Z$.
+
+Замена $t = \sqrt{\dfrac{1}{x^2}+1} = \dfrac{\sqrt{1+x^2}}{|x|}$, то есть $t^2 = \dfrac{1+x^2}{x^2}$:
+\[
+x = \frac{1}{\sqrt{t^2-1}}, \quad dx = -\frac{t}{(t^2-1)^{3/2}}\,dt, \quad
+\sqrt{1+x^2} = \frac{t}{\sqrt{t^2-1}}.
+\]
+\[
+\int \frac{-t\,dt/(t^2-1)^{3/2}}{1/(t^2-1)\cdot t/\sqrt{t^2-1}}
+= -\int dt = -t + C = -\frac{\sqrt{1+x^2}}{|x|}+C.
+\]
+
+\subsubsection*{5. Сводная таблица}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Случай} & \textbf{Условие} & \textbf{Замена} \\
+\hline
+1 & $p \in \Z$ & $x = t^s$, $s = \mathrm{lcm}(\text{зн.}(n),\text{зн.}(m))$ \\
+2 & $\dfrac{n+1}{m} \in \Z$ & $t = a + bx^m$ \\
+3 & $\dfrac{n+1}{m}+p \in \Z$ & $t = \left(\dfrac{a}{x^m}+b\right)^{1/m}$ \\
+\hline
+\end{tabular}
+\end{center}

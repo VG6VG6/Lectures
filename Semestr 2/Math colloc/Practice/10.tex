@@ -1,0 +1,101 @@
+\subsection{Интегрирование тригонометрических выражений вида $\int R(\sin x, \cos x)\,dx$. Универсальная тригонометрическая подстановка}
+
+\subsubsection*{1. Постановка задачи}
+
+Рассматривается интеграл
+\[
+\int R(\sin x,\cos x)\,dx,
+\]
+где $R(u,v)$ — рациональная функция двух переменных.
+
+\subsubsection*{2. Универсальная тригонометрическая подстановка}
+
+\begin{theorem}[Универсальная подстановка]
+Замена $t = \tan\!\dfrac{x}{2}$ рационализирует любой интеграл вида $\int R(\sin x, \cos x)\,dx$.
+\end{theorem}
+
+При $t = \tan\dfrac{x}{2}$ выполняются формулы:
+\[
+\sin x = \frac{2t}{1+t^2}, \qquad
+\cos x = \frac{1-t^2}{1+t^2}, \qquad
+dx = \frac{2\,dt}{1+t^2}.
+\]
+
+После подстановки интеграл принимает вид рационального по $t$:
+\[
+\int R\!\left(\frac{2t}{1+t^2},\;\frac{1-t^2}{1+t^2}\right)\frac{2\,dt}{1+t^2}.
+\]
+
+\textbf{Пример:}
+\[
+\int\frac{dx}{1+\cos x}
+= \int\frac{1}{1+\dfrac{1-t^2}{1+t^2}}\cdot\frac{2\,dt}{1+t^2}
+= \int\frac{1}{\dfrac{2}{1+t^2}}\cdot\frac{2\,dt}{1+t^2}
+= \int dt = t + C = \tan\frac{x}{2}+C.
+\]
+
+\subsubsection*{3. Специальные случаи (более эффективные замены)}
+
+Универсальная подстановка всегда работает, но иногда более эффективны специальные методы.
+
+\textbf{Случай 1.} Если $R(-\sin x, \cos x) = -R(\sin x, \cos x)$ (нечётна по $\sin x$), то:
+\[
+t = \cos x, \quad dt = -\sin x\,dx.
+\]
+\textbf{Пример:} $\int \sin^3 x\,dx = \int(1-\cos^2 x)\sin x\,dx \xrightarrow{t=\cos x} -\int(1-t^2)\,dt$.
+
+\textbf{Случай 2.} Если $R(\sin x, -\cos x) = -R(\sin x, \cos x)$ (нечётна по $\cos x$), то:
+\[
+t = \sin x, \quad dt = \cos x\,dx.
+\]
+\textbf{Пример:} $\int \cos^3 x\,dx \xrightarrow{t=\sin x} \int(1-t^2)\,dt$.
+
+\textbf{Случай 3.} Если $R(-\sin x, -\cos x) = R(\sin x, \cos x)$ (чётна по обоим аргументам), то:
+\[
+t = \tan x, \quad dx = \frac{dt}{1+t^2}, \quad
+\sin^2 x = \frac{t^2}{1+t^2}, \quad \cos^2 x = \frac{1}{1+t^2}.
+\]
+\textbf{Пример:} $\int\dfrac{dx}{\sin^2 x \cos^2 x}$.
+
+\subsubsection*{4. Интегрирование $\int \sin^m x\,\cos^n x\,dx$}
+
+\begin{enumerate}
+    \item Если $m$ нечётно: выделяем $\sin x\,dx = -d(\cos x)$, ставим $t = \cos x$.
+    \item Если $n$ нечётно: выделяем $\cos x\,dx = d(\sin x)$, ставим $t = \sin x$.
+    \item Если $m$ и $n$ чётны: используем формулы понижения степени:
+    \[
+    \sin^2 x = \frac{1-\cos 2x}{2}, \qquad \cos^2 x = \frac{1+\cos 2x}{2},
+    \qquad \sin x\cos x = \frac{\sin 2x}{2}.
+    \]
+\end{enumerate}
+
+\subsubsection*{5. Интегрирование произведений $\sin(mx)\cos(nx)$ и т.\,п.}
+
+Используют формулы произведения:
+\[
+\sin\alpha\cos\beta = \tfrac{1}{2}[\sin(\alpha-\beta)+\sin(\alpha+\beta)],
+\]
+\[
+\sin\alpha\sin\beta = \tfrac{1}{2}[\cos(\alpha-\beta)-\cos(\alpha+\beta)],
+\]
+\[
+\cos\alpha\cos\beta = \tfrac{1}{2}[\cos(\alpha-\beta)+\cos(\alpha+\beta)].
+\]
+
+\subsubsection*{6. Сводная таблица выбора метода}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Условие} & \textbf{Метод / замена} \\
+\hline
+Общий случай & $t = \tan(x/2)$ \\
+$R$ нечётна по $\sin x$ & $t = \cos x$ \\
+$R$ нечётна по $\cos x$ & $t = \sin x$ \\
+$R$ чётна по обоим & $t = \tan x$ \\
+$\sin^m x\cos^n x$, $m$ или $n$ нечётно & вынести нечётный сомножитель \\
+$\sin^m x\cos^n x$, оба чётны & формулы $\cos 2x$ \\
+\hline
+\end{tabular}
+\end{center}

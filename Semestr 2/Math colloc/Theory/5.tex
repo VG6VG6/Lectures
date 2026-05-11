@@ -1,0 +1,140 @@
+\subsection{Теорема об интегрируемости монотонной на отрезке функции}
+
+Одним из важных классов интегрируемых функций являются монотонные функции. В отличие от непрерывных функций, монотонная функция может иметь бесконечно много точек разрыва (но не более чем счётное подмножество), однако это не препятствует её интегрируемости.
+
+\begin{theorem}
+Если функция $f(x)$ монотонна на отрезке $[a, b]$, то она интегрируема по Риману на этом отрезке.
+\end{theorem}
+
+\begin{tcolorbox}[title=Доказательство, breakable]
+Для доказательства воспользуемся критерием интегрируемости Дарбу: ограниченная функция интегрируема тогда и только тогда, когда предел разности её верхней и нижней сумм Дарбу при стремлении диаметра разбиения к нулю равен нулю.
+
+1. \textbf{Ограниченность:} Монотонная на отрезке $[a, b]$ функция автоматически является ограниченной. Действительно, если $f(x)$ не убывает, то для любого $x \in [a, b]$ справедливо неравенство:
+\[ f(a) \le f(x) \le f(b) \]
+Таким образом, необходимое условие интегрируемости выполнено.
+
+2. \textbf{Применение критерия Дарбу:} Пусть для определенности функция $f(x)$ не убывает. Рассмотрим произвольное разбиение $P$ отрезка $[a, b]$ точками $x_0, x_1, \dots, x_n$. На каждом элементарном отрезке $[x_{j-1}, x_j]$ в силу монотонности:
+\begin{itemize}
+    \item $M_j = \sup_{[x_{j-1}, x_j]} f(x) = f(x_j)$
+    \item $m_j = \inf_{[x_{j-1}, x_j]} f(x) = f(x_{j-1})$
+\end{itemize}
+Тогда колебание функции на $j$-м отрезке равно $\omega_j = M_j - m_j = f(x_j) - f(x_{j-1})$.
+
+3. Запишем разность сумм Дарбу через колебания:
+\[ S(P) - s(P) = \sum_{j=1}^n \omega_j \Delta x_j = \sum_{j=1}^n (f(x_j) - f(x_{j-1})) \Delta x_j \]
+
+4. Пусть диаметр разбиения $\lambda(P) < \delta$. Оценим полученную сумму, заменив каждый шаг $\Delta x_j$ величиной $\delta$:
+\[ S(P) - s(P) < \delta \sum_{j=1}^n (f(x_j) - f(x_{j-1})) \]
+Сумма в скобках является телескопической:
+\[ \sum_{j=1}^n (f(x_j) - f(x_{j-1})) = (f(x_1) - f(x_0)) + (f(x_2) - f(x_1)) + \dots + (f(x_n) - f(x_{n-1})) = f(x_n) - f(x_0) \]
+Учитывая, что $x_n = b$ и $x_0 = a$, получаем оценку:
+\[ S(P) - s(P) < \delta (f(b) - f(a)) \]
+
+5. Пусть задано произвольное $\eps > 0$. Если $f(b) = f(a)$, функция постоянна и тривиально интегрируема. Если $f(b) > f(a)$, выберем диаметр разбиения $\delta$ таким образом:
+\[ \delta = \frac{\eps}{f(b) - f(a)} \]
+Тогда при $\lambda(P) < \delta$ выполняется:
+\[ S(P) - s(P) < \frac{\eps}{f(b) - f(a)} \cdot (f(b) - f(a)) = \eps \]
+
+6. Это доказывает, что $\lim_{\lambda(P) \to 0} (S(P) - s(P)) = 0$. Следовательно, по критерию Дарбу, монотонная функция $f(x)$ интегрируема на $[a, b]$.
+\end{tcolorbox}
+
+\subsubsection*{Геометрический смысл}
+Лектор поясняет смысл доказательства на наглядном примере. Для монотонной функции разность $S(P) - s(P)$ — это суммарная площадь прямоугольников-зазоров. Если «сдвинуть» все эти прямоугольники по горизонтали к одной вертикальной оси, они уложатся в один большой прямоугольник с высотой $f(b) - f(a)$ и шириной, равной максимальному шагу разбиения $\delta$. Очевидно, что при $\delta \to 0$ площадь этого прямоугольника также стремится к нулю.
+
+%\begin{center}
+%\includegraphics[width=0.6\textwidth]{monotonic_logic.png}
+% На чертеже изображен график возрастающей функции, разбиение и выделенные 
+% «зазоры» (прямоугольники со сторонами \Delta x_j и \omega_j), которые 
+% суммарно оцениваются через (f(b)-f(a))*\delta.
+%\end{center}
+
+\begin{tikzpicture}[>=stealth, scale=1.0]
+ 
+% f(x) — возрастающая функция
+\pgfmathdeclarefunction{ff}{1}{%
+  \pgfmathparse{0.6*ln(#1+0.5)+0.5}%
+}
+ 
+\def\xa{0.5}
+\def\xb{7.5}
+\def\N{6}
+\pgfmathsetmacro{\dx}{(\xb-\xa)/\N}
+ 
+%=== Левая панель: график + прямоугольники ===
+ 
+%--- Верхние (S) ---
+\foreach \j in {1,...,6}{
+  \pgfmathsetmacro{\xl}{\xa+(\j-1)*\dx}
+  \pgfmathsetmacro{\xr}{\xa+\j*\dx}
+  % возрастающая: M_j = f(x_j), m_j = f(x_{j-1})
+  \pgfmathsetmacro{\Mj}{ff(\xr)}
+  \fill[blue!18] (\xl,0) rectangle (\xr,\Mj);
+  \draw[blue!55,line width=0.5pt] (\xl,0) rectangle (\xr,\Mj);
+}
+ 
+%--- Нижние (s) ---
+\foreach \j in {1,...,6}{
+  \pgfmathsetmacro{\xl}{\xa+(\j-1)*\dx}
+  \pgfmathsetmacro{\xr}{\xa+\j*\dx}
+  \pgfmathsetmacro{\mj}{ff(\xl)}
+  \fill[orange!22] (\xl,0) rectangle (\xr,\mj);
+  \draw[orange!70,line width=0.5pt] (\xl,0) rectangle (\xr,\mj);
+}
+ 
+%--- Кривая ---
+\draw[blue!70!black, very thick, domain=0.3:8.0, samples=100]
+  plot (\x, {0.6*ln(\x+0.5)+0.5});
+ 
+%--- Оси ---
+\draw[->,thick] (0,0)--(8.8,0) node[right]{$x$};
+\draw[->,thick] (0,-0.2)--(0,3.2) node[above]{$f(x)$};
+ 
+%--- Метки a, b ---
+\foreach \xp/\lab in {\xa/{$a$}, \xb/{$b$}}{
+  \draw (\xp,0.06)--(\xp,-0.06);
+  \node[below,font=\small] at (\xp,0) {\lab};
+}
+ 
+%--- Горизонтальные пунктиры для f(a) и f(b) ---
+\pgfmathsetmacro{\fa}{ff(\xa)}
+\pgfmathsetmacro{\fb}{ff(\xb)}
+\draw[dashed,gray,thin] (0,\fa)--(\xa,\fa) node[left,font=\scriptsize]{$f(a)$};
+\draw[dashed,gray,thin] (0,\fb)--(\xb,\fb) node[left,font=\scriptsize]{$f(b)$};
+ 
+%--- Цветные прямоугольники-«зазоры» (ω_j × Δx_j) ---
+\foreach \j in {1,...,6}{
+  \pgfmathsetmacro{\xl}{\xa+(\j-1)*\dx}
+  \pgfmathsetmacro{\xr}{\xa+\j*\dx}
+  \pgfmathsetmacro{\Mj}{ff(\xr)}
+  \pgfmathsetmacro{\mj}{ff(\xl)}
+  \fill[red!20] (\xl,\mj) rectangle (\xr,\Mj);
+  \draw[red!50,dashed,thin] (\xl,\mj)--(\xr,\mj) (\xl,\Mj)--(\xr,\Mj);
+}
+ 
+%--- Δx подпись ---
+\pgfmathsetmacro{\xl}{\xa+2*\dx}
+\pgfmathsetmacro{\xr}{\xa+3*\dx}
+\draw[<->,gray,thin] (\xl,-0.32)--(\xr,-0.32)
+  node[midway,below,font=\scriptsize]{$\delta$};
+ 
+%--- Суммарный прямоугольник справа ---
+\def\rxl{8.8}
+\def\rxr{9.8}
+\draw[<->,gray,thin] (\rxl,\fa)--(\rxl,\fb)
+  node[midway,left,font=\scriptsize]{$f(b)-f(a)$};
+\fill[red!20] (\rxl,\fa) rectangle (\rxr,\fb);
+\draw[red!60,line width=0.8pt] (\rxl,\fa) rectangle (\rxr,\fb);
+\draw[<->,gray,thin] (\rxl,-0.32)--(\rxr,-0.32)
+  node[midway,below,font=\scriptsize]{$\delta$};
+\node[font=\scriptsize,above] at ({(\rxl+\rxr)/2},\fb+0.1){«сдвиг»};
+ 
+%--- Соединительные стрелки (намёк на телескопичность) ---
+\draw[->,gray,dashed,thin] (8.3,1.4)--(8.75,1.4);
+ 
+%--- Пояснение ---
+\node[font=\small] at (4.5,-0.75)
+  {$S(P)-s(P)<\delta\cdot(f(b)-f(a))\;\to\;0$};
+ 
+\node[blue!70!black,font=\itshape,right] at (8.1,2.3){$f(x)$};
+ 
+\end{tikzpicture}

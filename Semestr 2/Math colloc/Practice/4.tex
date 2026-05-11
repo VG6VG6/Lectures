@@ -1,0 +1,94 @@
+\subsection{Расширенная таблица первообразных}
+
+Ниже приведена расширенная таблица основных первообразных. Все формулы верны на соответствующих областях, где выражения имеют смысл; $C \in \R$ — произвольная константа, $\alpha \neq 0$.
+
+\subsubsection*{1. Степенные и алгебраические функции}
+
+\[
+\int x^n\,dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1.
+\]
+\[
+\int \frac{dx}{x} = \ln|x| + C.
+\]
+\[
+\int \frac{dx}{x^2+a^2} = \frac{1}{a}\arctan\frac{x}{a} + C.
+\]
+\[
+\int \frac{dx}{x^2-a^2} = \frac{1}{2a}\ln\left|\frac{x-a}{x+a}\right| + C.
+\]
+\[
+\int \frac{dx}{\sqrt{a^2-x^2}} = \arcsin\frac{x}{a} + C.
+\]
+\[
+\int \frac{dx}{\sqrt{x^2 \pm a^2}} = \ln\left|x + \sqrt{x^2 \pm a^2}\right| + C.
+\]
+
+\subsubsection*{2. Показательные и логарифмические функции}
+
+\[
+\int e^x\,dx = e^x + C.
+\]
+\[
+\int a^x\,dx = \frac{a^x}{\ln a} + C, \quad a > 0,\; a \neq 1.
+\]
+\[
+\int \ln x\,dx = x\ln x - x + C.
+\]
+\[
+\int \log_a x\,dx = \frac{x\ln x - x}{\ln a} + C.
+\]
+
+\subsubsection*{3. Тригонометрические функции}
+
+\[
+\int \sin x\,dx = -\cos x + C. \qquad
+\int \cos x\,dx = \sin x + C.
+\]
+\[
+\int \frac{dx}{\cos^2 x} = \tan x + C. \qquad
+\int \frac{dx}{\sin^2 x} = -\cot x + C.
+\]
+\[
+\int \tan x\,dx = -\ln|\cos x| + C. \qquad
+\int \cot x\,dx = \ln|\sin x| + C.
+\]
+\[
+\int \frac{dx}{\sin x} = \ln\left|\tan\frac{x}{2}\right| + C.
+\qquad
+\int \frac{dx}{\cos x} = \ln\left|\tan\!\left(\frac{x}{2}+\frac{\pi}{4}\right)\right| + C.
+\]
+
+\subsubsection*{4. Обратные тригонометрические функции}
+
+\[
+\int \arcsin x\,dx = x\arcsin x + \sqrt{1-x^2} + C.
+\]
+\[
+\int \arccos x\,dx = x\arccos x - \sqrt{1-x^2} + C.
+\]
+\[
+\int \arctan x\,dx = x\arctan x - \frac{1}{2}\ln(1+x^2) + C.
+\]
+
+\subsubsection*{5. Гиперболические функции}
+
+\[
+\int \sinh x\,dx = \cosh x + C. \qquad
+\int \cosh x\,dx = \sinh x + C.
+\]
+\[
+\int \frac{dx}{\cosh^2 x} = \tanh x + C. \qquad
+\int \frac{dx}{\sinh^2 x} = -\coth x + C.
+\]
+
+\subsubsection*{6. Линейная замена (обобщение таблицы)}
+
+Каждая формула обобщается на линейный аргумент $(\alpha x + \beta)$:
+\[
+\int f(\alpha x + \beta)\,dx = \frac{1}{\alpha} F(\alpha x + \beta) + C,
+\]
+где $F$ — первообразная $f$. Например:
+\[
+\int \sin(3x+1)\,dx = -\frac{\cos(3x+1)}{3} + C,\qquad
+\int e^{-2x}\,dx = -\frac{e^{-2x}}{2} + C.
+\]

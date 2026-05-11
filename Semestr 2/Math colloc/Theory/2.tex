@@ -1,0 +1,149 @@
+\subsection{Суммы Дарбу и их свойства. Верхний и нижний интегралы Дарбу}
+
+Для исследования условий интегрируемости функции по Риману, в частности для избавления от зависимости от выбора набора отмеченных точек $\xi$, вводятся специальные конструктивные суммы, называемые суммами Дарбу.
+
+\subsubsection*{1. Определение сумм Дарбу}
+
+Пусть функция $f(x)$ определена и ограничена на отрезке $[a, b]$. Рассмотрим произвольное разбиение $P$ этого отрезка точками $x_0, x_1, \dots, x_n$.
+
+\begin{definition}
+Для каждого элементарного отрезка $[x_{j-1}, x_j]$ введем следующие величины:
+\begin{itemize}
+    \item $M_j = \sup_{x \in [x_{j-1}, x_j]} f(x)$ — точная верхняя грань функции на отрезке;
+    \item $m_j = \inf_{x \in [x_{j-1}, x_j]} f(x)$ — точная нижняя грань функции на отрезке.
+\end{itemize}
+Тогда:
+\begin{itemize}
+    \item \textbf{Верхней суммой Дарбу} называется величина $S(P) = \sum_{j=1}^n M_j \Delta x_j$;
+    \item \textbf{Нижней суммой Дарбу} называется величина $s(P) = \sum_{j=1}^n m_j \Delta x_j$.
+\end{itemize}
+\end{definition}
+
+Геометрически верхняя сумма Дарбу представляет собой площадь ступенчатой фигуры, описанной вокруг криволинейной трапеции, а нижняя сумма — площадь вписанной ступенчатой фигуры.
+
+\subsubsection*{2. Основные свойства сумм Дарбу}
+
+\begin{theorem}[Свойство 1: Связь с интегральными суммами]
+Для любого фиксированного разбиения $P$ суммы Дарбу являются точными гранями множества интегральных сумм Римана $\sigma(f, P, \xi)$ по всем возможным наборам отмеченных точек $\xi$:
+\[ S(P) = \sup_{\xi} \sigma(f, P, \xi), \quad s(P) = \inf_{\xi} \sigma(f, P, \xi) \]
+В частности, для любого набора $\xi$ всегда выполняется: $s(P) \le \sigma(f, P, \xi) \le S(P)$.
+\end{theorem}
+
+\begin{tcolorbox}[title=Доказательство, breakable]
+Докажем утверждение для верхней суммы (для нижней — аналогично). 
+1. Поскольку для любой точки $\xi_j \in [x_{j-1}, x_j]$ выполняется $f(\xi_j) \le M_j$, то
+\[ \sigma(f, P, \xi) = \sum_{j=1}^n f(\xi_j) \Delta x_j \le \sum_{j=1}^n M_j \Delta x_j = S(P) \]
+Таким образом, $S(P)$ является верхней гранью.
+
+2. Покажем, что она точная. Зафиксируем $\eps > 0$. По определению супремума, для каждого $j$ существует такая точка $\xi'_j$, что $f(\xi'_j) > M_j - \frac{\eps}{b-a}$. Тогда:
+\[ \sigma(f, P, \xi') = \sum_{j=1}^n f(\xi'_j) \Delta x_j > \sum_{j=1}^n \left( M_j - \frac{\eps}{b-a} \right) \Delta x_j = \sum M_j \Delta x_j - \frac{\eps}{b-a} \sum \Delta x_j = S(P) - \eps \]
+Так как $\eps$ произвольно, $S(P)$ — точная верхняя грань.
+\end{tcolorbox}
+
+\begin{theorem}[Свойство 2: Измельчение разбиения]
+Если разбиение $P'$ получено из разбиения $P$ добавлением новых точек (измельчение), то верхняя сумма не увеличивается, а нижняя не уменьшается:
+\[ S(P') \le S(P), \quad s(P') \ge s(P) \]
+\end{theorem}
+
+\begin{tcolorbox}[title=Доказательство, breakable]
+Рассмотрим случай добавления одной точки $x^*$ в отрезок $[x_{k-1}, x_k]$. В старой сумме этому отрезку соответствовало слагаемое $M_k (x_k - x_{k-1})$. В новой сумме ему соответствуют два слагаемых:
+\[ M'_k (x^* - x_{k-1}) + M''_k (x_k - x^*) \]
+где $M'_k$ и $M''_k$ — супремумы на новых частях. Так как супремум по части множества не превосходит супремума по всему множеству, имеем $M'_k \le M_k$ и $M''_k \le M_k$. Тогда:
+\[ M'_k (x^* - x_{k-1}) + M''_k (x_k - x^*) \le M_k (x^* - x_{k-1} + x_k - x^*) = M_k (x_k - x_{k-1}) \]
+Следовательно, вся сумма $S(P')$ может только уменьшиться или остаться прежней.
+\end{tcolorbox}
+
+\begin{theorem}[Свойство 3: Сравнение любых разбиений]
+Нижняя сумма Дарбу для любого разбиения $P_1$ не превосходит верхней суммы Дарбу для любого разбиения $P_2$:
+\[ s(P_1) \le S(P_2) \]
+\end{theorem}
+
+\subsubsection*{3. Верхний и нижний интегралы Дарбу}
+
+Поскольку при измельчении разбиений нижние суммы возрастают и ограничены сверху (любой верхней суммой), а верхние суммы убывают и ограничены снизу, у них существуют пределы.
+
+\begin{definition}
+\textbf{Нижним интегралом Дарбу} называется число $\underline{I} = \sup_P s(P)$.\\
+\textbf{Верхним интегралом Дарбу} называется число $\overline{I} = \inf_P S(P)$.
+\end{definition}
+
+Из свойств сумм следует, что всегда $\underline{I} \le \overline{I}$. Лектор подчеркивает, что равенство $\underline{I} = \overline{I}$ является необходимым и достаточным условием интегрируемости функции по Риману.
+
+%\begin{center}
+%\includegraphics[width=0.5\textwidth]{darboux_sums.png}
+% Рисунок должен иллюстрировать нижнюю (вписанную) и верхнюю (описанную) 
+% ступенчатые фигуры для произвольной функции f(x) на отрезке [a, b].
+%\end{center}
+
+\begin{tikzpicture}[>=stealth, scale=1.1]
+ 
+% --- функция f(x) = -0.18*(x-4.5)^2 + 4.0 ---
+\pgfmathdeclarefunction{myfunc}{1}{%
+  \pgfmathparse{-0.18*(#1-4.5)^2 + 4.0}%
+}
+ 
+\def\xa{1.0}
+\def\xb{8.0}
+\def\dx{1.1667}
+\def\yn{0.0}
+ 
+%--- Верхние прямоугольники (S(P)) ---
+\foreach \j in {1,2,3,4,5,6}{
+  \pgfmathsetmacro{\xl}{\xa+(\j-1)*\dx}
+  \pgfmathsetmacro{\xr}{\xa+\j*\dx}
+  % M_j = max = f(right endpoint for this hump)
+  \pgfmathsetmacro{\xeval}{(\xl+\xr)/2}
+  \pgfmathsetmacro{\Mj}{max(myfunc(\xl),myfunc(\xr))}
+  \fill[blue!18, draw=blue!60, line width=0.5pt]
+    (\xl,\yn) rectangle (\xr,\Mj);
+}
+ 
+%--- Нижние прямоугольники (s(P)) залить поверх (другой цвет) ---
+\foreach \j in {1,2,3,4,5,6}{
+  \pgfmathsetmacro{\xl}{\xa+(\j-1)*\dx}
+  \pgfmathsetmacro{\xr}{\xa+\j*\dx}
+  \pgfmathsetmacro{\mj}{min(myfunc(\xl),myfunc(\xr))}
+  \fill[orange!30, draw=orange!80, line width=0.5pt]
+    (\xl,\yn) rectangle (\xr,\mj);
+}
+ 
+%--- Кривая поверх всего ---
+\draw[blue!70!black, thick, domain=0.7:8.5, samples=100]
+  plot (\x, {-0.18*(\x-4.5)^2+4.0});
+ 
+%--- Оси ---
+\draw[->, thick] (0,0) -- (9.5,0) node[right] {$x$};
+\draw[->, thick] (0,-0.3) -- (0,5.2) node[above] {$f(x)$};
+ 
+%--- Деления a, x_1..x_5, b ---
+\foreach \j/\lab in {0/{$a$},1/{$x_1$},2/{$x_2$},3/{$x_3$},
+                      4/{$x_4$},5/{$x_5$},6/{$b$}}{
+  \pgfmathsetmacro{\xp}{\xa+\j*\dx}
+  \draw (\xp,0.06)--(\xp,-0.06);
+  \node[below, font=\small] at (\xp,0) {\lab};
+}
+ 
+%--- Подписи M_j и m_j (для 3-го прямоугольника) ---
+\pgfmathsetmacro{\xl}{\xa+2*\dx}
+\pgfmathsetmacro{\xr}{\xa+3*\dx}
+\pgfmathsetmacro{\Mthree}{max(myfunc(\xl),myfunc(\xr))}
+\pgfmathsetmacro{\mthree}{min(myfunc(\xl),myfunc(\xr))}
+ 
+\draw[<->, gray, thin] (\xl-0.25,\yn)--(\xl-0.25,\mthree)
+  node[midway,left,font=\scriptsize]{$m_j$};
+\draw[<->, gray!60, thin] (\xl-0.55,\yn)--(\xl-0.55,\Mthree)
+  node[midway,left,font=\scriptsize,blue!60]{$M_j$};
+ 
+%--- Легенда ---
+\fill[blue!18,draw=blue!60,line width=0.5pt]
+  (5.5,4.5) rectangle (6.1,4.9);
+\node[right,font=\small] at (6.15,4.7) {$S(P)$ --- верхняя сумма};
+ 
+\fill[orange!30,draw=orange!80,line width=0.5pt]
+  (5.5,3.9) rectangle (6.1,4.3);
+\node[right,font=\small] at (6.15,4.1) {$s(P)$ --- нижняя сумма};
+ 
+%--- Подпись кривой ---
+\node[blue!70!black, font=\itshape, right] at (8.55,2.8) {$f(x)$};
+ 
+\end{tikzpicture}

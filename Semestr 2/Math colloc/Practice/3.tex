@@ -1,0 +1,63 @@
+\subsection{Формула замены переменной в неопределённом интеграле. Линейная замена}
+
+\subsubsection*{1. Теорема о замене переменной}
+
+\begin{theorem}[Замена переменной в неопределённом интеграле]
+Пусть функция $f(x)$ непрерывна на интервале $I$, и пусть $x = \varphi(t)$ — дифференцируемая функция, отображающая интервал $J$ на $I$. Тогда:
+\[ \int f(x)\,dx = \int f\bigl(\varphi(t)\bigr)\,\varphi'(t)\,dt, \]
+где после вычисления правого интеграла необходимо сделать обратную замену $t = \varphi^{-1}(x)$.
+\end{theorem}
+
+Формула позволяет упростить подынтегральное выражение подходящей заменой переменной.
+
+\subsubsection*{2. Метод подстановки «изнутри»}
+
+Если подынтегральное выражение содержит сложную функцию $g(x)$, полезно положить $t = g(x)$, тогда $dt = g'(x)\,dx$:
+\[
+\int f\bigl(g(x)\bigr)\cdot g'(x)\,dx \;\xrightarrow{\;t=g(x)\;}\; \int f(t)\,dt.
+\]
+
+\textbf{Пример:}
+\[
+\int \frac{\cos(\ln x)}{x}\,dx \;\xrightarrow{\;t=\ln x,\; dt = dx/x\;}\;
+\int \cos t\,dt = \sin t + C = \sin(\ln x) + C.
+\]
+
+\subsubsection*{3. Линейная замена}
+
+Частный случай замены переменной: $x = \alpha t + \beta$, $\alpha \neq 0$, то есть $t = \dfrac{x - \beta}{\alpha}$.
+
+\begin{theorem}[Линейная замена]
+Если известно, что $\int f(x)\,dx = F(x) + C$, то:
+\[ \int f(\alpha x + \beta)\,dx = \frac{1}{\alpha}\,F(\alpha x + \beta) + C. \]
+\end{theorem}
+
+Правило: функцию внутри «тащим» без изменений, снаружи делим на коэффициент при $x$.
+
+\textbf{Примеры:}
+\[
+\int e^{3x+2}\,dx = \frac{1}{3}\,e^{3x+2} + C.
+\]
+\[
+\int \sin(5x - 1)\,dx = -\frac{1}{5}\cos(5x-1) + C.
+\]
+\[
+\int \frac{dx}{(2x+3)^4} = -\frac{1}{6(2x+3)^3} + C.
+\]
+
+\subsubsection*{4. Типовые замены}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Выражение} & \textbf{Замена} \\
+\hline
+$\sqrt{a^2 - x^2}$ & $x = a\sin t$ \\
+$\sqrt{a^2 + x^2}$ & $x = a\tan t$ \\
+$\sqrt{x^2 - a^2}$ & $x = \dfrac{a}{\cos t}$ \\
+$\sqrt[n]{ax+b}$ & $t = \sqrt[n]{ax+b}$ \\
+$e^x$ & $t = e^x$ \\
+\hline
+\end{tabular}
+\end{center}
