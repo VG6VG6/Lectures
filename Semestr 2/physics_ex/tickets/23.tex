@@ -1,0 +1,56 @@
+\section{Билет 23. Общее волновое уравнение. Скорость волны в тонком стержне с выводом. Модуль Юнга. Скорость поперечных волн в изотропной твердой среде.}
+
+\begin{definition}
+\textbf{Общее волновое уравнение} в трёхмерном пространстве для скалярного возмущения $\xi(\vec{r}, t)$ имеет вид:
+\begin{equation}
+    \nabla^2 \xi = \frac{1}{v^2} \frac{\partial^2 \xi}{\partial t^2}, \label{eq:general_wave_23}
+\end{equation}
+где $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$ --- оператор Лапласа, $v$ --- фазовая скорость распространения волны в среде. Это уравнение описывает распространение малых упругих возмущений в однородной изотропной среде без дисперсии и затухания.
+\end{definition}
+
+\begin{theorem}[Скорость продольной волны в тонком стержне]
+Рассмотрим тонкий упругий стержень с площадью поперечного сечения $S$, плотностью $\rho$ и модулем Юнга $E$. Выделим элементарный объём длиной $dx$. При распространении продольной волны частицы стержня смещаются вдоль оси $x$ на величину $\xi(x,t)$.
+
+Относительная деформация элемента равна $\varepsilon = \partial \xi / \partial x$. Согласно закону Гука, механическое напряжение $\sigma = E \varepsilon = E \, \partial \xi / \partial x$. Разность сил упругости на гранях элемента:
+\begin{equation}
+    F = S[\sigma(x+dx) - \sigma(x)] = S \frac{\partial \sigma}{\partial x} dx = ES \frac{\partial^2 \xi}{\partial x^2} dx.
+\end{equation}
+Масса элемента $dm = \rho S dx$. По второму закону Ньютона:
+\begin{equation}
+    (\rho S dx) \frac{\partial^2 \xi}{\partial t^2} = ES \frac{\partial^2 \xi}{\partial x^2} dx.
+\end{equation}
+Сокращая на $S dx$, получаем волновое уравнение:
+\begin{equation}
+    \frac{\partial^2 \xi}{\partial t^2} = \frac{E}{\rho} \frac{\partial^2 \xi}{\partial x^2}.
+\end{equation}
+Сравнивая с общим видом $\partial^2 \xi / \partial t^2 = v^2 \, \partial^2 \xi / \partial x^2$, находим \textbf{скорость продольной волны в тонком стержне}:
+\begin{equation}
+    v_{\parallel} = \sqrt{\frac{E}{\rho}}. \label{eq:rod_speed}
+\end{equation}
+\end{theorem}
+
+\begin{definition}
+\textbf{Модуль Юнга} $E$ --- физическая величина, характеризующая способность материала сопротивляться растяжению или сжатию при упругой деформации. Определяется как отношение механического напряжения к относительной деформации:
+\begin{equation}
+    E = \frac{\sigma}{\varepsilon} = \frac{F/S}{\Delta l / l}.
+\end{equation}
+Единица измерения --- паскаль (Па). Чем больше $E$, тем жёстче материал. Например: сталь $E \approx 2 \cdot 10^{11}$ Па, алюминий $E \approx 7 \cdot 10^{10}$ Па.
+\end{definition}
+
+\begin{property}[Скорость поперечных волн в изотропной твёрдой среде]
+В изотропном твёрдом теле могут распространяться как продольные, так и поперечные волны. Для \textbf{поперечных волн} (деформация сдвига) скорость определяется модулем сдвига $G$ (модуль жёсткости):
+\begin{equation}
+    v_{\perp} = \sqrt{\frac{G}{\rho}}. \label{eq:shear_speed}
+\end{equation}
+Для большинства материалов $G < E$, поэтому поперечные волны распространяются медленнее продольных: $v_{\perp} < v_{\parallel}$. В жидкостях и газах $G = 0$, поэтому поперечные упругие волны в них не распространяются.
+\end{property}
+
+\begin{remark}
+\textbf{Сравнение скоростей:}
+\begin{itemize}
+    \item Продольные волны в стержне: $v_{\parallel} = \sqrt{E/\rho}$;
+    \item Поперечные волны в твёрдом теле: $v_{\perp} = \sqrt{G/\rho}$;
+    \item Звук в газе: $v = \sqrt{\gamma P / \rho} = \sqrt{\gamma RT / M}$.
+\end{itemize}
+Для стали ($E \approx 2 \cdot 10^{11}$ Па, $\rho \approx 7800$ кг/м³): $v_{\parallel} \approx 5000$ м/с. Это значительно выше скорости звука в воздухе ($\approx 340$ м/с), что объясняет, почему звук по рельсу слышен раньше, чем по воздуху.
+\end{remark}

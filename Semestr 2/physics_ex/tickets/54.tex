@@ -1,0 +1,82 @@
+\section{Билет 54. Распределение Максвелла молекул по величине скорости. График функции распределения Максвелла. Вывод наиболее вероятной скорости. Соотношение между средней, наиболее вероятной и среднеквадратичной скоростью (без вывода) на графике.}
+
+\begin{definition}
+Функция распределения Максвелла по модулю скорости:
+\begin{equation}
+    F(v) = 4\pi \left( \frac{m}{2\pi k T} \right)^{3/2} v^2 \exp\left( -\frac{m v^2}{2 k T} \right). \label{eq:maxwell_speed_54}
+\end{equation}
+График $F(v)$ имеет характерную форму ``колокола'' с максимумом при некоторой скорости $v_{\text{вер}}$, называемой \textbf{наиболее вероятной скоростью}.
+\end{definition}
+
+\begin{theorem}[Вывод наиболее вероятной скорости]
+Наиболее вероятная скорость соответствует максимуму функции $F(v)$. Для её нахождения приравняем производную $dF/dv$ к нулю:
+\begin{equation}
+    \frac{dF}{dv} = 4\pi \left( \frac{m}{2\pi k T} \right)^{3/2} \frac{d}{dv} \left[ v^2 e^{-\alpha v^2} \right] = 0,
+\end{equation}
+где $\alpha = m/(2kT)$ для краткости. Дифференцируем произведение:
+\begin{equation}
+    \frac{d}{dv} \left[ v^2 e^{-\alpha v^2} \right] = 2v e^{-\alpha v^2} + v^2 (-2\alpha v) e^{-\alpha v^2} = 2v e^{-\alpha v^2} (1 - \alpha v^2).
+\end{equation}
+Приравнивая к нулю и отбрасывая тривиальный корень $v = 0$ (минимум), получаем:
+\begin{equation}
+    1 - \alpha v^2 = 0 \quad \Rightarrow \quad v^2 = \frac{1}{\alpha} = \frac{2kT}{m}.
+\end{equation}
+Таким образом, \textbf{наиболее вероятная скорость}:
+\begin{equation}
+    v_{\text{вер}} = \sqrt{\frac{2kT}{m}} = \sqrt{\frac{2RT}{M}}, \label{eq:v_most_probable}
+\end{equation}
+где $M = N_A m$ --- молярная масса газа, $R = k N_A$ --- универсальная газовая постоянная.
+\end{theorem}
+
+\begin{definition}
+Помимо наиболее вероятной скорости, в статистической физике используются ещё две характерные скорости:
+\begin{itemize}
+    \item \textbf{Средняя (арифметическая) скорость} $\langle v \rangle$ --- среднее значение модуля скорости:
+    \begin{equation}
+        \langle v \rangle = \int_0^\infty v F(v) \, dv = \sqrt{\frac{8kT}{\pi m}} = \sqrt{\frac{8RT}{\pi M}}. \label{eq:v_average}
+    \end{equation}
+    \item \textbf{Среднеквадратичная скорость} $v_{\text{кв}}$ --- корень из среднего значения квадрата скорости:
+    \begin{equation}
+        v_{\text{кв}} = \sqrt{\langle v^2 \rangle} = \sqrt{\int_0^\infty v^2 F(v) \, dv} = \sqrt{\frac{3kT}{m}} = \sqrt{\frac{3RT}{M}}. \label{eq:v_rms}
+    \end{equation}
+\end{itemize}
+\end{definition}
+
+\begin{property}[Соотношение между характерными скоростями]
+Сравнивая формулы \eqref{eq:v_most_probable}, \eqref{eq:v_average} и \eqref{eq:v_rms}, получаем численные соотношения:
+\begin{equation}
+    v_{\text{вер}} : \langle v \rangle : v_{\text{кв}} = \sqrt{2} : \sqrt{\frac{8}{\pi}} : \sqrt{3} \approx 1 : 1.13 : 1.22. \label{eq:speeds_ratio}
+\end{equation}
+\textbf{На графике $F(v)$:}
+\begin{itemize}
+    \item $v_{\text{вер}}$ --- абсцисса максимума кривой (наиболее вероятное значение);
+    \item $\langle v \rangle$ --- немного правее $v_{\text{вер}}$ (из-за асимметрии ``хвоста'' распределения);
+    \item $v_{\text{кв}}$ --- ещё правее, так как при усреднении $v^2$ больший вклад вносят молекулы с высокими скоростями.
+\end{itemize}
+\end{property}
+
+\begin{remark}
+\textbf{Физическая интерпретация:}
+\begin{enumerate}
+    \item $v_{\text{вер}}$ характеризует скорость, с которой движется наибольшее число молекул.
+    \item $\langle v \rangle$ используется при расчёте среднего числа столкновений молекул (например, в формуле для длины свободного пробега).
+    \item $v_{\text{кв}}$ непосредственно связана со средней кинетической энергией: $\langle E_{\text{пост}} \rangle = m v_{\text{кв}}^2 / 2 = 3kT/2$.
+\end{enumerate}
+Все три скорости пропорциональны $\sqrt{T/m}$, поэтому при повышении температуры или уменьшении массы молекул они увеличиваются одинаковым образом.
+\end{remark}
+
+\begin{remark}
+\textbf{Графическое представление соотношения \eqref{eq:speeds_ratio}.}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Скорость & Формула & Положение на графике \\
+\hline
+$v_{\text{вер}}$ & $\sqrt{2kT/m}$ & Максимум $F(v)$ \\
+$\langle v \rangle$ & $\sqrt{8kT/(\pi m)}$ & Правее максимума ($\approx 1.13 v_{\text{вер}}$) \\
+$v_{\text{кв}}$ & $\sqrt{3kT/m}$ & Ещё правее ($\approx 1.22 v_{\text{вер}}$) \\
+\hline
+\end{tabular}
+\end{center}
+Асимметрия распределения (более пологий ``хвост'' в области больших скоростей) приводит к тому, что средние значения смещаются вправо от моды распределения.
+\end{remark}

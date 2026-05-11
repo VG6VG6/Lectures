@@ -1,0 +1,52 @@
+\section{Билет 24. Общее волновое уравнение. Скорость упругой волны в струне с выводом.}
+
+\begin{definition}
+\textbf{Общее волновое уравнение} для одномерного случая имеет вид:
+\begin{equation}
+    \frac{\partial^2 \xi}{\partial t^2} = v^2 \frac{\partial^2 \xi}{\partial x^2}, \label{eq:wave_1d_24}
+\end{equation}
+где $\xi(x,t)$ --- поперечное смещение элемента среды, $v$ --- фазовая скорость волны. Любая функция вида $f(x \pm vt)$ является решением этого уравнения и описывает бегущую волну.
+\end{definition}
+
+\begin{theorem}[Вывод скорости волны в струне]
+Рассмотрим гибкую однородную струну с линейной плотностью $\rho$ (масса единицы длины), натянутую с силой $F$. Пусть в струне распространяется малая поперечная волна, смещение частиц $\xi(x,t)$ перпендикулярно оси $x$.
+
+Выделим элемент струны длиной $dx$. Силы натяжения $F$ действуют на концах элемента под малыми углами $\alpha_1$ и $\alpha_2$ к оси $x$. Проекция результирующей силы на ось $\xi$:
+\begin{equation}
+    F_{\xi} = F \sin\alpha_2 - F \sin\alpha_1 \approx F(\tan\alpha_2 - \tan\alpha_1),
+\end{equation}
+так как при малых углах $\sin\alpha \approx \tan\alpha$. Но $\tan\alpha = \partial \xi / \partial x$ --- наклон касательной к струне. Следовательно:
+\begin{equation}
+    F_{\xi} = F \left[ \left.\frac{\partial \xi}{\partial x}\right|_{x+dx} - \left.\frac{\partial \xi}{\partial x}\right|_{x} \right] = F \frac{\partial^2 \xi}{\partial x^2} dx.
+\end{equation}
+Масса элемента $dm = \rho dx$. По второму закону Ньютона в проекции на ось $\xi$:
+\begin{equation}
+    (\rho dx) \frac{\partial^2 \xi}{\partial t^2} = F \frac{\partial^2 \xi}{\partial x^2} dx.
+\end{equation}
+Сокращая на $dx$, получаем волновое уравнение:
+\begin{equation}
+    \frac{\partial^2 \xi}{\partial t^2} = \frac{F}{\rho} \frac{\partial^2 \xi}{\partial x^2}.
+\end{equation}
+Сравнивая с \eqref{eq:wave_1d_24}, находим \textbf{скорость поперечной волны в струне}:
+\begin{equation}
+    v = \sqrt{\frac{F}{\rho}}. \label{eq:string_speed}
+\end{equation}
+\end{theorem}
+
+\begin{property}
+Из формулы \eqref{eq:string_speed} следуют важные практические выводы:
+\begin{enumerate}
+    \item Скорость волны \textbf{не зависит} от частоты и амплитуды колебаний (в пределах применимости линейного приближения).
+    \item При увеличении силы натяжения $F$ скорость растёт: $v \propto \sqrt{F}$.
+    \item При увеличении линейной плотности $\rho$ (более толстая или тяжёлая струна) скорость уменьшается: $v \propto 1/\sqrt{\rho}$.
+\end{enumerate}
+\end{property}
+
+\begin{remark}
+\textbf{Применение формулы:}
+\begin{itemize}
+    \item \textbf{Музыкальные инструменты:} Частота основной гармоники струны длиной $L$ с закреплёнными концами: $\nu_1 = v/(2L) = \frac{1}{2L}\sqrt{F/\rho}$. Настройка осуществляется изменением натяжения $F$.
+    \item \textbf{Оценка параметров:} Для стальной струны ($\rho \approx 0.01$ кг/м) при натяжении $F = 100$ Н: $v \approx \sqrt{100/0.01} = 100$ м/с. При длине $L = 0.65$ м основная частота $\nu_1 \approx 100/(2 \cdot 0.65) \approx 77$ Гц.
+    \item \textbf{Ограничения:} Формула справедлива при малых амплитудах, когда можно пренебречь изменением натяжения при колебаниях и считать струну идеально гибкой (не сопротивляющейся изгибу).
+\end{itemize}
+\end{remark}

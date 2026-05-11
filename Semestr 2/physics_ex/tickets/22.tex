@@ -1,0 +1,75 @@
+\section{Билет 22. Общее волновое уравнение. Скорость упругой волны в газе с выводом. Численная оценка скорости звука в газе (воздухе).}
+
+\begin{definition}
+\textbf{Общее волновое уравнение} в трёхмерном пространстве для скалярного возмущения $\xi(\vec{r}, t)$ имеет вид:
+\begin{equation}
+    \nabla^2 \xi = \frac{1}{v^2} \frac{\partial^2 \xi}{\partial t^2}, \label{eq:general_wave}
+\end{equation}
+где $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$ --- оператор Лапласа, $v$ --- фазовая скорость распространения волны в среде. Это уравнение описывает распространение малых возмущений в однородной изотропной среде без дисперсии и затухания.
+\end{definition}
+
+\begin{theorem}[Вывод скорости звука в идеальном газе]
+Звук в газах представляет собой продольные упругие волны --- чередующиеся области сжатия и разрежения. Рассмотрим элементарный объём газа площадью поперечного сечения $S$ и длиной $dx$. При прохождении волны давление и плотность изменяются: $P \to P + dP$, $\rho \to \rho + d\rho$.
+
+Применим второй закон Ньютона к этому объёму. Разность сил давления на гранях равна:
+\begin{equation}
+    F = P S - (P + dP) S = -S \, dP = -S \frac{\partial P}{\partial x} dx.
+\end{equation}
+Масса элемента $dm = \rho S dx$, ускорение $a = \partial^2 \xi / \partial t^2$, где $\xi(x,t)$ --- смещение частиц газа. Тогда:
+\begin{equation}
+    (\rho S dx) \frac{\partial^2 \xi}{\partial t^2} = -S \frac{\partial P}{\partial x} dx \quad \Rightarrow \quad \rho \frac{\partial^2 \xi}{\partial t^2} = -\frac{\partial P}{\partial x}. \label{eq:newton_gas}
+\end{equation}
+Связь между изменением плотности и смещением: относительное изменение объёма равно $-\partial \xi / \partial x$, следовательно:
+\begin{equation}
+    \frac{d\rho}{\rho} = -\frac{\partial \xi}{\partial x} \quad \Rightarrow \quad d\rho = -\rho \frac{\partial \xi}{\partial x}.
+\end{equation}
+Для адиабатического процесса в идеальном газе $P \rho^{-\gamma} = \text{const}$, откуда:
+\begin{equation}
+    dP = \left(\frac{\partial P}{\partial \rho}\right)_S d\rho = \frac{\gamma P}{\rho} d\rho = -\gamma P \frac{\partial \xi}{\partial x}.
+\end{equation}
+Подставляя в \eqref{eq:newton_gas} и дифференцируя по $x$:
+\begin{equation}
+    \rho \frac{\partial^2 \xi}{\partial t^2} = -\frac{\partial}{\partial x}\left(-\gamma P \frac{\partial \xi}{\partial x}\right) = \gamma P \frac{\partial^2 \xi}{\partial x^2}.
+\end{equation}
+Окончательно получаем волновое уравнение:
+\begin{equation}
+    \frac{\partial^2 \xi}{\partial t^2} = \frac{\gamma P}{\rho} \frac{\partial^2 \xi}{\partial x^2}.
+\end{equation}
+Сравнивая с общим видом $\partial^2 \xi / \partial t^2 = v^2 \, \partial^2 \xi / \partial x^2$, находим \textbf{скорость звука в идеальном газе}:
+\begin{equation}
+    v = \sqrt{\frac{\gamma P}{\rho}}. \label{eq:sound_speed_gas}
+\end{equation}
+\end{theorem}
+
+\begin{property}[Численная оценка для воздуха]
+Используя уравнение состояния идеального газа $P = \rho R T / M$, формулу \eqref{eq:sound_speed_gas} можно переписать как:
+\begin{equation}
+    v = \sqrt{\frac{\gamma R T}{M}}, \label{eq:sound_temp}
+\end{equation}
+где:
+\begin{itemize}
+    \item $\gamma = c_p/c_v \approx 1.4$ --- показатель адиабаты для двухатомного газа (воздух);
+    \item $R = 8.31$ Дж/(моль·К) --- универсальная газовая постоянная;
+    \item $T$ --- абсолютная температура;
+    \item $M \approx 0.029$ кг/моль --- молярная масса воздуха.
+\end{itemize}
+При нормальных условиях ($T = 273$ К):
+\begin{equation}
+    v = \sqrt{\frac{1.4 \cdot 8.31 \cdot 273}{0.029}} \approx 331 \text{ м/с}.
+\end{equation}
+При комнатной температуре ($T = 293$ К):
+\begin{equation}
+    v \approx 331 \cdot \sqrt{\frac{293}{273}} \approx 343 \text{ м/с}.
+\end{equation}
+Зависимость от температуры: $v(T) \approx 331 + 0.6 \cdot (T - 273)$ м/с, где $T$ в Кельвинах.
+\end{property}
+
+\begin{remark}
+\textbf{Важные замечания:}
+\begin{enumerate}
+    \item Вывод справедлив для \textbf{малых амплитуд}, когда процесс можно считать адиабатическим (теплообмен между областями сжатия и разрежения не успевает произойти за период колебаний).
+    \item Скорость звука \textbf{не зависит от давления} при постоянной температуре (так как $P/\rho = RT/M = \text{const}$).
+    \item В жидкостях и твёрдых телах формула имеет аналогичный вид $v = \sqrt{K/\rho}$, где $K$ --- модуль всестороннего сжатия (для жидкостей) или комбинация модулей Юнга и сдвига (для твёрдых тел).
+    \item Для воздуха влажность слегка увеличивает скорость звука (меньшая средняя молярная масса влажного воздуха).
+\end{enumerate}
+\end{remark}

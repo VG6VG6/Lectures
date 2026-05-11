@@ -1,0 +1,33 @@
+% preamble.tex
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+
+\geometry{a4paper, margin=1in}
+
+% Отключаем курсив по умолчанию для всех теоремных окружений
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{property}{Свойство}[section]
+\newtheorem{corollary}{Следствие}[section]
+\newtheorem{example}{Пример}[section]
+\newtheorem{remark}{Ремарка}[section]
+\newtheorem{lemma}{Лемма}[section]
+
+% Настройка гиперссылок и TOC
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={Билеты по физике},
+    pdfauthor={Студент}
+}

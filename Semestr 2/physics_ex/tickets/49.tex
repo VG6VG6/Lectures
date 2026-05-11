@@ -1,0 +1,57 @@
+\section{Билет 49. Адиабатический процесс. Уравнение адиабаты (уравнение Пуассона) идеального газа для параметров pV с выводом. Постоянная адиабаты. Диаграмма в осях pV, сравнение с изотермой.}
+
+\begin{definition}
+\textbf{Адиабатическим процессом} называется термодинамический процесс, протекающий в отсутствие теплообмена с окружающей средой ($\delta Q = 0$). На практике такой процесс реализуется, если система хорошо теплоизолирована, либо если процесс протекает настолько быстро, что система не успевает обменяться теплом с внешними телами.
+\end{definition}
+
+\begin{theorem}[Вывод уравнения Пуассона]
+Запишем первое начало термодинамики для адиабатического процесса:
+\begin{equation}
+    \delta Q = dU + p \, dV = 0 \quad \Rightarrow \quad dU = -p \, dV. \label{eq:first_adiabatic_49}
+\end{equation}
+Для идеального газа изменение внутренней энергии $dU = \nu C_V \, dT$. Подставляем в \eqref{eq:first_adiabatic_49}:
+\begin{equation}
+    \nu C_V \, dT + p \, dV = 0. \label{eq:diff_adiabatic_49}
+\end{equation}
+Дифференцируем уравнение состояния $pV = \nu RT$:
+\begin{equation}
+    p \, dV + V \, dp = \nu R \, dT \quad \Rightarrow \quad \nu \, dT = \frac{p \, dV + V \, dp}{R}. \label{eq:diff_state_49}
+\end{equation}
+Подставляя \eqref{eq:diff_state_49} в \eqref{eq:diff_adiabatic_49} и сокращая на $\nu$:
+\begin{equation}
+    C_V \frac{p \, dV + V \, dp}{R} + p \, dV = 0.
+\end{equation}
+Умножаем на $R$ и группируем члены с $dV$:
+\begin{equation}
+    (C_V + R) p \, dV + C_V V \, dp = 0.
+\end{equation}
+Используя соотношение Майера $C_p = C_V + R$, получаем:
+\begin{equation}
+    C_p p \, dV + C_V V \, dp = 0.
+\end{equation}
+Разделяем переменные, разделив уравнение на $C_V p V$:
+\begin{equation}
+    \frac{C_p}{C_V} \frac{dV}{V} + \frac{dp}{p} = 0.
+\end{equation}
+Вводим \textbf{показатель адиабаты} $\gamma = C_p/C_V$. Интегрируем:
+\begin{equation}
+    \gamma \ln V + \ln p = \text{const} \quad \Rightarrow \quad \ln(p V^\gamma) = \text{const}.
+\end{equation}
+Потенцируя, получаем \textbf{уравнение адиабаты в переменных $p, V$} (уравнение Пуассона):
+\begin{equation}
+    p V^\gamma = \text{const}. \label{eq:poisson_49}
+\end{equation}
+\end{theorem}
+
+\begin{property}
+\textbf{Постоянная адиабаты} $\gamma$ (коэффициент Пуассона) зависит только от числа степеней свободы молекул $i$:
+\begin{equation}
+    \gamma = \frac{C_p}{C_V} = \frac{i+2}{i}.
+\end{equation}
+Типичные значения: $\gamma \approx 1.67$ (одноатомные газы), $\gamma = 1.4$ (двухатомные, например воздух), $\gamma \approx 1.33$ (многоатомные). Всегда выполняется $\gamma > 1$.
+\end{property}
+
+\begin{remark}
+\textbf{Сравнение с изотермой на диаграмме $pV$.} Уравнение изотермы: $pV = \text{const}$ ($p \sim V^{-1}$). Уравнение адиабаты: $p \sim V^{-\gamma}$. Так как $\gamma > 1$, при расширении ($V$ растёт) давление в адиабатическом процессе падает быстрее, чем в изотермическом. 
+\par\noindent\textbf{Графически:} на $pV$-диаграмме адиабата идёт \textbf{круче} изотермы. Физически это объясняется тем, что при адиабатном расширении газ не только увеличивает объём, но и теряет внутреннюю энергию (температура падает), что дополнительно снижает давление по сравнению с изотермическим процессом, где температура поддерживается постоянной за счёт подвода теплоты.
+\end{remark}

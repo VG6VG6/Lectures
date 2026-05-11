@@ -1,0 +1,75 @@
+\section{Билет 30. Звуковые волны. Амплитуда звукового давления с выводом. Связь между интенсивностью и амплитудой колебаний давления.}
+
+\begin{definition}
+\textbf{Звуковыми волнами} (или просто звуком) называются упругие волны с частотой в диапазоне от 16 Гц до 20 кГц, способные вызывать слуховое ощущение у человека.
+\begin{itemize}
+    \item \textbf{Инфразвук}: $\nu < 16$ Гц (не слышен, но может ощущаться телом);
+    \item \textbf{Слышимый звук}: $16 \text{ Гц} \le \nu \le 20 \text{ кГц}$;
+    \item \textbf{Ультразвук}: $\nu > 20$ кГц (используется в медицине, дефектоскопии, эхолокации).
+\end{itemize}
+Звук представляет собой продольные волны сжатия и разрежения, распространяющиеся в упругой среде (газ, жидкость, твёрдое тело).
+\end{definition}
+
+\begin{theorem}[Вывод амплитуды звукового давления]
+Рассмотрим плоскую звуковую волну в газе:
+\begin{equation}
+    \xi(x,t) = A \cos(\omega t - kx), \label{eq:sound_displacement}
+\end{equation}
+где $\xi$ --- смещение частиц газа от положения равновесия.
+
+Звуковая волна создаёт периодические изменения давления $\Delta p = p - p_0$ относительно среднего давления $p_0$. Для адиабатического процесса в идеальном газе связь между изменением давления и относительной деформацией объёма даётся соотношением:
+\begin{equation}
+    \Delta p = -\gamma p_0 \frac{\partial \xi}{\partial x}, \label{eq:pressure_strain}
+\end{equation}
+где $\gamma = c_p/c_v$ --- показатель адиабаты.
+
+Дифференцируя \eqref{eq:sound_displacement} по $x$:
+\begin{equation}
+    \frac{\partial \xi}{\partial x} = Ak \sin(\omega t - kx).
+\end{equation}
+Подставляя в \eqref{eq:pressure_strain} и используя связь $v = \sqrt{\gamma p_0 / \rho}$, получаем:
+\begin{equation}
+    \Delta p(x,t) = -\gamma p_0 A k \sin(\omega t - kx) = -\rho v^2 A k \sin(\omega t - kx).
+\end{equation}
+Учитывая $k = \omega/v$, окончательно:
+\begin{equation}
+    \Delta p(x,t) = -\rho v \omega A \sin(\omega t - kx) = \Delta p_m \cos\left(\omega t - kx + \frac{\pi}{2}\right), \label{eq:pressure_wave}
+\end{equation}
+где \textbf{амплитуда звукового давления}:
+\begin{equation}
+    \Delta p_m = \rho v \omega A. \label{eq:pressure_amplitude}
+\end{equation}
+\end{theorem}
+
+\begin{property}[Связь интенсивности и амплитуды давления]
+Подставляя выражение для амплитуды смещения $A = \Delta p_m / (\rho v \omega)$ из \eqref{eq:pressure_amplitude} в формулу интенсивности \eqref{eq:intensity_plane}, получаем важную связь:
+\begin{equation}
+    I = \frac{1}{2} \rho v \omega^2 \left(\frac{\Delta p_m}{\rho v \omega}\right)^2 = \frac{(\Delta p_m)^2}{2 \rho v}. \label{eq:intensity_pressure}
+\end{equation}
+Отсюда амплитуда звукового давления выражается через интенсивность:
+\begin{equation}
+    \Delta p_m = \sqrt{2 I \rho v}. \label{eq:pressure_from_intensity}
+\end{equation}
+\end{property}
+
+\begin{remark}
+\textbf{Численная оценка для воздуха.} При нормальных условиях ($\rho \approx 1.2$ кг/м³, $v \approx 340$ м/с):
+\begin{itemize}
+    \item Порог слышимости ($I_0 = 10^{-12}$ Вт/м²): $\Delta p_{m0} \approx 2 \cdot 10^{-5}$ Па.
+    \item Громкий звук ($I = 1$ Вт/м², $L = 120$ дБ): $\Delta p_m \approx 29$ Па.
+    \item Амплитуда смещения частиц при $L = 120$ дБ:
+    \begin{equation}
+        A = \frac{\Delta p_m}{\rho v \omega} = \frac{29}{1.2 \cdot 340 \cdot 2\pi \nu}.
+    \end{equation}
+    При $\nu = 20$ Гц: $A \approx 0.56$ мм; при $\nu = 20$ кГц: $A \approx 0.56$ мкм.
+\end{itemize}
+Таким образом, даже при очень громком звуке смещение частиц воздуха крайне мало, что подтверждает применимость линейного приближения в акустике.
+\end{remark}
+
+\begin{remark}
+\textbf{Уровень громкости.} Субъективная громкость звука связана с интенсивностью логарифмически (закон Вебера--Фехнера). \textbf{Уровень громкости} $L$ определяется как:
+\begin{equation}
+    L = 10 \lg \frac{I}{I_0} \quad \text{[дБ]}, \label{eq:loudness_level}
+\end{equation}
+где $I_0 = 10^{-12}$ Вт/м² --- интенсивность на пороге слышимости. Шкала децибел позволяет удобно описывать огромный динамический диапазон слышимых звуков (от $10^{-12}$ до $1$ Вт/м² --- 12 порядков).
+\end{remark}

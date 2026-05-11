@@ -1,0 +1,77 @@
+\section{Билет 46. Теплоемкость. Удельная теплоемкость. Молярная теплоемкость. Теплоемкость идеального газа при изохорическом процессе с выводом. Соотношение Майера.}
+
+\begin{definition}
+\textbf{Теплоёмкостью} $C$ тела называется физическая величина, равная количеству теплоты, необходимому для нагревания этого тела на один кельвин:
+\begin{equation}
+    C = \frac{\delta Q}{dT}. \label{eq:heat_capacity_def}
+\end{equation}
+Единица измерения --- Дж/К. Теплоёмкость зависит от массы тела, поэтому вводятся удельные и молярные величины.
+\end{definition}
+
+\begin{definition}
+\textbf{Удельная теплоёмкость} $c$ --- теплоёмкость единицы массы вещества:
+\begin{equation}
+    c = \frac{C}{m} = \frac{1}{m} \frac{\delta Q}{dT}, \quad \left[ c \right] = \frac{\text{Дж}}{\text{кг} \cdot \text{К}}.
+\end{equation}
+\textbf{Молярная теплоёмкость} $C_\mu$ --- теплоёмкость одного моля вещества:
+\begin{equation}
+    C_\mu = \frac{C}{\nu} = \frac{1}{\nu} \frac{\delta Q}{dT}, \quad \left[ C_\mu \right] = \frac{\text{Дж}}{\text{моль} \cdot \text{К}}.
+\end{equation}
+Связь между ними: $C_\mu = c \cdot M$, где $M$ --- молярная масса.
+\end{definition}
+
+\begin{theorem}[Теплоёмкость при изохорном процессе]
+При постоянном объёме ($V = \text{const}$) работа газа $A = 0$. Из первого начала термодинамики:
+\begin{equation}
+    \delta Q_V = dU.
+\end{equation}
+Для идеального газа внутренняя энергия зависит только от температуры: $U = \frac{i}{2} \nu R T$, где $i$ --- число степеней свободы. Тогда:
+\begin{equation}
+    dU = \frac{i}{2} \nu R \, dT.
+\end{equation}
+Подставляя в определение молярной теплоёмкости \eqref{eq:heat_capacity_def}:
+\begin{equation}
+    C_V = \frac{1}{\nu} \frac{\delta Q_V}{dT} = \frac{1}{\nu} \frac{dU}{dT} = \frac{i}{2} R. \label{eq:Cv_ideal}
+\end{equation}
+\textbf{Вывод:} Молярная теплоёмкость идеального газа при постоянном объёме зависит только от числа степеней свободы молекул и универсальной газовой постоянной.
+\end{theorem}
+
+\begin{theorem}[Соотношение Майера]
+При изобарном процессе ($p = \text{const}$) первое начало термодинамики даёт:
+\begin{equation}
+    \delta Q_p = dU + p \, dV.
+\end{equation}
+Разделим на $\nu \, dT$ и учтём, что $dU = \nu C_V \, dT$:
+\begin{equation}
+    C_p = \frac{1}{\nu} \frac{\delta Q_p}{dT} = C_V + \frac{p}{\nu} \frac{dV}{dT}.
+\end{equation}
+Из уравнения состояния идеального газа $pV = \nu R T$ при $p = \text{const}$:
+\begin{equation}
+    p \, dV = \nu R \, dT \quad \Rightarrow \quad \frac{p}{\nu} \frac{dV}{dT} = R.
+\end{equation}
+Окончательно получаем \textbf{соотношение Майера}:
+\begin{equation}
+    C_p = C_V + R. \label{eq:mayer_relation}
+\end{equation}
+\end{theorem}
+
+\begin{property}
+Из соотношения Майера \eqref{eq:mayer_relation} и формулы \eqref{eq:Cv_ideal} следуют выражения для молярных теплоёмкостей идеального газа:
+\begin{equation}
+    C_V = \frac{i}{2} R, \quad C_p = \frac{i+2}{2} R.
+\end{equation}
+\textbf{Коэффициент Пуассона} (показатель адиабаты) определяется как отношение теплоёмкостей:
+\begin{equation}
+    \gamma = \frac{C_p}{C_V} = \frac{i+2}{i}.
+\end{equation}
+Значения для различных газов:
+\begin{itemize}
+    \item Одноатомные ($i=3$): $\gamma = 5/3 \approx 1.67$;
+    \item Двухатомные ($i=5$): $\gamma = 7/5 = 1.4$;
+    \item Многоатомные ($i=6$): $\gamma = 8/6 \approx 1.33$.
+\end{itemize}
+\end{property}
+
+\begin{remark}
+\textbf{Физический смысл разности $C_p - C_V = R$:} При нагревании газа при постоянном давлении часть подводимой теплоты расходуется на совершение работы расширения. Работа одного моля идеального газа при изобарном нагревании на 1 К равна универсальной газовой постоянной $R \approx 8.31$ Дж/(моль·К). Именно эта величина составляет разницу между теплоёмкостями при постоянном давлении и постоянном объёме.
+\end{remark}

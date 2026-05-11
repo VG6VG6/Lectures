@@ -1,0 +1,61 @@
+\section{Билет 68. Термодинамическое определение энтропии. Вычисление приращения энтропии для изопроцессов идеального газа: изотермического и изохорического.}
+
+\begin{definition}
+\textbf{Энтропия} $S$ --- функция состояния, характеризующая меру необратимости рассеяния энергии в термодинамической системе. Для обратимого процесса:
+\begin{equation}
+    dS = \frac{\delta Q_{\text{обр}}}{T}, \quad \Delta S = \int_1^2 \frac{\delta Q_{\text{обр}}}{T}. \label{eq:entropy_def_68}
+\end{equation}
+Единица измерения энтропии в СИ --- джоуль на кельвин (Дж/К).
+\end{definition}
+
+\begin{theorem}[Приращение энтропии в изотермическом процессе]
+При $T = \text{const}$ для идеального газа $\Delta U = 0$, поэтому $\delta Q = p\,dV$. Используя уравнение состояния $p = \nu RT/V$:
+\begin{equation}
+    \Delta S_{\text{изот}} = \int_1^2 \frac{p\,dV}{T} = \nu R \int_{V_1}^{V_2} \frac{dV}{V} = \nu R \ln\frac{V_2}{V_1}. \label{eq:delta_S_iso_68}
+\end{equation}
+Через давления (из $p_1 V_1 = p_2 V_2$):
+\begin{equation}
+    \Delta S_{\text{изот}} = \nu R \ln\frac{p_1}{p_2}.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}[Приращение энтропии в изохорическом процессе]
+В изохорическом процессе объём постоянен: $V = \text{const}$, поэтому работа $A = 0$ и $\delta Q_V = dU = \nu C_V \, dT$, где $C_V$ --- молярная теплоёмкость при постоянном объёме.
+Подставляя в определение энтропии:
+\begin{equation}
+    dS = \frac{\delta Q_V}{T} = \nu C_V \frac{dT}{T}.
+\end{equation}
+Интегрируя от $T_1$ до $T_2$:
+\begin{equation}
+    \Delta S_{\text{изох}} = \nu C_V \int_{T_1}^{T_2} \frac{dT}{T} = \nu C_V \ln\frac{T_2}{T_1}. \label{eq:delta_S_isoch_68}
+\end{equation}
+Используя закон Шарля $p/T = \text{const}$, энтропию можно выразить через давления:
+\begin{equation}
+    \Delta S_{\text{изох}} = \nu C_V \ln\frac{p_2}{p_1}.
+\end{equation}
+\end{theorem}
+
+\begin{property}[Сравнение формул для изопроцессов]
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+Процесс & Условие & $\Delta S$ \\
+\hline
+Изотермический & $T=\text{const}$ & $\nu R \ln\dfrac{V_2}{V_1} = \nu R \ln\dfrac{p_1}{p_2}$ \\
+\hline
+Изобарический & $p=\text{const}$ & $\nu C_p \ln\dfrac{T_2}{T_1} = \nu C_p \ln\dfrac{V_2}{V_1}$ \\
+\hline
+Изохорический & $V=\text{const}$ & $\nu C_V \ln\dfrac{T_2}{T_1} = \nu C_V \ln\dfrac{p_2}{p_1}$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{property}
+
+\begin{remark}
+\textbf{Важные замечания:}
+\begin{enumerate}
+    \item Все формулы справедливы только для \textbf{обратимых} процессов. Для необратимых процессов энтропия вычисляется по тому же интегралу, но вдоль воображаемого обратимого пути, соединяющего те же начальное и конечное состояния.
+    \item Для идеального газа $C_p = C_V + R$ и $\gamma = C_p/C_V$, поэтому $\Delta S_{\text{изоб}} > \Delta S_{\text{изох}}$ при одинаковом изменении температуры, так как $C_p > C_V$.
+    \item В адиабатическом обратимом процессе $\delta Q = 0$, поэтому $\Delta S = 0$ --- энтропия сохраняется. Такие процессы называются \textbf{изоэнтропийными}.
+\end{enumerate}
+\end{remark}

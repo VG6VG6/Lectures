@@ -1,0 +1,44 @@
+\section{Билет 10. Сложение колебаний одного направления. Биения. Амплитуда и частота биений.}
+
+\begin{definition}
+\textbf{Биениями} называются периодические изменения амплитуды результирующего колебания, возникающие при сложении двух гармонических колебаний одинакового направления с близкими, но не равными частотами ($\omega_1 \approx \omega_2$).
+\end{definition}
+
+\begin{theorem}[Вывод уравнения биений]
+Пусть складываются два колебания с равными амплитудами $A$ и близкими частотами $\omega_1$ и $\omega_2$ ($\Delta\omega = |\omega_2 - \omega_1| \ll \omega$):
+\begin{equation}
+    x_1 = A \cos(\omega_1 t), \quad x_2 = A \cos(\omega_2 t).
+\end{equation}
+Результирующее колебание $x = x_1 + x_2$ находим с помощью формулы суммы косинусов:
+\begin{equation}
+    x = 2A \cos\left(\frac{\omega_2 - \omega_1}{2}t\right) \cos\left(\frac{\omega_2 + \omega_1}{2}t\right).
+\end{equation}
+Обозначив среднюю частоту $\omega = \frac{\omega_1 + \omega_2}{2}$ и разность частот $\Delta\omega = \omega_2 - \omega_1$, получаем:
+\begin{equation}
+    x(t) = \left[ 2A \cos\left(\frac{\Delta\omega}{2}t\right) \right] \cos(\omega t). \label{eq:beats}
+\end{equation}
+Так как $\Delta\omega \ll \omega$, множитель в квадратных скобках меняется значительно медленнее, чем $\cos(\omega t)$. Его можно считать \textbf{медленно меняющейся амплитудой}:
+\begin{equation}
+    a(t) = 2A \left| \cos\left(\frac{\Delta\omega}{2}t\right) \right|. \label{eq:beat_amplitude}
+\end{equation}
+\end{theorem}
+
+\begin{property}
+Из уравнения \eqref{eq:beat_amplitude} следуют основные характеристики биений:
+\begin{enumerate}
+    \item \textbf{Амплитуда биений} периодически меняется от $0$ до $2A$.
+    \item \textbf{Частота биений} $\Omega$ равна разности частот складываемых колебаний:
+    \begin{equation}
+        \Omega = |\omega_2 - \omega_1| = \Delta\omega. \label{eq:beat_freq}
+    \end{equation}
+    \item \textbf{Период биений} $T_{\text{б}}$ определяется как промежуток времени между двумя последовательными максимумами амплитуды:
+    \begin{equation}
+        T_{\text{б}} = \frac{2\pi}{\Omega} = \frac{2\pi}{|\omega_2 - \omega_1|}. \label{eq:beat_period}
+    \end{equation}
+\end{enumerate}
+\end{property}
+
+\begin{remark}
+Если амплитуды складываемых колебаний не равны ($A_1 \neq A_2$), амплитуда биений не обращается в ноль, а изменяется в пределах от $|A_1 - A_2|$ до $A_1 + A_2$ (так называемая «глубина биений»).
+\par\noindent\textbf{Практическое применение:} Явление биений широко используется при настройке музыкальных инструментов. Настраивая струну по камертону, музыкант добивается исчезновения биений ($\Delta\omega \to 0$), что означает совпадение частот колебаний струны и эталона.
+\end{remark}

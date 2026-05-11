@@ -1,0 +1,54 @@
+\section{Билет 21. Вывод волнового дифференциального уравнения для волн, бегущих в произвольном направлении в пространстве. Волновой вектор.}
+
+\begin{definition}
+Рассмотрим плоскую монохроматическую волну, распространяющуюся в трёхмерном пространстве в произвольном направлении. Пусть направление распространения задано единичным вектором $\vec{n}$. Уравнение такой волны имеет вид:
+\begin{equation}
+    \xi(\vec{r}, t) = A \cos(\omega t - \vec{k} \cdot \vec{r}), \label{eq:3d_wave_21}
+\end{equation}
+где $\vec{r} = (x, y, z)$ --- радиус-вектор точки наблюдения, а $\vec{k}$ --- \textbf{волновой вектор}, определяемый соотношением:
+\begin{equation}
+    \vec{k} = k \vec{n} = \frac{2\pi}{\lambda} \vec{n} = \frac{\omega}{v} \vec{n}.
+\end{equation}
+Модуль волнового вектора $k = |\vec{k}| = 2\pi/\lambda$ называется волновым числом. Направление $\vec{k}$ совпадает с направлением распространения волны (нормалью к волновой поверхности).
+\end{definition}
+
+\begin{theorem}[Вывод трёхмерного волнового уравнения]
+Покажем, что функция \eqref{eq:3d_wave_21} удовлетворяет линейному дифференциальному уравнению в частных производных второго порядка. Введём фазу волны $\Phi = \omega t - \vec{k} \cdot \vec{r} = \omega t - (k_x x + k_y y + k_z z)$.
+
+Вычислим вторые частные производные по времени:
+\begin{equation}
+    \frac{\partial \xi}{\partial t} = -A\omega \sin\Phi, \quad
+    \frac{\partial^2 \xi}{\partial t^2} = -A\omega^2 \cos\Phi = -\omega^2 \xi. \label{eq:deriv_t_21}
+\end{equation}
+Теперь вычислим вторые частные производные по пространственным координатам:
+\begin{equation}
+    \frac{\partial \xi}{\partial x} = A k_x \sin\Phi, \quad
+    \frac{\partial^2 \xi}{\partial x^2} = A k_x^2 \cos\Phi = k_x^2 \xi.
+\end{equation}
+Аналогично для $y$ и $z$:
+\begin{equation}
+    \frac{\partial^2 \xi}{\partial y^2} = k_y^2 \xi, \quad
+    \frac{\partial^2 \xi}{\partial z^2} = k_z^2 \xi.
+\end{equation}
+Сложим пространственные производные (оператор Лапласа):
+\begin{equation}
+    \nabla^2 \xi = \frac{\partial^2 \xi}{\partial x^2} + \frac{\partial^2 \xi}{\partial y^2} + \frac{\partial^2 \xi}{\partial z^2} = (k_x^2 + k_y^2 + k_z^2) \xi = k^2 \xi. \label{eq:laplace_21}
+\end{equation}
+Сравнивая \eqref{eq:deriv_t_21} и \eqref{eq:laplace_21} и используя связь $k = \omega/v$, получаем:
+\begin{equation}
+    \nabla^2 \xi = k^2 \xi = \frac{\omega^2}{v^2} \xi = \frac{1}{v^2} \frac{\partial^2 \xi}{\partial t^2}.
+\end{equation}
+Таким образом, любая плоская волна вида \eqref{eq:3d_wave_21} удовлетворяет \textbf{трёхмерному волновому уравнению}:
+\begin{equation}
+    \nabla^2 \xi = \frac{1}{v^2} \frac{\partial^2 \xi}{\partial t^2}. \label{eq:wave_3d}
+\end{equation}
+\end{theorem}
+
+\begin{remark}
+Уравнение \eqref{eq:wave_3d} является фундаментальным для описания волновых процессов в изотропных средах. Его важность заключается в следующем:
+\begin{enumerate}
+    \item Если при анализе физической системы мы приходим к уравнению вида \eqref{eq:wave_3d}, мы можем сразу утверждать, что в системе существуют волновые процессы со скоростью $v$.
+    \item Уравнение линейно, поэтому для него справедлив \textbf{принцип суперпозиции}: сумма любых решений также является решением.
+    \item Общее решение может быть представлено как суперпозиция плоских волн, распространяющихся во всех возможных направлениях (разложение по плоским волнам).
+\end{enumerate}
+\end{remark}
