@@ -1,6 +1,6 @@
 % preamble.tex
 \usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc} % В LaTeX ≥2018 можно убрать (UTF-8 теперь по умолчанию)
 \usepackage[russian]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -9,6 +9,14 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{float}
+
+% === Для графиков (pgfplots/TikZ) ===
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing}
+\usetikzlibrary{intersections}
+\pgfplotsset{compat=1.18} % Указывает версию синтаксиса. 
+                          % Если получаете предупреждения, замените на compat=newest
+% ====================================
 
 \geometry{a4paper, margin=1in}
 
@@ -19,10 +27,10 @@
 \newtheorem{property}{Свойство}[section]
 \newtheorem{corollary}{Следствие}[section]
 \newtheorem{example}{Пример}[section]
-\newtheorem{remark}{Ремарка}[section]
+\newtheorem{remark}{Замечание}[section] % "Ремарка" → "Замечание" (академический стандарт)
 \newtheorem{lemma}{Лемма}[section]
 
-% Настройка гиперссылок и TOC
+% Настройка гиперссылок
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,

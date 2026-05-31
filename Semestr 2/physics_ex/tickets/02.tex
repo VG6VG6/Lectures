@@ -4,6 +4,62 @@
 \textbf{Гармоническими колебаниями} называются колебания, при которых колеблющаяся величина изменяется со временем по закону синуса или косинуса. Простейшим примером системы, где возникают свободные гармонические колебания, является движение тела под действием силы упругости.
 \end{definition}
 
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2,
+        spring/.style={decorate, decoration={zigzag, amplitude=4pt, segment length=6pt}},
+        mass/.style={fill=blue!20, draw=blue!60, thick},
+        mass_eq/.style={fill=gray!20, draw=gray!50, thick, dashed},
+        force/.style={->, >=Stealth, thick},
+        vector_red/.style={force, red!80!black},
+        vector_gray/.style={force, gray!60}
+    ]
+    % 1. Стена (слева)
+    \fill[pattern=north east lines, pattern color=black] (-0.5, -1) rectangle (-0.2, 1);
+    \draw[thick] (-0.2, -1) -- (-0.2, 1);
+    
+    % 2. Ось координат (снизу)
+    \draw[->, thick] (-0.5, -1.8) -- (7, -1.8) node[right] {$x$};
+    \node at (-0.5, -1.6) {$O$};
+    \draw[thick] (2, -1.85) -- (2, -1.75) node[below] {$x_0$ (равновесие)};
+    \draw[thick] (4.5, -1.85) -- (4.5, -1.75) node[below] {$x$};
+    
+    % 3. Состояние равновесия (Фон / Пунктир)
+    % Пружина
+    \draw[spring, gray!50, dashed, thick] (-0.2, 0) -- (2, 0);
+    % Груз
+    \draw[mass_eq] (2, -0.5) rectangle (3, 0.5);
+    \node[gray!50] at (2.5, 0) {$m$};
+    % Силы в равновесии (компенсированы, серые)
+    \draw[vector_gray] (2.5, -0.5) -- (2.5, -1.2) node[midway, right, gray] {\small $mg$};
+    \draw[vector_gray] (2.5, 0.5) -- (2.5, 1.2) node[midway, right, gray] {\small $N$};
+    
+    % 4. Состояние смещения (Основной / Сплошной)
+    % Груз смещен вправо до x=4.5
+    \draw[mass] (4.5, -0.5) rectangle (5.5, 0.5);
+    \node at (5, 0) {$m$};
+    
+    % Растянутая пружина
+    \draw[spring, blue!70!black, thick] (-0.2, 0) -- (4.5, 0);
+    
+    % Стрелка смещения (сверху)
+    \draw[<->, thick, purple] (2.8, 1.2) -- (4.5, 1.2) node[midway, fill=white, font=\bfseries, purple] {$x$};
+    \node[align=center, font=\small] at (2.8, 1.6) {смещение};
+    
+    % Силы в смещенном положении
+    % Сила тяжести (вниз)
+    \draw[vector_red] (5, -0.5) -- (5, -1.3) node[midway, right] {$mg$};
+    % Реакция опоры (вверх)
+    \draw[vector_red] (5, 0.5) -- (5, 1.3) node[midway, right] {$N$};
+    % Сила упругости (назад к стене)
+    \draw[vector_red] (4.5, 0.2) -- (3.2, 0.2) node[midway, above, font=\bfseries, red] {$F_{упр} = -kx$};
+
+    \end{tikzpicture}
+    \caption{Горизонтальный пружинный маятник. Серым пунктиром показано положение равновесия ($x_0$), синим цветом — текущее смещенное положение ($x$).}
+    \label{fig:spring_horizontal}
+\end{figure}
+
 \begin{theorem}[Уравнение движения горизонтального пружинного маятника]
 Рассмотрим груз массы $m$, закреплённый на горизонтальной пружине жёсткостью $k$, колеблющийся по гладкой поверхности (трением пренебрегаем). Возвращающая сила описывается законом Гука:
 \begin{equation}

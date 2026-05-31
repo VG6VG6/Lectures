@@ -29,3 +29,53 @@
 \begin{remark}
 Волновых поверхностей можно провести бесчисленное множество, а волновой фронт в каждый момент времени --- только один. При этом сам фронт также является волновой поверхностью. В зависимости от формы волны различают \textbf{плоские} (совокупность параллельных плоскостей), \textbf{сферические} (концентрические сферы) и \textbf{цилиндрические} волны. Форма волны определяется источником и свойствами среды.
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.1]
+        % === ПОПЕРЕЧНАЯ ВОЛНА ===
+        \begin{scope}
+            \node[font=\bfseries, below] at (2, -1.5) {Поперечная};
+            % Струна (форма волны)
+            \draw[blue, thick, domain=0:4, samples=100] plot (\x, {0.5*sin(\x*180)});
+            % Направление распространения
+            \draw[->, thick] (0, -0.8) -- (4.5, -0.8) node[right] {$v$};
+            % Колебания частиц (вертикальные стрелки)
+            \foreach \x in {0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5} {
+                \pgfmathsetmacro{\y}{0.5*sin(\x*180)}
+                \draw[red, ->, thick] (\x, \y) -- (\x, \y+0.3);
+            }
+            % Подпись
+            \node[red, align=center, font=\small] at (4.5, 1) {Колебания\\перпендикулярно $v$};
+            % Длина волны
+            \draw[<->, gray] (0, -1.2) -- (2, -1.2) node[midway, fill=white, font=\small] {$\lambda$};
+        \end{scope}
+
+        % === ПРОДОЛЬНАЯ ВОЛНА ===
+        \begin{scope}[xshift=6cm]
+            \node[font=\bfseries, below] at (2, -1.5) {Продольная};
+            % Пружины/Слои (имитация сжатия)
+            \foreach \x in {0, 0.5, ..., 4} {
+                \pgfmathsetmacro{\shift}{0.3*cos(\x*180)}
+                \draw[blue, fill=blue!20] (\x + \shift, -0.4) rectangle ++(0.1, 0.8);
+            }
+            % Огибающая плотности (для наглядности)
+            \draw[gray, dashed, domain=0:4, samples=100] plot (\x, {0.4*cos(\x*180)});
+
+            % Направление распространения
+            \draw[->, thick] (0, -0.8) -- (4.5, -0.8) node[right] {$v$};
+
+            % Колебания частиц (горизонтальные стрелки)
+            \foreach \x in {0.5, 1.5, 2.5, 3.5} {
+                \pgfmathsetmacro{\pos}{0.4*cos(\x*180)}
+                \draw[red, ->, thick] (\x + \pos, 0) -- (\x + \pos + 0.3, 0);
+            }
+
+            % Подпись
+            \node[red, align=center, font=\small] at (4.5, 1) {Колебания\\вдоль направления $v$};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Сравнение поперечных и продольных волн. В поперечной волне смещение частиц перпендикулярно скорости волны, в продольной — параллельно.}
+    \label{fig:wave_types}
+\end{figure}
+

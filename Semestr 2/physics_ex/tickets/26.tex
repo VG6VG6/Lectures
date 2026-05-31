@@ -50,3 +50,72 @@
     \item Энергия в стоячей волне не переносится вдоль среды (средний за период поток энергии равен нулю), а происходит её периодическое перераспределение между кинетической и потенциальной формами внутри каждого сегмента.
 \end{enumerate}
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+    \begin{axis}[
+        xlabel = {$x$ (координата вдоль среды)},
+        ylabel = {$\xi$ (смещение)},
+        xmin = 0, xmax = 8,
+        ymin = -2.5, ymax = 2.5,
+        domain = 0:8,
+        samples = 200,
+        axis lines = center,
+        grid = both,
+        grid style = {dashed, gray!30},
+        xtick = {0, 1, 2, 3, 4, 5, 6, 7, 8},
+        xticklabels = {$0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$},
+        ytick = {-2, -1, 0, 1, 2},
+        yticklabels = {$-2A$, $-A$, $0$, $A$, $2A$},
+        width = 0.9\textwidth,
+        height = 0.4\textheight,
+    ]
+
+    % 1. Огибающая (Амплитуда стоячей волны 2A*cos(kx))
+    % lambda = 4 => k = pi/2
+    \addplot [gray, dashed, thick] {2*cos(deg(pi*x/2))};
+    \addplot [gray, dashed, thick] {-2*cos(deg(pi*x/2))};
+
+    % 2. Моментальный снимок волны 1 (когда cos(wt) = 1, макс. отклонение)
+    \addplot [blue, thick] {2*cos(deg(pi*x/2))};
+
+    % 3. Моментальный снимок волны 2 (когда cos(wt) = 0.5)
+    \addplot [blue!40, thick] {1*cos(deg(pi*x/2))};
+
+    % 4. Моментальный снимок волны 3 (когда cos(wt) = 0, прямая)
+    \addplot [blue!20, thick] {0};
+
+    % 5. Узлы (Точки пересечения с нулем)
+    % x = 1, 3, 5, 7
+    \fill[red] (1,0) circle (3pt);
+    \fill[red] (3,0) circle (3pt);
+    \fill[red] (5,0) circle (3pt);
+    \fill[red] (7,0) circle (3pt);
+
+    % Подписи узлов
+    \node[red, below, align=center] at (1,0) {\footnotesize \textbf{Узел}\\(амплитуда 0)};
+    \node[red, below, align=center] at (3,0) {\footnotesize \textbf{Узел}};
+
+    % 6. Пучности (Максимумы)
+    % x = 0, 2, 4, 6, 8
+    \fill[green!60!black] (2,2) circle (3pt);
+    \fill[green!60!black] (6,2) circle (3pt);
+
+    % Подписи пучностей
+    \node[green!60!black, above, align=center] at (2,2) {\footnotesize \textbf{Пучность}\\(амплитуда 2A)};
+
+    % 7. Расстояние между узлами (lambda/2)
+    \draw[<->, purple, thick] (1, -2.2) -- (3, -2.2) node[midway, fill=white, font=\small, purple] {$\frac{\lambda}{2}$};
+
+    % Легенда
+    \node[anchor=west, font=\small, fill=white, opacity=0.9, inner sep=2pt] at (axis cs: 4.5, 2.2) {
+        \textcolor{gray}{---} Огибающая ($2A$)\\
+        \textcolor{blue}{\rule{10pt}{2pt}} Колебания струны в разные моменты $t$
+    };
+
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Стоячая волна. Красные точки — узлы (амплитуда колебаний равна нулю), зеленые — пучности (максимальная амплитуда $2A$). Расстояние между соседними узлами (или пучностями) равно $\lambda/2$.}
+    \label{fig:standing_wave}
+\end{figure}

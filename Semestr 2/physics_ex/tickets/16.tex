@@ -38,6 +38,54 @@
 \end{property}
 
 \begin{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        xlabel = {Циклическая частота $\omega$},
+        ylabel = {Амплитуда $A$},
+        xmin = 0, xmax = 20, 
+        ymin = 0, ymax = 12,
+        domain = 0:20,
+        samples = 200,
+        grid = both,
+        grid style = {dashed, gray!30},
+        width = 0.9\textwidth,
+        height = 0.5\textheight,
+        axis lines = middle,
+        legend pos = north east,
+        xtick = {10},
+        xticklabels = {$\omega_0$},
+        ytick = {10},
+        yticklabels = {$A_{max}$},
+        legend style = {fill=white, opacity=0.9}
+    ]
+    
+    % Параметры для иллюстрации: omega_0 = 10, f_0 = 100
+    
+    % 1. Малое затухание (beta = 0.5) -> Высокий пик
+    \addplot [red, thick] {100 / sqrt((100 - x^2)^2 + 4*(0.5)^2*x^2)};
+    \addlegendentry{$\beta_1$ (малое затухание)}
+    
+    % 2. Среднее затухание (beta = 1.5) -> Пик ниже и шире
+    \addplot [blue, thick] {100 / sqrt((100 - x^2)^2 + 4*(1.5)^2*x^2)};
+    \addlegendentry{$\beta_2$ (среднее затухание)}
+    
+    % 3. Сильное затухание (beta = 3.0) -> Пик низкий и пологий
+    \addplot [green!60!black, thick] {100 / sqrt((100 - x^2)^2 + 4*(3.0)^2*x^2)};
+    \addlegendentry{$\beta_3$ (сильное затухание)}
+    
+    % Вертикальная линия резонанса
+    \draw[dashed, black] (axis cs: 10, 0) -- (axis cs: 10, 12);
+    \node[above, font=\small] at (axis cs: 10, 12) {$\omega_{рез} \approx \omega_0$};
+    
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Резонансные кривые. Зависимость амплитуды вынужденных колебаний от частоты вынуждающей силы. При малом затухании ($\beta_1$) наблюдается резкое возрастание амплитуды вблизи $\omega_0$.}
+    \label{fig:resonance_curves}
+\end{figure}
+
 \textbf{Резонансные кривые.} Зависимость амплитуды $A$ от частоты $\omega$ называется амплитудно-частотной характеристикой. Чем меньше коэффициент затухания $\beta$, тем:
 \begin{enumerate}
     \item Выше и уже резонансный пик;

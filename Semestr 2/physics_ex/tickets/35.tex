@@ -37,3 +37,26 @@
 \end{equation}
 Разность температур в кельвинах равна разности в градусах Цельсия: $\Delta T = \Delta t$.
 \end{remark}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+
+\draw[thick] (0,0)--(10,0);
+
+\foreach \x in {0,5,8}
+{
+\draw (\x,0.15)--(\x,-0.15);
+}
+
+\node[above] at (0,0.15) {$0\,K$};
+\node[above] at (5,0.15) {$273.15\,K$};
+\node[above] at (8,0.15) {$373.15\,K$};
+
+\node[below] at (0,-0.15) {$-273.15^\circ C$};
+\node[below] at (5,-0.15) {$0^\circ C$};
+\node[below] at (8,-0.15) {$100^\circ C$};
+
+\end{tikzpicture}
+\caption{Соответствие шкал Кельвина и Цельсия.}
+\end{figure}

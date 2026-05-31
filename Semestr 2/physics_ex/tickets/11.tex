@@ -47,3 +47,118 @@
 \begin{remark}
 \textbf{Фигуры Лиссажу.} Если частоты складываемых колебаний не равны, но кратны друг другу ($\omega_x : \omega_y = m : n$, где $m, n$ --- целые числа), траектория замыкается, образуя сложные устойчивые кривые, называемые \textbf{фигурами Лиссажу}. Отношение частот равно отношению числа касаний или пересечений фигуры с прямыми, параллельными осям координат: $\omega_x / \omega_y = n_y / n_x$. Фигуры Лиссажу широко применяются для определения неизвестной частоты по известному эталону с помощью осциллографа.
 \end{remark}
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=0.8,
+        every node/.style={font=\small},
+        declare function={
+            A = 2; B = 1.5; % Амплитуды (A > B для наглядности эллипса)
+        }
+    ]
+
+    % --- ВАРИАНТ 1: phi = 0 (Свойство 11.1) ---
+    \begin{scope}[xshift=-8cm]
+        \draw[->] (-2.5, 0) -- (2.5, 0) node[right] {$x$};
+        \draw[->] (0, -2) -- (0, 2) node[above] {$y$};
+
+        % Траектория: Прямая y = (B/A)x
+        \draw[blue, thick] (-A, -B) -- (A, B);
+
+        % Точки экстремума
+        \fill[red] (A, B) circle (2pt);
+        \fill[red] (-A, -B) circle (2pt);
+
+        % Подписи
+        \node at (0, -2.5) {$\varphi = 0$};
+        \node[align=center, font=\tiny] at (2, 2) {Прямая\\в 1 и 3 кв.};
+    \end{scope}
+
+    % --- ВАРИАНТ 2: phi = pi/2 (Эллипс) ---
+    \begin{scope}[xshift=0cm]
+        \draw[->] (-2.5, 0) -- (2.5, 0) node[right] {$x$};
+        \draw[->] (0, -2) -- (0, 2) node[above] {$y$};
+
+        % Траектория: Эллипс (A=2, B=1.5)
+        \draw[blue, thick] (0,0) ellipse (2 and 1.5);
+
+        % Оси эллипса
+        \draw[dashed, gray] (-2, 0) -- (2, 0);
+        \draw[dashed, gray] (0, -1.5) -- (0, 1.5);
+
+        % Подписи
+        \node at (0, -2.5) {$\varphi = \frac{\pi}{2}$};
+        \node[align=center, font=\tiny] at (2, 2) {Эллипс\\(общий случай)};
+    \end{scope}
+
+    % --- ВАРИАНТ 3: phi = pi (Свойство 11.2) ---
+    \begin{scope}[xshift=8cm]
+        \draw[->] (-2.5, 0) -- (2.5, 0) node[right] {$x$};
+        \draw[->] (0, -2) -- (0, 2) node[above] {$y$};
+
+        % Траектория: Прямая y = -(B/A)x
+        \draw[blue, thick] (-A, B) -- (A, -B);
+
+        % Точки экстремума
+        \fill[red] (-A, B) circle (2pt);
+        \fill[red] (A, -B) circle (2pt);
+
+        % Подписи
+        \node at (0, -2.5) {$\varphi = \pi$};
+        \node[align=center, font=\tiny] at (2, 2) {Прямая\\в 2 и 4 кв.};
+    \end{scope}
+
+\end{tikzpicture}
+\caption{Траектории результирующего движения при сложении перпендикулярных колебаний с разными разностями фаз $\varphi$.}
+\label{fig:lissajous_phases}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.2, every node/.style={font=\small}]
+
+        % --- 1:1 (Окружность/Эллипс) ---
+        \begin{scope}[shift={(-3, 3)}]
+            % Оси
+            \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+            \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+            % Фигура: x=sin(t), y=cos(t) -> Окружность (сдвиг фаз pi/2)
+            \draw[blue, thick, domain=0:360, samples=100] plot ({sin(\x)}, {cos(\x)});
+            \node at (0, -1.8) {$\omega_x : \omega_y = 1:1$};
+            \node[font=\tiny, gray] at (0, -2.1) {(окружность)};
+        \end{scope}
+
+        % --- 1:2 (Восьмерка горизонтальная) ---
+        \begin{scope}[shift={(3, 3)}]
+            \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+            \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+            % Фигура: x=sin(t), y=sin(2t)
+            \draw[blue, thick, domain=0:360, samples=200] plot ({sin(\x)}, {sin(2*\x)});
+            \node at (0, -1.8) {$\omega_x : \omega_y = 1:2$};
+        \end{scope}
+
+        % --- 2:1 (Восьмерка вертикальная) ---
+        \begin{scope}[shift={(-3, -2)}]
+            \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+            \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+            % Фигура: x=sin(2t), y=sin(t)
+            \draw[blue, thick, domain=0:360, samples=200] plot ({sin(2*\x)}, {sin(\x)});
+            \node at (0, -1.8) {$\omega_x : \omega_y = 2:1$};
+        \end{scope}
+
+        % --- 3:2 (Сложная фигура) ---
+        \begin{scope}[shift={(3, -2)}]
+            \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+            \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+            % Фигура: x=sin(3t), y=sin(2t)
+            \draw[blue, thick, domain=0:360, samples=200] plot ({sin(3*\x)}, {sin(2*\x)});
+            \node at (0, -1.8) {$\omega_x : \omega_y = 3:2$};
+        \end{scope}
+
+    \end{tikzpicture}
+	\caption{Типовые фигуры Лиссажу при разности фаз $\varphi = \pi/2$. Форма траектории определяется отношением частот складываемых колебаний. \textbf{ВАЖНО:} фигуры Лиссажу находятся как бы в квадрате и всегда касаются границ}
+    \label{fig:lissajous_figures}
+\end{figure}

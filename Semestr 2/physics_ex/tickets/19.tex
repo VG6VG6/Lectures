@@ -49,3 +49,71 @@
 \end{equation}
 где $\vec{k} = k \vec{n} = \frac{2\pi}{\lambda} \vec{n}$ --- \textbf{волновой вектор}. Его направление совпадает с направлением распространения волны, а модуль равен волновому числу $k$. Уравнение \eqref{eq:3d_wave} описывает плоскую монохроматическую волну, волновые поверхности которой являются плоскостями, перпендикулярными $\vec{k}$.
 \end{definition}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.1, >=Stealth]
+
+        % ==========================================
+        % ЧАСТЬ 1: Волновой вектор и фронт в 3D (Опр. 19.3)
+        % ==========================================
+        \begin{scope}[shift={(-4, 0)}]
+            \node[font=\bfseries, align=center] at (0, 2.2) {3D: Волновой фронт};
+
+            % 3D перспектива (изометрия)
+            \begin{scope}[x={(1cm,0cm)}, y={(0cm,1cm)}, z={(-0.4cm,-0.4cm)}]
+                % Оси
+                \draw[->] (0,0,0) -- (3,0,0) node[right] {$x$};
+                \draw[->] (0,0,0) -- (0,3,0) node[above] {$y$};
+                \draw[->] (0,0,0) -- (0,0,3) node[below] {$z$};
+
+                % Волновой фронт (плоскость, параллельная yOz)
+                % Рисуем параллелограмм
+                \fill[blue!10, opacity=0.5] (1.5, -1, -1) -- (1.5, 1, -1) -- (1.5, 1, 1) -- (1.5, -1, 1) -- cycle;
+                \draw[blue, thick] (1.5, -1, -1) -- (1.5, 1, -1) -- (1.5, 1, 1) -- (1.5, -1, 1) -- cycle;
+
+                % Волновой вектор k (перпендикулярно плоскости)
+                \draw[red, ultra thick, ->] (0,0,0) -- (3,0,0) node[above, right] {$\vec{k}$};
+
+                % Радиус-вектор r (в точку на плоскости)
+                \draw[gray, dashed, ->] (0,0,0) -- (1.5, 0.8, 0.8);
+                \node[gray, right] at (0.5, 0.4, 0.4) {$\vec{r}$};
+
+                % Проекция r на k (путь волны)
+                \draw[gray, dashed] (1.5, 0.8, 0.8) -- (1.5, 0, 0);
+                \draw[<->, thick] (0, -0.3, 0) -- (1.5, -0.3, 0) node[midway, below] {$x = \vec{n} \cdot \vec{r}$};
+            \end{scope}
+
+            \node[font=\small, align=center] at (0, -1.5) {Фронт $\perp \vec{k}$\\$\xi(\vec{r},t) = A\cos(\omega t - \vec{k}\cdot\vec{r})$};
+        \end{scope}
+
+        % ==========================================
+        % ЧАСТЬ 2: Затухание волны (Опр. 19.2)
+        % ==========================================
+        \begin{scope}[shift={(3, 0)}]
+            \node[font=\bfseries] at (0, 2.2) {Затухание (поглощение)};
+
+            % Оси
+            \draw[->] (0, 0) -- (4, 0) node[right] {$x$};
+            \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$\xi$};
+
+            % Экспоненциальные огибающие
+            \draw[red, dashed, thick, domain=0:3.8, samples=50] plot (\x, {exp(-0.8*\x)});
+            \draw[red, dashed, thick, domain=0:3.8, samples=50] plot (\x, {-exp(-0.8*\x)});
+
+            % Колебания
+            \draw[blue, thick, domain=0:3.8, samples=150] plot (\x, {exp(-0.8*\x)*cos(5*\x r)});
+
+            % Подписи
+            \node[red, font=\small, align=left] at (2.2, 1.2) {$A(x) = A_0 e^{-\gamma x}$};
+            \node[font=\small] at (2.2, -1.2) {Амплитуда падает};
+
+            % Отметка gamma
+            \draw[<->] (0, -1.2) -- (1.25, -1.2); % 1/gamma approx
+            \node[below, font=\tiny] at (0.6, -1.2) {$\delta = 1/\gamma$};
+        \end{scope}
+
+    \end{tikzpicture}
+    \caption{Иллюстрация свойств плоской волны. Слева: волновой вектор $\vec{k}$ перпендикулярен фазовой поверхности. Справа: затухание амплитуды в поглощающей среде по закону $A(x) = A_0 e^{-\gamma x}$.}
+    \label{fig:wave_3d_damping}
+\end{figure}
