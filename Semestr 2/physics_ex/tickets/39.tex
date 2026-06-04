@@ -57,3 +57,214 @@
 \begin{remark}
 Основное уравнение МКТ \eqref{eq:mkt_main_39} связывает макроскопический параметр (давление $p$) с микроскопическими характеристиками газа (концентрацией $n$ и средней кинетической энергией поступательного движения молекул $\langle E_{\text{пост}} \rangle$). Это уравнение является фундаментальным для молекулярно-кинетической теории и позволяет объяснить газовые законы с позиций движения молекул.
 \end{remark}
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2,
+        >=Stealth,
+        font=\small,
+        molecule/.style={circle, fill=blue!60, inner sep=2pt},
+        wall/.style={fill=gray!30, draw=black, thick}
+    ]
+
+    % ==========================================
+    % ЧАСТЬ 1: УДАР МОЛЕКУЛЫ О СТЕНКУ
+    % ==========================================
+    \begin{scope}[shift={(-4, 0)}]
+        \node[font=\bfseries, align=center] at (0, 2.2) {Удар молекулы о стенку};
+
+        % Стенка (вертикальная)
+        \fill[gray!30] (1.5, -1.2) rectangle (2.0, 1.2);
+        \draw[thick] (1.5, -1.2) rectangle (2.0, 1.2);
+        \node[right, align=left] at (2.0, 1.0) {стенка\\площадь $S$};
+
+        % Молекула ДО удара (слева)
+        \fill[blue!60] (-1.5, 0.5) circle (4pt);
+        \draw[->, blue, thick] (-1.4, 0.5) -- (-0.3, 0.5) node[midway, above] {$v_x$};
+        \node[below, align=center] at (-1.5, 0.2) {до удара:\\$v_x > 0$};
+
+        % Молекула ПОСЛЕ удара (справа, отлетает)
+        \fill[blue!60] (0.72, 0.5) circle (4pt);
+        \draw[->, red, thick] (0.6, 0.5) -- (-0.3, 0.5) node[midway, above] {$-v_x$};
+        \node[below, align=center] at (0.5, 0.2) {после удара:\\$v_x < 0$};
+
+        % Изменение импульса (стрелка внизу)
+        \draw[<->, green!60!black, thick] (-1.0, -0.8) -- (1.0, -0.8)
+            node[midway, below, font=\small] {$\Delta p_x = 2m_0 v_x$};
+
+        % Ось x
+        \draw[->, thick] (-2.0, -1.5) -- (2.2, -1.5) node[right] {$x$};
+        \node at (-2.0, -1.7) {$O$};
+    \end{scope}
+    \end{tikzpicture}
+    \caption{Модель идеального газа в МКТ. Слева: упругий удар молекулы о стенку передаёт импульс $\Delta p_x = 2m_0 v_x$. Справа: кубический сосуд со стороной $l$ содержит $N$ молекул, движущихся хаотично.}
+    \label{fig:mkt_derivation}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.3,
+        >=Stealth,
+        font=\small,
+        molecule/.style={circle, fill=blue!60, inner sep=2pt}
+    ]
+
+    \node[font=\bfseries] at (1.5, 3.5) {Кубический сосуд (рёбра $l$)};
+
+    % === КУБ В ИЗОМЕТРИИ ===
+    % Координаты вершин (передняя грань и задняя со смещением)
+    % Передняя грань: A(0,0), B(2,0), C(2,2), D(0,2)
+    % Задняя грань: E(0.7,0.7), F(2.7,0.7), G(2.7,2.7), H(0.7,2.7)
+
+    % Задняя грань (рисуем первой, чтобы была "сзади")
+    \draw[thick, gray!50] (0.7,0.7) -- (2.7,0.7) -- (2.7,2.7) -- (0.7,2.7) -- cycle;
+
+    % Соединительные рёбра
+    \draw[thick] (0,0) -- (0.7,0.7);
+    \draw[thick] (2,0) -- (2.7,0.7);
+    \draw[thick] (2,2) -- (2.7,2.7);
+    \draw[thick] (0,2) -- (0.7,2.7);
+
+    % Передняя грань (рисуем последней, чтобы была "спереди")
+    \draw[thick, fill=blue!5, fill opacity=0.3] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+    \draw[thick] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+
+    % === ПОДПИСИ РАЗМЕРОВ l ===
+    % Нижнее ребро (внизу под кубом)
+    \draw[<->] (0, -0.35) -- (2, -0.35) node[midway, below] {$l$};
+
+    % Левое вертикальное ребро (слева от куба)
+    \draw[<->] (-0.35, 0) -- (-0.35, 2) node[midway, left] {$l$};
+
+    % Глубина (сверху, вдоль наклонного ребра)
+    \draw[<->] (0.35, 2.35) -- (1.05, 3.05) node[midway, above left] {$l$};
+
+    % === МОЛЕКУЛЫ ВНУТРИ ===
+    % Молекула 1 (ближе к передней грани)
+    \fill[blue!60] (0.6, 0.8) circle (3pt);
+    \draw[->, blue, thick] (0.6, 0.8) -- (1.0, 1.0);
+
+    % Молекула 2 (в центре)
+    \fill[blue!60] (1.3, 1.2) circle (3pt);
+    \draw[->, blue, thick] (1.3, 1.2) -- (1.1, 1.5);
+
+    % Молекула 3 (ближе к задней грани)
+    \fill[blue!60] (1.8, 1.6) circle (3pt);
+    \draw[->, blue, thick] (1.8, 1.6) -- (2.0, 1.4);
+
+    % Молекула 4 (сверху)
+    \fill[blue!60] (1.0, 1.7) circle (3pt);
+    \draw[->, blue, thick] (1.0, 1.7) -- (1.3, 1.5);
+
+    % Молекула 5 (справа внизу)
+    \fill[blue!60] (1.7, 0.6) circle (3pt);
+    \draw[->, blue, thick] (1.7, 0.6) -- (1.5, 0.9);
+
+    % === БЛОК ПАРАМЕТРОВ (справа от куба, с отступом) ===
+    \node[
+        draw,
+        fill=yellow!10,
+        rounded corners,
+        align=left,
+        font=\small,
+        inner sep=6pt,
+        text width=3.2cm
+    ] at (4.2, 1.3)
+    {
+        \textbf{Параметры сосуда:}\\[6pt]
+        Площадь стенки:\\
+        \quad $S = l^2$\\[6pt]
+        Объём:\\
+        \quad $V = l^3$\\[6pt]
+        Концентрация:\\
+        \quad $n = \dfrac{N}{V}$
+    };
+
+    % Стрелка от куба к блоку (опционально, для связи)
+    \draw[->, gray, dashed] (2.2, 1.0) -- (2.8, 1.3);
+
+    \end{tikzpicture}
+    \caption{Кубический сосуд со стороной $l$, в котором находятся $N$ молекул идеального газа, движущихся хаотично (синие стрелки).}
+    \label{fig:cubic_vessel}
+\end{figure}
+
+\vspace{0.5cm}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.1,
+        >=Stealth,
+        font=\small,
+        thick
+    ]
+
+    \node[font=\bfseries] at (4, 6.5) {Распределение молекул по скоростям (Максвелл)};
+
+    % === ОСИ ===
+    \draw[->] (0, 0) -- (8, 0) node[right, font=\normalsize] {$v$};
+    \draw[->] (0, 0) -- (0, 5.5) node[above, font=\normalsize] {$f(v)$};
+    \node[below left] at (0, 0) {$O$};
+
+    % === КРИВАЯ РАСПРЕДЕЛЕНИЯ ===
+    % f(v) = 2.2 * v^2 * exp(-0.21 * v^2) — пик при v≈2.2, высота ≈3.9
+    \draw[blue, very thick, domain=0:7.5, samples=200]
+        plot (\x, {2.2 * \x^2 * exp(-0.21 * \x^2)});
+
+    % === ХАРАКТЕРИСТИЧЕСКИЕ СКОРОСТИ ===
+    \def\vmp{2.2}    % наиболее вероятная (пик кривой)
+    \def\vmean{2.9}  % средняя
+    \def\vrms{3.5}   % среднеквадратичная
+
+    % Вертикальные линии
+    \draw[red, dashed, thick] (\vmp, 0) -- (\vmp, 3.9);
+    \draw[green!60!black, dashed, thick] (\vmean, 0) -- (\vmean, 3.2);
+    \draw[purple, dashed, thick] (\vrms, 0) -- (\vrms, 2.1);
+
+    % Подписи под осью
+    \node[red, below, align=center, font=\footnotesize] at (\vmp, -0.4)
+        {$v_{\text{н.в.}}$\\};
+
+    \node[green!60!black, below, align=center, font=\footnotesize] at (\vmean, -0.4)
+        {$\langle v \rangle$\\};
+
+    \node[purple, below, align=center, font=\footnotesize] at (\vrms, -0.4)
+        {$v_{\text{кв}}$\\};
+
+    % === ПОЯСНЕНИЕ В ПРАВОМ ВЕРХНЕМ УГЛУ ===
+    \node[
+        draw,
+        fill=white,
+        rounded corners,
+        align=left,
+        font=\small,
+        inner sep=5pt
+    ] at (6.5, 4.5)
+    {
+        Хаотическое движение:\\[6pt]
+        $\langle v_x^2 \rangle = \langle v_y^2 \rangle = \langle v_z^2 \rangle$\\[6pt]
+        $\langle v^2 \rangle = 3\langle v_x^2 \rangle$
+    };
+
+    % === ПОЯСНЕНИЕ ПОРЯДКА СКОРОСТЕЙ ===
+    \node[
+        draw,
+        fill=yellow!10,
+        rounded corners,
+        align=center,
+        font=\small,
+        inner sep=5pt
+    ] at (4, -1.8)
+    {
+        Порядок скоростей:\\
+        $v_{\text{н.в.}} < \langle v \rangle < v_{\text{кв}}$
+    };
+
+    \end{tikzpicture}
+    \caption{Распределение Максвелла: не все молекулы имеют одинаковую скорость. Показаны наиболее вероятная $v_{\text{н.в.}}$, средняя $\langle v \rangle$ и среднеквадратичная $v_{\text{кв}}$ скорости.}
+    \label{fig:maxwell_distribution_fixed}
+\end{figure}
+

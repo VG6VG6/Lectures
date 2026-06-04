@@ -47,3 +47,92 @@
 \textbf{Графическое определение работы.} На $pV$-диаграмме работа численно равна площади под кривой адиабаты. Поскольку адиабата круче изотермы, при расширении от одного объёма до другого адиабатная работа \textbf{меньше} изотермической (при тех же начальных параметрах), так как давление падает быстрее из-за охлаждения газа.
 \par\noindent\textbf{Практические примеры:} охлаждение воздуха при выходе из баллона (образование тумана), резкий нагрев дизельного топлива при адиабатном сжатии в цилиндре двигателя, работа турбин и компрессоров в термодинамических циклах.
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2,
+        >=Stealth,
+        font=\small,
+        thick
+    ]
+    
+    \node[font=\bfseries] at (3, 4.6) {Адиабатический процесс ($Q = 0$)};
+    
+    % === ОСИ ===
+    \draw[->] (0, 0) -- (5.5, 0) node[right, font=\normalsize] {$V$};
+    \draw[->] (0, 0) -- (0, 4) node[above, font=\normalsize] {$p$};
+    \node[below left] at (0, 0) {$O$};
+    
+    % === ПАРАМЕТРЫ ===
+    \def\Vone{1.5}
+    \def\Vtwo{4.0}
+    \def\Pone{3.33}
+    \def\gamma{1.4}
+    \def\Ciso{5.0}           % p = 5/V (изотерма)
+    \def\Cadia{5.75}         % p = 5.85/V^1.4 (адиабата)
+    
+    % === ИЗОТЕРМА (синяя, менее крутая) ===
+    \draw[blue, thick, domain=1.2:5.0, samples=100] 
+        plot (\x, {\Ciso/\x});
+    
+    % === АДИАБАТА (красная, более крутая) ===
+    \draw[red, very thick, domain=1.2:5.0, samples=100] 
+        plot (\x, {\Cadia/pow(\x, \gamma)});
+    
+    % === ЗАШТРИХОВАННЫЕ ПЛОЩАДИ ===
+    % Площадь под изотермой (голубая)
+    \fill[blue!15, opacity=0.5, domain=\Vone:\Vtwo, samples=50] 
+        plot (\x, {\Ciso/\x}) -- (\Vtwo, 0) -- (\Vone, 0) -- cycle;
+    
+    % Площадь под адиабатой (красная, поверх)
+    \fill[red!15, opacity=0.5, domain=\Vone:\Vtwo, samples=50] 
+        plot (\x, {\Cadia/pow(\x, \gamma)}) -- (\Vtwo, 0) -- (\Vone, 0) -- cycle;
+    
+    % === ТОЧКА 1 (общая для обеих кривых) ===
+    \fill[black] (\Vone, \Pone) circle (3pt);
+    \node[above left] at (\Vone, \Pone) {$1$};
+    
+    % === ТОЧКА 2 (изотерма) ===
+    \def\PtwoIso{1.25}  % 5/4.0
+    \fill[blue] (\Vtwo, \PtwoIso) circle (3pt);
+    
+    % === ТОЧКА 2 (адиабата) ===
+    \def\PtwoAdia{0.84}  % 5.85/4^1.4
+    \fill[red] (\Vtwo, \PtwoAdia) circle (3pt);
+    
+    % === ВЕРТИКАЛЬНЫЕ ЛИНИИ ===
+    \draw[dashed, gray] (\Vone, 0) -- (\Vone, \Pone);
+    \draw[dashed, blue] (\Vtwo, 0) -- (\Vtwo, \PtwoIso);
+    \draw[dashed, red] (\Vtwo, 0) -- (\Vtwo, \PtwoAdia);
+    
+    % === ПОДПИСИ ОСЕЙ ===
+    \node[below] at (\Vone, 0) {$V_1$};
+    \node[below] at (\Vtwo, 0) {$V_2$};
+    \node[left] at (0, \Pone) {$p_1$};
+    
+    % === СТРЕЛКИ НАПРАВЛЕНИЯ ===
+    \draw[->, blue, thick] (2.5, 2.0) -- (3.0, 1.67);
+    \draw[->, red, thick] (2.5, 1.7) -- (3.0, 1.3);
+    
+    % === ПОДПИСИ КРИВЫХ ===
+    \node[blue, font=\footnotesize] at (4.5, 1.5) {Изотерма};
+    \node[red, font=\footnotesize] at (4.5, 0.5) {Адиабата};
+    
+    % === БЛОК СРАВНЕНИЯ РАБОТ ===
+    \node[draw, fill=yellow!10, rounded corners, align=left, font=\small, inner sep=5pt] at (3, -1.2) 
+        {Работа при расширении:\\[4pt]
+         $A_{\text{изот}} > A_{\text{адиаб}}$\\[4pt]
+         (адиабата круче изотермы)};
+    
+    % === БЛОК УРАВНЕНИЙ ===
+    \node[draw, fill=green!10, rounded corners, align=left, font=\small, inner sep=4pt] at (4.3, 3.5) 
+        {Изотерма: $pV = \text{const}$\\[4pt]
+         Адиабата: $pV^\gamma = \text{const}$\\[4pt]
+         $\gamma = \frac{C_p}{C_V} > 1$};
+    
+    \end{tikzpicture}
+    \caption{Сравнение адиабатического и изотермического процессов на pV-диаграмме. Обе кривые начинаются в точке 1. Адиабата (красная) круче изотермы (синяя), поэтому при расширении от $V_1$ до $V_2$ работа газа в адиабатическом процессе меньше: $A_{\text{адиаб}} < A_{\text{изот}}$.}
+    \label{fig:adiabatic_vs_isothermal}
+\end{figure}
+

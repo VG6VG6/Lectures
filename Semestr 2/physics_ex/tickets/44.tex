@@ -51,3 +51,72 @@
     \item Формулы \eqref{eq:work_isothermal_V} и \eqref{eq:work_isothermal_p} широко используются в расчётах тепловых машин, компрессоров и пневматических систем.
 \end{itemize}
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2,
+        >=Stealth,
+        font=\small,
+        thick
+    ]
+
+    \node[font=\bfseries] at (3, 4.5) {Изотермический процесс ($T = \text{const}$)};
+
+    % === ОСИ ===
+    \draw[->] (0, 0) -- (5.5, 0) node[right, font=\normalsize] {$V$};
+    \draw[->] (0, 0) -- (0, 4) node[above, font=\normalsize] {$p$};
+    \node[below left] at (0, 0) {$O$};
+
+    % === ИЗОТЕРМА (гипербола p = 5/V) ===
+    % Ограниченный домен: от V=1.2 (p≈4.2) до V=5.0 (p=1.0)
+    % Кривая аккуратно вписана в область графика
+    \draw[blue, very thick, domain=1.2:5.0, samples=100]
+        plot (\x, {5/\x});
+
+    % === ТОЧКИ 1 И 2 ===
+    \def\Vone{1.5}
+    \def\Vtwo{4.0}
+    \def\Pone{3.33}   % 5/1.5
+    \def\Ptwo{1.25}   % 5/4.0
+
+    \fill[red] (\Vone, \Pone) circle (3pt);
+    \node[above left] at (\Vone, \Pone) {$1$};
+    \fill[red] (\Vtwo, \Ptwo) circle (3pt);
+    \node[below right] at (\Vtwo, \Ptwo) {$2$};
+
+    % === ЗАШТРИХОВАННАЯ ПЛОЩАДЬ (работа) ===
+    \fill[blue!20, opacity=0.5, domain=\Vone:\Vtwo, samples=50]
+        plot (\x, {5/\x}) -- (\Vtwo, 0) -- (\Vone, 0) -- cycle;
+
+    % === ВЕРТИКАЛЬНЫЕ ЛИНИИ К ОСИ V ===
+    \draw[dashed, gray] (\Vone, 0) -- (\Vone, \Pone);
+    \draw[dashed, gray] (\Vtwo, 0) -- (\Vtwo, \Ptwo);
+
+    % === ПОДПИСИ V1 И V2 ===
+    \node[below] at (\Vone, 0) {$V_1$};
+    \node[below] at (\Vtwo, 0) {$V_2$};
+
+    % === ПОДПИСИ p1 И p2 ===
+    \node[left] at (0, \Pone) {$p_1$};
+    \node[left] at (0, \Ptwo) {$p_2$};
+
+    % === СТРЕЛКА НАПРАВЛЕНИЯ ПРОЦЕССА ===
+    \draw[->, blue, thick] (2.5, 2.0) -- (3.0, 1.67);
+
+    % === БЛОК СВОЙСТВ (справа сверху, не перекрывает заголовок) ===
+    \node[draw, fill=green!10, rounded corners, align=left, font=\small, inner sep=4pt] at (4.2, 3.2)
+        {Изотерма:\\$pV = \text{const}$\\[4pt]
+         $\Delta U = 0$\\[4pt]
+         $Q = A$};
+
+    % === ФОРМУЛА РАБОТЫ (внизу по центру) ===
+    \node[draw, fill=yellow!10, rounded corners, align=center, font=\small, inner sep=5pt] at (2.75, -1.0)
+        {Площадь под гиперболой:\\[6pt]
+         $A = \nu RT \ln\dfrac{V_2}{V_1} = \nu RT \ln\dfrac{p_1}{p_2}$};
+
+    \end{tikzpicture}
+    \caption{Изотермический процесс на pV-диаграмме. Кривая — гипербола $p = \nu RT/V$. Работа газа равна площади под гиперболой между $V_1$ и $V_2$ (заштрихованная область).}
+    \label{fig:isothermal_process_fixed}
+\end{figure}
+
