@@ -34,10 +34,44 @@
 \end{remark}
 
 \begin{remark}
-\textbf{Графики гармонических колебаний.} График $x(t)$ представляет собой косинусоиду. Важные особенности:
+\textbf{Графики гармонических колебаний.} График $x(t)$ представляет собой синусоиду. Важные особенности:
 \begin{enumerate}
     \item Изменение амплитуды $A$ растягивает или сжимает график по вертикали, но \textbf{не влияет на период} колебаний.
     \item Различные начальные фазы $\varphi$ смещают график вдоль оси времени, не меняя его форму и период.
     \item Период пружинного маятника $T = 2\pi\sqrt{m/k}$: при увеличении массы $m$ период увеличивается, а при увеличении жёсткости $k$ --- уменьшается.
 \end{enumerate}
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        axis lines = center,
+        xlabel = {$t$},
+        ylabel = {$x(t)$},
+        xmin = 0, xmax = 5.5,
+        ymin = -2.5, ymax = 2.5,
+        domain = 0:5.3,
+        samples = 200,
+        grid = both,
+        grid style = {dashed, gray!30},
+        width = 0.85\textwidth,
+        height = 0.45\textheight,
+        xtick = {0, 1.047, 2.094, 3.142, 4.189, 5.236},
+        xticklabels = {$0$, $\frac{T}{4}$, $\frac{T}{2}$, $\frac{3T}{4}$, $T$, $\frac{5T}{4}$},
+        ytick = {-2, -1, 0, 1, 2},
+        yticklabels = {$-A$, $-\frac{A}{2}$, $0$, $\frac{A}{2}$, $A$},
+        legend pos = north east,
+    ]
+    \addplot [blue, thick, smooth] {2*cos(deg(1.5*x))};
+    \addlegendentry{$x(t) = A\cos(\omega_0 t)$}
+    \addplot [gray, dashed, domain=0:5.3] {2};
+    \addplot [gray, dashed, domain=0:5.3] {-2};
+    \draw[<->, red, thick]
+        (axis cs:0, -2.3) -- (axis cs:4.189, -2.3)
+        node[midway, below, font=\small, fill=white] {$T = \frac{2\pi}{\omega_0}$};
+    \end{axis}
+    \end{tikzpicture}
+    \caption{График гармонических колебаний}
+    \label{fig:harmonic_graph}
+\end{figure}

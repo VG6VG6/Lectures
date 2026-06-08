@@ -20,6 +20,98 @@
 \textbf{Графический смысл работы:} На термодинамической диаграмме $(p, V)$ работа численно равна площади фигуры, ограниченной кривой процесса, осью абсцисс ($V$) и вертикальными прямыми $V=V_1$, $V=V_2$.
 \end{definition}
 
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.1,
+        >=Stealth,
+        font=\small,
+        thick
+    ]
+    
+    % ==========================================
+    % ЛЕВЫЙ ГРАФИК: ИЗОХОРА (V = const)
+    % ==========================================
+    \begin{scope}[shift={(-4, 0.7)}]
+        \node[font=\bfseries] at (1.5, 4.5) {Изохорный процесс ($V = \text{const}$)};
+        
+        % Оси
+        \draw[->] (0, 0) -- (3.5, 0) node[right, font=\normalsize] {$V$};
+        \draw[->] (0, 0) -- (0, 3.5) node[above, font=\normalsize] {$p$};
+        \node[below left] at (0, 0) {$O$};
+        
+        % Изохора (вертикальная линия)
+        \draw[blue, very thick] (1.8, 0.8) -- (1.8, 2.8);
+        
+        % Стрелка направления (снизу вверх — нагрев)
+        \draw[->, blue, thick] (1.8, 1.5) -- (1.8, 2.2);
+        
+        % Точки 1 и 2
+        \fill[red] (1.8, 0.8) circle (3pt);
+        \node[right] at (1.8, 0.8) {$1$};
+        \fill[red] (1.8, 2.8) circle (3pt);
+        \node[right] at (1.8, 2.8) {$2$};
+        
+        % Площадь под кривой = 0 (нет заштриховки)
+        \node[draw, fill=yellow!10, rounded corners, align=center, font=\small, inner sep=4pt] at (1.5, -0.9) 
+            {Площадь = 0\\[4pt]
+             $A = 0$};
+        
+        % Подпись процесса
+        \node[blue, font=\footnotesize] at (2.2, 1.8) {$V = \text{const}$};
+    \end{scope}
+
+    % ==========================================
+    % ПРАВЫЙ ГРАФИК: ИЗОБАРА (p = const)
+    % ==========================================
+    \begin{scope}[shift={(4, 0.7)}]
+        \node[font=\bfseries] at (1.5, 4.5) {Изобарный процесс ($p = \text{const}$)};
+        
+        % Оси
+        \draw[->] (0, 0) -- (3.5, 0) node[right, font=\normalsize] {$V$};
+        \draw[->] (0, 0) -- (0, 3.5) node[above, font=\normalsize] {$p$};
+        \node[below left] at (0, 0) {$O$};
+        
+        % Заштрихованная область (площадь = работа)
+        \fill[blue!20, opacity=0.5] (0.5, 0) rectangle (2.8, 2.2);
+        
+        % Изобара (горизонтальная линия)
+        \draw[blue, very thick] (0.5, 2.2) -- (2.8, 2.2);
+        
+        % Стрелка направления (слева направо — расширение)
+        \draw[->, blue, thick] (1.2, 2.2) -- (2.0, 2.2);
+        
+        % Точки 1 и 2
+        \fill[red] (0.5, 2.2) circle (3pt);
+        \node[above] at (0.5, 2.2) {$1$};
+        \fill[red] (2.8, 2.2) circle (3pt);
+        \node[above] at (2.8, 2.2) {$2$};
+        
+        % Вертикальные линии к оси V (границы площади)
+        \draw[dashed, gray] (0.5, 0) -- (0.5, 2.2);
+        \draw[dashed, gray] (2.8, 0) -- (2.8, 2.2);
+        
+        % Подписи V1 и V2
+        \node[below] at (0.5, 0) {$V_1$};
+        \node[below] at (2.8, 0) {$V_2$};
+        
+        % Подпись давления
+        \node[left, blue] at (0, 2.2) {$p$};
+        
+        % Формула работы
+        \node[draw, fill=yellow!10, rounded corners, align=center, font=\small, inner sep=4pt] at (1.65, -0.9) 
+            {Площадь = $p \Delta V$\\[4pt]
+             $A = p(V_2 - V_1)$};
+        
+        % Подпись процесса
+        \node[blue, font=\footnotesize] at (1.65, 2.5) {$p = \text{const}$};
+    \end{scope}
+    
+    \end{tikzpicture}
+    \caption{Графический смысл работы газа на pV-диаграмме. Слева: изохорный процесс — объём постоянен, площадь под кривой равна нулю, работа $A = 0$. Справа: изобарный процесс — давление постоянно, работа равна площади прямоугольника $A = p\Delta V$.}
+    \label{fig:pv_diagram}
+\end{figure}
+
 \begin{theorem}[Работа в изохорном процессе]
 Изохорный процесс протекает при постоянном объёме: $V = \text{const}$, следовательно $dV = 0$. Подставляя это в \eqref{eq:elem_work_43}, получаем:
 \begin{equation}

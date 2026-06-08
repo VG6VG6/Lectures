@@ -54,3 +54,52 @@
 \begin{remark}
 \textbf{Графики энергий.} На графиках $T(t)$ и $U(t)$ представляют собой «поднятые» синусоиды (квадраты синуса и косинуса), лежащие строго выше оси времени. Их сумма $E(t)$ --- горизонтальная прямая, что наглядно демонстрирует закон сохранения механической энергии. При построении графиков от координаты $x$ зависимость $U(x)$ --- парабола, а $T(x) = E - U(x)$ --- «перевёрнутая» парабола, симметричная относительно оси энергии.
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        xlabel = {$t$ (время)},
+        ylabel = {$E$ (энергия)},
+        xmin = 0, xmax = 6.5, % 2*pi ~ 6.28
+        ymin = 0, ymax = 2.5,
+        domain = 0:6.5,
+        samples = 200,
+        grid = both,
+        grid style = {dashed, gray!30},
+        width = 0.9\textwidth,
+        height = 0.6\textheight,
+        axis lines = center,
+        legend pos = north west,
+        xtick = {0, 1.57, 3.14, 4.71, 6.28},
+        xticklabels = {$0$, $\frac{T}{4}$, $\frac{T}{2}$, $\frac{3T}{4}$, $T$},
+        ytick = {0, 1, 2},
+        yticklabels = {$0$, $\frac{E}{2}$, $E$}
+    ]
+
+    % Потенциальная энергия U(t) = 2*cos^2(t)
+    \addplot [blue, thick] {2*cos(deg(x))^2};
+    \addlegendentry{$U(t)$ (Потенциальная)}
+
+    % Кинетическая энергия T(t) = 2*sin^2(t)
+    \addplot [orange, thick] {2*sin(deg(x))^2};
+    \addlegendentry{$T(t)$ (Кинетическая)}
+
+    % Полная энергия E = const
+    \addplot [black, dashed, thick] {2};
+    \addlegendentry{$E = \text{const}$}
+
+    % Акцент на переходе энергии в T/4 (максимум кинетической)
+    \draw[dashed, gray] (1.57, 0) -- (1.57, 2);
+    \node[font=\small, align=center, fill=white] at (1.57, 1.2) {Максимум\\$T$, $U=0$};
+
+    % Акцент на переходе энергии в T/2 (максимум потенциальной)
+    \draw[dashed, gray] (3.14, 0) -- (3.14, 2);
+    \node[font=\small, align=center, fill=white] at (3.14, 1.2) {Максимум\\$U$, $T=0$};
+
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Зависимость кинетической $T(t)$ и потенциальной $U(t)$ энергий от времени. Сумма энергий $E$ остается постоянной. Частота изменения энергий в 2 раза выше частоты колебаний.}
+    \label{fig:energy_graph}
+\end{figure}
+

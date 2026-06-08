@@ -60,3 +60,63 @@
     \item Распределение не зависит от давления и объёма газа --- только от температуры и массы молекул.
 \end{enumerate}
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.1,
+        >=Stealth,
+        font=\small,
+        thick
+    ]
+
+    \node[font=\bfseries] at (0, 3.5) {Распределение Максвелла по проекции скорости $\varphi(v_x)$};
+
+    % === ОСИ ===
+    \draw[->] (-4.5, 0) -- (4.5, 0) node[right, font=\normalsize] {$v_x$};
+    \draw[->] (0, 0) -- (0, 2.8) node[above, font=\normalsize] {$\varphi(v_x)$};
+    \node[below left] at (0, 0) {$O$};
+
+    % === КРИВЫЕ ДЛЯ РАЗНЫХ ТЕМПЕРАТУР ===
+    % T1 (низкая температура) — узкий высокий колокол
+    \draw[blue, very thick, domain=-4:4, samples=100]
+        plot (\x, {2.0 * exp(-0.8 * \x * \x)});
+
+    % T2 (средняя температура) — средний колокол
+    \draw[green!60!black, very thick, domain=-4:4, samples=100]
+        plot (\x, {1.4 * exp(-0.4 * \x * \x)});
+
+    % T3 (высокая температура) — широкий низкий колокол
+    \draw[red, very thick, domain=-4:4, samples=100]
+        plot (\x, {1.0 * exp(-0.2 * \x * \x)});
+
+    % === ВЕРТИКАЛЬНАЯ ЛИНИЯ ПРИ vx=0 ===
+    \draw[dashed, gray] (0, 0) -- (0, 2.5);
+    \node[above, gray, font=\footnotesize] at (0, 2.5) {$v_x = 0$ (максимум)};
+
+    % === ПОДПИСИ КРИВЫХ ===
+    \node[blue, font=\footnotesize, align=center] at (-2.5, 2.2)
+        {$T_1$\\(низкая)};
+    \node[green!60!black, font=\footnotesize, align=center] at (-2.8, 1.5)
+        {$T_2$\\(средняя)};
+    \node[red, font=\footnotesize, align=center] at (-3.0, 0.9)
+        {$T_3$\\(высокая)};
+
+    % === СТРЕЛКИ ПОКАЗА НАПРАВЛЕНИЯ ИЗМЕНЕНИЯ T ===
+    \draw[->, purple, thick] (-1.5, 2.0) -- (-1.5, 1.0);
+    \node[purple, right, font=\footnotesize] at (-1.5, 1.5) {$T$ растёт};
+
+    % === БЛОК СВОЙСТВ ===
+    \node[draw, fill=yellow!10, rounded corners, align=left, font=\small, inner sep=5pt] at (8, 2.0)
+        {Свойства $\varphi(v_x)$:\\[4pt]
+        $\bullet$ Симметрия: $\varphi(-v_x) = \varphi(v_x)$\\[4pt]
+        $\bullet$ Максимум при $v_x = 0$\\[4pt]
+        $\bullet$ $\langle v_x \rangle = 0$\\[4pt]
+        $\bullet$ $\langle v_x^2 \rangle = \frac{kT}{m}$\\[4pt]
+        $\bullet$ $\int_{-\infty}^{+\infty} \varphi(v_x) dv_x = 1$};
+
+    \end{tikzpicture}
+    \caption{Функция распределения Максвелла по проекции скорости $\varphi(v_x)$ для трёх температур $T_1 < T_2 < T_3$. При увеличении температуры кривая становится шире и ниже (разброс скоростей растёт), но площадь под кривой остаётся равной 1 (условие нормировки). Максимум всегда достигается при $v_x = 0$.}
+    \label{fig:maxwell_vx_distribution}
+\end{figure}
+

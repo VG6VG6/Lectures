@@ -60,3 +60,92 @@ $TS$-диаграмма наглядно демонстрирует, что ча
     \item Диаграмма широко используется в теплоэнергетике для анализа циклов паровых и газовых турбин, так как позволяет легко оценивать КПД и потери.
 \end{enumerate}
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2,
+        >=Stealth,
+        font=\small,
+        thick
+    ]
+
+    \node[font=\bfseries] at (3.5, 4.5) {Цикл Карно в TS-координатах};
+
+    % === ОСИ ===
+    \draw[->] (0, 0) -- (6, 0) node[right, font=\normalsize] {$S$};
+    \draw[->] (0, 0) -- (0, 4) node[above, font=\normalsize] {$T$};
+    \node[below left] at (0, 0) {$O$};
+
+    % === ПАРАМЕТРЫ ЦИКЛА ===
+    \def\SA{1.5}    % Энтропия левой адиабаты
+    \def\SB{4.0}    % Энтропия правой адиабаты
+    \def\Ttwo{1.2}  % Температура холодильника (нижняя изотерма)
+    \def\Tone{3.2}  % Температура нагревателя (верхняя изотерма)
+
+    % === ЗАШТРИХОВАННАЯ ПЛОЩАДЬ ЦИКЛА (работа A) ===
+    \fill[blue!20, opacity=0.6] (\SA, \Ttwo) rectangle (\SB, \Tone);
+
+    % === ПРЯМОУГОЛЬНИК ЦИКЛА ===
+    \draw[blue, very thick] (\SA, \Ttwo) rectangle (\SB, \Tone);
+
+    % === ВЕРШИНЫ ЦИКЛА ===
+    \fill[red] (\SA, \Tone) circle (3pt);
+    \node[above left] at (\SA, \Tone) {$A$};
+
+    \fill[red] (\SB, \Tone) circle (3pt);
+    \node[above right] at (\SB, \Tone) {$B$};
+
+    \fill[red] (\SB, \Ttwo) circle (3pt);
+    \node[below right] at (\SB, \Ttwo) {$C$};
+
+    \fill[red] (\SA, \Ttwo) circle (3pt);
+    \node[below left] at (\SA, \Ttwo) {$D$};
+
+    % === СТРЕЛКИ НАПРАВЛЕНИЯ ОБХОДА (по часовой) ===
+    \draw[->, blue, thick] (\SA+0.3, \Tone) -- (\SB-0.3, \Tone);
+    \draw[->, blue, thick] (\SB, \Tone-0.3) -- (\SB, \Ttwo+0.3);
+    \draw[->, blue, thick] (\SB-0.3, \Ttwo) -- (\SA+0.3, \Ttwo);
+    \draw[->, blue, thick] (\SA, \Ttwo+0.3) -- (\SA, \Tone-0.3);
+
+    % === ПОДПИСИ ТЕМПЕРАТУР НА ОСИ T ===
+    \draw[dashed, gray] (0, \Tone) -- (\SA, \Tone);
+    \draw[dashed, gray] (0, \Ttwo) -- (\SA, \Ttwo);
+    \node[left] at (0, \Tone) {$T_1$};
+    \node[left] at (0, \Ttwo) {$T_2$};
+
+    % === ПОДПИСИ ЭНТРОПИЙ НА ОСИ S ===
+    \draw[dashed, gray] (\SA, 0) -- (\SA, \Ttwo);
+    \draw[dashed, gray] (\SB, 0) -- (\SB, \Ttwo);
+    \node[below] at (\SA, 0) {$S_A$};
+    \node[below] at (\SB, 0) {$S_B$};
+
+    % === РАЗМЕРЫ ΔS И ΔT ===
+    \draw[<->, purple, thick] (\SA, -0.7) -- (\SB, -0.7)
+        node[midway, below] {$\Delta S = S_B - S_A$};
+
+    % === ПОДПИСИ ПРОЦЕССОВ ===
+    \node[blue, font=\footnotesize, align=center] at (2.75, \Tone+0.3)
+        {Изотерма $T_1$\\(нагрев, $Q_1 > 0$)};
+    \node[blue, font=\footnotesize, align=center] at (2.75, \Ttwo-0.4)
+        {Изотерма $T_2$\\(охлаждение, $Q_2 < 0$)};
+    \node[blue, font=\footnotesize, rotate=90] at (\SA-0.4, 2.2) {Адиабата};
+    \node[blue, font=\footnotesize, rotate=90] at (\SB+0.4, 2.2) {Адиабата};
+
+    % === ФОРМУЛЫ В ЦЕНТРЕ ПРЯМОУГОЛЬНИКА ===
+    \node[draw, fill=yellow!10, rounded corners, align=center, font=\small, inner sep=5pt] at (7, 2.2)
+        {Площадь = Работа:\\[6pt]
+         $A = (T_1 - T_2)\Delta S$\\[6pt]
+         $\eta = \dfrac{A}{Q_1} = 1 - \dfrac{T_2}{T_1}$};
+
+    % === БЛОК С ФОРМУЛАМИ ДЛЯ Q1 И Q2 ===
+    \node[draw, fill=green!10, rounded corners, align=left, font=\small, inner sep=4pt] at (7, 4.5)
+        {Теплота:\\[4pt]
+        $Q_1 = T_1 \Delta S$\\[4pt]
+        $|Q_2| = T_2 \Delta S$};
+
+    \end{tikzpicture}
+    \caption{Цикл Карно в TS-координатах. Прямоугольник $ABCD$: изотермы $T_1$ и $T_2$ (горизонтальные линии), адиабаты (вертикальные линии, $S = \text{const}$). Площадь прямоугольника равна работе $A = (T_1 - T_2)\Delta S$. КПД цикла $\eta = 1 - T_2/T_1$.}
+    \label{fig:carnot_ts_diagram}
+\end{figure}
+

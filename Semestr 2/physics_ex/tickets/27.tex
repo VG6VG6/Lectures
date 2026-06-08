@@ -38,3 +38,72 @@
 \begin{remark}
 \textbf{Практическое значение:} В музыкальных инструментах звучание струны представляет собой суперпозицию основной частоты и ряда обертонов. Тембр звука определяется относительными амплитудами этих гармоник. Изменяя длину струны $L$ (зажимая пальцем), натяжение $F$ или линейную плотность $\rho$ (выбирая струны разной толщины), музыканты регулируют высоту тона. Явление дискретного спектра частот характерно не только для струн, но и для любых ограниченных волноводов (трубы, мембраны, резонаторы).
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.0, >=Stealth, font=\small]
+        \def\L{6}   % Длина струны
+        \def\A{0.9} % Амплитуда
+
+        % Безопасная функция для рисования мод (использует градусы для совместимости)
+        \newcommand{\drawMode}[2]{% #1 = номер моды n, #2 = цвет
+            \draw[domain=0:\L, smooth, samples=100, variable=\x, #2, thick]
+                plot ({\x}, {\A*sin(180*#1*\x/\L)});
+        }
+
+        % === МОДА n=1 (Основная частота) ===
+        \begin{scope}[shift={(0, 3.2)}]
+            \node[font=\bfseries] at (0, 1.2) {$n=1$ (основная частота $\nu_1$)};
+            \draw[->] (-0.2, 0) -- (\L+0.5, 0) node[right] {$x$};
+            \draw[gray, dashed] (0,0) -- (\L,0); % положение равновесия
+            \drawMode{1}{blue}
+            % Узлы
+            \fill[black] (0,0) circle (2.5pt);
+            \fill[black] (\L,0) circle (2.5pt);
+            % Пучность
+            \fill[red] (\L/2, \A) circle (2.5pt);
+            \node[right, red] at (\L/2, \A) {пучность};
+            % Размер L
+            \draw[<->] (0, -0.6) -- (\L, -0.6) node[midway, fill=white] {$L = \frac{\lambda_1}{2}$};
+        \end{scope}
+
+        % === МОДА n=2 (2-й обертон) ===
+        \begin{scope}[shift={(0, 0.5)}]
+            \node[font=\bfseries] at (0, 1.2) {$n=2$ (2-й обертон $2\nu_1$)};
+            \draw[->] (-0.2, 0) -- (\L+0.5, 0) node[right] {$x$};
+            \draw[gray, dashed] (0,0) -- (\L,0);
+            \drawMode{2}{blue}
+            % Узлы
+            \fill[black] (0,0) circle (2.5pt);
+            \fill[black] (\L/2,0) circle (2.5pt) node[below, black] {узел};
+            \fill[black] (\L,0) circle (2.5pt);
+            % Пучности
+            \fill[red] (\L/4, \A) circle (2.5pt);
+            \fill[red] (3*\L/4, -\A) circle (2.5pt);
+            % Размеры
+            \draw[<->] (0, -0.6) -- (\L/2, -0.6) node[midway, fill=white] {$\frac{\lambda_2}{2}$};
+            \draw[<->] (0, -1.1) -- (\L, -1.1) node[midway, fill=white] {$L = \lambda_2$};
+        \end{scope}
+
+        % === МОДА n=3 (3-й обертон) ===
+        \begin{scope}[shift={(0, -2.2)}]
+            \node[font=\bfseries] at (0, 1.2) {$n=3$ (3-й обертон $3\nu_1$)};
+            \draw[->] (-0.2, 0) -- (\L+0.5, 0) node[right] {$x$};
+            \draw[gray, dashed] (0,0) -- (\L,0);
+            \drawMode{3}{blue}
+            % Узлы
+            \fill[black] (0,0) circle (2.5pt);
+            \fill[black] (\L/3,0) circle (2.5pt);
+            \fill[black] (2*\L/3,0) circle (2.5pt);
+            \fill[black] (\L,0) circle (2.5pt);
+            % Пучности
+            \fill[red] (\L/6, \A) circle (2.5pt);
+            \fill[red] (\L/2, -\A) circle (2.5pt);
+            \fill[red] (5*\L/6, \A) circle (2.5pt);
+            % Размер
+            \draw[<->] (0, -0.6) -- (\L, -0.6) node[midway, fill=white] {$L = \frac{3\lambda_3}{2}$};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Собственные моды колебаний струны с закрепленными концами. На концах всегда образуются узлы. Длина струны $L$ содержит целое число полуволн ($n=1,2,3$). Частоты кратны основной: $\nu_n = n\nu_1$.}
+    \label{fig:string_harmonics}
+\end{figure}

@@ -39,3 +39,83 @@
     В этом случае $A_{\min} = |A_1 - A_2|$. Минимумы возникают в точках, где разность хода равна нечётному числу полуволн.
 \end{enumerate}
 \end{property}
+
+\begin{figure}[htbp]
+    \centering
+
+    % === РИСУНОК 1: Интерференция от двух источников ===
+    \begin{tikzpicture}[scale=1.2]
+        \node[font=\bfseries] at (0, 5) {Интерференция от двух источников};
+
+        % Источники
+        \fill[red] (-1.5, 0) circle (3pt) node[below] {$S_1$};
+        \fill[red] (1.5, 0) circle (3pt) node[below] {$S_2$};
+
+        % Волновые фронты от S1 (синие окружности)
+        \foreach \r in {1, 2, 3, 4} {
+            \draw[blue, thin] (-1.5, 0) circle (\r);
+        }
+
+        % Волновые фронты от S2 (красные окружности)
+        \foreach \r in {1, 2, 3, 4} {
+            \draw[red, thin] (1.7, 0) circle (\r);
+        }
+
+        % Линия максимумов (центральная)
+        \draw[green!60!black, ultra thick] (0, 0) -- (0, 3.5);
+        \node[green!60!black, right] at (0, 3) {максимум};
+
+        % Точка наблюдения P
+        \fill[black] (2, 2.5) circle (2pt) node[right] {$P$};
+        \draw[blue, dashed] (-1.5, 0) -- (2, 2.5) node[midway, above left] {$r_1$};
+        \draw[red, dashed] (1.5, 0) -- (2, 2.5) node[midway, above right] {$r_2$};
+
+        % Разность хода
+        \node[align=center, draw, fill=yellow!10] at (-3.5, 2)
+            {$\Delta x = r_2 - r_1$\\[4pt]
+            Максимум: $\Delta x = n\lambda$\\[2pt]
+            Минимум: $\Delta x = (2n+1)\frac{\lambda}{2}$};
+
+        % Оси
+        \draw[->] (-4, 0) -- (4, 0) node[right] {$x$};
+        \draw[->] (0, -0.5) -- (0, 3.5);
+    \end{tikzpicture}
+
+    \vspace{1cm}
+
+    % === РИСУНОК 2: Сложение волн ===
+    \begin{tikzpicture}[scale=1.2]
+        \node[font=\bfseries] at (4, 2.2) {Сложение когерентных волн};
+
+        % Оси
+        \draw[->] (-0.5, 0) -- (7, 0) node[right] {$t$};
+        \draw[->] (0, -2.5) -- (0, 2.5) node[above] {$\xi$};
+
+        % Волна 1
+        \draw[blue, thick, domain=0:6.5, samples=100]
+            plot (\x, {sin(\x*60)});
+        \node[blue] at (0.5, 2.2) {$\xi_1$};
+
+        % Волна 2 (в фазе с первой)
+        \draw[red, dashed, thick, domain=0:6.5, samples=100]
+            plot (\x, {0.8*sin(\x*60)});
+        \node[red] at (0.5, 1.7) {$\xi_2$};
+
+        % Результат (усиление)
+        \draw[green!60!black, thick, domain=0:6.5, samples=100]
+            plot (\x, {1.8*sin(\x*60)});
+        \node[green!60!black] at (3.5, 1.7) {$\xi = \xi_1 + \xi_2$ (усиление)};
+
+        % Разность фаз
+        \draw[<->, purple] (0, -2.2) -- (1.05, -2.2)
+            node[midway, below, font=\small] {$\Delta\varphi = 0$};
+
+        % Подпись
+        \node[align=center, font=\small] at (7, -1.5)
+            {При $\Delta\varphi = 0$:\\амплитуды\\складываются};
+    \end{tikzpicture}
+
+    \caption{Интерференция когерентных волн. Вверху: интерференционная картина от двух источников $S_1$ и $S_2$; точки пересечения волновых фронтов соответствуют максимумам. Внизу: сложение волн при $\Delta\varphi = 0$ (усиление).}
+    \label{fig:interference}
+\end{figure}
+

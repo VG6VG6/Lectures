@@ -37,3 +37,49 @@
 \end{itemize}
 Фазовые сдвиги наглядно демонстрируют, что максимальная скорость достигается при прохождении положения равновесия ($x=0$), а максимальное по модулю ускорение --- в точках максимального отклонения ($x=\pm A$).
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        xlabel = {$t$},
+        ylabel = {$x, v, w$},
+        xmin = 0, xmax = 4,
+        ymin = -4.5, ymax = 4.5,
+        domain = 0:4,
+        samples = 200,
+        grid = both,
+        grid style = {dashed, gray!20}, % Очень легкая сетка, чтобы не мешать
+        width = 0.9\textwidth,
+        height = 0.5\textheight,
+        axis lines = center,
+        legend pos = outer north east,
+        legend style = {fill=none, draw=none}, % Прозрачная легенда
+        xtick = {0, 1.57, 3.14},
+        xticklabels = {$0$, $\frac{\pi}{2\omega_0}$, $\frac{\pi}{\omega_0}$},
+        ytick = {-4, -2, 0, 2, 4},
+        clip=false % Чтобы линии не обрезались на границах
+    ]
+
+    % 1. Смещение (синий) - Амплитуда 1
+    \addplot [blue, thick, smooth] {cos(deg(2*x))};
+    \addlegendentry{$x(t)$ (Смещение)}
+
+    % 2. Скорость (красный) - Амплитуда 2 (опережает на pi/2)
+    \addplot [red, thick, smooth] {-2*sin(deg(2*x))};
+    \addlegendentry{$v(t)$ (Скорость)}
+
+    % 3. Ускорение (зеленый) - Амплитуда 4 (противофаза с x)
+    \addplot [green!60!black, thick, smooth] {-4*cos(deg(2*x))};
+    \addlegendentry{$w(t)$ (Ускорение)}
+
+    % Тонкие серые линии для акцента на фазах (не перекрывают графики)
+    \draw[gray, dotted, thin] (axis cs:1.57, -4.5) -- (axis cs:1.57, 4.5);
+    \draw[gray, dotted, thin] (axis cs:3.14, -4.5) -- (axis cs:3.14, 4.5);
+
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Графики гармонических колебаний. Скорость $v(t)$ опережает смещение $x(t)$ по фазе на $\pi/2$, ускорение $w(t)$ находится в противофазе со смещением ($\pi$).}
+    \label{fig:harmonic_xyz_clean}
+\end{figure}
+

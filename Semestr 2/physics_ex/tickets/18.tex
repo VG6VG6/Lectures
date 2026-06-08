@@ -39,3 +39,79 @@
 \begin{remark}
 \textbf{График плоской волны.} Зависимость $\xi(x, t_0)$ при фиксированном моменте времени $t_0$ представляет собой синусоиду, показывающую распределение смещений \textbf{всех} частиц среды вдоль направления распространения волны в данный момент. Важно отличать его от графика колебаний $\xi(x_0, t)$, который показывает изменение смещения \textbf{одной} конкретной частицы во времени. Фазовая скорость $v = dx/dt$ характеризует скорость перемещения конкретной фазы колебаний (например, гребня волны) в пространстве.
 \end{remark}
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        declare function={
+            A = 1.5;
+            lambda = 4;
+            k = 360/lambda;
+            v = 1;
+            dt = 1;
+            dx = v*dt;
+        }
+    ]
+
+    % === ЛЕВАЯ ЧАСТЬ: ПРОФИЛЬ ВОЛНЫ ===
+    \begin{scope}[shift={(-4, 0)}]
+        \node[font=\bfseries, align=center, yshift=2.5cm] at (3,1) {Профиль волны $\xi(x)$\\(в фикс. момент $t$)};
+
+        % Оси
+        \draw[->, thick] (-0.5, 0) -- (5.5, 0) node[right] {$x$};
+        \draw[->, thick] (0, -2) -- (0, 2) node[above] {$\xi$};
+        \node[below left] at (0,0) {$O$};
+
+        % Волна в момент t1 (Синяя сплошная)
+        \draw[blue, thick, domain=0:5, samples=100]
+            plot (\x, {A*cos(k*\x)});
+
+        % Волна в момент t2 (Красная пунктир)
+        \draw[red, dashed, thick, domain=0:5, samples=100]
+            plot (\x, {A*cos(k*(\x - dx))});
+
+        % Длина волны lambda
+        \draw[<->, blue, thick] (0, -1.8) -- (lambda, -1.8)
+            node[midway, fill=white, font=\small, blue] {$\lambda$};
+
+        % Сдвиг волны
+        \draw[<->, red, thick] (1, 1.9) -- (1+dx, 1.9)
+            node[midway, above, font=\small, red] {$v\Delta t$};
+
+        % Подписи времени
+        \node[blue, font=\small] at (5.2, -1.8) {$t_1$};
+        \node[red, font=\small] at (5.2, -1.4) {$t_2$};
+    \end{scope}
+
+    % === ПРАВАЯ ЧАСТЬ: КОЛЕБАНИЕ ЧАСТИЦЫ ===
+    \begin{scope}[shift={(4, 0)}]
+        \node[font=\bfseries, align=center, yshift=2.5cm] at (3,1) {Колебание частицы $\xi(t)$\\(в фикс. точке $x$)};
+
+        % Оси
+        \draw[->, thick] (-0.5, 0) -- (5.5, 0) node[right] {$t$};
+        \draw[->, thick] (0, -2) -- (0, 2) node[above] {$\xi$};
+        \node[below left] at (0,0) {$O$};
+
+        % График колебания (синий)
+        \def\T{4}
+        \draw[blue, thick, domain=0:5, samples=100]
+            plot (\x, {A*cos(360/\T*\x)});
+
+        % Период T
+        \draw[<->, blue, thick] (0, -1.8) -- (\T, -1.8)
+            node[midway, fill=white, font=\small, blue] {$T$};
+
+        % Подпись
+        \node[font=\small, align=center] at (2.5, -2.3) {для точки $x_0$};
+    \end{scope}
+
+    % === СВЯЗЬ МЕЖДУ ГРАФИКАМИ ===
+    \draw[->, thick, purple] (-0.8, -2) -- (0.8, -2)
+        node[midway, below, purple, font=\small] {$v=\lambda/T$};
+
+    \end{tikzpicture}
+    \caption{Сравнение пространственного и временного представлений волны}
+    \label{fig:wave_vs_oscillation}
+\end{figure}
+

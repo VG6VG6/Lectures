@@ -40,3 +40,75 @@
 \begin{remark}
 \textbf{Приведённая длина.} Если ввести величину $l_{\text{пр}} = \frac{I}{ml}$, то формула периода \eqref{eq:period_phys} принимает вид $T = 2\pi \sqrt{l_{\text{пр}}/g}$, полностью аналогичный периоду математического маятника. Величину $l_{\text{пр}}$ называют \textbf{приведённой длиной физического маятника}. Математический маятник с длиной нити $l_{\text{пр}}$ будет колебаться с тем же периодом, что и данный физический маятник.
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2,
+        force/.style={->, >=Stealth, thick},
+        pivot/.style={fill=gray!50, draw=black, thick}
+    ]
+    % 1. Опора (стена/потолок)
+    \fill[gray!30] (-2, 2.5) rectangle (2, 2.8);
+    \draw[thick] (-2, 2.5) -- (2, 2.5);
+
+    % Точка подвеса O
+    \coordinate (O) at (0, 2.5);
+    \draw[pivot] (O) circle (3pt);
+    \node[above right] at (O) {$O$};
+
+    % Параметры для расчетов
+    \def\angle{30} % Угол отклонения
+    \def\dist{3}   % Расстояние от оси до центра масс
+
+    % 2. Вертикаль (пунктир)
+    \draw[dashed, gray] (O) -- ++(0, -4.5);
+
+    % 3. Тело маятника (вращается вокруг O)
+    \begin{scope}[rotate=\angle]
+        % Произвольная форма тела (пластина)
+        \draw[fill=blue!10, thick, rounded corners] (-0.8, 0) rectangle (0.8, -4);
+
+        % Ось симметрии тела
+        \draw[gray, thin] (0, 0) -- (0, -4);
+
+        % Центр масс C
+        \coordinate (C) at (0, -\dist);
+        \fill[black] (C) circle (2pt);
+        \node[right=2pt] at (C) {$C$};
+
+        % Расстояние a (или l)
+        \draw[<->, gray] (0.5, 0) -- (0.5, -\dist) node[midway, right, gray, font=\small] {$a$};
+    \end{scope}
+
+    % 4. Силы и геометрия (рисуем вне scope, чтобы не вращались)
+
+    % Координата C для рисования вектора силы тяжести (вычисляем вручную для точности)
+    % C_x = a * sin(angle), C_y = 2.5 - a * cos(angle)
+    \pgfmathsetmacro{\Cx}{\dist * sin(\angle)}
+    \pgfmathsetmacro{\Cy}{2.5 - \dist * cos(\angle)}
+    \coordinate (Cglobal) at (\Cx, \Cy);
+
+    % Сила тяжести mg
+    \draw[force, red] (Cglobal) -- ++(0, -1.5) node[midway, right, red] {$mg$};
+
+    % Угол отклонения phi
+    \draw[->, blue!70!black, thick] (0, 1.5) arc (90:90-\angle:1);
+    \node[blue!70!black] at (0.6, 2) {$\varphi$};
+
+    % Плечо силы тяжести (d = a * sin(phi)) - для вывода момента сил
+    \draw[dashed, orange] (Cglobal) -- (0, \Cy) node[midway, above, orange, font=\small] {$d$};
+    \draw[dashed, orange] (O) -- (0, \Cy);
+
+    % Момент инерции J (или I)
+    \node[align=left, font=\small, fill=white, opacity=0.8] at (-2.5, 0)
+        {\textbf{Параметры:}\\
+        $C$ --- центр масс\\
+        $a$ --- расстояние $OC$\\
+        $J$ --- момент инерции\\
+        \textcolor{orange}{$d$} --- плечо силы};
+
+    \end{tikzpicture}
+    \caption{Физический маятник: твердое тело, совершающее колебания вокруг неподвижной горизонтальной оси $O$, не проходящей через центр масс $C$. Возвращающий момент сил $M = -mga\sin\varphi$.}
+    \label{fig:physical_pendulum}
+\end{figure}

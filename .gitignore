@@ -11,6 +11,9 @@
 *.cb
 *.cb2
 .*.lb
+*.tex~
+*.tex.un
+*.tex.un~
 
 ## Intermediate documents:
 *.dvi
@@ -233,6 +236,9 @@ sympy-plots-for-*.tex/
 # pythontex
 *.pytxcode
 pythontex-files-*/
+
+#extra dir
+./'Semestr 2'/physics_michilis_theory
 
 # tcolorbox
 *.listing

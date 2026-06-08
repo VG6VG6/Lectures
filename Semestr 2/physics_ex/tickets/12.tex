@@ -34,3 +34,97 @@
     \item \textbf{Практическое значение:} Фигуры Лиссажу позволяют точно измерять неизвестную частоту, подавая один сигнал на вход $X$ осциллографа (эталон), а другой на вход $Y$. Подсчитывая числа пересечений $n_x$ и $n_y$, находят: $\nu_y / \nu_x = n_x / n_y$. Метод широко используется в акустике, радиотехнике и при настройке музыкальных инструментов.
 \end{enumerate}
 \end{remark}
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.2, >=Stealth]
+        % Параметры амплитуд
+        \def\A{2}
+        \def\B{1.5}
+
+        % Оси координат
+        \draw[->, thick] (-3, 0) -- (3, 0) node[right] {$x$};
+        \draw[->, thick] (0, -2.5) -- (0, 2.5) node[above] {$y$};
+        \node[below left] at (0,0) {$O$};
+
+        % Траектория: эллипс x^2/A^2 + y^2/B^2 = 1
+        \draw[blue, thick] (0,0) ellipse (\A cm and \B cm);
+
+        % Направление движения (по часовой стрелке)
+        \draw[blue, ->, thick] (45:\A cm and \B cm) arc (45:15:\A cm and \B cm);
+        \node[blue, align=center, font=\small] at (2.2, 1.8) {движение\\по часовой};
+
+        % Полуоси
+        \draw[<->, gray, thin] (0,0) -- (\A,0) node[midway, below] {$A$};
+        \draw[<->, gray, thin] (0,0) -- (0,\B) node[midway, left] {$B$};
+
+        % Начальное положение (t=0)
+        \fill[red] (\A, 0) circle (2.5pt);
+        \node[right, red] at (\A, 0) {$t=0$};
+
+        % Вектор скорости в t=0 (направлен вниз)
+        \draw[->, green!60!black, thick] (\A, 0) -- (\A, -1.2) node[midway, right] {$v_y$};
+
+        % Аннотация разности фаз
+        \node[draw, fill=white, align=center, font=\small] at (2.5, -1.5) {
+            $\Delta\varphi = \frac{\pi}{2}$\\
+            $\frac{x^2}{A^2} + \frac{y^2}{B^2} = 1$
+        };
+    \end{tikzpicture}
+    \caption{Траектория результирующего движения при разности фаз $\Delta\varphi = \pi/2$. Точка движется по эллипсу с полуосями $A$ и $B$. При $t=0$ скорость направлена вдоль оси $-y$, что задаёт движение по часовой стрелке.}
+    \label{fig:ellipse_phase_pi2}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.5,
+        every node/.style={font=\small},
+        declare function={
+            A = 1; B = 1; % Равные амплитуды для симметрии
+        }
+    ]
+
+    % --- 1:2 (Фигура Лиссажу) ---
+    \begin{scope}[shift={(-2, 1.5)}]
+        % Оси
+        \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+        \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+        % Уравнение: x=sin(t), y=cos(2t) -> сдвиг фаз pi/2
+        \draw[blue, thick, domain=0:360, samples=200] plot ({A*sin(\x)}, {B*cos(2*\x)});
+        \node at (0, -1.8) {$1:2$};
+    \end{scope}
+
+    % --- 1:3 ---
+    \begin{scope}[shift={(2, 1.5)}]
+        \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+        \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+        % x=sin(t), y=cos(3t)
+        \draw[blue, thick, domain=0:360, samples=200] plot ({A*sin(\x)}, {B*cos(3*\x)});
+        \node at (0, -1.8) {$1:3$};
+    \end{scope}
+
+    % --- 2:3 ---
+    \begin{scope}[shift={(-2, -2.5)}]
+        \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+        \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+        % x=sin(2t), y=cos(3t)
+        \draw[blue, thick, domain=0:360, samples=200] plot ({A*sin(2*\x)}, {B*cos(3*\x)});
+        \node at (0, -1.8) {$2:3$};
+    \end{scope}
+
+    % --- 3:4 ---
+    \begin{scope}[shift={(2, -2.5)}]
+        \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+        \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+        % x=sin(3t), y=cos(4t)
+        \draw[blue, thick, domain=0:360, samples=200] plot ({A*sin(3*\x)}, {B*cos(4*\x)});
+        \node at (0, -1.8) {$3:4$};
+    \end{scope}
+
+\end{tikzpicture}
+\caption{Фигуры Лиссажу при разности фаз $\Delta\varphi = \frac{\pi}{2}$. Форма зависит от отношения частот $n_x : n_y$. При $\Delta\varphi = \pi/2$ фигуры обладают осевой симметрией.}
+\label{fig:lissajous_knots}
+\end{figure}

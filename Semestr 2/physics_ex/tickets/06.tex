@@ -45,3 +45,76 @@
 \begin{remark}
 При больших амплитудах приближение $\sin\varphi \approx \varphi$ нарушается, и колебания перестают быть строго гармоническими. Период начинает зависеть от амплитуды $\varphi_{\max}$ и вычисляется через эллиптические интегралы. Разложение в ряд даёт первую поправку: $T \approx 2\pi\sqrt{l/g} \left(1 + \frac{1}{16}\varphi_{\max}^2 + \dots\right)$. В рамках курса общей физики всегда используется формула \eqref{eq:period_pendulum}.
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.5,
+        pivot/.style={fill=gray!50, draw=black, thick},
+        rod/.style={thick, black},
+        mass/.style={fill=blue!30, draw=blue!70, thick},
+        force/.style={->, >=Stealth, thick},
+        angle/.style={->, >=Stealth, blue!70!black}
+    ]
+    % Точка подвеса
+    \fill[gray!30] (-1.2, 3) rectangle (1.2, 3.2);
+    \draw[thick] (-1.2, 3) -- (1.2, 3);
+    \draw[pivot] (0, 3) circle (3pt);
+    \coordinate (O) at (0, 3);
+
+    % Вертикальная линия (пунктир)
+    \draw[dashed, gray] (0, 3) -- (0, -0.5);
+    \coordinate (V) at (0, 0); % Положение равновесия
+
+    % Маятник в отклоненном положении
+    \def\angle{30} % Угол отклонения
+    \def\length{3} % Длина нити
+
+    % Координата груза
+    \coordinate (M) at ({\length*sin(\angle)}, {3 - \length*cos(\angle)});
+
+    % Нить
+    \draw[rod] (O) -- (M);
+
+    % Груз
+    \draw[mass] (M) circle (0.25);
+    \node at (M) {$m$};
+
+    % Длина нити l
+    \draw[<->, gray] (-0.3, 3) -- (-0.3, 0) node[midway, fill=white, font=\small] {$l$};
+
+    % Угол отклонения theta
+    \draw[angle] (0, 2.3) arc (90:90-\angle:0.7);
+    \node at (0.4, 2.5) {$\theta$};
+
+    % Силы
+    % Сила тяжести mg (вниз)
+    \draw[force, red] (M) -- ++(0, -1.2) node[midway, right, red] {$mg$};
+
+    % Сила натяжения нити T (вверх вдоль нити)
+    \draw[force, blue!70!black] (M) -- ++({-0.4*sin(\angle)}, {0.4*cos(\angle)})
+        node[midway, left, blue!70!black] {$T$};
+
+    % Касательная составляющая силы (возвращающая сила)
+    \draw[force, green!60!black] (M) -- ++({-1.0*cos(\angle)}, {-1.0*sin(\angle)})
+        node[midway, below left, green!60!black] {$F_{\tau}$};
+
+    % Траектория движения (дуга)
+    \draw[dashed, gray!50] ({-\length*sin(20)}, {3 - \length*cos(20)})
+        arc (250:290:\length);
+
+    % Ось координат
+    \draw[->, thick] (-2, -0.5) -- (2, -0.5) node[right] {$x$};
+    \node at (0, -0.7) {$O$};
+
+    % Подписи
+    \node[anchor=west, align=left, font=\small] at (1.5, 2.5)
+        {\textbf{Параметры:}\\[3pt]
+        $l$ --- длина нити\\[2pt]
+        $m$ --- масса груза\\[2pt]
+        $\theta$ --- угол отклонения};
+
+    \end{tikzpicture}
+    \caption{Математический маятник: груз массы $m$ на невесомой нерастяжимой нити длины $l$. Возвращающая сила $F_{\tau} = -mg\sin\theta$ направлена по касательной к траектории.}
+    \label{fig:mathematical_pendulum}
+\end{figure}

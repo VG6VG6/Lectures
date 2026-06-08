@@ -42,3 +42,36 @@
 Если амплитуды складываемых колебаний не равны ($A_1 \neq A_2$), амплитуда биений не обращается в ноль, а изменяется в пределах от $|A_1 - A_2|$ до $A_1 + A_2$ (так называемая «глубина биений»).
 \par\noindent\textbf{Практическое применение:} Явление биений широко используется при настройке музыкальных инструментов. Настраивая струну по камертону, музыкант добивается исчезновения биений ($\Delta\omega \to 0$), что означает совпадение частот колебаний струны и эталона.
 \end{remark}
+
+\vspace{1cm}
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        xlabel = {$t$},
+        ylabel = {$x(t)$},
+        xmin = 0, xmax = 10,
+        ymin = -2.5, ymax = 2.5,
+        domain = 0:10,
+        samples = 400,
+        width = 0.9\textwidth,
+        height = 0.4\textheight,
+        grid = both,
+        grid style = {dashed, gray!30},
+    ]
+    % Огибающая (медленная)
+    \addplot [red, dashed, thick] {2*abs(cos(deg(0.5*x)))};
+    \addplot [red, dashed, thick] {-2*abs(cos(deg(0.5*x))};
+
+    % Результирующее колебание (биения)
+    \addplot [blue, thick] {2*cos(deg(0.5*x))*cos(deg(4*x))};
+    \addlegendentry{$x(t)$ — биения}
+
+    \end{axis}
+    \end{tikzpicture}
+    \caption{График биений: быстрое колебание с медленно меняющейся амплитудой (огибающая показана красным пунктиром)}
+    \label{fig:beats_graph}
+\end{figure}
+

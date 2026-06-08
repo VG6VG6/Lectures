@@ -63,3 +63,78 @@
 \end{equation}
 который не зависит ни от рода газа, ни от температуры. Это означает, что все кривые Максвелла подобны друг другу и отличаются только масштабом по осям.
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.1,
+        >=Stealth,
+        font=\small,
+        thick
+    ]
+
+    \node[font=\bfseries] at (4, 4.6) {Распределение Максвелла по модулю скорости $F(v)$};
+
+    % === ОСИ ===
+    \draw[->] (0, 0) -- (7, 0) node[right, font=\normalsize] {$v$};
+    \draw[->] (0, 0) -- (0, 4) node[above, font=\normalsize] {$F(v)$};
+    \node[below left] at (0, 0) {$O$};
+
+    % === КРИВЫЕ ДЛЯ РАЗНЫХ ТЕМПЕРАТУР ===
+    % F(v) = C * v^2 * exp(-a*v^2)
+    % Используем \x*\x вместо \x^2 для корректного парсинга
+
+    % T1 (низкая температура) — узкий высокий пик
+    \draw[blue, very thick, domain=0:6, samples=200]
+        plot (\x, {4.9*\x*\x*exp(-0.6*\x*\x)});
+
+    % T2 (средняя температура) — средний пик
+    \draw[green!60!black, very thick, domain=0:6, samples=200]
+        plot (\x, {2.2*\x*\x*exp(-0.35*\x*\x)});
+
+    % T3 (высокая температура) — широкий низкий пик
+    \draw[red, very thick, domain=0:6, samples=200]
+        plot (\x, {0.92*\x*\x*exp(-0.2*\x*\x)});
+
+    % === МАКСИМУМЫ КРИВЫХ ===
+    % T1: максимум при v ≈ 1.29
+    \fill[blue] (1.29, 3) circle (3pt);
+    \draw[dashed, blue] (1.29, 0) -- (1.29, 3);
+    \node[blue, below, font=\footnotesize] at (1.29, -0.2) {$v_{\text{1}}$};
+
+    % T2: максимум при v ≈ 1.69
+    \fill[green!60!black] (1.69, 2.3) circle (3pt);
+    \draw[dashed, green!60!black] (1.69, 0) -- (1.69, 2.3);
+    \node[green!60!black, below, font=\footnotesize] at (1.69, -0.2) {$v_{\text{2}}$};
+
+    % T3: максимум при v ≈ 2.24
+    \fill[red] (2.24, 1.7) circle (3pt);
+    \draw[dashed, red] (2.24, 0) -- (2.24, 1.7);
+    \node[red, below, font=\footnotesize] at (2.24, -0.2) {$v_{\text{3}}$};
+
+    % === ПОДПИСИ КРИВЫХ ===
+    \node[blue, font=\footnotesize] at (2.8, 0.9) {$T_1$};
+    \node[green!60!black, font=\footnotesize] at (3.5, 0.9) {$T_2$};
+    \node[red, font=\footnotesize] at (4.35, 0.9) {$T_3$};
+
+    % === СТРЕЛКИ ПОКАЗА НАПРАВЛЕНИЯ ИЗМЕНЕНИЯ T ===
+    \draw[->, purple, thick] (1.5, 3.5) -- (2.2, 3.5);
+    \node[purple, above, font=\footnotesize] at (1.85, 3.5) {$v_{\text{вер}}$ растёт};
+
+    \draw[->, purple, thick] (4.5, 2.5) -- (4.5, 1.5);
+    \node[purple, right, font=\footnotesize] at (4.5, 2.0) {$F_{\text{max}}$ убывает};
+
+    % === БЛОК СВОЙСТВ ===
+    \node[draw, fill=yellow!10, rounded corners, align=left, font=\small, inner sep=5pt] at (11, 3.2)
+        {Свойства $F(v)$:\\[4pt]
+        $\bullet$ $F(0) = 0$\\[4pt]
+        $\bullet$ $F(v) \to 0$ при $v \to \infty$\\[4pt]
+        $\bullet$ $v_{\text{вер}} = \sqrt{\frac{2kT}{m}} \propto \sqrt{T}$\\[4pt]
+        $\bullet$ $F_{\text{max}} \propto \frac{1}{\sqrt{T}}$\\[4pt]
+        $\bullet$ $\int_0^\infty F(v) dv = 1$};
+
+    \end{tikzpicture}
+    \caption{Распределение Максвелла по модулю скорости $F(v)$ для трёх температур $T_1 < T_2 < T_3$. При увеличении температуры максимум смещается вправо ($v_{\text{вер}} \propto \sqrt{T}$) и становится ниже ($F_{\text{max}} \propto 1/\sqrt{T}$). Кривая расширяется, показывая больший разброс скоростей. Площадь под каждой кривой равна 1 (условие нормировки).}
+    \label{fig:maxwell_speed_distribution_fixed}
+\end{figure}
+

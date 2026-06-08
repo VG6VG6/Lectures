@@ -32,7 +32,81 @@
 где $N_e = \tau/T = 1/(\beta T)$ --- число полных колебаний, совершаемых системой за время релаксации $\tau$. Чем больше добротность, тем медленнее затухают колебания и тем меньше потери энергии за период.
 \end{property}
 
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        xlabel = {$t$},
+        ylabel = {$x(t)$},
+        xmin = 0, xmax = 5,
+        ymin = -1.2, ymax = 1.2,
+        domain = 0:5, samples = 200,
+        axis lines = center,
+        grid = both, grid style = {dashed, gray!20},
+        width = 0.85\textwidth, height = 0.35\textheight,
+        ytick = {1, 0.54, -1},
+        yticklabels = {$A(t)$, $A(t+T)$, $-A_0$},
+        clip = false
+    ]
+    % Колебания
+    \addplot[blue, thick] {exp(-0.4*x)*cos(deg(4*x))};
+    % Огибающие
+    \addplot[gray, dashed, thin] {exp(-0.4*x)};
+    \addplot[gray, dashed, thin] {-exp(-0.4*x)};
+
+    % Отметка периода T = 2pi/4 = 1.57
+    \draw[red, dashed] (axis cs: 1.57, 0) -- (axis cs: 1.57, 0.54);
+    \node[red, above] at (axis cs: 1.57, 0.54) {$A(t+T)$};
+
+    % Стрелки для theta и T
+    \draw[<->, red, thick] (axis cs: 0.3, 1) -- (axis cs: 0.3, 0.54)
+        node[midway, right, font=\small] {$\theta = \frac{A(t)}{A(t+T)} = e^{\beta T}$};
+    \draw[<->, gray, thick] (axis cs: 0, -1.1) -- (axis cs: 1.57, -1.1)
+        node[midway, below, font=\small] {$T$};
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Графическая иллюстрация декремента затухания $\theta$. Отношение амплитуд двух последовательных максимумов, разделённых периодом $T$.}
+    \label{fig:decrement}
+\end{figure}
+
 \begin{remark}
 \textbf{Апериодические колебания.} При увеличении коэффициента затухания $\beta$ частота $\omega$ уменьшается, а период $T$ растёт. Когда $\beta \to \omega_0$, период обращается в бесконечность. При $\beta \ge \omega_0$ движение становится \textbf{апериодическим}: выведенная из равновесия система медленно возвращается в положение равновесия, не совершая колебаний. Вся начальная энергия расходуется на преодоление сил трения.
+
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        xlabel = {$t$},
+        ylabel = {$x(t)$},
+        xmin = 0, xmax = 4,
+        ymin = -1.2, ymax = 1.2,
+        domain = 0:4, samples = 100,
+        axis lines = center,
+        grid = both, grid style = {dashed, gray!20},
+        width = 0.85\textwidth, height = 0.35\textheight,
+        legend pos = north east,
+        ytick = {1}, yticklabels = {$x_0$}
+    ]
+    % Малое затухание
+    \addplot[blue, thick] {exp(-0.4*x)*cos(deg(3*x))};
+    \addlegendentry{$\beta < \omega_0$ (затухающие)}
+
+    % Критическое затухание (возвращается быстрее всего без колебаний)
+    \addplot[red, thick] {exp(-2*x)*(1+2*x)};
+    \addlegendentry{$\beta = \omega_0$ (критическое)}
+
+    % Сильное затухание (возвращается медленнее)
+    \addplot[green!60!black, thick] {1.2*exp(-0.8*x) - 0.2*exp(-4*x)};
+    \addlegendentry{$\beta > \omega_0$ (апериодическое)}
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Зависимость характера движения от коэффициента затухания $\beta$. При $\beta \ge \omega_0$ колебательный режим сменяется апериодическим: система монотонно возвращается в равновесие.}
+    \label{fig:damping_regimes}
+\end{figure}
+
 \par\noindent\textbf{Демпфер} --- устройство для гашения (демпфирования) или предотвращения нежелательных колебаний в машинах, конструкциях и приборах. Работает на принципе перевода механической энергии колебаний во внутреннюю энергию вязкой среды или тепла (примеры: дверные доводчики, амортизаторы в автомобилях, гасители вибраций в строительстве).
 \end{remark}

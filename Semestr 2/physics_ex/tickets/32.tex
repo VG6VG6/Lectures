@@ -65,3 +65,120 @@
     \item \textbf{Навигация} --- спутниковые системы (GPS/ГЛОНАСС) учитывают доплеровский сдвиг для точного позиционирования.
 \end{enumerate}
 \end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.0,
+        >=Stealth,
+        font=\small,
+        wave/.style={blue, thick},
+        source/.style={red, fill=red, circle, inner sep=3pt},
+        receiver/.style={black, fill=black, circle, inner sep=3pt},
+        box/.style={draw, fill=yellow!10, rounded corners, inner sep=4pt, align=center}
+    ]
+
+    % ==========================================
+    % ЧАСТЬ 1: ДВИЖУЩИЙСЯ ИСТОЧНИК
+    % ==========================================
+    \begin{scope}[shift={(0, 3.5)}]
+        \node[font=\bfseries] at (0, 2.6) {1. Движущийся источник ($v_{\text{ист}}$)};
+
+        % Волновые фронты (сжатие/растяжение)
+        \draw[wave] (-0.6, 0) circle (0.6);
+        \draw[wave] (-1.2, 0) circle (1.2);
+        \draw[wave] (-1.8, 0) circle (1.8);
+        \draw[wave] (-2.4, 0) circle (2.4);
+
+        % Источник
+        \fill[red] (0,0) circle (3pt);
+        \node[above right=2pt] at (0,0) {$S$};
+
+        % Скорость источника
+        \draw[->, red, thick] (0.5, 0.3) -- (2.5, 0.3) node[midway, above] {$v_{\text{ист}}$};
+
+        % Наблюдатели
+        \fill[black] (2.8, 0) circle (3pt);
+        \node[below] at (2.8, 0) {$P_1$};
+        \node[red, font=\footnotesize] at (2.8, 0.8) {$\nu > \nu_0$};
+
+        \fill[black] (-3.2, 0) circle (3pt);
+        \node[below] at (-3.2, 0) {$P_2$};
+        \node[blue, font=\footnotesize] at (-3.2, 0.8) {$\nu < \nu_0$};
+
+        % Длины волн
+        \draw[<->, green!60!black, thick] (0.6, 0.5) -- (1.2, 0.5) node[midway, above] {$\lambda'$};
+        \draw[<->, green!60!black, thick] (-3.0, 0.5) -- (-2.4, 0.5) node[midway, above] {$\lambda''$};
+
+        % Пояснение
+        \node[align=center] at (0, -2.5) {Спереди: $\lambda$ сжата\\Сзади: $\lambda$ растянута};
+    \end{scope}
+
+    % ==========================================
+    % ЧАСТЬ 2: ДВИЖУЩИЙСЯ ПРИЁМНИК
+    % ==========================================
+    \begin{scope}[shift={(0, -3.5)}]
+        \node[font=\bfseries] at (0, 2.8) {2. Движущийся приёмник ($v_{\text{пр}}$)};
+
+        % --- Случай А: Приближение (Левая сторона) ---
+        \begin{scope}[shift={(-3.5, 0)}]
+            \node[font=\bfseries] at (0, 2.2) {Приближение};
+
+            % Источник (Неподвижен)
+            \fill[red] (0,0) circle (3pt);
+            \node[above] at (0,0) {$S$};
+
+            % Волны
+            \draw[wave] (0,0) circle (0.8);
+            \draw[wave] (0,0) circle (1.4);
+            \draw[wave] (0,0) circle (2.0);
+
+            % Приёмник
+            \fill[black] (3.5, 0) circle (3pt);
+            \node[below] at (3.5, 0) {$P$};
+
+            % Скорость волны (Синяя, вправо)
+            \draw[blue, ->, thick] (1.5, 0.5) -- (2.5, 0.5) node[midway, above] {$v$};
+
+            % Скорость приёмника (Красная, ВЛЕВО - навстречу)
+            \draw[red, ->, thick] (3.5, -0.8) -- (2.5, -0.8)
+                node[midway, below, font=\bfseries] {$v_{\text{пр}}$};
+
+            % Формула
+            \node[box] at (0, -1.8) {$\nu = \nu_0 \dfrac{v + v_{\text{пр}}}{v}$};
+        \end{scope}
+
+        % --- Случай Б: Удаление (Правая сторона) ---
+        \begin{scope}[shift={(4.0, 0)}]
+            \node[font=\bfseries] at (0, 2.2) {Удаление};
+
+            % Источник
+            \fill[red] (0,0) circle (3pt);
+            \node[above] at (0,0) {$S$};
+
+            % Волны
+            \draw[wave] (0,0) circle (0.8);
+            \draw[wave] (0,0) circle (1.4);
+            \draw[wave] (0,0) circle (2.0);
+
+            % Приёмник
+            \fill[black] (3.5, 0) circle (3pt);
+            \node[below] at (3.5, 0) {$P$};
+
+            % Скорость волны (Синяя, вправо)
+            \draw[blue, ->, thick] (1.5, 0.5) -- (2.5, 0.5) node[midway, above] {$v$};
+
+            % Скорость приёмника (Красная, ВПРАВО - в ту же сторону)
+            \draw[red, ->, thick] (3.5, -0.8) -- (4.5, -0.8)
+                node[midway, below, font=\bfseries] {$v_{\text{пр}}$};
+
+            % Формула
+            \node[box] at (0, -1.8) {$\nu = \nu_0 \dfrac{v - v_{\text{пр}}}{v}$};
+        \end{scope}
+
+    \end{scope}
+    \end{tikzpicture}
+    \caption{Эффект Доплера. Верх: движение источника меняет длину волны. Низ: движение приёмника меняет относительную скорость встречи с фронтами.}
+    \label{fig:doppler_effect}
+\end{figure}
+

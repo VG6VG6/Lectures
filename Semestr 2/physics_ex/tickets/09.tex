@@ -42,3 +42,63 @@
 \end{equation}
 Таким образом, сложение когерентных колебаний одного направления и одинаковой частоты всегда даёт новое гармоническое колебание с той же частотой, но с амплитудой и фазой, зависящими от параметров слагаемых колебаний.
 \end{remark}
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+    \centering
+
+    % === РИСУНОК 1: Векторная диаграмма одного колебания ===
+    \begin{tikzpicture}[scale=1.5] % Уменьшил с 1.2 до 0.8
+        % Оси
+        \draw[->] (-2.5, 0) -- (2.5, 0) node[right] {$x$};
+        \draw[->] (0, -2.5) -- (0, 2.5) node[above] {$y$};
+
+        % Окружность (траектория конца вектора)
+        \draw[dashed, gray] (0,0) circle (2cm);
+
+        % Вектор амплитуды A
+        \def\angle{45}
+        \draw[->, blue, thick] (0,0) -- (\angle:2) node[midway, above left] {$\vec{A}$};
+
+        % Проекция на ось X (мгновенное значение)
+        \draw[dashed, gray] (\angle:2) -- ({2*cos(\angle)}, 0);
+        \draw[->, red, thick] (0,0) -- ({2*cos(\angle)}, 0) node[below] {$x(t)$};
+
+        % Угол поворота
+        \draw[->, thick] (0.8, 0) arc (0:\angle:0.8);
+        \node[right] at (0.8, 0.3) {$\omega t + \varphi_0$};
+
+        % Скорость вращения
+        \node[above] at (0, 3) {Вращение с $\omega_0$};
+    \end{tikzpicture}
+    \caption{Векторная диаграмма гармонического колебания. Вектор $\vec{A}$ вращается с угловой скоростью $\omega_0$, его проекция на ось $x$ дает мгновенное значение смещения.}
+    \label{fig:vector_diagram_single}
+
+    \vspace{1.5cm} % Увеличил отступ между рисунками
+
+    \begin{tikzpicture}[scale=1.0]
+    % Вектор A1 (горизонтально)
+    \draw[->, blue, very thick] (0,0) -- (3,0) node[midway, below] {$\vec{A}_1$};
+
+    % Вектор A2 (под углом 60 градусов)
+    \draw[->, blue, very thick] (0,0) -- (60:2) node[midway, left] {$\vec{A}_2$};
+
+    % Параллелограмм
+    \draw[dashed, gray, thick] (3,0) -- (3.7,1.73);
+    \draw[dashed, gray, thick] (60:2) -- (3.7,1.73);
+
+    % Результирующий вектор
+    \draw[->, red, very thick] (0,0) -- (3.7,1.73) node[midway, above right] {$\vec{A}$};
+
+    % Углы
+    \draw[thick] (0.7,0) arc (0:60:0.7);
+    \node at (0.8, 0.6) {$\Delta\varphi$};
+\end{tikzpicture}
+
+    \caption{Сложение двух колебаний одного направления. Результирующая амплитуда $\vec{A}$ зависит от разности фаз $\Delta \varphi$ между колебаниями.}
+    \label{fig:vector_addition}
+\end{figure}
+
+\vspace{1cm} % Отступ после figure, чтобы текст не наезжал
+

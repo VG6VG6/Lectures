@@ -52,3 +52,60 @@
 \begin{remark}
 Все три закона справедливы для \textbf{идеального газа} при условии, что масса газа не изменяется. В реальных газах при высоких давлениях и низких температурах наблюдаются отклонения от этих законов из-за учёта собственного объёма молекул и сил межмолекулярного взаимодействия (уравнение Ван-дер-Ваальса).
 \end{remark}
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+
+% Изотерма
+\begin{axis}[
+width=5cm,
+height=4cm,
+at={(0,0)},
+xlabel={$V$},
+ylabel={$p$},
+title={Изотерма},
+xmin=0.5,xmax=5,
+ymin=0,ymax=5,
+ticks=none
+]
+\addplot[thick,domain=0.7:5,samples=100]
+{3/x};
+\end{axis}
+
+% Изобара
+\begin{axis}[
+width=5cm,
+height=4cm,
+at={(6cm,0)},
+xlabel={$T$},
+ylabel={$V$},
+title={Изобара},
+xmin=0,xmax=5,
+ymin=0,ymax=5,
+ticks=none
+]
+\addplot[thick]
+coordinates {(0,0) (4,4)};
+\end{axis}
+
+% Изохора
+\begin{axis}[
+width=5cm,
+height=4cm,
+at={(12cm,0)},
+xlabel={$T$},
+ylabel={$p$},
+title={Изохора},
+xmin=0,xmax=5,
+ymin=0,ymax=5,
+ticks=none
+]
+\addplot[thick]
+coordinates {(0,0) (4,4)};
+\end{axis}
+
+\end{tikzpicture}
+\caption{Графики основных изопроцессов идеального газа.}
+\end{figure}

@@ -19,6 +19,64 @@
 
 \begin{theorem}[Уравнение движения вертикального пружинного маятника]
 Рассмотрим систему: тело массы $m$, подвешенное на вертикальной пружине жёсткостью $k$. 
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2,
+        spring/.style={decorate, decoration={zigzag, amplitude=4pt, segment length=6pt}},
+        mass/.style={fill=blue!20, draw=blue!70, thick},
+        mass_eq/.style={fill=gray!15, draw=gray!50, thick, dashed},
+        force/.style={->, >=Stealth, thick},
+        vec_red/.style={force, red!80!black},
+        vec_blue/.style={force, blue!80!black},
+        vec_gray/.style={force, gray!70}
+    ]
+    \def\ydisp{-1.2} % Координата центра смещённого груза
+    
+    % Потолок
+    \fill[gray!30] (-1.5, 3) rectangle (1.5, 3.3);
+    \draw[thick] (-1.5, 3) -- (1.5, 3);
+    
+    % Ось Ox (направлена вниз, начало в равновесии)
+    \draw[->, thick] (-2.5, 3) -- (-2.5, -2.5) node[below] {$Ox$};
+    \node[left] at (-2.5, 1) {$x=0$};
+    \node[left, font=\small] at (-2.5, -1.2) {$x$};
+    
+    % Положение равновесия (пунктир)
+    \draw[spring, gray!50, dashed, thick] (0, 3) -- (0, 1.5);
+    \draw[mass_eq] (-0.6, 0.5) rectangle (0.6, 1.5);
+    \node[gray!50] at (0, 1) {$m$};
+    
+    % Силы в равновесии (уравновешены)
+    \draw[vec_gray] (0, 1) -- (0, 2.3) node[midway, right, gray] {\small $k\Delta l$};
+    \draw[vec_gray] (0, 1) -- (0, -0.3) node[midway, right, gray] {\small $mg$};
+    
+    % Смещённое положение (сплошной цвет)
+    \draw[spring, blue!70!black, thick] (0, 3) -- (0, \ydisp+0.5);
+    \draw[mass] (-0.6, \ydisp-0.5) rectangle (0.6, \ydisp+0.5);
+    \node at (0, \ydisp) {$m$};
+    
+    % Статическое удлинение
+    \draw[<->, gray, thin] (0.8, 3) -- (0.8, 1) node[midway, right, gray, font=\small] {$\Delta l$};
+    
+    % Смещение x
+    \draw[<->, thick, purple] (1.2, 1) -- (1.2, \ydisp) node[midway, right, fill=white, font=\bfseries, purple] {$x$};
+    \node[right, align=left, font=\small] at (1.5, -0.2) {смещение\\из равновесия};
+    
+    % Силы в смещённом положении
+    % Сила упругости (вверх, длиннее mg, т.к. пружина растянута сильнее)
+    \draw[vec_red] (0, \ydisp+0.3) -- (0, \ydisp+1.6) node[midway, right] {$F_{упр}$};
+    % Сила тяжести (вниз)
+    \draw[vec_red] (0, \ydisp-0.3) -- (0, \ydisp-1.4) node[midway, right] {$mg$};
+    % Результирующая возвращающая сила (вверх, слева)
+    \draw[vec_blue] (-1.2, \ydisp) -- (-1.2, \ydisp+0.9) node[midway, left, font=\bfseries, blue] {$F=-kx$};
+    
+    \end{tikzpicture}
+    \caption{Вертикальный пружинный маятник. Серым пунктиром показано положение статического равновесия ($x=0$), синим --- текущее смещённое положение. Ось $Ox$ направлена вниз.}
+    \label{fig:vertical_spring}
+\end{figure}
+
+
 Направим ось $Ox$ вниз, начало координат поместим в положение статического равновесия тела. В этом положении сила тяжести уравновешивается силой упругости:
 \begin{equation}
     mg = k \Delta l, \label{eq:equilibrium}
