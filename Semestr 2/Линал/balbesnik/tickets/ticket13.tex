@@ -1,0 +1,30 @@
+\section{Определение суммы и прямой суммы подпространств. Формулировка теоремы о прямой сумме подпространств}
+
+\begin{definition}[Сумма подпространств]
+Пусть $U_1, U_2 \subset V$. \textbf{Суммой} подпространств называется
+\[
+U_1 + U_2 = \{ x \in V : x = x_1 + x_2,\ x_1 \in U_1,\ x_2 \in U_2 \}.
+\]
+
+Пусть $U_1 = L(a_1, \ldots, a_k)$, где $E_1 = \{a_1, \ldots, a_k\}$ --- базис в $U_1$.
+
+Пусть $U_2 = L(b_1, \ldots, b_m)$, где $E_2 = \{b_1, \ldots, b_m\}$ --- базис в $U_2$.
+
+Если $a_{i1}, \ldots, a_{ir}, b_{j1}, \ldots, b_{js}$ --- максимальная ЛНЗ система в $E_1 \cup E_2$, тогда $\{a_{i1}, \ldots, a_{ir}, b_{j1}, \ldots, b_{js}\}$ --- базис $U_1 + U_2$.
+\end{definition}
+
+\begin{definition}[Прямая сумма]
+$U_1 \oplus U_2$ --- \textbf{прямая сумма}, если $\forall x \in U_1 \oplus U_2$ представление $x = x_1 + x_2$ единственно.
+\end{definition}
+
+\begin{theorem}[Критерий прямой суммы]
+\[
+V = U_1 \oplus U_2 \iff U_1 \cap U_2 = \{0\} \quad \text{и} \quad \dim U_1 + \dim U_2 = \dim V.
+\]
+\end{theorem}
+
+\begin{corollary}[Формула Грассмана]
+\[
+\dim(U_1 + U_2) = \dim U_1 + \dim U_2 - \dim(U_1 \cap U_2).
+\]
+\end{corollary}

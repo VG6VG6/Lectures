@@ -1,0 +1,74 @@
+\section{Ядро и образ оператора. Теорема о связи размерности ядра и образа. Следствие об обратимости оператора}
+
+\begin{definition}
+Пусть $\varphi \in L(V, V)$ --- линейный оператор. 
+\begin{enumerate}
+    \item \textbf{Ядром} оператора $\varphi$ (обозначается $\ker \varphi$) называется множество всех векторов пространства $V$, которые оператор переводит в нулевой вектор:
+    \[
+    \ker \varphi = \{ x \in V \mid \varphi(x) = 0 \}.
+    \]
+    \item \textbf{Образом} оператора $\varphi$ (обозначается $\operatorname{Im} \varphi$) называется множество всех векторов пространства $V$, которые являются образами каких-либо векторов из $V$:
+    \[
+    \operatorname{Im} \varphi = \{ y \in V \mid \exists x \in V : y = \varphi(x) \}.
+    \]
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Ядро и образ линейного оператора являются подпространствами пространства $V$.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+    \item \textit{Для ядра:} $0 \in \ker \varphi$, так как $\varphi(0) = 0$. Пусть $x_1, x_2 \in \ker \varphi$ и $\alpha, \beta \in F$. Тогда $\varphi(\alpha x_1 + \beta x_2) = \alpha \varphi(x_1) + \beta \varphi(x_2) = \alpha \cdot 0 + \beta \cdot 0 = 0$. Значит, $\alpha x_1 + \beta x_2 \in \ker \varphi$.
+    \item \textit{Для образа:} $0 \in \operatorname{Im} \varphi$, так как $\varphi(0) = 0$. Пусть $y_1, y_2 \in \operatorname{Im} \varphi$. Тогда существуют $x_1, x_2 \in V$ такие, что $\varphi(x_1) = y_1$ и $\varphi(x_2) = y_2$. Для любых $\alpha, \beta \in F$ имеем: $\alpha y_1 + \beta y_2 = \alpha \varphi(x_1) + \beta \varphi(x_2) = \varphi(\alpha x_1 + \beta x_2)$. Следовательно, $\alpha y_1 + \beta y_2 \in \operatorname{Im} \varphi$.
+\end{enumerate}
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{theorem}[О связи размерности ядра и образа]
+Пусть $V$ --- конечномерное пространство, $\dim V = n$, и $\varphi \in L(V, V)$. Тогда справедливо соотношение:
+\[
+\dim \ker \varphi + \dim \operatorname{Im} \varphi = n.
+\]
+\end{theorem}
+
+\begin{proof}
+Выберем в $V$ базис $E = \{e_1, \dots, e_n\}$. 
+\begin{enumerate}
+    \item \textit{Размерность образа:} Любой вектор $y \in \operatorname{Im} \varphi$ имеет вид $y = \varphi(x)$, где $x = \sum_{i=1}^n \xi_i e_i$. В силу линейности:
+    \[
+    y = \varphi\left(\sum_{i=1}^n \xi_i e_i\right) = \sum_{i=1}^n \xi_i \varphi(e_i).
+    \]
+    Следовательно, $\operatorname{Im} \varphi = L(\varphi(e_1), \dots, \varphi(e_n))$. Размерность этого подпространства равна максимальному числу линейно независимых векторов среди $\varphi(e_i)$, что в точности равно рангу матрицы оператора $A_\varphi$ в базисе $E$. Таким образом, $\dim \operatorname{Im} \varphi = \operatorname{rang} A_\varphi$.
+    
+    \item \textit{Размерность ядра:} Вектор $x$ с координатным столбцом $X$ принадлежит $\ker \varphi$ тогда и только тогда, когда $\varphi(x) = 0$, что в координатах записывается как однородная система линейных уравнений:
+    \[
+    A_\varphi X = 0.
+    \]
+    Множество решений этой системы образует подпространство, размерность которого (по теореме о структуре решений однородной системы) равна $n - \operatorname{rang} A_\varphi$. Следовательно, $\dim \ker \varphi = n - \operatorname{rang} A_\varphi$.
+\end{enumerate}
+Складывая полученные равенства, получаем:
+\[
+\dim \ker \varphi + \dim \operatorname{Im} \varphi = (n - \operatorname{rang} A_\varphi) + \operatorname{rang} A_\varphi = n.
+\]
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{corollary}[Следствие об обратимости оператора]
+Линейный оператор $\varphi \in L(V, V)$ в конечномерном пространстве обратим тогда и только тогда, когда выполняется одно из следующих эквивалентных условий:
+\begin{enumerate}
+    \item $\ker \varphi = \{0\}$;
+    \item $\operatorname{Im} \varphi = V$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Оператор обратим $\iff$ он является биекцией.
+\begin{itemize}
+    \item Инъективность $\varphi$ равносильна тому, что из $\varphi(x) = 0$ следует $x = 0$, то есть $\ker \varphi = \{0\}$.
+    \item Сюръективность $\varphi$ равносильна тому, что для любого $y \in V$ существует $x \in V$ такой, что $\varphi(x) = y$, то есть $\operatorname{Im} \varphi = V$.
+\end{itemize}
+В конечномерном пространстве $\dim V = n$. Если $\ker \varphi = \{0\}$, то $\dim \ker \varphi = 0$, и по теореме о связи размерностей $\dim \operatorname{Im} \varphi = n$, откуда $\operatorname{Im} \varphi = V$. Обратно, если $\operatorname{Im} \varphi = V$, то $\dim \operatorname{Im} \varphi = n$, и $\dim \ker \varphi = 0$, откуда $\ker \varphi = \{0\}$. Таким образом, в конечномерном случае инъективность и сюръективность эквивалентны.
+\hfill$\blacksquare$
+\end{proof}

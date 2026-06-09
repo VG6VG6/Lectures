@@ -1,0 +1,18 @@
+\section{Определение изоморфизма линейных пространств. Формулировка теоремы об изоморфизме линейных пространств}
+
+\begin{definition}[Изоморфизм линейных пространств]
+Пусть $V, W$ --- линейные пространства над полем $F$. Отображение $\varphi: V \to W$ называется \textbf{изоморфизмом}, если:
+\begin{enumerate}
+    \item $\varphi$ --- взаимно однозначное отображение;
+    \item $\varphi$ отображает $V$ в $W$, т.е. $\forall y \in W\ \exists x \in V: y = \varphi(x)$;
+    \item $\forall x_1, x_2 \in V: \varphi(x_1 + x_2) = \varphi(x_1) + \varphi(x_2)$;
+    \item $\forall x \in V,\ \forall \lambda \in F: \varphi(\lambda x) = \lambda \varphi(x)$.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Об изоморфизме линейных пространств]
+Пусть $V, W$ --- два конечномерных линейных пространства над полем $F$. Тогда
+\[
+V \cong W \iff \dim V = \dim W.
+\]
+\end{theorem}

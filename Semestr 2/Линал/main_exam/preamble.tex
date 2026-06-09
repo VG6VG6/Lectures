@@ -1,0 +1,39 @@
+% preamble.tex
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+
+% === Для графиков (pgfplots/TikZ) ===
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing, intersections}
+\pgfplotsset{compat=1.18}
+% ====================================
+
+\geometry{a4paper, margin=1in}
+
+% === Теоремные окружения с общей нумерацией в пределах section ===
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{property}[theorem]{Свойство}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{remark}[theorem]{Замечание}
+\newtheorem{example}[theorem]{Пример}
+\newtheorem{proof}[theorem]{Доказательство}
+% =================================================
+
+% Настройка гиперссылок
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={Основной экз 2сем линал Камынин}
+}
+

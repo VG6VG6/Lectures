@@ -1,0 +1,21 @@
+\section{Определение линейного функционала. Определение сопряжённого пространства}
+
+\begin{definition}[Линейный функционал]
+Пусть $V$ --- линейное пространство над полем $F$, $E$ --- базис в $V$.
+
+Отображение $f: V \to F$ называется \textbf{линейным функционалом}, если:
+\begin{enumerate}
+    \item $\forall x_1, x_2 \in V: f(x_1 + x_2) = f(x_1) + f(x_2)$;
+    \item $\forall x \in V,\ \forall \lambda \in F: f(\lambda x) = \lambda f(x)$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Сопряжённое пространство]
+\textbf{Сопряжённое пространство} $V^*$ --- это множество всех линейных функционалов на $V$ с операциями:
+\begin{enumerate}
+    \item $f_1 = f_2 \iff \forall x \in V: f_1(x) = f_2(x)$;
+    \item $f = 0$, если $\forall x \in V: f(x) = 0$;
+    \item $(f_1 + f_2)(x) = f_1(x) + f_2(x),\quad \forall x \in V$;
+    \item $(\lambda f)(x) = \lambda f(x),\quad \forall x \in V$.
+\end{enumerate}
+\end{definition}

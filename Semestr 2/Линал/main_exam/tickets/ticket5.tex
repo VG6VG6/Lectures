@@ -1,0 +1,107 @@
+\section{Метод Гаусса решения линейных систем. Теорема Кронекера-Капелли}
+
+\begin{definition}
+Элементарными преобразованиями системы уравнений называются:
+\begin{enumerate}
+    \item Перестановка местами двух уравнений;
+    \item Умножение уравнения на число $\lambda \neq 0$;
+    \item Прибавление к одному уравнению другого уравнения, умноженного на произвольное число.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Элементарные преобразования системы уравнений эквивалентны элементарным преобразованиям строк расширенной матрицы системы.
+\end{remark}
+
+\begin{theorem}
+Элементарные преобразования не меняют множества решений системы уравнений (системы эквивалентны).
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+    \item Перестановка уравнений очевидным образом не меняет систему.
+    \item Умножение уравнения на $\lambda \neq 0$ не меняет его решений.
+    \item Пусть к $i$-му уравнению прибавлено $j$-е, умноженное на $\lambda$:
+    \[
+    \begin{cases}
+    a_{i1}x_1 + \ldots + a_{in}x_n = b_i \\
+    a_{j1}x_1 + \ldots + a_{jn}x_n = b_j
+    \end{cases}
+    \quad \Rightarrow \quad
+    \begin{cases}
+    (a_{i1} + \lambda a_{j1})x_1 + \ldots + (a_{in} + \lambda a_{jn})x_n = b_i + \lambda b_j \\
+    a_{j1}x_1 + \ldots + a_{jn}x_n = b_j
+    \end{cases}
+    \]
+    Если $(x_1^0, \ldots, x_n^0)$ --- решение исходной системы, то оно удовлетворяет обоим уравнениям, следовательно, и преобразованному. Обратно, если $(x_1^0, \ldots, x_n^0)$ удовлетворяет преобразованной системе, то, вычитая из первого уравнения второе, умноженное на $\lambda$, получаем исходное $i$-е уравнение.
+\end{enumerate}
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{definition}
+Матрица называется \textbf{ступенчатой} (трапециевидной), если:
+\begin{enumerate}
+    \item Все нулевые строки (если они есть) расположены внизу;
+    \item Первый ненулевой элемент каждой строки (ведущий элемент) находится правее ведущего элемента предыдущей строки.
+\end{enumerate}
+В общем виде:
+\[
+\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1r} & \ldots & a_{1n} \\
+0 & a_{22} & \ldots & a_{2r} & \ldots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots & & \vdots \\
+0 & 0 & \ldots & a_{rr} & \ldots & a_{rn} \\
+0 & 0 & \ldots & 0 & \ldots & 0 \\
+\vdots & \vdots & & \vdots & & \vdots \\
+0 & 0 & \ldots & 0 & \ldots & 0
+\end{pmatrix}, \quad a_{ii} \neq 0.
+\]
+\end{definition}
+
+\begin{theorem}
+Любую систему линейных уравнений можно привести к ступенчатому виду с помощью элементарных преобразований.
+\end{theorem}
+
+\begin{proof}
+Алгоритм (метод Гаусса):
+\begin{enumerate}
+    \item Если $a_{11} = 0$, перестановкой строк добиваемся $a_{11} \neq 0$.
+    \item Прибавляем к каждой $i$-й строке ($i > 1$) первую строку, умноженную на $-\frac{a_{i1}}{a_{11}}$, чтобы обнулить первый столбец ниже $a_{11}$.
+    \item Применяем тот же процесс к подматрице, полученной вычёркиванием первой строки и первого столбца, и так далее.
+\end{enumerate}
+В результате получаем ступенчатую матрицу.
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{theorem}[Кронекера-Капелли]
+Система линейных уравнений совместна тогда и только тогда, когда ранг матрицы системы равен рангу расширенной матрицы:
+\[
+\operatorname{rang} A = \operatorname{rang} \overline{A}.
+\]
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+    \item[$\Rightarrow$] Пусть система совместна. Приведём расширенную матрицу к ступенчатому виду. Так как решение существует, то не может быть строк вида $(0 \ 0 \ \ldots \ 0 \mid b)$ с $b \neq 0$ (что означало бы $0 = b$). Следовательно, ранги $A$ и $\overline{A}$ равны числу ненулевых строк.
+    
+    \item[$\Leftarrow$] Пусть $\operatorname{rang} A = \operatorname{rang} \overline{A} = r$. Приведём систему к ступенчатому виду:
+    \[
+    \begin{cases}
+    a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n = b_1 \\
+    a_{22}x_2 + \ldots + a_{2n}x_n = b_2 \\
+    \vdots \\
+    a_{rr}x_r + \ldots + a_{rn}x_n = b_r
+    \end{cases}
+    \]
+    Переменные $x_1, \ldots, x_r$ --- главные, $x_{r+1}, \ldots, x_n$ --- свободные. Выражая главные переменные через свободные, получаем решение системы.
+\end{itemize}
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{corollary}
+\begin{enumerate}
+    \item Если $\operatorname{rang} A = \operatorname{rang} \overline{A} = n$ (число неизвестных), то система имеет единственное решение.
+    \item Если $\operatorname{rang} A = \operatorname{rang} \overline{A} = r < n$, то система имеет бесконечно много решений (неопределённа).
+    \item Если $\operatorname{rang} A \neq \operatorname{rang} \overline{A}$, то система несовместна.
+\end{enumerate}
+\end{corollary}

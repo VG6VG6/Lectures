@@ -1,0 +1,49 @@
+\section{Обратный оператор и его свойства. Теорема о матрице обратного оператора}
+
+\begin{definition}
+Линейный оператор $\psi \in L(V, V)$ называется \textbf{обратным} к оператору $\varphi \in L(V, V)$, если выполняются равенства:
+\[
+\varphi \circ \psi = \psi \circ \varphi = I,
+\]
+где $I$ --- тождественный оператор ($I(x) = x$ для всех $x \in V$). В этом случае $\psi$ обозначается $\varphi^{-1}$, а оператор $\varphi$ называется \textbf{обратимым}.
+\end{definition}
+
+\begin{theorem}[Свойства обратного оператора]
+Пусть оператор $\varphi \in L(V, V)$ обратим. Тогда:
+\begin{enumerate}
+    \item Обратный оператор $\varphi^{-1}$ определяется единственным образом.
+    \item $\varphi^{-1}$ является линейным оператором.
+    \item $(\varphi^{-1})^{-1} = \varphi$.
+    \item Если $\psi$ также обратим, то $(\varphi \circ \psi)^{-1} = \psi^{-1} \circ \varphi^{-1}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+    \item Пусть существуют два обратных оператора $\psi_1$ и $\psi_2$. Тогда:
+    \[
+    \psi_1 = \psi_1 \circ I = \psi_1 \circ (\varphi \circ \psi_2) = (\psi_1 \circ \varphi) \circ \psi_2 = I \circ \psi_2 = \psi_2.
+    \]
+    \item Проверим линейность $\varphi^{-1}$. Пусть $y_1, y_2 \in V$ и $\lambda \in F$. Так как $\varphi$ биективно, существуют $x_1, x_2 \in V$ такие, что $\varphi(x_1) = y_1$, $\varphi(x_2) = y_2$. Тогда:
+    \[
+    \varphi^{-1}(\lambda y_1 + y_2) = \varphi^{-1}(\lambda \varphi(x_1) + \varphi(x_2)) = \varphi^{-1}(\varphi(\lambda x_1 + x_2)) = \lambda x_1 + x_2 = \lambda \varphi^{-1}(y_1) + \varphi^{-1}(y_2).
+    \]
+    \item Следует непосредственно из определения: $\varphi^{-1} \circ \varphi = \varphi \circ \varphi^{-1} = I$.
+    \item Проверим: $(\varphi \circ \psi) \circ (\psi^{-1} \circ \varphi^{-1}) = \varphi \circ (\psi \circ \psi^{-1}) \circ \varphi^{-1} = \varphi \circ I \circ \varphi^{-1} = I$. Аналогично в обратном порядке. Значит, $\psi^{-1} \circ \varphi^{-1}$ является обратным к $\varphi \circ \psi$.
+\end{enumerate}
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{theorem}[О матрице обратного оператора]
+Пусть обратимый оператор $\varphi \in L(V, V)$ имеет в базисе $E$ матрицу $A$. Тогда матрица обратного оператора $\varphi^{-1}$ в том же базисе равна обратной матрице $A^{-1}$.
+\end{theorem}
+
+\begin{proof}
+По определению обратного оператора: $\varphi \circ \varphi^{-1} = I$ и $\varphi^{-1} \circ \varphi = I$.
+Перейдем к матрицам в базисе $E$. Матрица тождественного оператора $I$ --- единичная матрица $E_n$. По теореме о матрице произведения:
+\[
+A_{\varphi \circ \varphi^{-1}} = A \cdot A_{\varphi^{-1}} = E_n, \quad A_{\varphi^{-1} \circ \varphi} = A_{\varphi^{-1}} \cdot A = E_n.
+\]
+Из определения обратной матрицы следует, что $A_{\varphi^{-1}} = A^{-1}$.
+\hfill$\blacksquare$
+\end{proof}
