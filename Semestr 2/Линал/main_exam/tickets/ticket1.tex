@@ -1,0 +1,73 @@
+\section{Элементарные преобразования матриц. Матрицы элементарных преобразований. Теоремы о матрицах элементарных преобразований}
+
+\begin{definition}
+Элементарными преобразованиями строк (или столбцов) матрицы называются следующие операции:
+\begin{enumerate}
+    \item Перестановка двух строк (столбцов) местами.
+    \item Умножение строки (столбца) на число $\lambda \neq 0$.
+    \item Прибавление к одной строке (столбцу) другой строки (столбца), умноженной на любое число.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Каждое элементарное преобразование строк матрицы $A$ сводится к умножению $A$ слева на соответствующую матрицу элементарного преобразования. Аналогично, преобразование столбцов сводится к умножению $A$ справа.
+\end{theorem}
+
+\begin{proof}
+Рассмотрим матрицу $A$ размера $m \times n$. Покажем действие умножения слева на матрицу $B$ для каждого типа преобразований:
+\begin{enumerate}
+    \item \textbf{Перестановка $i$-й и $j$-й строк.} 
+    Матрица $B$ получается из единичной матрицы $E$ перестановкой $i$-й и $j$-й строк. В общем виде она имеет элементы: $b_{ii}=b_{jj}=0$, $b_{ij}=b_{ji}=1$, $b_{kk}=1$ при $k \neq i,j$, и $b_{kl}=0$ в остальных случаях:
+    $$
+    B = \begin{pmatrix}
+    1 & \dots & 0 & \dots & 0 & \dots & 0 \\
+    \vdots & \ddots & \vdots & & \vdots & & \vdots \\
+    0 & \dots & 0 & \dots & 1 & \dots & 0 \\
+    \vdots & & \vdots & \ddots & \vdots & & \vdots \\
+    0 & \dots & 1 & \dots & 0 & \dots & 0 \\
+    \vdots & & \vdots & & \vdots & \ddots & \vdots \\
+    0 & \dots & 0 & \dots & 0 & \dots & 1
+    \end{pmatrix}
+    \begin{matrix}
+    \\ \leftarrow i\text{-я строка} \\ \\ \leftarrow j\text{-я строка} \\ \\
+    \end{matrix}
+    $$
+    При умножении $BA$ строки $i$ и $j$ матрицы $A$ меняются местами, остальные остаются без изменений.
+
+    \item \textbf{Умножение $i$-й строки на $\lambda \neq 0$.} 
+    Матрица $B$ получается из $E$ заменой элемента $e_{ii}$ на $\lambda$:
+    $$
+    B = \begin{pmatrix}
+    1 & \dots & 0 & \dots & 0 \\
+    \vdots & \ddots & \vdots & & \vdots \\
+    0 & \dots & \lambda & \dots & 0 \\
+    \vdots & & \vdots & \ddots & \vdots \\
+    0 & \dots & 0 & \dots & 1
+    \end{pmatrix}
+    \begin{matrix}
+    \\ \\ \leftarrow i\text{-я строка} \\ \\
+    \end{matrix}
+    $$
+    При умножении $BA$ все элементы $i$-й строки $A$ умножаются на $\lambda$.
+
+    \item \textbf{Прибавление к $i$-й строке $j$-й строки, умноженной на $\lambda$.} 
+    Матрица $B$ получается из $E$ добавлением $\lambda$ на позицию $(i, j)$:
+    $$
+    B = \begin{pmatrix}
+    1 & \dots & 0 & \dots & 0 & \dots & 0 \\
+    \vdots & \ddots & \vdots & & \vdots & & \vdots \\
+    0 & \dots & 1 & \dots & \lambda & \dots & 0 \\
+    \vdots & & \vdots & \ddots & \vdots & & \vdots \\
+    0 & \dots & 0 & \dots & 1 & \dots & 0 \\
+    \vdots & & \vdots & & \vdots & \ddots & \vdots \\
+    0 & \dots & 0 & \dots & 0 & \dots & 1
+    \end{pmatrix}
+    \begin{matrix}
+    \\ \\ \leftarrow i\text{-я строка} \\ \\ \leftarrow j\text{-я строка} \\ \\
+    \end{matrix}
+    $$
+    При умножении $BA$ к $i$-й строке $A$ прибавляется $j$-я строка, умноженная на $\lambda$.
+\end{enumerate}
+Во всех случаях матрица $B$ является квадратной и невырожденной ($\det B \neq 0$).
+\hfill$\blacksquare$
+\end{proof}

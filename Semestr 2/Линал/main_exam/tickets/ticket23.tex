@@ -1,0 +1,72 @@
+\section{Определение линейного оператора. Примеры. Простейшие свойства. Произведение линейных операторов. Теорема о задании линейного оператора. Матрица линейного оператора}
+
+\begin{definition}
+Отображение $\varphi: V \to W$ между линейными пространствами над полем $F$ называется \textbf{линейным оператором}, если для любых $x, y \in V$ и $\lambda \in F$ выполняются условия:
+\begin{enumerate}
+    \item $\varphi(x + y) = \varphi(x) + \varphi(y)$;
+    \item $\varphi(\lambda x) = \lambda \varphi(x)$.
+\end{enumerate}
+Множество всех таких операторов обозначается $L(V, W)$. Если $V = W$, оператор называется линейным преобразованием пространства $V$, а множество обозначается $L(V, V)$.
+\end{definition}
+
+\begin{example}[Примеры линейных операторов]
+\begin{enumerate}
+    \item \textbf{Нулевой оператор} $\mathcal{O}$: $\mathcal{O}(x) = 0$ для всех $x \in V$.
+    \item \textbf{Тождественный оператор} $\mathcal{I}$: $\mathcal{I}(x) = x$ для всех $x \in V$.
+    \item \textbf{Оператор умножения на число} $\lambda \mathcal{I}$: $(\lambda \mathcal{I})(x) = \lambda x$.
+\end{enumerate}
+\end{example}
+
+\begin{theorem}[Простейшие свойства]
+Для любого линейного оператора $\varphi \in L(V, W)$ справедливы свойства:
+\begin{enumerate}
+    \item $\varphi(0_V) = 0_W$;
+    \item $\varphi(-x) = -\varphi(x)$;
+    \item $\varphi\left(\sum_{i=1}^k \lambda_i x_i\right) = \sum_{i=1}^k \lambda_i \varphi(x_i)$ (линейность любой конечной комбинации).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Свойства 1 и 2 следуют из однородности: $\varphi(0 \cdot x) = 0 \cdot \varphi(x) = 0_W$ и $\varphi((-1) \cdot x) = (-1) \cdot \varphi(x) = -\varphi(x)$. Свойство 3 доказывается индукцией по $k$ с использованием аддитивности и однородности.
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{definition}
+Произведением (композицией) операторов $\varphi \in L(V, W)$ и $\psi \in L(W, U)$ называется оператор $\psi \circ \varphi \in L(V, U)$, действующий по правилу:
+\[
+(\psi \circ \varphi)(x) = \psi(\varphi(x)) \quad \forall x \in V.
+\]
+\end{definition}
+
+\begin{theorem}[О задании линейного оператора на базисе]
+Пусть $E = \{e_1, \dots, e_n\}$ --- базис пространства $V$, а $v_1, \dots, v_n$ --- произвольная система векторов в пространстве $W$. Тогда существует единственный линейный оператор $\varphi \in L(V, W)$ такой, что $\varphi(e_i) = v_i$ для всех $i = 1, \dots, n$.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+    \item \textbf{Существование:} Для любого $x \in V$ существует единственное разложение $x = \sum_{i=1}^n \xi_i e_i$. Определим отображение $\varphi$ правилом:
+    \[
+    \varphi(x) = \sum_{i=1}^n \xi_i v_i.
+    \]
+    Проверим линейность: если $y = \sum_{i=1}^n \eta_i e_i$, то $x+y = \sum_{i=1}^n (\xi_i + \eta_i) e_i$, и $\varphi(x+y) = \sum_{i=1}^n (\xi_i + \eta_i) v_i = \varphi(x) + \varphi(y)$. Аналогично проверяется однородность. При $x = e_j$ все $\xi_i = 0$, кроме $\xi_j = 1$, поэтому $\varphi(e_j) = v_j$.
+    \item \textbf{Единственность:} Пусть $\psi$ --- другой оператор с тем же свойством. Тогда для любого $x = \sum_{i=1}^n \xi_i e_i$ в силу линейности $\psi$ имеем:
+    \[
+    \psi(x) = \psi\left(\sum_{i=1}^n \xi_i e_i\right) = \sum_{i=1}^n \xi_i \psi(e_i) = \sum_{i=1}^n \xi_i v_i = \varphi(x).
+    \]
+    Следовательно, $\psi = \varphi$.
+\end{enumerate}
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{definition}
+Пусть $E = \{e_1, \dots, e_n\}$ --- базис $V$, $E' = \{e'_1, \dots, e'_m\}$ --- базис $W$, и $\varphi \in L(V, W)$. \textbf{Матрицей оператора} $\varphi$ в паре базисов $(E, E')$ называется матрица $A_\varphi$ размера $m \times n$, $j$-й столбец которой состоит из координат вектора $\varphi(e_j)$ в базисе $E'$:
+\[
+\varphi(e_j) = \sum_{i=1}^m a_{ij} e'_i \quad \Longleftrightarrow \quad A_\varphi = \begin{pmatrix}
+a_{11} & a_{12} & \dots & a_{1n} \\
+a_{21} & a_{22} & \dots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \dots & a_{mn}
+\end{pmatrix}.
+\]
+В блочной записи это часто обозначают как $\varphi(E) = E' \cdot A_\varphi$.
+\end{definition}

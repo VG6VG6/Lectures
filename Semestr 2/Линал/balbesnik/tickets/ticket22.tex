@@ -1,0 +1,19 @@
+\section{Определение билинейной формы}
+
+\begin{definition}[Билинейная форма]
+Пусть $V$ --- линейное пространство над $\mathbb{R}$ ($F = \mathbb{R}$).
+
+Функция $f(x, y): V \times V \to \mathbb{R}$ называется \textbf{билинейной формой}, если выполнены следующие 4 свойства:
+\begin{enumerate}
+    \item $f(x_1 + x_2, y) = f(x_1, y) + f(x_2, y),\quad \forall x_1, x_2, y \in V$;
+    \item $f(\lambda x, y) = \lambda f(x, y),\quad \forall x, y \in V,\ \forall \lambda \in \mathbb{R}$;
+    \item $f(x, y_1 + y_2) = f(x, y_1) + f(x, y_2),\quad \forall x, y_1, y_2 \in V$;
+    \item $f(x, \mu y) = \mu f(x, y),\quad \forall x, y \in V,\ \forall \mu \in \mathbb{R}$.
+\end{enumerate}
+
+В координатах:
+\[
+f(x, y) = \sum_{i,j=1}^{n} a_{ij} \xi_i \eta_j,
+\]
+где $\xi_i, \eta_j$ --- координаты векторов $x, y$ в базисе $E$.
+\end{definition}

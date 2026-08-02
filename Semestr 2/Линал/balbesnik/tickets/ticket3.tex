@@ -1,0 +1,22 @@
+\section{Определение ступенчатого вида матрицы}
+
+\begin{definition}[Ступенчатый вид матрицы]
+Ненулевая матрица $A$ называется \textbf{ступенчатой}, если выполнены условия:
+\begin{enumerate}
+    \item Все нулевые строки идут последними;
+    \item Если $a_{ik} \neq 0$, то $a_{jk} = 0$ при $j < i$ и $a_{ij} = 0$ при $j < k$.
+\end{enumerate}
+
+В матричном виде:
+\[
+A = \begin{pmatrix}
+0 & \cdots & 0 & a_{1k} \neq 0 & * & \cdots & * \\
+0 & \cdots & 0 & 0 & * & \cdots & * \\
+\vdots & & & & \ddots & & \vdots \\
+0 & \cdots & 0 & 0 & \cdots & 0 & * \\
+0 & \cdots & 0 & 0 & \cdots & 0 & 0 \\
+\vdots & & & & & & \vdots \\
+0 & \cdots & 0 & 0 & \cdots & 0 & 0
+\end{pmatrix}.
+\]
+\end{definition}

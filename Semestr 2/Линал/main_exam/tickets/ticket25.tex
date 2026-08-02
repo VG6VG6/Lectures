@@ -1,0 +1,69 @@
+\section{Теорема о преобразовании координат при действии линейного оператора. Теорема о матрице произведения операторов}
+
+\begin{theorem}[О координатах образа вектора]
+Пусть $\varphi \in L(V, V)$, $\dim V = n$, и в пространстве $V$ зафиксирован базис $E = \{e_1, \dots, e_n\}$. Если оператор $\varphi$ имеет в этом базисе матрицу $A = (a_{ij})$, а вектор $x \in V$ имеет столбец координат $X$, то образ $y = \varphi(x)$ имеет в том же базисе столбец координат $Y$, связанный с $X$ соотношением:
+\[
+Y = A X.
+\]
+\end{theorem}
+
+\begin{proof}
+Запишем разложение вектора $x$ по базису $E$ и действие оператора на базисные векторы:
+\[
+x = \sum_{j=1}^n \xi_j e_j, \quad \varphi(e_j) = \sum_{i=1}^n a_{ij} e_i.
+\]
+В силу линейности оператора:
+\[
+y = \varphi(x) = \varphi\left(\sum_{j=1}^n \xi_j e_j\right) = \sum_{j=1}^n \xi_j \varphi(e_j) = \sum_{j=1}^n \xi_j \left( \sum_{i=1}^n a_{ij} e_i \right).
+\]
+Поменяем порядок суммирования:
+\[
+y = \sum_{i=1}^n \left( \sum_{j=1}^n a_{ij} \xi_j \right) e_i.
+\]
+Коэффициент при $e_i$ в этом разложении есть $i$-я координата вектора $y$, то есть $\eta_i = \sum_{j=1}^n a_{ij} \xi_j$. В матричной форме это записывается как:
+\[
+\begin{pmatrix} \eta_1 \\ \eta_2 \\ \vdots \\ \eta_n \end{pmatrix} = 
+\begin{pmatrix}
+a_{11} & a_{12} & \dots & a_{1n} \\
+a_{21} & a_{22} & \dots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \dots & a_{nn}
+\end{pmatrix}
+\begin{pmatrix} \xi_1 \\ \xi_2 \\ \vdots \\ \xi_n \end{pmatrix}.
+\]
+Следовательно, $Y = A X$.
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{lemma}[О единственности матрицы оператора]
+Если два линейных оператора $\varphi, \psi \in L(V, V)$ имеют одинаковые матрицы в одном и том же базисе $E$, то $\varphi = \psi$.
+\end{lemma}
+
+\begin{proof}
+Совпадение матриц означает совпадение координат образов $\varphi(e_j)$ и $\psi(e_j)$ для всех $j=1,\dots,n$. Следовательно, $\varphi(e_j) = \psi(e_j)$. Поскольку операторы совпадают на базисе, они совпадают на всем пространстве $V$ в силу линейности.
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{theorem}[О матрице произведения операторов]
+Пусть $\varphi, \psi \in L(V, V)$ имеют в базисе $E$ матрицы $A$ и $B$ соответственно. Тогда матрица композиции $\varphi \circ \psi$ (сначала применяется $\psi$, затем $\varphi$) в том же базисе равна произведению матриц:
+\[
+A_{\varphi \circ \psi} = A \cdot B.
+\]
+\end{theorem}
+
+\begin{proof}
+Обозначим $\theta = \varphi \circ \psi$. Найдем образ базисного вектора $e_j$ при действии $\theta$:
+\[
+\theta(e_j) = \varphi(\psi(e_j)).
+\]
+Так как матрица $\psi$ равна $B$, то $\psi(e_j) = \sum_{k=1}^n b_{kj} e_k$. Подставим это в выражение для $\theta(e_j)$ и воспользуемся линейностью $\varphi$:
+\[
+\theta(e_j) = \varphi\left( \sum_{k=1}^n b_{kj} e_k \right) = \sum_{k=1}^n b_{kj} \varphi(e_k).
+\]
+Матрица $\varphi$ равна $A$, поэтому $\varphi(e_k) = \sum_{i=1}^n a_{ik} e_i$. Подставляем снова:
+\[
+\theta(e_j) = \sum_{k=1}^n b_{kj} \left( \sum_{i=1}^n a_{ik} e_i \right) = \sum_{i=1}^n \left( \sum_{k=1}^n a_{ik} b_{kj} \right) e_i.
+\]
+Коэффициент при $e_i$ равен $\sum_{k=1}^n a_{ik} b_{kj}$, что в точности является элементом $(i, j)$ матричного произведения $A \cdot B$. Следовательно, матрица оператора $\theta$ совпадает с $A \cdot B$.
+\hfill$\blacksquare$
+\end{proof}

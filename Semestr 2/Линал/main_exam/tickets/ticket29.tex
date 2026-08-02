@@ -1,0 +1,72 @@
+\section{Преобразование матрицы линейного оператора при переходе к другому базису. Характеристический многочлен. Его инвариантность}
+
+\begin{theorem}[О преобразовании матрицы оператора]
+Пусть в пространстве $V$ заданы два базиса: старый $E$ и новый $E'$, связанные матрицей перехода $T$ ($E' = E \cdot T$). Если оператор $\varphi \in L(V, V)$ имеет в базисе $E$ матрицу $A_\varphi$, а в базисе $E'$ --- матрицу $A_{\varphi'}$, то эти матрицы связаны соотношением:
+\[
+A_{\varphi'} = T^{-1} A_\varphi T.
+\]
+\end{theorem}
+
+\begin{proof}
+Запишем действие оператора на базисные векторы в матричной форме. Для базиса $E$:
+\[
+\varphi(E) = E \cdot A_\varphi.
+\]
+Для базиса $E'$:
+\[
+\varphi(E') = E' \cdot A_{\varphi'}.
+\]
+С другой стороны, используя свойство линейности оператора и соотношение $E' = E \cdot T$, имеем:
+\[
+\varphi(E') = \varphi(E \cdot T) = \varphi(E) \cdot T = (E \cdot A_\varphi) \cdot T = E \cdot (A_\varphi T).
+\]
+Приравняем два выражения для $\varphi(E')$:
+\[
+E' \cdot A_{\varphi'} = E \cdot (A_\varphi T).
+\]
+Подставим $E' = E \cdot T$ в левую часть:
+\[
+(E \cdot T) \cdot A_{\varphi'} = E \cdot (A_\varphi T) \quad \Rightarrow \quad E \cdot (T A_{\varphi'}) = E \cdot (A_\varphi T).
+\]
+В силу единственности разложения векторов по базису $E$, матрицы коэффициентов должны совпадать:
+\[
+T A_{\varphi'} = A_\varphi T.
+\]
+Так как матрица перехода $T$ невырождена ($\det T \neq 0$), мы можем умножить это равенство слева на $T^{-1}$, получая:
+\[
+A_{\varphi'} = T^{-1} A_\varphi T.
+\]
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{definition}
+\textbf{Характеристическим многочленом} линейного оператора $\varphi$ (или его матрицы $A_\varphi$) называется многочлен от переменной $\lambda$, определяемый формулой:
+\[
+P_\varphi(\lambda) = \det(A_\varphi - \lambda E_n),
+\]
+где $E_n$ --- единичная матрица порядка $n = \dim V$.
+\end{definition}
+
+\begin{theorem}[Об инвариантности характеристического многочлена]
+Характеристический многочлен линейного оператора не зависит от выбора базиса в пространстве $V$.
+\end{theorem}
+
+\begin{proof}
+Пусть $A_\varphi$ и $A_{\varphi'}$ --- матрицы одного и того же оператора $\varphi$ в разных базисах, связанные соотношением $A_{\varphi'} = T^{-1} A_\varphi T$. Рассмотрим характеристический многочлен в новом базисе:
+\[
+P_{\varphi'}(\lambda) = \det(A_{\varphi'} - \lambda E_n).
+\]
+Подставим выражение для $A_{\varphi'}$ и заметим, что $\lambda E_n = \lambda (T^{-1} E_n T) = T^{-1} (\lambda E_n) T$:
+\[
+A_{\varphi'} - \lambda E_n = T^{-1} A_\varphi T - T^{-1} (\lambda E_n) T = T^{-1} (A_\varphi - \lambda E_n) T.
+\]
+Используя теорему об определителе произведения матриц ($\det(ABC) = \det A \cdot \det B \cdot \det C$), получаем:
+\[
+P_{\varphi'}(\lambda) = \det\left(T^{-1} (A_\varphi - \lambda E_n) T\right) = \det(T^{-1}) \cdot \det(A_\varphi - \lambda E_n) \cdot \det(T).
+\]
+Так как $\det(T^{-1}) \cdot \det(T) = \det(T^{-1}T) = \det(E_n) = 1$, имеем:
+\[
+P_{\varphi'}(\lambda) = \det(A_\varphi - \lambda E_n) = P_\varphi(\lambda).
+\]
+\hfill$\blacksquare$
+\end{proof}

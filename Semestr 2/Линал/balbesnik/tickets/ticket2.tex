@@ -1,0 +1,27 @@
+\section{Определение основной и расширенной матрицы системы. Формулировка теоремы Кронекера--Капелли}
+
+\begin{definition}[Основная и расширенная матрицы системы]
+\textbf{Основная матрица системы} --- матрица коэффициентов при неизвестных:
+\[
+A = \begin{pmatrix}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{pmatrix}_{m \times n}.
+\]
+\textbf{Расширенная матрица системы} --- матрица, дополненная столбцом свободных членов:
+\[
+\tilde{A} = \begin{pmatrix}
+a_{11} & \cdots & a_{1n} & b_1 \\
+\vdots & \ddots & \vdots & \vdots \\
+a_{m1} & \cdots & a_{mn} & b_m
+\end{pmatrix}_{m \times (n+1)}.
+\]
+\end{definition}
+
+\begin{theorem}[Кронекера -- Капелли]
+СЛАУ совместна тогда и только тогда, когда ранг основной матрицы равен рангу расширенной матрицы:
+\[
+\operatorname{rang} A = \operatorname{rang} \tilde{A}.
+\]
+\end{theorem}

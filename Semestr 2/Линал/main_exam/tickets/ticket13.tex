@@ -1,0 +1,79 @@
+\section{Координаты векторов. Теоремы о линейности и единственности координат. Определение изоморфизма линейных пространств. Свойства изоморфизма}
+
+\begin{definition}
+Пусть $E = \{e_1, e_2, \dots, e_n\}$ --- базис линейного пространства $V$. Любой вектор $x \in V$ единственным образом представляется в виде линейной комбинации базисных векторов:
+\[
+x = \xi_1 e_1 + \xi_2 e_2 + \dots + \xi_n e_n.
+\]
+Числа $\xi_1, \xi_2, \dots, \xi_n$ называются \textbf{координатами} вектора $x$ в базисе $E$.
+\end{definition}
+
+\begin{theorem}[О единственности координат]
+Координаты вектора в данном базисе определяются единственным образом.
+\end{theorem}
+
+\begin{proof}
+Предположим противное: пусть вектор $x$ имеет два различных разложения по базису $E$:
+\[
+x = \xi_1 e_1 + \dots + \xi_n e_n \quad \text{и} \quad x = \eta_1 e_1 + \dots + \eta_n e_n.
+\]
+Вычитая второе равенство из первого, получаем:
+\[
+(\xi_1 - \eta_1)e_1 + (\xi_2 - \eta_2)e_2 + \dots + (\xi_n - \eta_n)e_n = 0.
+\]
+Так как векторы $e_1, \dots, e_n$ по определению базиса линейно независимы, все коэффициенты этой линейной комбинации должны быть равны нулю:
+\[
+\xi_i - \eta_i = 0 \quad \Rightarrow \quad \xi_i = \eta_i \quad \text{для всех } i = 1, \dots, n.
+\]
+Это противоречит предположению о различии разложений. Следовательно, координаты единственны.
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{theorem}[О линейности координат]
+Пусть векторы $x$ и $y$ имеют в базисе $E$ координаты $(\xi_1, \dots, \xi_n)$ и $(\eta_1, \dots, \eta_n)$ соответственно. Тогда:
+\begin{enumerate}
+    \item Координаты суммы $x + y$ равны $(\xi_1 + \eta_1, \dots, \xi_n + \eta_n)$.
+    \item Координаты произведения $\lambda x$ ($\lambda \in F$) равны $(\lambda \xi_1, \dots, \lambda \xi_n)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Используя определение координат и аксиомы линейного пространства:
+\begin{enumerate}
+    \item $x + y = (\xi_1 e_1 + \dots + \xi_n e_n) + (\eta_1 e_1 + \dots + \eta_n e_n) = (\xi_1 + \eta_1)e_1 + \dots + (\xi_n + \eta_n)e_n$.
+    \item $\lambda x = \lambda (\xi_1 e_1 + \dots + \xi_n e_n) = (\lambda \xi_1)e_1 + \dots + (\lambda \xi_n)e_n$.
+\end{enumerate}
+В силу единственности координат, полученные наборы чисел и являются искомыми координатами.
+\hfill$\blacksquare$
+\end{proof}
+
+\begin{definition}
+Линейные пространства $V$ и $W$ над одним и тем же полем $F$ называются \textbf{изоморфными} ($V \cong W$), если существует биекция (взаимно однозначное отображение) $\varphi: V \to W$, сохраняющая линейные операции, то есть для любых $x, y \in V$ и $\lambda \in F$ выполняются условия:
+\begin{enumerate}
+    \item $\varphi(x + y) = \varphi(x) + \varphi(y)$ (аддитивность);
+    \item $\varphi(\lambda x) = \lambda \varphi(x)$ (однородность).
+\end{enumerate}
+Такое отображение $\varphi$ называется \textbf{изоморфизмом}.
+\end{definition}
+
+\begin{theorem}[Свойства изоморфизма]
+Пусть $\varphi: V \to W$ --- изоморфизм. Тогда:
+\begin{enumerate}
+    \item $\varphi(0_V) = 0_W$ (нулевой вектор переходит в нулевой).
+    \item $\varphi(-x) = -\varphi(x)$.
+    \item Если система векторов $x_1, \dots, x_k$ линейно независима в $V$, то система $\varphi(x_1), \dots, \varphi(x_k)$ линейно независима в $W$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+    \item $\varphi(0_V) = \varphi(0 \cdot x) = 0 \cdot \varphi(x) = 0_W$.
+    \item $\varphi(-x) = \varphi((-1) \cdot x) = (-1) \cdot \varphi(x) = -\varphi(x)$.
+    \item Рассмотрим линейную комбинацию образов, равную нулю в $W$:
+    \[
+    \lambda_1 \varphi(x_1) + \dots + \lambda_k \varphi(x_k) = 0_W.
+    \]
+    В силу линейности $\varphi$, это равносильно $\varphi(\lambda_1 x_1 + \dots + \lambda_k x_k) = 0_W$. Так как $\varphi$ --- биекция, прообразом $0_W$ является только $0_V$ (из свойства 1 и инъективности). Следовательно, $\lambda_1 x_1 + \dots + \lambda_k x_k = 0_V$. Поскольку исходная система ЛНЗ, все $\lambda_i = 0$. Значит, и система образов ЛНЗ.
+\end{enumerate}
+\hfill$\blacksquare$
+\end{proof}
